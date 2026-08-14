@@ -15,6 +15,7 @@ set -euo pipefail
 PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 SMOKE_BASE="/scratch/gpfs/JORDANAT/${USER}/value_steering_bandit"
 MODEL_PATH="${MODEL_PATH:-/scratch/gpfs/JORDANAT/${USER}/models/Qwen--Qwen3.5-4B}"
+FALLBACK_MODEL_PATH="${FALLBACK_MODEL_PATH:-/scratch/gpfs/JORDANAT/${USER}/models/Qwen--Qwen3-4B-Instruct-2507}"
 CONDA_ENV="${CONDA_ENV:-value-steering-bandit}"
 
 cd "$PROJECT_DIR"
@@ -50,6 +51,7 @@ python -m pytest -q
 echo "Running real-model compatibility gate"
 python -m experiments.check_qwen_compatibility \
     --model "$MODEL_PATH" \
+    --fallback-model "$FALLBACK_MODEL_PATH" \
     --output artifacts/qwen_compatibility_smoke.json
 
 echo "Running two short end-to-end bandit episodes"

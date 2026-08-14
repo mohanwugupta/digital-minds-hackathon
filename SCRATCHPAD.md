@@ -315,3 +315,51 @@ be rerun after pulling this change.
 ### Next step
 
 Pull on the cluster and resubmit `smoke_qwen35.slurm`.
+
+---
+
+## Hugging Face model-download cycle
+
+### Current objective
+
+Provide a resumable cluster job that downloads the primary Qwen3.5-4B model
+and Qwen3-4B-Instruct-2507 fallback into the exact directories used by the
+existing SLURM defaults.
+
+### Current RED test
+
+`tests/test_download_qwen_models.py` was added first to freeze the two official
+repository IDs, deterministic local directory names, and single-model
+selection behavior.
+
+### Actual failure
+
+The requested targeted RED command again stopped before collection because the
+host Python has no pytest:
+
+```text
+/usr/bin/python3: No module named pytest
+```
+
+### GREEN implementation
+
+- `scripts/download_qwen_models.py` resolves `main` to a concrete Hugging Face
+  commit, downloads with resumable local metadata, verifies config/tokenizer
+  files and safetensor weights, and records the commit in a manifest.
+- `download_qwen_models.slurm` is CPU-only and defaults to both checkpoints
+  under `/scratch/gpfs/JORDANAT/mg9965/models`.
+- `MODEL_SELECTION=primary` and `MODEL_SELECTION=fallback` support smaller
+  one-model jobs without changing the script.
+
+### Test command
+
+```bash
+bash -n download_qwen_models.slurm
+python3 -m compileall -q scripts tests/test_download_qwen_models.py
+```
+
+### Result
+
+Shell syntax, Python compilation, download-plan assertions, and a mocked
+resolve/download/verify/manifest cycle: PASS. No network download was started.
+The actual model transfer and pytest remain cluster tasks.

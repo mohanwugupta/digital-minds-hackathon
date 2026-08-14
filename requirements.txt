@@ -1,6 +1,7 @@
 # Runtime
 torch>=2.6
 transformers>=5.12
+huggingface_hub>=0.34
 accelerate>=1.2
 pytest
 pytest-cov

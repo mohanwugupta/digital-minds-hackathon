@@ -22,6 +22,7 @@ used for baseline or intervention data.
 - `tests/`: CPU unit/integration tests plus a tiny mocked pipeline.
 - `config/bandit_experiment.yaml`: frozen design defaults.
 - `smoke_qwen35.slurm`: short unit-test plus real-model compatibility gate.
+- `download_qwen_models.slurm`: CPU-only, resumable Hugging Face model download.
 
 Model-visible state is represented only by `BanditConversation`. True arm
 probabilities, score, schedules, seeds, round, and structured histories live in
@@ -79,6 +80,37 @@ uses the full Qwen3.5 configuration, so the adapter loads the official
 conditional-generation class but sends text tokens only and instruments its
 nested language-model backbone. Model loading is
 offline by default. Pass `--online` only when downloads are intentional.
+
+## Downloading the model checkpoints
+
+Submit the CPU-only download job from the repository root before running the
+GPU smoke test:
+
+```bash
+mkdir -p logs
+sbatch download_qwen_models.slurm
+```
+
+It downloads both public Hugging Face checkpoints into these directories:
+
+```text
+/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B
+/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3-4B-Instruct-2507
+```
+
+The first is the primary model and the second is the compatibility fallback.
+Downloads are resumable: if the job is interrupted, submit the same command
+again. Each completed directory contains `.download_manifest.json` with the
+resolved Hugging Face commit. The models are public, so a token is normally not
+needed; if the cluster requires authenticated Hub access, export `HF_TOKEN`
+before submitting with `sbatch --export=ALL download_qwen_models.slurm`.
+
+To download only one checkpoint, set `MODEL_SELECTION` to `primary` or
+`fallback`:
+
+```bash
+MODEL_SELECTION=primary sbatch --export=ALL download_qwen_models.slurm
+```
 
 ## Experimental sequence
 
