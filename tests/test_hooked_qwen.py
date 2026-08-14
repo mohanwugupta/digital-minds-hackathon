@@ -1,4 +1,5 @@
 import pytest
+from collections import UserDict
 
 torch = pytest.importorskip("torch")
 
@@ -8,6 +9,16 @@ from models.hooked_qwen import HookedQwen, discover_layers
 class FakeTokenizer:
     def encode(self, text, add_special_tokens=False):
         return {"A": [0], "B": [1], "C": [2]}[text]
+
+
+class BatchEncodingTokenizer:
+    def apply_chat_template(self, messages, **kwargs):
+        return UserDict(
+            {
+                "input_ids": torch.tensor([[0, 1]]),
+                "attention_mask": torch.tensor([[1, 1]]),
+            }
+        )
 
 
 class Output:
@@ -55,3 +66,13 @@ def test_layer_discovery_hook_changes_and_restores_logits():
     assert restored["logit_B"] == baseline["logit_B"]
     assert "hidden_states" not in baseline
     assert len(captured["hidden_states"]) == 2
+
+
+def test_tokenize_unpacks_mapping_style_batch_encoding():
+    wrapper = object.__new__(HookedQwen)
+    wrapper.tokenizer = BatchEncodingTokenizer()
+
+    encoded = wrapper.tokenize([{"role": "user", "content": "x"}])
+
+    assert torch.equal(encoded["input_ids"], torch.tensor([[0, 1]]))
+    assert torch.equal(encoded["attention_mask"], torch.tensor([[1, 1]]))
