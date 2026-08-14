@@ -364,3 +364,35 @@ Python compilation, download-plan assertions, and a mocked
 resolve/download/verify/manifest cycle: PASS. The SLURM wrapper was removed
 because cluster compute nodes cannot reach Hugging Face. No network download
 was started; the actual model transfer and pytest remain cluster tasks.
+
+---
+
+## Conda activation under Bash nounset
+
+### Current objective
+
+Allow cluster jobs to activate the Conda environment without weakening strict
+undefined-variable checking during the experiment itself.
+
+### Actual failure
+
+SLURM job `12376964` exited during environment setup with
+`environment: _CE_M: unbound variable`. No tests or model code ran. Conda's
+shell hook references optional `_CE_*` variables and is not compatible with
+enabling Bash `nounset` before activation on this cluster.
+
+### GREEN implementation
+
+Both SLURM launchers now enable `errexit` and `pipefail` initially, activate
+Conda, and then enable `nounset` for all subsequent setup and experiment code.
+
+### Test command
+
+```bash
+bash -n smoke_qwen35.slurm run_qwen35_bandit.sh
+```
+
+### Result
+
+Shell syntax: PASS. Cluster environment activation must be confirmed by
+resubmitting the smoke job.

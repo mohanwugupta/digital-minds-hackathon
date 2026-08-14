@@ -10,7 +10,8 @@
 #SBATCH --output=logs/value_bandit_smoke_%j.out
 #SBATCH --error=logs/value_bandit_smoke_%j.err
 
-set -euo pipefail
+# Conda's hook reads optional _CE_* variables. Enable nounset after activation.
+set -eo pipefail
 
 PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 SMOKE_BASE="/scratch/gpfs/JORDANAT/${USER}/value_steering_bandit"
@@ -23,6 +24,7 @@ cd "$PROJECT_DIR"
 module load anaconda3/2025.6
 eval "$(conda shell.bash hook)"
 conda activate "$CONDA_ENV"
+set -u
 
 export PYTHONPATH="$PROJECT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 export HF_HOME="$SMOKE_BASE/hf_cache"

@@ -10,7 +10,8 @@
 #SBATCH --output=logs/value_bandit_qwen35_%j.out
 #SBATCH --error=logs/value_bandit_qwen35_%j.err
 
-set -euo pipefail
+# Conda's hook reads optional _CE_* variables. Enable nounset after activation.
+set -eo pipefail
 
 PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 CLUSTER_BASE="/scratch/gpfs/JORDANAT/${USER}/value_steering_bandit"
@@ -25,6 +26,7 @@ mkdir -p logs artifacts "$CLUSTER_BASE/hf_cache" "$CLUSTER_BASE/torch_cache" "$C
 module load anaconda3/2025.6
 eval "$(conda shell.bash hook)"
 conda activate "$CONDA_ENV"
+set -u
 
 export PYTHONPATH="$PROJECT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 export HF_HOME="$CLUSTER_BASE/hf_cache"
