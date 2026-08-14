@@ -47,7 +47,7 @@ if [ ! -d "$MODEL_PATH" ]; then
     exit 1
 fi
 
-echo "Running CPU/unit gate, including matched-history and supervised-probe regressions"
+echo "Running CPU/unit gate, including ridge, counterfactual-rollout, matched-history, and supervised-probe regressions"
 python -m pytest -q
 
 echo "Running real-model compatibility gate"
@@ -72,5 +72,11 @@ python -m experiments.collect_bandit_activations \
     --max-decisions 3 \
     --seed 90310 \
     --output-dir "artifacts/activation_smoke_${SMOKE_RUN_ID}"
+
+echo "Running one truncated paired forced-A/B rollout gate"
+python -m experiments.check_advantage_rollout \
+    --model "$MODEL_PATH" \
+    --activation-dir "artifacts/activation_smoke_${SMOKE_RUN_ID}" \
+    --output "artifacts/advantage_rollout_smoke_${SMOKE_RUN_ID}.json"
 
 echo "Smoke test passed"

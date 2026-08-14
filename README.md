@@ -198,6 +198,55 @@ gate.
    sbatch --export=ALL,PHASE=calibrate_mc_probe run_qwen35_bandit.sh
    ```
 
+   The next mechanism sequence uses the same frozen episode split. First train
+   ridge-linear probes for both realized future return and the model's actual
+   persistence logit:
+
+   ```bash
+   sbatch --export=ALL,PHASE=linear_probes run_qwen35_bandit.sh
+   ```
+
+   This writes layer-by-layer held-out R², frozen ridge directions, exact-match
+   diagnostics, and return/persistence direction overlap under
+   `artifacts/linear_probes/`. The persistence target is
+   `logsumexp(logit_A, logit_B) - logit_C`; it localizes the decision variable
+   but is not itself evidence for value.
+
+   Continuation advantage requires new model rollouts. At each selected stored
+   conversation state, the collector forces A and B in paired counterfactual
+   worlds, follows the unmodified sampled policy, and defines
+   `A_continue = max(mean_return_A, mean_return_B) - 0`. Raw rollout returns and
+   arm-specific standard errors are retained. A small end-to-end check is:
+
+   ```bash
+   sbatch --time=02:00:00 \
+     --export=ALL,PHASE=advantage_pipeline,ADVANTAGE_ROLLOUTS=2,ADVANTAGE_STATES_PER_SPLIT=8,ADVANTAGE_TARGET_DIR=artifacts/advantage_targets_smoke,ADVANTAGE_PROBE_DIR=artifacts/advantage_probes_smoke \
+     run_qwen35_bandit.sh
+   ```
+
+   The sprint default uses 20 rollouts per forced action and 128 stratified
+   states from each split (384 states total). It deliberately selects blocks
+   from common round/outcome/loss-streak strata so the held-out exact-matching
+   test remains possible. Because every rollout may require many additional
+   model forwards, collection is resumable and supports SLURM arrays:
+
+   ```bash
+   sbatch --array=0-3 --time=12:00:00 \
+     --export=ALL,PHASE=collect_advantage,ADVANTAGE_NUM_SHARDS=4,ADVANTAGE_ROLLOUTS=20,ADVANTAGE_STATES_PER_SPLIT=128 \
+     run_qwen35_bandit.sh
+   ```
+
+   After every array task finishes, train and analyze the advantage probe:
+
+   ```bash
+   sbatch --export=ALL,PHASE=train_advantage run_qwen35_bandit.sh
+   ```
+
+   Do not mix an unsharded `targets.csv` with `targets_shard_*.csv` in the same
+   target directory; duplicate state IDs are rejected rather than silently
+   averaged. The decisive report is
+   `artifacts/advantage_probes/publication/advantage_probe_report.md`.
+
    On SLURM, collection and training can share one allocation. The shell script
    exits immediately if collection, training, mechanism analysis, or
    calibration fails:

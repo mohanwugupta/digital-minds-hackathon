@@ -22,6 +22,12 @@ PHASE="${PHASE:-compatibility}"
 PROBE_EPISODES="${PROBE_EPISODES:-512}"
 CONFIRMATORY_EPISODES="${CONFIRMATORY_EPISODES:-48}"
 MATCHED_RANDOM_SETS="${MATCHED_RANDOM_SETS:-20}"
+ADVANTAGE_ROLLOUTS="${ADVANTAGE_ROLLOUTS:-20}"
+ADVANTAGE_STATES_PER_SPLIT="${ADVANTAGE_STATES_PER_SPLIT:-128}"
+ADVANTAGE_NUM_SHARDS="${ADVANTAGE_NUM_SHARDS:-1}"
+ADVANTAGE_SHARD_INDEX="${ADVANTAGE_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+ADVANTAGE_TARGET_DIR="${ADVANTAGE_TARGET_DIR:-artifacts/advantage_targets}"
+ADVANTAGE_PROBE_DIR="${ADVANTAGE_PROBE_DIR:-artifacts/advantage_probes}"
 
 cd "$PROJECT_DIR"
 mkdir -p logs artifacts "$CLUSTER_BASE/hf_cache" "$CLUSTER_BASE/torch_cache" "$CLUSTER_BASE/cache"
@@ -75,6 +81,40 @@ calibrate_mc_probe_phase() {
     --output artifacts/mc_value_probes/steering_calibration.json
 }
 
+linear_probe_phase() {
+  echo "Training ridge-linear future-return and direct-persistence probes"
+  python -m experiments.train_linear_probes
+  python -m analysis.analyze_linear_probes
+}
+
+collect_advantage_phase() {
+  local output
+  if [ "$ADVANTAGE_NUM_SHARDS" -eq 1 ]; then
+    output="${ADVANTAGE_TARGET_DIR}/targets.csv"
+  else
+    printf -v output "%s/targets_shard_%03d.csv" "$ADVANTAGE_TARGET_DIR" "$ADVANTAGE_SHARD_INDEX"
+  fi
+  echo "Collecting continuation advantage: ${ADVANTAGE_ROLLOUTS} paired rollouts/state; shard ${ADVANTAGE_SHARD_INDEX}/${ADVANTAGE_NUM_SHARDS}"
+  python -m experiments.collect_continuation_advantage \
+    --model "$MODEL_PATH" \
+    --rollouts "$ADVANTAGE_ROLLOUTS" \
+    --states-per-split "$ADVANTAGE_STATES_PER_SPLIT" \
+    --num-shards "$ADVANTAGE_NUM_SHARDS" \
+    --shard-index "$ADVANTAGE_SHARD_INDEX" \
+    --output "$output"
+}
+
+train_advantage_phase() {
+  echo "Training and analyzing ridge continuation-advantage probes"
+  python -m experiments.train_advantage_probe \
+    --targets "${ADVANTAGE_TARGET_DIR}/targets*.csv" \
+    --output-dir "$ADVANTAGE_PROBE_DIR" \
+    --minimum-states-per-split "$ADVANTAGE_STATES_PER_SPLIT"
+  python -m analysis.analyze_advantage_probe \
+    --probe-dir "$ADVANTAGE_PROBE_DIR" \
+    --output-dir "$ADVANTAGE_PROBE_DIR/publication"
+}
+
 collect_confirmatory_phase() {
   echo "Starting held-out confirmatory collection (${CONFIRMATORY_EPISODES} episodes)"
   python -m experiments.collect_bandit_activations \
@@ -116,6 +156,23 @@ case "$PHASE" in
     ;;
   calibrate_mc_probe)
     calibrate_mc_probe_phase
+    ;;
+  linear_probes)
+    linear_probe_phase
+    ;;
+  collect_advantage)
+    collect_advantage_phase
+    ;;
+  train_advantage)
+    train_advantage_phase
+    ;;
+  advantage_pipeline)
+    if [ "$ADVANTAGE_NUM_SHARDS" -ne 1 ]; then
+      echo "advantage_pipeline requires ADVANTAGE_NUM_SHARDS=1; run sharded collection and training as separate jobs" >&2
+      exit 2
+    fi
+    collect_advantage_phase
+    train_advantage_phase
     ;;
   collect_confirmatory)
     collect_confirmatory_phase

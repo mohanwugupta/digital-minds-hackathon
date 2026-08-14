@@ -589,3 +589,42 @@ The `train_mc_probe` SLURM phase stops after analysis so an exploratory probe is
 not automatically promoted into a steering direction. Use
 `PHASE=calibrate_mc_probe` only after inspecting its held-out target prediction,
 three-model variance decomposition, and exact-match result.
+
+### Monte Carlo follow-up result
+
+- Layer 2 was selected. Full and sparse validation/test future-return R² were
+  .150/.251 and .152/.179, versus .020 for the frozen recent-history baseline.
+  The selected checkpoints occurred at epochs 9 and 4, so this training did not
+  reproduce the TD probe's epoch-one collapse.
+- In 1,180 states exactly matched on round, previous outcome, and loss streak,
+  the sparse and full probes predicted reconstructed future return (standardized
+  beta .456 and .479; episode-clustered p=1.0e-5 and 2.8e-6). Enumerating all
+  2^11 possible final rewards for capped episodes kept both effects positive.
+- Those same probe outputs did not predict persistence within matched states
+  (beta -.070 and -.063; p=.480 and .564). Recent-state controls explained
+  75.3% of persistence variance, with essentially zero unique probe increment.
+- Adjudication: a decodable integrated future-return signal exists, rescuing the
+  representational part of the value account and showing the TD procedure was
+  inadequate. The observed STOP policy is nevertheless better described by a
+  recent-state heuristic. A distinct continuation-advantage representation is
+  plausible but remains untested; generic value steering is not yet a validated
+  causal persistence manipulation.
+
+### Linear-to-advantage mechanism sequence
+
+- `PHASE=linear_probes` fits ridge-linear realized-return and direct-persistence
+  probes at every layer using the frozen train/validation/test episode split.
+  Ridge alpha and layer are validation-selected. Raw activation-space direction
+  cosine and top-1% dimension overlap are reported at each layer.
+- `PHASE=collect_advantage` restores each stored conversation/history state,
+  forces A or B under paired fresh outcome schedules and action-sampling seeds,
+  then follows the unmodified policy to STOP or the 100-decision horizon.
+  Q(STOP)=0 and continuation advantage is max(mean Q_A, mean Q_B).
+- Counterfactual collection is resumable and shardable. The sprint default is
+  128 stratified states per episode split and 20 paired rollouts per state; using
+  zero states-per-split requests all 12,461 states and is expected to be much
+  more expensive.
+- `PHASE=train_advantage` fits ridge probes across layers, repeats held-out and
+  exact matched-state tests, and compares advantage directions with the direct
+  persistence directions. The max of noisy Q estimates is acknowledged as
+  upward biased, so raw per-arm returns and standard errors are preserved.

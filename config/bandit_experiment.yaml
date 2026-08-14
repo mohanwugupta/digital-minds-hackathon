@@ -39,6 +39,16 @@ probe:
     target: realized_future_cumulative_return
     sparse_refit: true
     status: exploratory_after_td_test_inspection
+  ridge_linear_followup:
+    targets: [realized_future_cumulative_return, persistence_logit]
+    alphas: [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0]
+    selection: validation_episode_r_squared
+  continuation_advantage:
+    target: max_mean_forced_A_B_return_minus_stop
+    q_stop: 0
+    rollouts_per_forced_action: 20
+    paired_outcome_and_action_seeds: true
+    sprint_states_per_split: 128
 
 intervention:
   alphas: [-1.0, 0.0, 1.0]

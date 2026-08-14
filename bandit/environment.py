@@ -68,6 +68,42 @@ class BanditEnvironment:
         self.terminated = False
         self.termination_reason: Optional[str] = None
 
+    @classmethod
+    def from_history(
+        cls,
+        p_a: float,
+        p_b: float,
+        seed: int,
+        action_history: List[str],
+        reward_history: List[int],
+        *,
+        max_decisions: int = 100,
+    ) -> "BanditEnvironment":
+        """Resume a visible state with a fresh counterfactual outcome schedule.
+
+        The supplied seed governs future potential outcomes. Past rewards are
+        retained as observed history and need not agree with that new schedule.
+        """
+        actions = [str(action).strip().upper() for action in action_history]
+        rewards = [int(reward) for reward in reward_history]
+        if len(actions) != len(rewards):
+            raise ValueError("action and reward histories must have equal length")
+        if any(action not in {"A", "B"} for action in actions):
+            raise ValueError("a resumable pre-decision history cannot contain STOP")
+        if any(reward not in {SUCCESS_REWARD, FAILURE_REWARD} for reward in rewards):
+            raise ValueError("pull rewards must be +3 or -2")
+        if len(actions) >= max_decisions:
+            raise ValueError("cannot resume a state at or beyond the decision cap")
+        environment = cls(p_a, p_b, seed, max_decisions=max_decisions)
+        environment.action_history = list(actions)
+        environment.reward_history = list(rewards)
+        environment.pull_counts = {
+            "A": actions.count("A"),
+            "B": actions.count("B"),
+        }
+        environment.cumulative_score = sum(rewards)
+        return environment
+
     @property
     def decision(self) -> int:
         return len(self.action_history)

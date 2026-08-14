@@ -42,3 +42,28 @@ def test_condition_values_are_explicit_relative_to_stop():
     assert condition_class(0.20, 0.35) == "both_negative"
     assert condition_class(0.20, 0.50) == "one_positive"
     assert condition_class(0.50, 0.65) == "both_positive"
+
+
+def test_resume_history_preserves_state_and_uses_fresh_future_schedule():
+    resumed = BanditEnvironment.from_history(
+        0.2,
+        0.65,
+        seed=991,
+        action_history=["A", "B", "A"],
+        reward_history=[-2, 3, -2],
+        max_decisions=5,
+    )
+
+    assert resumed.decision == 3
+    assert resumed.pull_counts == {"A": 2, "B": 1}
+    assert resumed.cumulative_score == -1
+    result = resumed.step("B")
+    assert result.decision == 4
+    assert result.reward in {-2, 3}
+
+
+def test_resume_history_rejects_terminal_or_inconsistent_histories():
+    with pytest.raises(ValueError, match="equal length"):
+        BanditEnvironment.from_history(0.5, 0.5, 1, ["A"], [])
+    with pytest.raises(ValueError, match="cannot contain STOP"):
+        BanditEnvironment.from_history(0.5, 0.5, 1, ["C"], [0])
