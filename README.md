@@ -21,7 +21,8 @@ used for baseline or intervention data.
 - `analysis/`: pilot, matched-state, and sequential summaries.
 - `tests/`: CPU unit/integration tests plus a tiny mocked pipeline.
 - `config/bandit_experiment.yaml`: frozen design defaults.
-- `smoke_qwen35.slurm`: short unit-test plus real-model compatibility gate.
+- `smoke_qwen35.slurm`: unit/integration, real-model compatibility, behavioral,
+  and activation-capture gates.
 - `scripts/download_qwen_models.py`: resumable Hugging Face model downloader.
 
 Model-visible state is represented only by `BanditConversation`. True arm
@@ -138,16 +139,17 @@ gate.
    python -m analysis.analyze_pilot
    ```
 
-3. Collect 2,000 baseline episodes for probe development:
+3. Collect 512 fresh baseline episodes for research-sprint probe development:
 
    ```bash
    python -m experiments.collect_bandit_activations \
-     --model /path/to/Qwen3.5-4B --episodes 2000
+     --model /path/to/Qwen3.5-4B --episodes 512
    ```
 
    Each episode is atomically checkpointed as a separate `.pt` shard. Existing
    shards are skipped on restart. Only final prompt-position vectors are saved,
-   with shape `decision_states x layers x d_model`.
+   with shape `decision_states x layers x d_model`. The 512-episode target is
+   sized for the sprint and can be extended if held-out estimates are too noisy.
 
 4. Train layer probes, select the top 1%, and calibrate on validation states:
 
@@ -158,7 +160,19 @@ gate.
 
    `episode_split.json`, per-layer probes, selection metrics,
    `frozen_best.pt`, and `steering_calibration.json` freeze every quantity used
-   by confirmatory runs.
+   by confirmatory runs. After validation-only layer/neuron selection, probe
+   training also runs a mechanism diagnostic on untouched test episodes. It
+   tests whether sparse probe value predicts the persistence logit beyond
+   previous outcome, loss streak, and nonlinear round terms; repeats the test
+   within last-loss and last-gain states; and adds cumulative score as a
+   stronger history baseline. Results are written to
+   `probe_mechanism.json`, `probe_mechanism_report.md`,
+   `probe_mechanism_test_states.csv`, and `probe_mechanism.svg` under
+   `artifacts/value_probes/`.
+
+   This diagnostic distinguishes a history-integrating value representation
+   from a latest-reward heuristic, but remains associational. The subsequent
+   activation-steering experiment is the causal test.
 
 5. Create a separate held-out state bank with a new output directory and seed,
    then run matched replay:
@@ -214,4 +228,6 @@ This runs the full test suite first and loads the model only if those tests
 pass. It then exercises real chat tokenization, all-layer state capture, a
 mid-layer intervention, downstream logit change, and exact restoration after
 hook removal. Finally, it runs two three-decision end-to-end bandit episodes.
-Smoke artifacts use the SLURM job ID and are diagnostic, not scientific data.
+It also writes two three-decision activation shards, checking the exact input
+format used by probe training. Smoke artifacts use the SLURM job ID and are
+diagnostic, not scientific data.

@@ -47,7 +47,7 @@ if [ ! -d "$MODEL_PATH" ]; then
     exit 1
 fi
 
-echo "Running CPU/unit test gate"
+echo "Running CPU/unit gate, including probe-mechanism regressions and artifact pipeline"
 python -m pytest -q
 
 echo "Running real-model compatibility gate"
@@ -64,5 +64,13 @@ python -m experiments.run_bandit_baseline \
     --max-decisions 3 \
     --seed 90210 \
     --output "artifacts/bandit_smoke_${SMOKE_RUN_ID}.csv"
+
+echo "Collecting two tiny real-model activation shards"
+python -m experiments.collect_bandit_activations \
+    --model "$MODEL_PATH" \
+    --episodes 2 \
+    --max-decisions 3 \
+    --seed 90310 \
+    --output-dir "artifacts/activation_smoke_${SMOKE_RUN_ID}"
 
 echo "Smoke test passed"

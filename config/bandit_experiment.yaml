@@ -16,7 +16,8 @@ bandit:
 
 phases:
   pilot_episodes: 200
-  probe_episodes: 2000
+  # Research-sprint target; collection is resumable and can be extended later.
+  probe_episodes: 512
   sequential_episodes_per_condition: 1000
 
 probe:
@@ -26,6 +27,12 @@ probe:
   weight_decay: 0.01
   top_fraction: 0.01
   split: [0.70, 0.15, 0.15]
+  mechanism_diagnostic:
+    split: test
+    controls: [previous_outcome, loss_streak, log_round, log_round_squared]
+    stronger_history_control: cumulative_score
+    two_sided_alpha: 0.05
+    minimum_incremental_r_squared: 0.01
 
 intervention:
   alphas: [-1.0, 0.0, 1.0]

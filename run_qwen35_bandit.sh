@@ -6,7 +6,7 @@
 #SBATCH --mem=48G
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=gpu80
-#SBATCH --time=0:45:00
+#SBATCH --time=4:30:00
 #SBATCH --output=logs/value_bandit_qwen35_%j.out
 #SBATCH --error=logs/value_bandit_qwen35_%j.err
 
@@ -19,6 +19,7 @@ MODEL_PATH="${MODEL_PATH:-/scratch/gpfs/JORDANAT/${USER}/models/Qwen--Qwen3.5-4B
 FALLBACK_MODEL_PATH="${FALLBACK_MODEL_PATH:-/scratch/gpfs/JORDANAT/${USER}/models/Qwen--Qwen3-4B-Instruct-2507}"
 CONDA_ENV="${CONDA_ENV:-value-steering-bandit}"
 PHASE="${PHASE:-compatibility}"
+PROBE_EPISODES="${PROBE_EPISODES:-512}"
 
 cd "$PROJECT_DIR"
 mkdir -p logs artifacts "$CLUSTER_BASE/hf_cache" "$CLUSTER_BASE/torch_cache" "$CLUSTER_BASE/cache"
@@ -57,7 +58,8 @@ case "$PHASE" in
     python -m analysis.analyze_pilot
     ;;
   collect_probe)
-    python -m experiments.collect_bandit_activations --model "$MODEL_PATH" --episodes 2000
+    python -m experiments.collect_bandit_activations \
+      --model "$MODEL_PATH" --episodes "$PROBE_EPISODES"
     ;;
   train_probe)
     python -m experiments.train_value_probe

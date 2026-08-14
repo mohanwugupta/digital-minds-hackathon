@@ -68,8 +68,14 @@ def collect_episode(model, p_a, p_b, *, seed: int, action_seed: int, max_decisio
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", default="Qwen/Qwen3.5-4B")
-    parser.add_argument("--episodes", type=int, default=2000)
+    parser.add_argument("--episodes", type=int, default=512)
     parser.add_argument("--seed", type=int, default=12026)
+    parser.add_argument(
+        "--max-decisions",
+        type=int,
+        default=100,
+        help="maximum A/B decisions per episode (use a small value for smoke tests)",
+    )
     parser.add_argument("--output-dir", default="artifacts/activation_bank")
     parser.add_argument("--revision", default=None)
     parser.add_argument("--online", action="store_true")
@@ -90,7 +96,14 @@ def main() -> None:
         path = os.path.join(args.output_dir, f"episode_{index:05d}.pt")
         if os.path.exists(path):
             continue
-        artifact = collect_episode(model, p_a, p_b, seed=seed, action_seed=action_seed)
+        artifact = collect_episode(
+            model,
+            p_a,
+            p_b,
+            seed=seed,
+            action_seed=action_seed,
+            max_decisions=args.max_decisions,
+        )
         atomic_torch_save(artifact, path)
         episodes_run += 1
         states_run += len(artifact["records"])

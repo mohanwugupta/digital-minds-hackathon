@@ -433,3 +433,94 @@ under `input_ids` as before.
 
 Local Python compilation and dependency-free structural assertions pass. The
 real compatibility and hook checks must be rerun on the GPU cluster.
+
+---
+
+## Behavioral-pilot integrity and timing audit
+
+### Current objective
+
+Verify the uploaded 200-episode pilot at the row, episode, environment, prompt,
+and action-sampling levels, then characterize when the model quits rather than
+relying on the state-weighted mean STOP probability.
+
+### Verification
+
+`analysis/analyze_pilot_detailed.py` replays every episode from its environment
+and action seeds and reconstructs every model-visible conversation. Across
+3,706 states it found no mismatches in state IDs, rounds, rewards, histories,
+cumulative scores, future returns, probability normalization, sampled actions,
+termination, or conversations. The 16 probability cells contained 12 or 13
+episodes each; the three value classes contained 50/100/50 episodes.
+
+### Descriptive result
+
+- 180/200 episodes quit and 20 were right-censored at the 100-decision horizon.
+- Median quit decision was 5 (IQR 4-9); 142/180 quits occurred by decision 10.
+- The observed per-state quit hazard peaked at 20.8% during decisions 4-5.
+- STOP occurred on 1.9%, 3.9%, 9.4%, and 13.6% of states following loss
+  streaks of 0, 1, 2, and 3+, respectively.
+- Mean model P(STOP) rose from 8.1% two decisions before quitting to 14.2% one
+  decision before and 22.9% at the sampled quit decision.
+- Better-arm choice was at chance initially and rose above 60% after decision
+  10, but the initial prompt induced a strong A-label prior (P(A)=0.911).
+
+### Outputs
+
+The detailed JSON, Markdown report, and two dependency-free SVG figures are in
+`artifacts/pilot_diagnostics/`. These are exploratory pilot summaries; later
+uncertainty estimates must cluster or resample at the episode level.
+
+---
+
+## Integrated-value probe diagnostic
+
+### Current objective
+
+Distinguish a probe that integrates reward history into graded task value from
+one that merely recovers the immediately preceding reward or a simple STOP
+heuristic.
+
+### Current RED test
+
+`tests/test_probe_mechanism.py` was added before implementation. Synthetic
+tests require an integrated-history probe to add held-out persistence signal
+beyond recent-history controls, a latest-reward-only probe to add none, and a
+strong cumulative-score control to explain a deliberately score-equivalent
+synthetic probe.
+
+### Actual failure
+
+The targeted RED command again stopped before collection because the local host
+does not contain pytest. The real cluster environment is expected to collect
+and execute these tests.
+
+### GREEN implementation
+
+- The best layer and sparse neurons remain selected exclusively on validation
+  TD error.
+- Only after freezing that selection, untouched test episodes are evaluated.
+- The primary nested regression controls previous outcome, an initial-state
+  indicator, loss streak, and nonlinear round terms before adding sparse probe
+  value.
+- Episode-clustered sandwich standard errors account for repeated states.
+- Diagnostics repeat within last-loss and last-gain states, add cumulative
+  score as a stronger history baseline, compare the full probe, and test whether
+  sparse probe value itself encodes cumulative history.
+- JSON, Markdown, state-level CSV, and SVG outputs are written alongside the
+  frozen probe. These associations diagnose mechanism; steering remains the
+  causal test.
+
+### Verification
+
+Python compilation, shell syntax, configuration assertions, and whitespace
+checks pass locally. The torch-based synthetic tests must run in the cluster
+environment.
+
+### Next step
+
+Run the expanded smoke job before probe collection. It now checks the synthetic
+probe-mechanism regression and report pipeline, real-model hidden-state
+compatibility, short behavioral episodes, and two capped real activation
+shards. The sprint probe bank is 512 episodes (resumable), not the original
+2,000-episode target.

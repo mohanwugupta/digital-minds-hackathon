@@ -7,6 +7,7 @@ import os
 import time
 from typing import Dict, List
 
+from analysis.probe_mechanism import run_probe_mechanism_analysis
 from bandit.schemas import split_episode_ids
 from interventions.artifacts import save_frozen_probe
 from interventions.neuron_selection import evaluate_full_and_pruned, select_top_fraction
@@ -132,8 +133,24 @@ def main() -> None:
         probe, best["layer"], indices,
         {"selection_metric": "pruned_validation_td_mse", "layers": summaries, "config": vars(args)},
     )
+    mechanism = run_probe_mechanism_analysis(
+        shards,
+        probe,
+        best["layer"],
+        indices,
+        split.test,
+        args.output_dir,
+    )
     with open(os.path.join(args.output_dir, "metrics.json"), "w", encoding="utf-8") as handle:
-        json.dump({"best_layer": best["layer"], "layers": summaries}, handle, indent=2)
+        json.dump(
+            {
+                "best_layer": best["layer"],
+                "layers": summaries,
+                "probe_mechanism": mechanism,
+            },
+            handle,
+            indent=2,
+        )
     print(
         f"probe training runtime: {time.perf_counter() - total_started:.1f}s "
         f"for {len(layers)} layers",
