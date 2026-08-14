@@ -1,0 +1,194 @@
+{
+  "analysis_split": "test episodes only",
+  "caveat": "These held-out associations distinguish integrated value from a recent-outcome heuristic but are not causal; activation steering provides the causal test.",
+  "episodes": 78,
+  "evidence_criteria": {
+    "minimum_primary_delta_r_squared": 0.01,
+    "two_sided_alpha": 0.05
+  },
+  "evidence_flags": {
+    "integrated_value_pattern_supported": false,
+    "probe_adds_beyond_recent_history": false,
+    "probe_adds_within_last_loss_states": false,
+    "probe_encodes_history_within_last_loss_states": true
+  },
+  "full_probe": {
+    "augmented_r_squared": 0.7529185965739873,
+    "cluster_robust_standard_error": 0.04507714899935888,
+    "control_r_squared": 0.7529147675152958,
+    "controls": [
+      "intercept",
+      "previous_outcome",
+      "initial_state",
+      "loss_streak",
+      "log_round",
+      "log_round_squared"
+    ],
+    "delta_r_squared": 3.829058691451337e-06,
+    "episode_clusters": 78,
+    "normal_approximation_p_value": 0.9598666151056119,
+    "outcome_scale": 1.4382939340046936,
+    "partial_correlation": -0.003936612042892604,
+    "predictor_scale": 17.001197395961317,
+    "predictor_standardized_beta": -0.0022683257599951014,
+    "probe_standardized_beta": -0.0022683257599951014,
+    "states": 1800,
+    "z_value": -0.050320967726405305
+  },
+  "layer": 2,
+  "neuron_count": 26,
+  "primary_pruned_probe": {
+    "augmented_r_squared": 0.753068797604177,
+    "cluster_robust_standard_error": 0.04824302274467515,
+    "control_r_squared": 0.7529147675152958,
+    "controls": [
+      "intercept",
+      "previous_outcome",
+      "initial_state",
+      "loss_streak",
+      "log_round",
+      "log_round_squared"
+    ],
+    "delta_r_squared": 0.00015403008888115188,
+    "episode_clusters": 78,
+    "normal_approximation_p_value": 0.7402290205284029,
+    "outcome_scale": 1.4382939340046936,
+    "partial_correlation": 0.024967748908406594,
+    "predictor_scale": 12.379414696382636,
+    "predictor_standardized_beta": 0.01599497798805754,
+    "probe_standardized_beta": 0.01599497798805754,
+    "states": 1800,
+    "z_value": 0.33155007870693576
+  },
+  "probe_encodes_cumulative_history": {
+    "all_states": {
+      "augmented_r_squared": 0.6424529855568075,
+      "cluster_robust_standard_error": 0.043101674491085436,
+      "control_r_squared": 0.3979420818644588,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.24451090369234874,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 1.5457315397853246e-56,
+      "outcome_scale": 12.379414696382636,
+      "partial_correlation": 0.6372795452016051,
+      "predictor_scale": 38.820428466955704,
+      "predictor_standardized_beta": 0.6829044834143236,
+      "states": 1800,
+      "z_value": 15.844036025922064
+    },
+    "last_gain": {
+      "augmented_r_squared": 0.5912221033649008,
+      "cluster_robust_standard_error": 0.04514802882018758,
+      "control_r_squared": 0.2804428998287617,
+      "controls": [
+        "intercept",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.3107792035361391,
+      "episode_clusters": 57,
+      "normal_approximation_p_value": 4.2175243736396306e-67,
+      "outcome_scale": 12.035441950352666,
+      "partial_correlation": 0.6571936268732557,
+      "predictor_scale": 40.664967787023656,
+      "predictor_standardized_beta": 0.7813447324451879,
+      "states": 913,
+      "z_value": 17.306286738609856
+    },
+    "last_loss": {
+      "augmented_r_squared": 0.5999506034824681,
+      "cluster_robust_standard_error": 0.04698557007160927,
+      "control_r_squared": 0.3327734443491188,
+      "controls": [
+        "intercept",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.2671771591333493,
+      "episode_clusters": 72,
+      "normal_approximation_p_value": 1.8366984442495416e-44,
+      "outcome_scale": 11.297114754624197,
+      "partial_correlation": 0.6327949467619857,
+      "predictor_scale": 35.469221925072105,
+      "predictor_standardized_beta": 0.6572497421024824,
+      "states": 809,
+      "z_value": 13.988331760172073
+    }
+  },
+  "pruned_probe_controlling_cumulative_score": {
+    "augmented_r_squared": 0.7873078663459377,
+    "cluster_robust_standard_error": 0.04020626225939567,
+    "control_r_squared": 0.7710553952902722,
+    "controls": [
+      "intercept",
+      "previous_outcome",
+      "initial_state",
+      "loss_streak",
+      "log_round",
+      "log_round_squared",
+      "cumulative_score"
+    ],
+    "delta_r_squared": 0.01625247105566552,
+    "episode_clusters": 78,
+    "normal_approximation_p_value": 1.1408430411225816e-07,
+    "outcome_scale": 1.4382939340046936,
+    "partial_correlation": 0.2664369748031618,
+    "predictor_scale": 12.379414696382636,
+    "predictor_standardized_beta": 0.21320290733659375,
+    "probe_standardized_beta": 0.21320290733659375,
+    "states": 1800,
+    "z_value": 5.3027288625112385
+  },
+  "states": 1800,
+  "within_previous_outcome": {
+    "last_gain": {
+      "augmented_r_squared": 0.7304117633928975,
+      "cluster_robust_standard_error": 0.0638297279080991,
+      "control_r_squared": 0.7298786278935012,
+      "controls": [
+        "intercept",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.0005331354993962645,
+      "episode_clusters": 57,
+      "normal_approximation_p_value": 0.6697835101185049,
+      "outcome_scale": 1.1884705153692283,
+      "partial_correlation": 0.044426216344313346,
+      "predictor_scale": 12.035441950352666,
+      "predictor_standardized_beta": 0.02721987768128377,
+      "probe_standardized_beta": 0.02721987768128377,
+      "states": 913,
+      "z_value": 0.42644514669519606
+    },
+    "last_loss": {
+      "augmented_r_squared": 0.7343228660013894,
+      "cluster_robust_standard_error": 0.04648644721380295,
+      "control_r_squared": 0.7342073256613426,
+      "controls": [
+        "intercept",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.00011554034004679359,
+      "episode_clusters": 72,
+      "normal_approximation_p_value": 0.7771182024109794,
+      "outcome_scale": 1.5691244164222267,
+      "partial_correlation": 0.020849484290524925,
+      "predictor_scale": 11.297114754624197,
+      "predictor_standardized_beta": 0.013159220350722606,
+      "probe_standardized_beta": 0.013159220350722606,
+      "states": 809,
+      "z_value": 0.2830764908791592
+    }
+  }
+}

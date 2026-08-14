@@ -1,0 +1,690 @@
+{
+  "adaptive_evaluation_caveat": "The analysis is exploratory because probe redesign followed inspection of the TD test result.",
+  "baselines": {
+    "constant": {
+      "test": {
+        "mse": 1842.8422222222223,
+        "r_squared": -0.06516489127999403
+      },
+      "train_mean_future_return": 14.854785919189453,
+      "validation": {
+        "mse": 740.1015452538632,
+        "r_squared": -7.736454237683432e-06
+      }
+    },
+    "recent_history": {
+      "coefficients": [
+        -11.459239371903607,
+        0.633135784165288,
+        20.584937695925927,
+        -3.5519316209157843,
+        24.906615713277485,
+        -4.282991293837281
+      ],
+      "feature_names": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "test": {
+        "correlation": 0.2851148894075848,
+        "mse": 1696.3289078445891,
+        "r_squared": 0.019519943930151662
+      },
+      "validation": {
+        "correlation": 0.21268722601541812,
+        "mse": 711.2227687299977,
+        "r_squared": 0.03901263823298495
+      }
+    }
+  },
+  "best_layer": 2,
+  "best_layer_metrics": {
+    "full": {
+      "history": [
+        {
+          "epoch": 1,
+          "train_mse_z": 1.0788447039467948,
+          "validation_mse_z": 0.5654382705688477
+        },
+        {
+          "epoch": 2,
+          "train_mse_z": 0.7947124498231071,
+          "validation_mse_z": 0.553631603717804
+        },
+        {
+          "epoch": 3,
+          "train_mse_z": 0.7610827990940638,
+          "validation_mse_z": 0.5833812952041626
+        },
+        {
+          "epoch": 4,
+          "train_mse_z": 0.7670911073684692,
+          "validation_mse_z": 0.5572416186332703
+        },
+        {
+          "epoch": 5,
+          "train_mse_z": 0.7517614415713719,
+          "validation_mse_z": 0.5294591188430786
+        },
+        {
+          "epoch": 6,
+          "train_mse_z": 0.7440879889896937,
+          "validation_mse_z": 0.5383747816085815
+        },
+        {
+          "epoch": 7,
+          "train_mse_z": 0.738310603584562,
+          "validation_mse_z": 0.5400557518005371
+        },
+        {
+          "epoch": 8,
+          "train_mse_z": 0.7310177206993103,
+          "validation_mse_z": 0.5578199028968811
+        },
+        {
+          "epoch": 9,
+          "train_mse_z": 0.7563600097383771,
+          "validation_mse_z": 0.5269790887832642
+        },
+        {
+          "epoch": 10,
+          "train_mse_z": 0.7381218229021345,
+          "validation_mse_z": 0.539556622505188
+        },
+        {
+          "epoch": 11,
+          "train_mse_z": 0.7228942939213344,
+          "validation_mse_z": 0.610077977180481
+        },
+        {
+          "epoch": 12,
+          "train_mse_z": 0.7256120562553405,
+          "validation_mse_z": 0.5405872464179993
+        },
+        {
+          "epoch": 13,
+          "train_mse_z": 0.7265555688313076,
+          "validation_mse_z": 0.5327256917953491
+        },
+        {
+          "epoch": 14,
+          "train_mse_z": 0.714967782156808,
+          "validation_mse_z": 0.5448048114776611
+        },
+        {
+          "epoch": 15,
+          "train_mse_z": 0.7120667985507421,
+          "validation_mse_z": 0.5804893970489502
+        },
+        {
+          "epoch": 16,
+          "train_mse_z": 0.7111970492771693,
+          "validation_mse_z": 0.5674745440483093
+        },
+        {
+          "epoch": 17,
+          "train_mse_z": 0.7077539460999626,
+          "validation_mse_z": 0.6133490204811096
+        },
+        {
+          "epoch": 18,
+          "train_mse_z": 0.7084377322878156,
+          "validation_mse_z": 0.5874446630477905
+        },
+        {
+          "epoch": 19,
+          "train_mse_z": 0.7187174814088004,
+          "validation_mse_z": 0.5905351638793945
+        }
+      ],
+      "test": {
+        "correlation": 0.5269302129745483,
+        "mse": 1296.2769444444446,
+        "prediction_mean": 20.74207878112793,
+        "prediction_std": 17.001197814941406,
+        "r_squared": 0.25075045820638386,
+        "target_mean": 25.4727783203125,
+        "target_std": 41.59447479248047
+      },
+      "validation": {
+        "correlation": 0.3998865485191345,
+        "mse": 629.0762969094923,
+        "prediction_mean": 15.22217845916748,
+        "prediction_std": 13.549444198608398,
+        "r_squared": 0.15000695814829923,
+        "target_mean": 14.77924919128418,
+        "target_std": 27.204702377319336
+      }
+    },
+    "sparse": {
+      "history": [
+        {
+          "epoch": 1,
+          "train_mse_z": 0.9570548142705645,
+          "validation_mse_z": 0.5657291412353516
+        },
+        {
+          "epoch": 2,
+          "train_mse_z": 0.897609099320003,
+          "validation_mse_z": 0.5426236391067505
+        },
+        {
+          "epoch": 3,
+          "train_mse_z": 0.8623332806995937,
+          "validation_mse_z": 0.5308569669723511
+        },
+        {
+          "epoch": 4,
+          "train_mse_z": 0.8315678920064654,
+          "validation_mse_z": 0.5260132551193237
+        },
+        {
+          "epoch": 5,
+          "train_mse_z": 0.8077237861497062,
+          "validation_mse_z": 0.5262089371681213
+        },
+        {
+          "epoch": 6,
+          "train_mse_z": 0.7936455930982317,
+          "validation_mse_z": 0.5289208889007568
+        },
+        {
+          "epoch": 7,
+          "train_mse_z": 0.7832131402833121,
+          "validation_mse_z": 0.5306669473648071
+        },
+        {
+          "epoch": 8,
+          "train_mse_z": 0.778627165726253,
+          "validation_mse_z": 0.5315809845924377
+        },
+        {
+          "epoch": 9,
+          "train_mse_z": 0.7790736845561437,
+          "validation_mse_z": 0.5331971049308777
+        },
+        {
+          "epoch": 10,
+          "train_mse_z": 0.7718291180474418,
+          "validation_mse_z": 0.5328800678253174
+        },
+        {
+          "epoch": 11,
+          "train_mse_z": 0.7714734043393816,
+          "validation_mse_z": 0.5337681174278259
+        },
+        {
+          "epoch": 12,
+          "train_mse_z": 0.7736824035644532,
+          "validation_mse_z": 0.5330257415771484
+        },
+        {
+          "epoch": 13,
+          "train_mse_z": 0.7681270241737366,
+          "validation_mse_z": 0.531743049621582
+        },
+        {
+          "epoch": 14,
+          "train_mse_z": 0.7670238920620509,
+          "validation_mse_z": 0.5323693156242371
+        }
+      ],
+      "test": {
+        "correlation": 0.500991702079773,
+        "mse": 1420.778611111111,
+        "prediction_mean": 18.16765022277832,
+        "prediction_std": 12.379414558410645,
+        "r_squared": 0.17878835388729442,
+        "target_mean": 25.4727783203125,
+        "target_std": 41.59447479248047
+      },
+      "validation": {
+        "correlation": 0.3900067210197449,
+        "mse": 627.9233581677704,
+        "prediction_mean": 14.148124694824219,
+        "prediction_std": 10.569649696350098,
+        "r_squared": 0.15156478175882038,
+        "target_mean": 14.77924919128418,
+        "target_std": 27.204702377319336
+      }
+    }
+  },
+  "exact_history_matching": {
+    "eligible_strata": 147,
+    "episode_clusters": 55,
+    "joint_older_history_and_probe": {
+      "full": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11815000655999339,
+            "normal_approximation_p_value": 0.02079599674843496,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.27312356663347603,
+            "z_value": -2.311667807608553
+          },
+          "probe_value_full": {
+            "cluster_robust_standard_error": 0.10044769581489466,
+            "normal_approximation_p_value": 0.14891849909051366,
+            "predictor_scale": 14.377770682884972,
+            "standardized_beta": 0.14498239558310713,
+            "z_value": 1.4433620841863926
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.035402689745413385,
+        "states": 1180
+      },
+      "sparse": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11699436242153922,
+            "normal_approximation_p_value": 0.036331005210144936,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.244892992173347,
+            "z_value": -2.093203357021424
+          },
+          "probe_value": {
+            "cluster_robust_standard_error": 0.08550285348129809,
+            "normal_approximation_p_value": 0.19454566521182698,
+            "predictor_scale": 9.260508790866188,
+            "standardized_beta": 0.11091845656460544,
+            "z_value": 1.297248595204679
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.0321125353904963,
+        "states": 1180
+      }
+    },
+    "matched_states": 1180,
+    "matching_variables": [
+      "round",
+      "previous_outcome",
+      "loss_streak"
+    ],
+    "minimum_stratum_size": 4,
+    "older_history_measure": "cumulative_score minus previous_outcome",
+    "simple_regressions": {
+      "full_probe_to_persistence": {
+        "coefficients": {
+          "probe_value_full": {
+            "cluster_robust_standard_error": 0.10863395236869372,
+            "normal_approximation_p_value": 0.5639740779728073,
+            "predictor_scale": 14.377770682884972,
+            "standardized_beta": -0.06267622287197953,
+            "z_value": -0.5769487485759714
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.003928308913499712,
+        "states": 1180
+      },
+      "older_history_to_full_probe": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.042892873002923104,
+            "normal_approximation_p_value": 2.651527459574192e-70,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": 0.7603101446524323,
+            "z_value": 17.725791988814038
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 14.377770682884972,
+        "r_squared": 0.5780715160614025,
+        "states": 1180
+      },
+      "older_history_to_persistence": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11120168658268965,
+            "normal_approximation_p_value": 0.14296628895804558,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.16289198047562772,
+            "z_value": -1.46483372223407
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.026533797303273987,
+        "states": 1180
+      },
+      "older_history_to_sparse_probe": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.041532350728504766,
+            "normal_approximation_p_value": 7.02112151168101e-71,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": 0.7392909551527799,
+            "z_value": 17.80036386539962
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 9.260508790866188,
+        "r_squared": 0.5465511163707085,
+        "states": 1180
+      },
+      "sparse_probe_to_persistence": {
+        "coefficients": {
+          "probe_value": {
+            "cluster_robust_standard_error": 0.09917708310451463,
+            "normal_approximation_p_value": 0.4795005637290807,
+            "predictor_scale": 9.260508790866188,
+            "standardized_beta": -0.07012871752945059,
+            "z_value": -0.7071060706186293
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.0049180370223256276,
+        "states": 1180
+      }
+    },
+    "within_stratum_deciles": [
+      {
+        "decile": 1,
+        "persistence_logit": 0.2540351925373862,
+        "prior_score": -1.9850487704079935,
+        "probe_value": -1.3372168473306554,
+        "probe_value_full": -1.3414689174251568,
+        "states": 118
+      },
+      {
+        "decile": 2,
+        "persistence_logit": 0.3662869708023699,
+        "prior_score": -0.8777686810760121,
+        "probe_value": -1.0834886669760888,
+        "probe_value_full": -1.1584538136170046,
+        "states": 118
+      },
+      {
+        "decile": 3,
+        "persistence_logit": -0.2777498490505462,
+        "prior_score": -0.38772175985444585,
+        "probe_value": -0.796695613262433,
+        "probe_value_full": -0.926546756445405,
+        "states": 118
+      },
+      {
+        "decile": 4,
+        "persistence_logit": 0.08756346753327975,
+        "prior_score": -0.1467761395238499,
+        "probe_value": -0.3518345732244863,
+        "probe_value_full": -0.3854077194987721,
+        "states": 118
+      },
+      {
+        "decile": 5,
+        "persistence_logit": 0.08331108669493481,
+        "prior_score": -0.026977744334300235,
+        "probe_value": -0.04070761682704896,
+        "probe_value_full": 0.012958727388946184,
+        "states": 118
+      },
+      {
+        "decile": 6,
+        "persistence_logit": -0.030190002513233172,
+        "prior_score": 0.07700349588252618,
+        "probe_value": 0.1788122331402589,
+        "probe_value_full": 0.24201780408338405,
+        "states": 118
+      },
+      {
+        "decile": 7,
+        "persistence_logit": 0.11326013883737782,
+        "prior_score": 0.19319052197707381,
+        "probe_value": 0.6108666464920057,
+        "probe_value_full": 0.5397426820861972,
+        "states": 118
+      },
+      {
+        "decile": 8,
+        "persistence_logit": -0.028854695801952397,
+        "prior_score": 0.4578914955018089,
+        "probe_value": 0.8136850354454631,
+        "probe_value_full": 0.761073093225888,
+        "states": 118
+      },
+      {
+        "decile": 9,
+        "persistence_logit": -0.06501239605899219,
+        "prior_score": 0.9268634465846752,
+        "probe_value": 0.9862569205117171,
+        "probe_value_full": 1.1478217385895098,
+        "states": 118
+      },
+      {
+        "decile": 10,
+        "persistence_logit": -0.5026499129806247,
+        "prior_score": 1.7693441352505175,
+        "probe_value": 1.0203224820312677,
+        "probe_value_full": 1.1082631616124132,
+        "states": 118
+      }
+    ]
+  },
+  "mechanism": {
+    "analysis_split": "test episodes only",
+    "caveat": "These held-out associations distinguish integrated value from a recent-outcome heuristic but are not causal; activation steering provides the causal test.",
+    "episodes": 78,
+    "evidence_criteria": {
+      "minimum_primary_delta_r_squared": 0.01,
+      "two_sided_alpha": 0.05
+    },
+    "evidence_flags": {
+      "integrated_value_pattern_supported": false,
+      "probe_adds_beyond_recent_history": false,
+      "probe_adds_within_last_loss_states": false,
+      "probe_encodes_history_within_last_loss_states": true
+    },
+    "full_probe": {
+      "augmented_r_squared": 0.7529185965739873,
+      "cluster_robust_standard_error": 0.04507714899935888,
+      "control_r_squared": 0.7529147675152958,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 3.829058691451337e-06,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 0.9598666151056119,
+      "outcome_scale": 1.4382939340046936,
+      "partial_correlation": -0.003936612042892604,
+      "predictor_scale": 17.001197395961317,
+      "predictor_standardized_beta": -0.0022683257599951014,
+      "probe_standardized_beta": -0.0022683257599951014,
+      "states": 1800,
+      "z_value": -0.050320967726405305
+    },
+    "layer": 2,
+    "neuron_count": 26,
+    "primary_pruned_probe": {
+      "augmented_r_squared": 0.753068797604177,
+      "cluster_robust_standard_error": 0.04824302274467515,
+      "control_r_squared": 0.7529147675152958,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.00015403008888115188,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 0.7402290205284029,
+      "outcome_scale": 1.4382939340046936,
+      "partial_correlation": 0.024967748908406594,
+      "predictor_scale": 12.379414696382636,
+      "predictor_standardized_beta": 0.01599497798805754,
+      "probe_standardized_beta": 0.01599497798805754,
+      "states": 1800,
+      "z_value": 0.33155007870693576
+    },
+    "probe_encodes_cumulative_history": {
+      "all_states": {
+        "augmented_r_squared": 0.6424529855568075,
+        "cluster_robust_standard_error": 0.043101674491085436,
+        "control_r_squared": 0.3979420818644588,
+        "controls": [
+          "intercept",
+          "previous_outcome",
+          "initial_state",
+          "loss_streak",
+          "log_round",
+          "log_round_squared"
+        ],
+        "delta_r_squared": 0.24451090369234874,
+        "episode_clusters": 78,
+        "normal_approximation_p_value": 1.5457315397853246e-56,
+        "outcome_scale": 12.379414696382636,
+        "partial_correlation": 0.6372795452016051,
+        "predictor_scale": 38.820428466955704,
+        "predictor_standardized_beta": 0.6829044834143236,
+        "states": 1800,
+        "z_value": 15.844036025922064
+      },
+      "last_gain": {
+        "augmented_r_squared": 0.5912221033649008,
+        "cluster_robust_standard_error": 0.04514802882018758,
+        "control_r_squared": 0.2804428998287617,
+        "controls": [
+          "intercept",
+          "log_round",
+          "log_round_squared"
+        ],
+        "delta_r_squared": 0.3107792035361391,
+        "episode_clusters": 57,
+        "normal_approximation_p_value": 4.2175243736396306e-67,
+        "outcome_scale": 12.035441950352666,
+        "partial_correlation": 0.6571936268732557,
+        "predictor_scale": 40.664967787023656,
+        "predictor_standardized_beta": 0.7813447324451879,
+        "states": 913,
+        "z_value": 17.306286738609856
+      },
+      "last_loss": {
+        "augmented_r_squared": 0.5999506034824681,
+        "cluster_robust_standard_error": 0.04698557007160927,
+        "control_r_squared": 0.3327734443491188,
+        "controls": [
+          "intercept",
+          "loss_streak",
+          "log_round",
+          "log_round_squared"
+        ],
+        "delta_r_squared": 0.2671771591333493,
+        "episode_clusters": 72,
+        "normal_approximation_p_value": 1.8366984442495416e-44,
+        "outcome_scale": 11.297114754624197,
+        "partial_correlation": 0.6327949467619857,
+        "predictor_scale": 35.469221925072105,
+        "predictor_standardized_beta": 0.6572497421024824,
+        "states": 809,
+        "z_value": 13.988331760172073
+      }
+    },
+    "pruned_probe_controlling_cumulative_score": {
+      "augmented_r_squared": 0.7873078663459377,
+      "cluster_robust_standard_error": 0.04020626225939567,
+      "control_r_squared": 0.7710553952902722,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared",
+        "cumulative_score"
+      ],
+      "delta_r_squared": 0.01625247105566552,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 1.1408430411225816e-07,
+      "outcome_scale": 1.4382939340046936,
+      "partial_correlation": 0.2664369748031618,
+      "predictor_scale": 12.379414696382636,
+      "predictor_standardized_beta": 0.21320290733659375,
+      "probe_standardized_beta": 0.21320290733659375,
+      "states": 1800,
+      "z_value": 5.3027288625112385
+    },
+    "states": 1800,
+    "within_previous_outcome": {
+      "last_gain": {
+        "augmented_r_squared": 0.7304117633928975,
+        "cluster_robust_standard_error": 0.0638297279080991,
+        "control_r_squared": 0.7298786278935012,
+        "controls": [
+          "intercept",
+          "log_round",
+          "log_round_squared"
+        ],
+        "delta_r_squared": 0.0005331354993962645,
+        "episode_clusters": 57,
+        "normal_approximation_p_value": 0.6697835101185049,
+        "outcome_scale": 1.1884705153692283,
+        "partial_correlation": 0.044426216344313346,
+        "predictor_scale": 12.035441950352666,
+        "predictor_standardized_beta": 0.02721987768128377,
+        "probe_standardized_beta": 0.02721987768128377,
+        "states": 913,
+        "z_value": 0.42644514669519606
+      },
+      "last_loss": {
+        "augmented_r_squared": 0.7343228660013894,
+        "cluster_robust_standard_error": 0.04648644721380295,
+        "control_r_squared": 0.7342073256613426,
+        "controls": [
+          "intercept",
+          "loss_streak",
+          "log_round",
+          "log_round_squared"
+        ],
+        "delta_r_squared": 0.00011554034004679359,
+        "episode_clusters": 72,
+        "normal_approximation_p_value": 0.7771182024109794,
+        "outcome_scale": 1.5691244164222267,
+        "partial_correlation": 0.020849484290524925,
+        "predictor_scale": 11.297114754624197,
+        "predictor_standardized_beta": 0.013159220350722606,
+        "probe_standardized_beta": 0.013159220350722606,
+        "states": 809,
+        "z_value": 0.2830764908791592
+      }
+    }
+  },
+  "neuron_count": 26,
+  "target": "realized_future_cumulative_return",
+  "target_interpretation": "Monte Carlo return under the observed policy and outcome schedule, not a counterfactual continuation advantage",
+  "variance_decomposition": {
+    "full": {
+      "history_only_r_squared": 0.7529147675152958,
+      "joint_r_squared": 0.7529185965739873,
+      "probe_only_r_squared": 0.029366440879753507,
+      "shared_probe_history": 0.029362611821062035,
+      "unexplained": 0.2470814034260127,
+      "unique_history": 0.7235521556942338,
+      "unique_probe": 3.829058691451337e-06
+    },
+    "sparse": {
+      "history_only_r_squared": 0.7529147675152958,
+      "joint_r_squared": 0.753068797604177,
+      "probe_only_r_squared": 0.05415961302379095,
+      "shared_probe_history": 0.05400558293490976,
+      "unexplained": 0.246931202395823,
+      "unique_history": 0.6989091845803861,
+      "unique_probe": 0.00015403008888115188
+    }
+  }
+}
