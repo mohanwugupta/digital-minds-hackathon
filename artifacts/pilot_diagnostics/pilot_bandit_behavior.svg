@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="55.0" y="45.0" class="title" text-anchor="start">Bandit learning and action diagnostics</text>
+<text x="55.0" y="70.0" class="subtitle" text-anchor="start">Qwen3.5-4B behavioral pilot; no activation intervention</text>
+<text x="45.0" y="113.0" class="panel" text-anchor="start">A. Preference for the objectively better arm</text>
+<line x1="107.0" y1="467.0" x2="717.0" y2="467.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="471.0" class="axis" text-anchor="end">.40</text>
+<line x1="107.0" y1="384.5" x2="717.0" y2="384.5" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="388.5" class="axis" text-anchor="end">.50</text>
+<line x1="107.0" y1="302.0" x2="717.0" y2="302.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="306.0" class="axis" text-anchor="end">.60</text>
+<line x1="107.0" y1="219.5" x2="717.0" y2="219.5" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="223.5" class="axis" text-anchor="end">.70</text>
+<line x1="107.0" y1="137.0" x2="717.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="141.0" class="axis" text-anchor="end">.80</text>
+<line x1="149.1" y1="467.0" x2="149.1" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="149.1" y="487.0" class="axis" text-anchor="middle">1</text>
+<line x1="254.2" y1="467.0" x2="254.2" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="254.2" y="487.0" class="axis" text-anchor="middle">2-5</text>
+<line x1="359.4" y1="467.0" x2="359.4" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="359.4" y="487.0" class="axis" text-anchor="middle">6-10</text>
+<line x1="464.6" y1="467.0" x2="464.6" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="464.6" y="487.0" class="axis" text-anchor="middle">11-20</text>
+<line x1="569.8" y1="467.0" x2="569.8" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="569.8" y="487.0" class="axis" text-anchor="middle">21-50</text>
+<line x1="674.9" y1="467.0" x2="674.9" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="674.9" y="487.0" class="axis" text-anchor="middle">51-100</text>
+<line x1="107.0" y1="137.0" x2="107.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="467.0" x2="717.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="412.0" y="510.0" class="axis" text-anchor="middle">Decision interval</text>
+<text x="60.0" y="302.0" class="axis" text-anchor="middle" transform="rotate(-90 60 302.0)">Probability of better arm | continue</text>
+<line x1="107.0" y1="384.5" x2="717.0" y2="384.5" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="5 5"/>
+<polyline points="149.1,390.2 254.2,401.2 359.4,336.5 464.6,293.0 569.8,223.3 674.9,260.7" fill="none" stroke="#7A5195" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="149.1,386.8 254.2,368.7 359.4,358.2 464.6,310.6 569.8,236.5 674.9,266.7" fill="none" stroke="#E69F00" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="149.1" cy="390.2" r="4.0" fill="#7A5195"/>
+<circle cx="254.2" cy="401.2" r="4.0" fill="#7A5195"/>
+<circle cx="359.4" cy="336.5" r="4.0" fill="#7A5195"/>
+<circle cx="464.6" cy="293.0" r="4.0" fill="#7A5195"/>
+<circle cx="569.8" cy="223.3" r="4.0" fill="#7A5195"/>
+<circle cx="674.9" cy="260.7" r="4.0" fill="#7A5195"/>
+<circle cx="149.1" cy="386.8" r="4.0" fill="#E69F00"/>
+<circle cx="254.2" cy="368.7" r="4.0" fill="#E69F00"/>
+<circle cx="359.4" cy="358.2" r="4.0" fill="#E69F00"/>
+<circle cx="464.6" cy="310.6" r="4.0" fill="#E69F00"/>
+<circle cx="569.8" cy="236.5" r="4.0" fill="#E69F00"/>
+<circle cx="674.9" cy="266.7" r="4.0" fill="#E69F00"/>
+<line x1="119.0" y1="155.0" x2="141.0" y2="155.0" stroke="#7A5195" stroke-width="3"/>
+<text x="147.0" y="159.0" class="legend" text-anchor="start">Sampled choices</text>
+<line x1="264.0" y1="155.0" x2="286.0" y2="155.0" stroke="#E69F00" stroke-width="3"/>
+<text x="292.0" y="159.0" class="legend" text-anchor="start">Model probability</text>
+<text x="760.0" y="113.0" class="panel" text-anchor="start">B. Strong action-label prior before any feedback</text>
+<line x1="822.0" y1="467.0" x2="1432.0" y2="467.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="471.0" class="axis" text-anchor="end">0</text>
+<line x1="822.0" y1="401.0" x2="1432.0" y2="401.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="405.0" class="axis" text-anchor="end">.2</text>
+<line x1="822.0" y1="335.0" x2="1432.0" y2="335.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="339.0" class="axis" text-anchor="end">.4</text>
+<line x1="822.0" y1="269.0" x2="1432.0" y2="269.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="273.0" class="axis" text-anchor="end">.6</text>
+<line x1="822.0" y1="203.0" x2="1432.0" y2="203.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="207.0" class="axis" text-anchor="end">.8</text>
+<line x1="822.0" y1="137.0" x2="1432.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="141.0" class="axis" text-anchor="end">1</text>
+<line x1="936.4" y1="467.0" x2="936.4" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="936.4" y="487.0" class="axis" text-anchor="middle">A</text>
+<line x1="1127.0" y1="467.0" x2="1127.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1127.0" y="487.0" class="axis" text-anchor="middle">B</text>
+<line x1="1317.6" y1="467.0" x2="1317.6" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1317.6" y="487.0" class="axis" text-anchor="middle">C / STOP</text>
+<line x1="822.0" y1="137.0" x2="822.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="822.0" y1="467.0" x2="1432.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1127.0" y="510.0" class="axis" text-anchor="middle">First-decision action</text>
+<text x="775.0" y="302.0" class="axis" text-anchor="middle" transform="rotate(-90 775 302.0)">Mean model probability</text>
+<rect x="891.4" y="166.5" width="90.0" height="300.5" fill="#0072B2" fill-opacity="0.9" stroke="none"/>
+<text x="936.4" y="158.5" class="axis" text-anchor="middle">0.911</text>
+<rect x="1082.0" y="442.3" width="90.0" height="24.7" fill="#56B4E9" fill-opacity="0.9" stroke="none"/>
+<text x="1127.0" y="434.3" class="axis" text-anchor="middle">0.075</text>
+<rect x="1272.6" y="462.1" width="90.0" height="4.9" fill="#D55E00" fill-opacity="0.9" stroke="none"/>
+<text x="1317.6" y="454.1" class="axis" text-anchor="middle">0.015</text>
+<text x="45.0" y="583.0" class="panel" text-anchor="start">C. Episode duration reflects arm value</text>
+<line x1="107.0" y1="937.0" x2="717.0" y2="937.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="941.0" class="axis" text-anchor="end">0</text>
+<line x1="107.0" y1="871.0" x2="717.0" y2="871.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="875.0" class="axis" text-anchor="end">5</text>
+<line x1="107.0" y1="805.0" x2="717.0" y2="805.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="809.0" class="axis" text-anchor="end">10</text>
+<line x1="107.0" y1="739.0" x2="717.0" y2="739.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="743.0" class="axis" text-anchor="end">15</text>
+<line x1="107.0" y1="673.0" x2="717.0" y2="673.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="677.0" class="axis" text-anchor="end">20</text>
+<line x1="107.0" y1="607.0" x2="717.0" y2="607.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="611.0" class="axis" text-anchor="end">25</text>
+<line x1="221.4" y1="937.0" x2="221.4" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="221.4" y="957.0" class="axis" text-anchor="middle">Both negative</text>
+<line x1="412.0" y1="937.0" x2="412.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="412.0" y="957.0" class="axis" text-anchor="middle">One positive</text>
+<line x1="602.6" y1="937.0" x2="602.6" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="602.6" y="957.0" class="axis" text-anchor="middle">Both positive</text>
+<line x1="107.0" y1="607.0" x2="107.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="937.0" x2="717.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="412.0" y="980.0" class="axis" text-anchor="middle">Reward condition</text>
+<text x="60.0" y="772.0" class="axis" text-anchor="middle" transform="rotate(-90 60 772.0)">Mean decisions per episode</text>
+<rect x="173.4" y="735.3" width="96.0" height="201.7" fill="#D55E00" fill-opacity="0.9" stroke="none"/>
+<text x="221.4" y="727.3" class="axis" text-anchor="middle">15.3</text>
+<rect x="364.0" y="675.1" width="96.0" height="261.9" fill="#0072B2" fill-opacity="0.9" stroke="none"/>
+<text x="412.0" y="667.1" class="axis" text-anchor="middle">19.8</text>
+<rect x="554.6" y="684.1" width="96.0" height="252.9" fill="#009E73" fill-opacity="0.9" stroke="none"/>
+<text x="602.6" y="676.1" class="axis" text-anchor="middle">19.2</text>
+<text x="760.0" y="583.0" class="panel" text-anchor="start">D. Sampled STOP choices track model probabilities</text>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="937.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="941.0" class="axis" text-anchor="end">0</text>
+<line x1="822.0" y1="877.0" x2="1432.0" y2="877.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="881.0" class="axis" text-anchor="end">.1</text>
+<line x1="822.0" y1="817.0" x2="1432.0" y2="817.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="821.0" class="axis" text-anchor="end">.2</text>
+<line x1="822.0" y1="757.0" x2="1432.0" y2="757.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="761.0" class="axis" text-anchor="end">.3</text>
+<line x1="822.0" y1="697.0" x2="1432.0" y2="697.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="701.0" class="axis" text-anchor="end">.4</text>
+<line x1="822.0" y1="637.0" x2="1432.0" y2="637.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="641.0" class="axis" text-anchor="end">.5</text>
+<line x1="822.0" y1="937.0" x2="822.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="822.0" y="957.0" class="axis" text-anchor="middle">0</text>
+<line x1="932.9" y1="937.0" x2="932.9" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="932.9" y="957.0" class="axis" text-anchor="middle">.1</text>
+<line x1="1043.8" y1="937.0" x2="1043.8" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1043.8" y="957.0" class="axis" text-anchor="middle">.2</text>
+<line x1="1154.7" y1="937.0" x2="1154.7" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1154.7" y="957.0" class="axis" text-anchor="middle">.3</text>
+<line x1="1265.6" y1="937.0" x2="1265.6" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1265.6" y="957.0" class="axis" text-anchor="middle">.4</text>
+<line x1="1376.5" y1="937.0" x2="1376.5" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1376.5" y="957.0" class="axis" text-anchor="middle">.5</text>
+<line x1="822.0" y1="607.0" x2="822.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1127.0" y="980.0" class="axis" text-anchor="middle">Mean predicted P(STOP)</text>
+<text x="775.0" y="772.0" class="axis" text-anchor="middle" transform="rotate(-90 775 772.0)">Observed STOP rate</text>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="607.0" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="5 5"/>
+<circle cx="826.8" cy="935.1" r="10.6" fill="#7A5195"/>
+<circle cx="837.6" cy="925.9" r="8.6" fill="#7A5195"/>
+<circle cx="855.7" cy="915.0" r="8.4" fill="#7A5195"/>
+<circle cx="900.9" cy="886.7" r="6.9" fill="#7A5195"/>
+<circle cx="970.8" cy="864.7" r="6.3" fill="#7A5195"/>
+<circle cx="1116.6" cy="746.1" r="5.9" fill="#7A5195"/>
+<circle cx="1361.5" cy="637.0" r="5.6" fill="#7A5195"/>
+<text x="834.0" y="625.0" class="note" text-anchor="start">Point area scales with number of states</text>
+<text x="1450.0" y="1030.0" class="note" text-anchor="end">Optimal-arm panels exclude equal-probability conditions; C choices excluded from sampled arm accuracy.</text>
+</svg>

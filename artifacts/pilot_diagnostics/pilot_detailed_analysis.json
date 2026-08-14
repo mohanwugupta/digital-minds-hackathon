@@ -1,0 +1,349 @@
+{
+  "action_counts": {
+    "A": 2463,
+    "B": 1063,
+    "C": 180
+  },
+  "audit": {
+    "cell_episode_counts": {
+      "0.20,0.20": 13,
+      "0.20,0.35": 12,
+      "0.20,0.50": 13,
+      "0.20,0.65": 12,
+      "0.35,0.20": 13,
+      "0.35,0.35": 12,
+      "0.35,0.50": 13,
+      "0.35,0.65": 13,
+      "0.50,0.20": 12,
+      "0.50,0.35": 13,
+      "0.50,0.50": 12,
+      "0.50,0.65": 13,
+      "0.65,0.20": 12,
+      "0.65,0.35": 12,
+      "0.65,0.50": 13,
+      "0.65,0.65": 12
+    },
+    "condition_episode_counts": {
+      "both_negative": 50,
+      "both_positive": 50,
+      "one_positive": 100
+    },
+    "issue_counts": {},
+    "passed": true,
+    "termination_counts": {
+      "horizon_censored": 20,
+      "quit": 180
+    },
+    "unique_state_ids": 3706
+  },
+  "condition_summary": {
+    "both_negative": {
+      "episodes": 50,
+      "horizon_censored": 3,
+      "mean_decisions": 15.28,
+      "median_decisions": 5.0,
+      "median_quit_decision": 5,
+      "quit_episodes": 47,
+      "quit_fraction": 0.94
+    },
+    "both_positive": {
+      "episodes": 50,
+      "horizon_censored": 5,
+      "mean_decisions": 19.16,
+      "median_decisions": 8.0,
+      "median_quit_decision": 7,
+      "quit_episodes": 45,
+      "quit_fraction": 0.9
+    },
+    "one_positive": {
+      "episodes": 100,
+      "horizon_censored": 12,
+      "mean_decisions": 19.84,
+      "median_decisions": 5.0,
+      "median_quit_decision": 5.0,
+      "quit_episodes": 88,
+      "quit_fraction": 0.88
+    }
+  },
+  "decision_states": 3706,
+  "episodes": 200,
+  "event_aligned_p_stop": [
+    {
+      "episodes": 38,
+      "lag": -10,
+      "mean_p_stop": 0.042270005313067925,
+      "median_p_stop": 0.020062621249672508
+    },
+    {
+      "episodes": 40,
+      "lag": -9,
+      "mean_p_stop": 0.06288090460392187,
+      "median_p_stop": 0.03002297102450667
+    },
+    {
+      "episodes": 47,
+      "lag": -8,
+      "mean_p_stop": 0.05036256242647322,
+      "median_p_stop": 0.029660716927120107
+    },
+    {
+      "episodes": 54,
+      "lag": -7,
+      "mean_p_stop": 0.05324183101496042,
+      "median_p_stop": 0.026851353178830136
+    },
+    {
+      "episodes": 68,
+      "lag": -6,
+      "mean_p_stop": 0.05345740756992032,
+      "median_p_stop": 0.02085518439505994
+    },
+    {
+      "episodes": 80,
+      "lag": -5,
+      "mean_p_stop": 0.06564827358300487,
+      "median_p_stop": 0.021324028066173166
+    },
+    {
+      "episodes": 112,
+      "lag": -4,
+      "mean_p_stop": 0.04998119778225288,
+      "median_p_stop": 0.02085518439505994
+    },
+    {
+      "episodes": 141,
+      "lag": -3,
+      "mean_p_stop": 0.05203529106425837,
+      "median_p_stop": 0.02085518439505994
+    },
+    {
+      "episodes": 165,
+      "lag": -2,
+      "mean_p_stop": 0.08140369524115999,
+      "median_p_stop": 0.029096786848683224
+    },
+    {
+      "episodes": 174,
+      "lag": -1,
+      "mean_p_stop": 0.14196874746413304,
+      "median_p_stop": 0.06447932362461134
+    },
+    {
+      "episodes": 180,
+      "lag": 0,
+      "mean_p_stop": 0.22879505696257027,
+      "median_p_stop": 0.1908358555188579
+    }
+  ],
+  "first_decision_action_counts": {
+    "A": 173,
+    "B": 21,
+    "C": 6
+  },
+  "first_decision_probabilities": {
+    "A": 0.9105407439033076,
+    "B": 0.07474173571030679,
+    "C": 0.014717520386385642
+  },
+  "horizon_censored_episodes": 20,
+  "loss_streak_summary": {
+    "0": {
+      "mean_model_p_stop": 0.018487916548185036,
+      "observed_quit_rate": 0.018558951965065504,
+      "quits": 34,
+      "states": 1832
+    },
+    "1": {
+      "mean_model_p_stop": 0.036121459522772,
+      "observed_quit_rate": 0.03891891891891892,
+      "quits": 36,
+      "states": 925
+    },
+    "2": {
+      "mean_model_p_stop": 0.10345095924972643,
+      "observed_quit_rate": 0.09375,
+      "quits": 42,
+      "states": 448
+    },
+    "3+": {
+      "mean_model_p_stop": 0.10196783987852338,
+      "observed_quit_rate": 0.13572854291417166,
+      "quits": 68,
+      "states": 501
+    }
+  },
+  "mean_decisions_per_episode": 18.53,
+  "mean_final_score": {
+    "horizon_censored": 49.75,
+    "quit": 0.85
+  },
+  "mean_p_stop_at_quit": 0.22879505696257027,
+  "mean_p_stop_while_continuing": 0.03503432230419572,
+  "median_p_stop_at_quit": 0.1908358555188579,
+  "optimal_arm_learning": [
+    {
+      "arm_choice_states": 146,
+      "label": "1",
+      "model_optimal_arm_probability": 0.49719111377497516,
+      "observed_optimal_choice": 0.4931506849315068
+    },
+    {
+      "arm_choice_states": 419,
+      "label": "2-5",
+      "model_optimal_arm_probability": 0.519196102873209,
+      "observed_optimal_choice": 0.4797136038186158
+    },
+    {
+      "arm_choice_states": 249,
+      "label": "6-10",
+      "model_optimal_arm_probability": 0.5318380704527111,
+      "observed_optimal_choice": 0.5582329317269076
+    },
+    {
+      "arm_choice_states": 311,
+      "label": "11-20",
+      "model_optimal_arm_probability": 0.5895414181582346,
+      "observed_optimal_choice": 0.6109324758842444
+    },
+    {
+      "arm_choice_states": 650,
+      "label": "21-50",
+      "model_optimal_arm_probability": 0.6793458001574749,
+      "observed_optimal_choice": 0.6953846153846154
+    },
+    {
+      "arm_choice_states": 846,
+      "label": "51-100",
+      "model_optimal_arm_probability": 0.6428406297374202,
+      "observed_optimal_choice": 0.6501182033096927
+    }
+  ],
+  "quit_decision_quantiles": {
+    "0.1": 3,
+    "0.25": 4,
+    "0.5": 5,
+    "0.75": 9,
+    "0.9": 18
+  },
+  "quit_episode_fraction": 0.9,
+  "quit_episodes": 180,
+  "quits_by_decision": {
+    "1": 6,
+    "10": 142,
+    "100": 180,
+    "20": 167,
+    "3": 39,
+    "5": 100,
+    "50": 174
+  },
+  "stop_brier_score": 0.03659679013139475,
+  "stop_calibration": [
+    {
+      "label": "0-0.01",
+      "mean_predicted": 0.00429016204136027,
+      "observed_quit_rate": 0.003219575016097875,
+      "states": 1553
+    },
+    {
+      "label": "0.01-0.02",
+      "mean_predicted": 0.014099926807108316,
+      "observed_quit_rate": 0.018469656992084433,
+      "states": 758
+    },
+    {
+      "label": "0.02-0.05",
+      "mean_predicted": 0.030373384423679272,
+      "observed_quit_rate": 0.036656891495601175,
+      "states": 682
+    },
+    {
+      "label": "0.05-0.1",
+      "mean_predicted": 0.07113089244797685,
+      "observed_quit_rate": 0.08389261744966443,
+      "states": 298
+    },
+    {
+      "label": "0.1-0.2",
+      "mean_predicted": 0.13420285364704532,
+      "observed_quit_rate": 0.12041884816753927,
+      "states": 191
+    },
+    {
+      "label": "0.2-0.4",
+      "mean_predicted": 0.26564556034500875,
+      "observed_quit_rate": 0.3181818181818182,
+      "states": 132
+    },
+    {
+      "label": "0.4-1",
+      "mean_predicted": 0.48645816727459745,
+      "observed_quit_rate": 0.5,
+      "states": 92
+    }
+  ],
+  "timing_hazard": [
+    {
+      "label": "1",
+      "lower": 1,
+      "mean_model_p_stop": 0.014717520386385642,
+      "observed_hazard": 0.03,
+      "quits": 6,
+      "states_at_risk": 200,
+      "upper": 1
+    },
+    {
+      "label": "2-3",
+      "lower": 2,
+      "mean_model_p_stop": 0.08822639590629489,
+      "observed_hazard": 0.0870712401055409,
+      "quits": 33,
+      "states_at_risk": 379,
+      "upper": 3
+    },
+    {
+      "label": "4-5",
+      "lower": 4,
+      "mean_model_p_stop": 0.1640043708357015,
+      "observed_hazard": 0.20819112627986347,
+      "quits": 61,
+      "states_at_risk": 293,
+      "upper": 5
+    },
+    {
+      "label": "6-10",
+      "lower": 6,
+      "mean_model_p_stop": 0.11736074829531969,
+      "observed_hazard": 0.10796915167095116,
+      "quits": 42,
+      "states_at_risk": 389,
+      "upper": 10
+    },
+    {
+      "label": "11-20",
+      "lower": 11,
+      "mean_model_p_stop": 0.03893003459145034,
+      "observed_hazard": 0.05506607929515418,
+      "quits": 25,
+      "states_at_risk": 454,
+      "upper": 20
+    },
+    {
+      "label": "21-50",
+      "lower": 21,
+      "mean_model_p_stop": 0.013657441883214626,
+      "observed_hazard": 0.008254716981132075,
+      "quits": 7,
+      "states_at_risk": 848,
+      "upper": 50
+    },
+    {
+      "label": "51-100",
+      "lower": 51,
+      "mean_model_p_stop": 0.00469856903663123,
+      "observed_hazard": 0.005249343832020997,
+      "quits": 6,
+      "states_at_risk": 1143,
+      "upper": 100
+    }
+  ]
+}
