@@ -1,13 +1,15 @@
 {
   "config": {
-    "fallback_model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3-4B-Instruct-2507",
+    "episodes": 512,
+    "max_decisions": 100,
     "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
     "online": false,
-    "output": "artifacts/qwen_compatibility_smoke.json",
-    "revision": null
+    "output_dir": "artifacts/activation_bank",
+    "revision": null,
+    "seed": 12026
   },
-  "created_at_utc": "2026-08-14T15:20:16.755476+00:00",
-  "git_commit": "8098289a6213a019613bb0a8d3e5a86089eec26e",
+  "created_at_utc": "2026-08-14T15:27:48.661099+00:00",
+  "git_commit": "13ba9797aec65cac88987ca038d499d29f02f248",
   "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
   "model_revision": null,
   "python_version": "3.10.20",
