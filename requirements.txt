@@ -1,0 +1,15 @@
+# Runtime
+torch>=2.6
+transformers>=5.12
+accelerate>=1.2
+pytest
+pytest-cov
+pandas
+numpy
+scipy
+pyyaml
+openai
+
+# Dev / formatting
+black
+ruff
