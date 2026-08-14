@@ -1,5 +1,6 @@
 """Model-family-tolerant residual-stream extraction and intervention."""
 
+from collections.abc import Mapping as MappingABC
 from contextlib import contextmanager
 import math
 from typing import Callable, Dict, Iterable, List, Mapping, Optional
@@ -193,8 +194,11 @@ class HookedQwen:
             )
         except TypeError:
             token_ids = self.tokenizer.apply_chat_template(messages, **kwargs)
-        if isinstance(token_ids, dict):
-            return token_ids
+        # Recent Transformers versions return BatchEncoding here. It behaves
+        # like a mapping but is not a dict, so wrapping it as input_ids creates
+        # a nested BatchEncoding that neither torch.equal nor the model accepts.
+        if isinstance(token_ids, MappingABC):
+            return dict(token_ids)
         return {"input_ids": token_ids}
 
     def _to_model_device(self, inputs: dict) -> dict:

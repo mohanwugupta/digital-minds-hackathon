@@ -396,3 +396,40 @@ bash -n smoke_qwen35.slurm run_qwen35_bandit.sh
 
 Shell syntax: PASS. Cluster environment activation must be confirmed by
 resubmitting the smoke job.
+
+---
+
+## Transformers BatchEncoding compatibility
+
+### Current objective
+
+Normalize current Transformers chat-template output before deterministic token
+comparison and model forwarding.
+
+### Current RED test
+
+The real GPU smoke job loaded both checkpoints, then failed each compatibility
+gate because `torch.equal` received a `BatchEncoding` instead of a tensor. A
+regression test now supplies a mapping-style `BatchEncoding` stand-in and
+requires `HookedQwen.tokenize()` to return its tensor fields directly.
+
+### Actual failure
+
+SLURM job `12377100` reported:
+
+```text
+TypeError: equal(): argument 'input' (position 1) must be Tensor, not BatchEncoding
+```
+
+The preceding CPU gate passed all 25 tests, and both model weight sets loaded.
+
+### GREEN implementation
+
+`HookedQwen.tokenize()` now recognizes any mapping-compatible tokenizer output
+and converts it to a plain input dictionary. Tensor-only output remains wrapped
+under `input_ids` as before.
+
+### Result
+
+Local Python compilation and dependency-free structural assertions pass. The
+real compatibility and hook checks must be rerun on the GPU cluster.
