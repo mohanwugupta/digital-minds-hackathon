@@ -174,6 +174,18 @@ gate.
    from a latest-reward heuristic, but remains associational. The subsequent
    activation-steering experiment is the causal test.
 
+   On SLURM, collection and training can share one allocation. The shell script
+   exits immediately if collection, training, mechanism analysis, or
+   calibration fails:
+
+   ```bash
+   sbatch --export=ALL,PHASE=probe_pipeline,PROBE_EPISODES=512 \
+     run_qwen35_bandit.sh
+   ```
+
+   Keep confirmatory steering separate so the frozen probe and its held-out
+   mechanism diagnostic can be inspected before causal data collection.
+
 5. Create a separate held-out state bank with a new output directory and seed,
    then run matched replay:
 

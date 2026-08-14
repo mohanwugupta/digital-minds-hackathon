@@ -47,6 +47,18 @@ if [ ! -d "$MODEL_PATH" ]; then
     exit 1
 fi
 
+collect_probe_phase() {
+  echo "Starting probe activation collection (${PROBE_EPISODES} episodes)"
+  python -m experiments.collect_bandit_activations \
+    --model "$MODEL_PATH" --episodes "$PROBE_EPISODES"
+}
+
+train_probe_phase() {
+  echo "Starting probe training, mechanism analysis, and calibration"
+  python -m experiments.train_value_probe
+  python -m experiments.calibrate_steering
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -58,12 +70,14 @@ case "$PHASE" in
     python -m analysis.analyze_pilot
     ;;
   collect_probe)
-    python -m experiments.collect_bandit_activations \
-      --model "$MODEL_PATH" --episodes "$PROBE_EPISODES"
+    collect_probe_phase
     ;;
   train_probe)
-    python -m experiments.train_value_probe
-    python -m experiments.calibrate_steering
+    train_probe_phase
+    ;;
+  probe_pipeline)
+    collect_probe_phase
+    train_probe_phase
     ;;
   collect_confirmatory)
     python -m experiments.collect_bandit_activations \
