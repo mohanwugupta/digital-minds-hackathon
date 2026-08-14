@@ -3,6 +3,7 @@
 import argparse
 import os
 import random
+import time
 from typing import List
 
 from bandit.conversation import BanditConversation
@@ -24,7 +25,7 @@ def collect_episode(model, p_a, p_b, *, seed: int, action_seed: int, max_decisio
     previous_outcome = None
     while not environment.terminated:
         visible = conversation.snapshot()
-        decision = model.decision(visible)
+        decision = model.decision(visible, capture_hidden_states=True)
         hidden = decision.pop("hidden_states")
         activations.append(torch.stack(hidden).to(dtype=torch.float16))
         action = sample_action(decision, rng)
@@ -81,6 +82,9 @@ def main() -> None:
     )
     os.makedirs(args.output_dir, exist_ok=True)
     save_run_metadata(os.path.join(args.output_dir, "metadata.json"), vars(args), model)
+    started = time.perf_counter()
+    episodes_run = 0
+    states_run = 0
     for index, condition in enumerate(episode_conditions(args.episodes, args.seed), 1):
         p_a, p_b, seed, action_seed = condition
         path = os.path.join(args.output_dir, f"episode_{index:05d}.pt")
@@ -88,7 +92,15 @@ def main() -> None:
             continue
         artifact = collect_episode(model, p_a, p_b, seed=seed, action_seed=action_seed)
         atomic_torch_save(artifact, path)
+        episodes_run += 1
+        states_run += len(artifact["records"])
         print(f"collected {index}/{args.episodes}: {artifact['episode_id']}", flush=True)
+    elapsed = time.perf_counter() - started
+    print(
+        f"runtime: {episodes_run} new episodes, {states_run} activation states, "
+        f"{elapsed:.1f}s total, {states_run / elapsed if elapsed else 0:.2f} states/s",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":

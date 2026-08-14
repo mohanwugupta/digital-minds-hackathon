@@ -244,3 +244,74 @@ schedule assertions: PASS. Full pytest and GPU smoke remain cluster-only.
 ### Next step
 
 Review pilot acceptance criteria, then run the smoke job and 200-episode pilot.
+
+---
+
+## Cluster import errors and runtime instrumentation
+
+### Current objective
+
+Resolve the cluster's 12 pytest collection errors and remove unnecessary
+activation-capture overhead from behavioral runs.
+
+### Current RED test
+
+`errors.txt` records all 12 test modules failing during collection with
+`ModuleNotFoundError` for project-local packages. The hook test was extended to
+require logits-only decisions by default and hidden states only when explicitly
+requested.
+
+### Expected failure
+
+Without repository-root path configuration, pytest cannot import `bandit`,
+`models`, `experiments`, or `interventions`. Before the capture refactor,
+logits-only decisions also returned all-layer states.
+
+### Actual failure
+
+Cluster pytest stopped during collection before any test ran. The local host
+still lacks pytest, so the attached cluster output is the authoritative RED
+result for path configuration.
+
+### GREEN implementation
+
+- Added `pyproject.toml` with setuptools package discovery and pytest
+  `pythonpath = ["."]`, making imports independent of whether pytest is invoked
+  through its console script or `python -m pytest`.
+- `HookedQwen.decision()` is now logits-only by default.
+- Activation collection, compatibility, matched replay, and sequential steering
+  explicitly request hidden states.
+- All-layer capture now clones final-position vectors on the GPU and performs
+  CPU conversion after the forward pass, avoiding 32 separate per-layer CPU
+  transfers/synchronizations.
+- Baseline, activation collection, and probe training now print actual elapsed
+  time and throughput to their SLURM logs.
+
+### Test command
+
+```bash
+python -m pytest -q
+python -m compileall -q bandit models interventions experiments analysis tests
+bash -n smoke_qwen35.slurm
+```
+
+### Result
+
+Python compilation and shell syntax are locally checkable; cluster pytest must
+be rerun after pulling this change.
+
+### Decisions / assumptions
+
+- No wall-time claim is made before observing cluster throughput. Runtime scales
+  with the realized number and length of decision states.
+- Behavioral pilot needs logits only; collecting all layers there was wasteful
+  and scientifically unnecessary.
+
+### Open issues
+
+- Confirm pytest collection and the real model adapter on the cluster.
+- Use logged states/second and per-layer probe time to choose later SLURM limits.
+
+### Next step
+
+Pull on the cluster and resubmit `smoke_qwen35.slurm`.

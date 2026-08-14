@@ -14,7 +14,7 @@ def run_checks(wrapper) -> dict:
     first_tokens = wrapper.tokenize(messages)["input_ids"]
     second_tokens = wrapper.tokenize(messages)["input_ids"]
     deterministic = torch.equal(first_tokens, second_tokens)
-    baseline = wrapper.decision(messages)
+    baseline = wrapper.decision(messages, capture_hidden_states=True)
     layer = len(wrapper.layers) // 2
     captured = {}
 

@@ -6,7 +6,7 @@
 #SBATCH --mem=64G
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=gpu80
-#SBATCH --time=14:00:00
+#SBATCH --time=1:30:00
 #SBATCH --output=logs/value_bandit_qwen35_%j.out
 #SBATCH --error=logs/value_bandit_qwen35_%j.err
 

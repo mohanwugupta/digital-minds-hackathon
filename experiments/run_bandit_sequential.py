@@ -23,7 +23,7 @@ class SteeredDecisionModel:
         import torch
         from interventions.steering import build_value_direction, steer_hidden
 
-        baseline = self.model.decision(messages)
+        baseline = self.model.decision(messages, capture_hidden_states=True)
         hidden = baseline["hidden_states"][self.layer].unsqueeze(0)
         direction = build_value_direction(
             self.probe, hidden, self.neuron_indices, magnitude=self.magnitude

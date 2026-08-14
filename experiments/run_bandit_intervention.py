@@ -132,7 +132,7 @@ def main() -> None:
             )
         for source in shard["records"]:
             conversation = json.loads(source["conversation"])
-            baseline = model.decision(conversation)
+            baseline = model.decision(conversation, capture_hidden_states=True)
             hidden = baseline["hidden_states"][layer].unsqueeze(0)
             value_direction = build_value_direction(
                 probe, hidden, value_indices, magnitude=magnitude

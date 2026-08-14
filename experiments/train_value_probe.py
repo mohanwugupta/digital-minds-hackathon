@@ -4,6 +4,7 @@ import argparse
 import glob
 import json
 import os
+import time
 from typing import Dict, List
 
 from bandit.schemas import split_episode_ids
@@ -82,7 +83,9 @@ def main() -> None:
 
     summaries = []
     trained = {}
+    total_started = time.perf_counter()
     for layer in layers:
+        layer_started = time.perf_counter()
         train = layer_dataset(shards, layer, set(split.train))
         validation = layer_dataset(shards, layer, set(split.validation))
         result = fit_value_probe(
@@ -115,7 +118,12 @@ def main() -> None:
             os.path.join(args.output_dir, f"layer_{layer:02d}.pt"),
             result.probe, layer, indices, summary,
         )
-        print(f"layer {layer}: pruned validation TD MSE={validation_metrics['pruned_td_mse']:.6f}")
+        print(
+            f"layer {layer}: pruned validation TD MSE="
+            f"{validation_metrics['pruned_td_mse']:.6f}; "
+            f"runtime={time.perf_counter() - layer_started:.1f}s",
+            flush=True,
+        )
 
     best = min(summaries, key=lambda item: item["validation"]["pruned_td_mse"])
     probe, indices, _ = trained[best["layer"]]
@@ -126,6 +134,11 @@ def main() -> None:
     )
     with open(os.path.join(args.output_dir, "metrics.json"), "w", encoding="utf-8") as handle:
         json.dump({"best_layer": best["layer"], "layers": summaries}, handle, indent=2)
+    print(
+        f"probe training runtime: {time.perf_counter() - total_started:.1f}s "
+        f"for {len(layers)} layers",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":

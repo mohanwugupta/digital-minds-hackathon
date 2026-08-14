@@ -43,6 +43,9 @@ def test_layer_discovery_hook_changes_and_restores_logits():
     wrapper.tokenize = lambda messages: {"input_ids": torch.tensor([[0]])}
     assert len(discover_layers(model)) == 2
     baseline = wrapper.decision([{"role": "user", "content": "x"}])
+    captured = wrapper.decision(
+        [{"role": "user", "content": "x"}], capture_hidden_states=True
+    )
     steered = wrapper.decision(
         [{"role": "user", "content": "x"}], layer=0,
         transform=lambda hidden: hidden + torch.tensor([[0.0, 2.0, 0.0]])
@@ -50,4 +53,5 @@ def test_layer_discovery_hook_changes_and_restores_logits():
     restored = wrapper.decision([{"role": "user", "content": "x"}])
     assert steered["logit_B"] != baseline["logit_B"]
     assert restored["logit_B"] == baseline["logit_B"]
-
+    assert "hidden_states" not in baseline
+    assert len(captured["hidden_states"]) == 2

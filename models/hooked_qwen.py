@@ -226,7 +226,10 @@ class HookedQwen:
         for index, module in enumerate(self.layers):
             def capture(_module, _inputs, output, position=index):
                 hidden = output[0] if isinstance(output, (tuple, list)) else output
-                captured[position] = hidden[0, -1].detach().float().cpu()
+                # Clone only the final vector on-device. A view would retain the
+                # full sequence tensor; copying each layer to CPU here would
+                # force 32 separate device synchronizations on Qwen3.5.
+                captured[position] = hidden[0, -1].detach().clone()
 
             handles.append(module.register_forward_hook(capture))
         try:
@@ -235,21 +238,43 @@ class HookedQwen:
             for handle in handles:
                 handle.remove()
 
-    def forward(self, messages: List[dict], layer: Optional[int] = None, transform=None):
+    def forward(
+        self,
+        messages: List[dict],
+        layer: Optional[int] = None,
+        transform=None,
+        *,
+        capture_hidden_states: bool = False,
+    ):
         import torch
 
         inputs = self._to_model_device(self.tokenize(messages))
         context = self.intervention(layer, transform) if transform is not None else _nullcontext()
         with torch.inference_mode(), context:
-            # Hooks retain only one final-position vector per layer. Requesting
-            # output_hidden_states would keep sequence-wide tensors alive and is
-            # unnecessary for this experiment.
-            with self.capture_final_states() as hidden_states:
+            if capture_hidden_states:
+                # Hooks retain only one final-position vector per layer.
+                with self.capture_final_states() as hidden_states:
+                    outputs = self.model(
+                        **inputs, output_hidden_states=False, use_cache=False
+                    )
+                outputs.hidden_states = tuple(
+                    state.float().cpu() for state in hidden_states
+                )
+            else:
                 outputs = self.model(**inputs, output_hidden_states=False, use_cache=False)
-        outputs.hidden_states = tuple(hidden_states)
+                # Some test doubles or model wrappers may populate this despite
+                # output_hidden_states=False. Keep the public contract explicit.
+                outputs.hidden_states = None
         return outputs
 
-    def decision(self, messages: List[dict], layer: Optional[int] = None, transform=None) -> dict:
+    def decision(
+        self,
+        messages: List[dict],
+        layer: Optional[int] = None,
+        transform=None,
+        *,
+        capture_hidden_states: bool = False,
+    ) -> dict:
         import torch
 
         if not self._chat_actions_verified and hasattr(self.tokenizer, "apply_chat_template"):
@@ -258,7 +283,12 @@ class HookedQwen:
             )
             self.action_token_ids = dict(zip("ABC", display_ids.values()))
             self._chat_actions_verified = True
-        outputs = self.forward(messages, layer=layer, transform=transform)
+        outputs = self.forward(
+            messages,
+            layer=layer,
+            transform=transform,
+            capture_hidden_states=capture_hidden_states,
+        )
         last_logits = outputs.logits[0, -1]
         selected = {
             label: float(last_logits[token_id].detach().float().cpu())

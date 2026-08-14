@@ -4,6 +4,7 @@ import argparse
 import csv
 import os
 import random
+import time
 from itertools import product
 from typing import Iterable, List
 
@@ -134,18 +135,27 @@ def main() -> None:
         args.model, revision=args.revision, local_files_only=not args.online
     )
     done = completed_episode_ids(args.output)
+    started = time.perf_counter()
+    episodes_run = 0
+    states_run = 0
     for index, (p_a, p_b, seed, action_seed) in enumerate(episode_conditions(args.episodes, args.seed), 1):
         episode_id = f"seed-{seed}-pa-{p_a:.2f}-pb-{p_b:.2f}"
         if episode_id in done:
             continue
-        append_records_csv(
-            args.output,
-            run_episode(
-                model, p_a, p_b, seed=seed, action_seed=action_seed,
-                max_decisions=args.max_decisions,
-            ),
+        records = run_episode(
+            model, p_a, p_b, seed=seed, action_seed=action_seed,
+            max_decisions=args.max_decisions,
         )
+        append_records_csv(args.output, records)
+        episodes_run += 1
+        states_run += len(records)
         print(f"completed {index}/{args.episodes}: {episode_id}", flush=True)
+    elapsed = time.perf_counter() - started
+    print(
+        f"runtime: {episodes_run} new episodes, {states_run} decision states, "
+        f"{elapsed:.1f}s total, {states_run / elapsed if elapsed else 0:.2f} states/s",
+        flush=True,
+    )
     save_run_metadata(args.output + ".metadata.json", vars(args), model)
 
 
