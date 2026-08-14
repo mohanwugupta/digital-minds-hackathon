@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="55.0" y="45.0" class="title" text-anchor="start">When does Qwen3.5-4B quit the bandit?</text>
+<text x="55.0" y="70.0" class="subtitle" text-anchor="start">Behavioral pilot: 200 episodes; horizon endings treated as right-censored</text>
+<text x="45.0" y="113.0" class="panel" text-anchor="start">A. Persistence curves by reward condition</text>
+<line x1="107.0" y1="467.0" x2="717.0" y2="467.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="471.0" class="axis" text-anchor="end">0</text>
+<line x1="107.0" y1="384.5" x2="717.0" y2="384.5" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="388.5" class="axis" text-anchor="end">.25</text>
+<line x1="107.0" y1="302.0" x2="717.0" y2="302.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="306.0" class="axis" text-anchor="end">.50</text>
+<line x1="107.0" y1="219.5" x2="717.0" y2="219.5" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="223.5" class="axis" text-anchor="end">.75</text>
+<line x1="107.0" y1="137.0" x2="717.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="141.0" class="axis" text-anchor="end">1</text>
+<line x1="107.0" y1="467.0" x2="107.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="107.0" y="487.0" class="axis" text-anchor="middle">1</text>
+<line x1="131.6" y1="467.0" x2="131.6" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="131.6" y="487.0" class="axis" text-anchor="middle">5</text>
+<line x1="162.5" y1="467.0" x2="162.5" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="162.5" y="487.0" class="axis" text-anchor="middle">10</text>
+<line x1="224.1" y1="467.0" x2="224.1" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="224.1" y="487.0" class="axis" text-anchor="middle">20</text>
+<line x1="408.9" y1="467.0" x2="408.9" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="408.9" y="487.0" class="axis" text-anchor="middle">50</text>
+<line x1="717.0" y1="467.0" x2="717.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="717.0" y="487.0" class="axis" text-anchor="middle">100</text>
+<line x1="107.0" y1="137.0" x2="107.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="467.0" x2="717.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="412.0" y="510.0" class="axis" text-anchor="middle">Decision</text>
+<text x="60.0" y="302.0" class="axis" text-anchor="middle" transform="rotate(-90 60 302.0)">Proportion not yet quit</text>
+<polyline points="107.0,143.6 113.2,183.2 119.3,222.8 125.5,288.8 131.6,321.8 137.8,335.0 144.0,374.6 150.1,381.2 156.3,387.8 162.5,387.8 168.6,387.8 174.8,394.4 180.9,394.4 187.1,394.4 193.3,394.4 199.4,401.0 205.6,407.6 211.7,414.2 217.9,420.8 224.1,434.0 230.2,434.0 236.4,434.0 242.6,434.0 248.7,434.0 254.9,434.0 261.0,434.0 267.2,434.0 273.4,434.0 279.5,434.0 285.7,434.0 291.8,434.0 298.0,434.0 304.2,434.0 310.3,434.0 316.5,434.0 322.7,434.0 328.8,434.0 335.0,434.0 341.1,434.0 347.3,434.0 353.5,434.0 359.6,434.0 365.8,434.0 371.9,434.0 378.1,434.0 384.3,434.0 390.4,434.0 396.6,434.0 402.8,434.0 408.9,434.0 415.1,434.0 421.2,434.0 427.4,434.0 433.6,434.0 439.7,434.0 445.9,434.0 452.1,434.0 458.2,434.0 464.4,434.0 470.5,434.0 476.7,434.0 482.9,434.0 489.0,434.0 495.2,434.0 501.3,434.0 507.5,434.0 513.7,434.0 519.8,434.0 526.0,434.0 532.2,434.0 538.3,434.0 544.5,434.0 550.6,434.0 556.8,434.0 563.0,434.0 569.1,434.0 575.3,434.0 581.4,434.0 587.6,434.0 593.8,434.0 599.9,434.0 606.1,434.0 612.3,440.6 618.4,440.6 624.6,440.6 630.7,440.6 636.9,440.6 643.1,440.6 649.2,440.6 655.4,440.6 661.5,440.6 667.7,447.2 673.9,447.2 680.0,447.2 686.2,447.2 692.4,447.2 698.5,447.2 704.7,447.2 710.8,447.2 717.0,447.2" fill="none" stroke="#D55E00" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="107.0,150.2 113.2,156.8 119.3,206.3 125.5,255.8 131.6,318.5 137.8,338.3 144.0,354.8 150.1,358.1 156.3,364.7 162.5,371.3 168.6,381.2 174.8,387.8 180.9,391.1 187.1,397.7 193.3,397.7 199.4,397.7 205.6,401.0 211.7,401.0 217.9,404.3 224.1,404.3 230.2,404.3 236.4,404.3 242.6,407.6 248.7,407.6 254.9,410.9 261.0,410.9 267.2,410.9 273.4,410.9 279.5,410.9 285.7,414.2 291.8,414.2 298.0,414.2 304.2,414.2 310.3,414.2 316.5,414.2 322.7,414.2 328.8,414.2 335.0,417.5 341.1,417.5 347.3,417.5 353.5,417.5 359.6,417.5 365.8,417.5 371.9,417.5 378.1,417.5 384.3,417.5 390.4,417.5 396.6,417.5 402.8,417.5 408.9,417.5 415.1,417.5 421.2,417.5 427.4,417.5 433.6,417.5 439.7,420.8 445.9,420.8 452.1,420.8 458.2,420.8 464.4,420.8 470.5,420.8 476.7,420.8 482.9,420.8 489.0,424.1 495.2,424.1 501.3,424.1 507.5,424.1 513.7,424.1 519.8,424.1 526.0,424.1 532.2,424.1 538.3,424.1 544.5,424.1 550.6,424.1 556.8,424.1 563.0,424.1 569.1,424.1 575.3,424.1 581.4,424.1 587.6,424.1 593.8,424.1 599.9,424.1 606.1,424.1 612.3,424.1 618.4,424.1 624.6,424.1 630.7,424.1 636.9,424.1 643.1,424.1 649.2,424.1 655.4,424.1 661.5,427.4 667.7,427.4 673.9,427.4 680.0,427.4 686.2,427.4 692.4,427.4 698.5,427.4 704.7,427.4 710.8,427.4 717.0,427.4" fill="none" stroke="#0072B2" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="107.0,143.6 113.2,150.2 119.3,170.0 125.5,196.4 131.6,249.2 137.8,275.6 144.0,295.4 150.1,328.4 156.3,354.8 162.5,354.8 168.6,361.4 174.8,368.0 180.9,368.0 187.1,381.2 193.3,387.8 199.4,394.4 205.6,401.0 211.7,401.0 217.9,407.6 224.1,407.6 230.2,414.2 236.4,414.2 242.6,414.2 248.7,414.2 254.9,414.2 261.0,414.2 267.2,414.2 273.4,414.2 279.5,414.2 285.7,414.2 291.8,414.2 298.0,420.8 304.2,420.8 310.3,420.8 316.5,420.8 322.7,420.8 328.8,420.8 335.0,420.8 341.1,427.4 347.3,427.4 353.5,427.4 359.6,427.4 365.8,427.4 371.9,427.4 378.1,427.4 384.3,427.4 390.4,427.4 396.6,427.4 402.8,427.4 408.9,427.4 415.1,427.4 421.2,427.4 427.4,427.4 433.6,427.4 439.7,427.4 445.9,427.4 452.1,427.4 458.2,427.4 464.4,434.0 470.5,434.0 476.7,434.0 482.9,434.0 489.0,434.0 495.2,434.0 501.3,434.0 507.5,434.0 513.7,434.0 519.8,434.0 526.0,434.0 532.2,434.0 538.3,434.0 544.5,434.0 550.6,434.0 556.8,434.0 563.0,434.0 569.1,434.0 575.3,434.0 581.4,434.0 587.6,434.0 593.8,434.0 599.9,434.0 606.1,434.0 612.3,434.0 618.4,434.0 624.6,434.0 630.7,434.0 636.9,434.0 643.1,434.0 649.2,434.0 655.4,434.0 661.5,434.0 667.7,434.0 673.9,434.0 680.0,434.0 686.2,434.0 692.4,434.0 698.5,434.0 704.7,434.0 710.8,434.0 717.0,434.0" fill="none" stroke="#009E73" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="119.0" y1="155.0" x2="141.0" y2="155.0" stroke="#D55E00" stroke-width="3"/>
+<text x="147.0" y="159.0" class="legend" text-anchor="start">Both negative</text>
+<line x1="264.0" y1="155.0" x2="286.0" y2="155.0" stroke="#0072B2" stroke-width="3"/>
+<text x="292.0" y="159.0" class="legend" text-anchor="start">One positive</text>
+<line x1="409.0" y1="155.0" x2="431.0" y2="155.0" stroke="#009E73" stroke-width="3"/>
+<text x="437.0" y="159.0" class="legend" text-anchor="start">Both positive</text>
+<text x="760.0" y="113.0" class="panel" text-anchor="start">B. Discrete quit hazard peaks at decisions 4-5</text>
+<line x1="822.0" y1="467.0" x2="1432.0" y2="467.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="471.0" class="axis" text-anchor="end">0</text>
+<line x1="822.0" y1="401.0" x2="1432.0" y2="401.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="405.0" class="axis" text-anchor="end">.05</text>
+<line x1="822.0" y1="335.0" x2="1432.0" y2="335.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="339.0" class="axis" text-anchor="end">.10</text>
+<line x1="822.0" y1="269.0" x2="1432.0" y2="269.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="273.0" class="axis" text-anchor="end">.15</text>
+<line x1="822.0" y1="203.0" x2="1432.0" y2="203.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="207.0" class="axis" text-anchor="end">.20</text>
+<line x1="822.0" y1="137.0" x2="1432.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="141.0" class="axis" text-anchor="end">.25</text>
+<line x1="857.9" y1="467.0" x2="857.9" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="857.9" y="487.0" class="axis" text-anchor="middle">1</text>
+<line x1="947.6" y1="467.0" x2="947.6" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="947.6" y="487.0" class="axis" text-anchor="middle">2-3</text>
+<line x1="1037.3" y1="467.0" x2="1037.3" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1037.3" y="487.0" class="axis" text-anchor="middle">4-5</text>
+<line x1="1127.0" y1="467.0" x2="1127.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1127.0" y="487.0" class="axis" text-anchor="middle">6-10</text>
+<line x1="1216.7" y1="467.0" x2="1216.7" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1216.7" y="487.0" class="axis" text-anchor="middle">11-20</text>
+<line x1="1306.4" y1="467.0" x2="1306.4" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1306.4" y="487.0" class="axis" text-anchor="middle">21-50</text>
+<line x1="1396.1" y1="467.0" x2="1396.1" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1396.1" y="487.0" class="axis" text-anchor="middle">51-100</text>
+<line x1="822.0" y1="137.0" x2="822.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="822.0" y1="467.0" x2="1432.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1127.0" y="510.0" class="axis" text-anchor="middle">Decision interval</text>
+<text x="775.0" y="302.0" class="axis" text-anchor="middle" transform="rotate(-90 775 302.0)">STOP probability per state</text>
+<polyline points="857.9,427.4 947.6,352.1 1037.3,192.2 1127.0,324.5 1216.7,394.3 1306.4,456.1 1396.1,460.1" fill="none" stroke="#7A5195" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="857.9,447.6 947.6,350.5 1037.3,250.5 1127.0,312.1 1216.7,415.6 1306.4,449.0 1396.1,460.8" fill="none" stroke="#E69F00" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="857.9" cy="427.4" r="4.0" fill="#7A5195"/>
+<circle cx="947.6" cy="352.1" r="4.0" fill="#7A5195"/>
+<circle cx="1037.3" cy="192.2" r="4.0" fill="#7A5195"/>
+<circle cx="1127.0" cy="324.5" r="4.0" fill="#7A5195"/>
+<circle cx="1216.7" cy="394.3" r="4.0" fill="#7A5195"/>
+<circle cx="1306.4" cy="456.1" r="4.0" fill="#7A5195"/>
+<circle cx="1396.1" cy="460.1" r="4.0" fill="#7A5195"/>
+<circle cx="857.9" cy="447.6" r="4.0" fill="#E69F00"/>
+<circle cx="947.6" cy="350.5" r="4.0" fill="#E69F00"/>
+<circle cx="1037.3" cy="250.5" r="4.0" fill="#E69F00"/>
+<circle cx="1127.0" cy="312.1" r="4.0" fill="#E69F00"/>
+<circle cx="1216.7" cy="415.6" r="4.0" fill="#E69F00"/>
+<circle cx="1306.4" cy="449.0" r="4.0" fill="#E69F00"/>
+<circle cx="1396.1" cy="460.8" r="4.0" fill="#E69F00"/>
+<line x1="834.0" y1="155.0" x2="856.0" y2="155.0" stroke="#7A5195" stroke-width="3"/>
+<text x="862.0" y="159.0" class="legend" text-anchor="start">Observed STOP</text>
+<line x1="979.0" y1="155.0" x2="1001.0" y2="155.0" stroke="#E69F00" stroke-width="3"/>
+<text x="1007.0" y="159.0" class="legend" text-anchor="start">Mean model P(STOP)</text>
+<text x="45.0" y="583.0" class="panel" text-anchor="start">C. Quitting rises with consecutive losses</text>
+<line x1="107.0" y1="937.0" x2="717.0" y2="937.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="941.0" class="axis" text-anchor="end">0</text>
+<line x1="107.0" y1="871.0" x2="717.0" y2="871.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="875.0" class="axis" text-anchor="end">.03</text>
+<line x1="107.0" y1="805.0" x2="717.0" y2="805.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="809.0" class="axis" text-anchor="end">.06</text>
+<line x1="107.0" y1="739.0" x2="717.0" y2="739.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="743.0" class="axis" text-anchor="end">.09</text>
+<line x1="107.0" y1="673.0" x2="717.0" y2="673.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="677.0" class="axis" text-anchor="end">.12</text>
+<line x1="107.0" y1="607.0" x2="717.0" y2="607.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="611.0" class="axis" text-anchor="end">.15</text>
+<line x1="194.1" y1="937.0" x2="194.1" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="194.1" y="957.0" class="axis" text-anchor="middle">0</text>
+<line x1="339.4" y1="937.0" x2="339.4" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="339.4" y="957.0" class="axis" text-anchor="middle">1</text>
+<line x1="484.6" y1="937.0" x2="484.6" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="484.6" y="957.0" class="axis" text-anchor="middle">2</text>
+<line x1="629.9" y1="937.0" x2="629.9" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="629.9" y="957.0" class="axis" text-anchor="middle">3+</text>
+<line x1="107.0" y1="607.0" x2="107.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="937.0" x2="717.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="412.0" y="980.0" class="axis" text-anchor="middle">Consecutive losses before decision</text>
+<text x="60.0" y="772.0" class="axis" text-anchor="middle" transform="rotate(-90 60 772.0)">STOP probability per state</text>
+<rect x="154.0" y="896.2" width="38.1" height="40.8" fill="#7A5195" fill-opacity="0.9" stroke="none"/>
+<rect x="196.1" y="896.3" width="38.1" height="40.7" fill="#E69F00" fill-opacity="0.9" stroke="none"/>
+<rect x="299.3" y="851.4" width="38.1" height="85.6" fill="#7A5195" fill-opacity="0.9" stroke="none"/>
+<rect x="341.4" y="857.5" width="38.1" height="79.5" fill="#E69F00" fill-opacity="0.9" stroke="none"/>
+<rect x="444.5" y="730.8" width="38.1" height="206.2" fill="#7A5195" fill-opacity="0.9" stroke="none"/>
+<rect x="486.6" y="709.4" width="38.1" height="227.6" fill="#E69F00" fill-opacity="0.9" stroke="none"/>
+<rect x="589.7" y="638.4" width="38.1" height="298.6" fill="#7A5195" fill-opacity="0.9" stroke="none"/>
+<rect x="631.9" y="712.7" width="38.1" height="224.3" fill="#E69F00" fill-opacity="0.9" stroke="none"/>
+<line x1="119.0" y1="625.0" x2="141.0" y2="625.0" stroke="#7A5195" stroke-width="3"/>
+<text x="147.0" y="629.0" class="legend" text-anchor="start">Observed STOP</text>
+<line x1="264.0" y1="625.0" x2="286.0" y2="625.0" stroke="#E69F00" stroke-width="3"/>
+<text x="292.0" y="629.0" class="legend" text-anchor="start">Mean model P(STOP)</text>
+<text x="760.0" y="583.0" class="panel" text-anchor="start">D. STOP probability ramps immediately before quitting</text>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="937.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="941.0" class="axis" text-anchor="end">0</text>
+<line x1="822.0" y1="871.0" x2="1432.0" y2="871.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="875.0" class="axis" text-anchor="end">.05</text>
+<line x1="822.0" y1="805.0" x2="1432.0" y2="805.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="809.0" class="axis" text-anchor="end">.10</text>
+<line x1="822.0" y1="739.0" x2="1432.0" y2="739.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="743.0" class="axis" text-anchor="end">.15</text>
+<line x1="822.0" y1="673.0" x2="1432.0" y2="673.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="677.0" class="axis" text-anchor="end">.20</text>
+<line x1="822.0" y1="607.0" x2="1432.0" y2="607.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="611.0" class="axis" text-anchor="end">.25</text>
+<line x1="822.0" y1="937.0" x2="822.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="822.0" y="957.0" class="axis" text-anchor="middle">-10</text>
+<line x1="944.0" y1="937.0" x2="944.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="944.0" y="957.0" class="axis" text-anchor="middle">-8</text>
+<line x1="1066.0" y1="937.0" x2="1066.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1066.0" y="957.0" class="axis" text-anchor="middle">-6</text>
+<line x1="1188.0" y1="937.0" x2="1188.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1188.0" y="957.0" class="axis" text-anchor="middle">-4</text>
+<line x1="1310.0" y1="937.0" x2="1310.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1310.0" y="957.0" class="axis" text-anchor="middle">-2</text>
+<line x1="1432.0" y1="937.0" x2="1432.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1432.0" y="957.0" class="axis" text-anchor="middle">0</text>
+<line x1="822.0" y1="607.0" x2="822.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1127.0" y="980.0" class="axis" text-anchor="middle">Decisions relative to STOP</text>
+<text x="775.0" y="772.0" class="axis" text-anchor="middle" transform="rotate(-90 775 772.0)">Model P(STOP)</text>
+<polyline points="822.0,881.2 883.0,854.0 944.0,870.5 1005.0,866.7 1066.0,866.4 1127.0,850.3 1188.0,871.0 1249.0,868.3 1310.0,829.5 1371.0,749.6 1432.0,635.0" fill="none" stroke="#7A5195" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="822.0,910.5 883.0,897.4 944.0,897.8 1005.0,901.6 1066.0,909.5 1127.0,908.9 1188.0,909.5 1249.0,909.5 1310.0,898.6 1371.0,851.9 1432.0,685.1" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="822.0" cy="881.2" r="4.0" fill="#7A5195"/>
+<circle cx="883.0" cy="854.0" r="4.0" fill="#7A5195"/>
+<circle cx="944.0" cy="870.5" r="4.0" fill="#7A5195"/>
+<circle cx="1005.0" cy="866.7" r="4.0" fill="#7A5195"/>
+<circle cx="1066.0" cy="866.4" r="4.0" fill="#7A5195"/>
+<circle cx="1127.0" cy="850.3" r="4.0" fill="#7A5195"/>
+<circle cx="1188.0" cy="871.0" r="4.0" fill="#7A5195"/>
+<circle cx="1249.0" cy="868.3" r="4.0" fill="#7A5195"/>
+<circle cx="1310.0" cy="829.5" r="4.0" fill="#7A5195"/>
+<circle cx="1371.0" cy="749.6" r="4.0" fill="#7A5195"/>
+<circle cx="1432.0" cy="635.0" r="4.0" fill="#7A5195"/>
+<line x1="834.0" y1="625.0" x2="856.0" y2="625.0" stroke="#7A5195" stroke-width="3"/>
+<text x="862.0" y="629.0" class="legend" text-anchor="start">Mean</text>
+<line x1="979.0" y1="625.0" x2="1001.0" y2="625.0" stroke="#6B7280" stroke-width="3"/>
+<text x="1007.0" y="629.0" class="legend" text-anchor="start">Median</text>
+<text x="1450.0" y="1030.0" class="note" text-anchor="end">Descriptive pilot estimates; state-level panels contain repeated observations within episode.</text>
+</svg>
