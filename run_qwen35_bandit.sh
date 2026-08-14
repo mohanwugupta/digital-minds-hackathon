@@ -2,11 +2,11 @@
 #SBATCH --job-name=value_bandit_qwen35
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=12
-#SBATCH --mem=64G
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=48G
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=gpu80
-#SBATCH --time=1:30:00
+#SBATCH --time=0:45:00
 #SBATCH --output=logs/value_bandit_qwen35_%j.out
 #SBATCH --error=logs/value_bandit_qwen35_%j.err
 
