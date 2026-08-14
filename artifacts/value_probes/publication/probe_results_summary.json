@@ -1,0 +1,532 @@
+{
+  "calibration": {
+    "layer": 17,
+    "magnitude": 0.01,
+    "neuron_indices": [
+      97,
+      1952,
+      87,
+      2376,
+      2263,
+      2537,
+      2182,
+      230,
+      1419,
+      865,
+      1108,
+      920,
+      957,
+      134,
+      1673,
+      1504,
+      1321,
+      2448,
+      1155,
+      600,
+      897,
+      981,
+      223,
+      1613,
+      1790,
+      15
+    ],
+    "ordered_fraction": 1.0,
+    "probe_path": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/artifacts/value_probes/frozen_best.pt",
+    "relative_rms": 0.00019764236640185118,
+    "selected_fraction": 0.01015625,
+    "validation_episode_count": 76
+  },
+  "exact_history_matching": {
+    "eligible_strata": 147,
+    "episode_clusters": 55,
+    "joint_older_history_and_probe": {
+      "full": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11454023590747614,
+            "normal_approximation_p_value": 0.09700505634825055,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.19008522445368614,
+            "z_value": -1.6595497900600982
+          },
+          "probe_value_full": {
+            "cluster_robust_standard_error": 0.09255928558811681,
+            "normal_approximation_p_value": 0.5041833820053915,
+            "predictor_scale": 2.7269794714249818,
+            "standardized_beta": 0.06182238334434484,
+            "z_value": 0.6679220021149546
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.02961633186759738,
+        "states": 1180
+      },
+      "sparse": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11309598041987501,
+            "normal_approximation_p_value": 0.14408408704201786,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.16520494306323597,
+            "z_value": -1.4607499086165892
+          },
+          "probe_value": {
+            "cluster_robust_standard_error": 0.07815281303628764,
+            "normal_approximation_p_value": 0.7902839766356502,
+            "predictor_scale": 0.03765694003230873,
+            "standardized_beta": 0.020784105405020216,
+            "z_value": 0.265941872052255
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.026960426544827665,
+        "states": 1180
+      }
+    },
+    "matched_states": 1180,
+    "matching_variables": [
+      "round",
+      "previous_outcome",
+      "loss_streak"
+    ],
+    "minimum_stratum_size": 4,
+    "older_history_measure": "cumulative_score minus previous_outcome",
+    "simple_regressions": {
+      "full_probe_to_persistence": {
+        "coefficients": {
+          "probe_value_full": {
+            "cluster_robust_standard_error": 0.09246002593151888,
+            "normal_approximation_p_value": 0.8137004654549874,
+            "predictor_scale": 2.7269794714249818,
+            "standardized_beta": -0.02178865857233482,
+            "z_value": -0.2356549044067188
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.00047474564238192407,
+        "states": 1180
+      },
+      "older_history_to_full_probe": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.10090364908824286,
+            "normal_approximation_p_value": 1.3052914377724538e-05,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": 0.43986081588919784,
+            "z_value": 4.359216141970526
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 2.7269794714249818,
+        "r_squared": 0.19347753735471063,
+        "states": 1180
+      },
+      "older_history_to_persistence": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11120168658268965,
+            "normal_approximation_p_value": 0.14296628895804525,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.16289198047562786,
+            "z_value": -1.4648337222340713
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.026533797303272433,
+        "states": 1180
+      },
+      "older_history_to_sparse_probe": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.1037756206119547,
+            "normal_approximation_p_value": 0.2835568962804891,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": 0.11128516443384769,
+            "z_value": 1.0723632754746244
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.03765694003230873,
+        "r_squared": 0.012384387823068499,
+        "states": 1180
+      },
+      "sparse_probe_to_persistence": {
+        "coefficients": {
+          "probe_value": {
+            "cluster_robust_standard_error": 0.07935959866451252,
+            "normal_approximation_p_value": 0.9758815579261393,
+            "predictor_scale": 0.03765694003230873,
+            "standardized_beta": 0.0023992461509435648,
+            "z_value": 0.0302325892685801
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 5.756382092991785e-06,
+        "states": 1180
+      }
+    },
+    "within_stratum_deciles": [
+      {
+        "decile": 1,
+        "persistence_logit": 0.2540351925373862,
+        "prior_score": -1.9850487704079935,
+        "probe_value": -0.15524149159555328,
+        "probe_value_full": -0.7936737024004655,
+        "states": 118
+      },
+      {
+        "decile": 2,
+        "persistence_logit": 0.3662869708023699,
+        "prior_score": -0.8777686810760121,
+        "probe_value": -0.380926030863418,
+        "probe_value_full": -0.8063882789897494,
+        "states": 118
+      },
+      {
+        "decile": 3,
+        "persistence_logit": -0.2777498490505462,
+        "prior_score": -0.38772175985444585,
+        "probe_value": -0.5151867635415949,
+        "probe_value_full": -0.641247044146295,
+        "states": 118
+      },
+      {
+        "decile": 4,
+        "persistence_logit": 0.08756346753327975,
+        "prior_score": -0.1467761395238499,
+        "probe_value": -0.2027030320007276,
+        "probe_value_full": -0.2932939092178235,
+        "states": 118
+      },
+      {
+        "decile": 5,
+        "persistence_logit": 0.08331108669493481,
+        "prior_score": -0.026977744334300235,
+        "probe_value": -0.021299714896502665,
+        "probe_value_full": 0.014486023373062044,
+        "states": 118
+      },
+      {
+        "decile": 6,
+        "persistence_logit": -0.030190002513233172,
+        "prior_score": 0.07700349588252618,
+        "probe_value": 0.21945508034183747,
+        "probe_value_full": 0.2526754199555117,
+        "states": 118
+      },
+      {
+        "decile": 7,
+        "persistence_logit": 0.11326013883737782,
+        "prior_score": 0.19319052197707381,
+        "probe_value": 0.5715238542633704,
+        "probe_value_full": 0.5678294655317988,
+        "states": 118
+      },
+      {
+        "decile": 8,
+        "persistence_logit": -0.028854695801952397,
+        "prior_score": 0.4578914955018089,
+        "probe_value": 0.3995568260509523,
+        "probe_value_full": 0.6103036323098971,
+        "states": 118
+      },
+      {
+        "decile": 9,
+        "persistence_logit": -0.06501239605899219,
+        "prior_score": 0.9268634465846752,
+        "probe_value": 0.173589507239436,
+        "probe_value_full": 0.6182276953986149,
+        "states": 118
+      },
+      {
+        "decile": 10,
+        "persistence_logit": -0.5026499129806247,
+        "prior_score": 1.7693441352505175,
+        "probe_value": -0.08876823499779976,
+        "probe_value_full": 0.4710806981854488,
+        "states": 118
+      }
+    ]
+  },
+  "interpretation": {
+    "causal_value_claim_ready": false,
+    "integrated_value_supported": false,
+    "reason": "The probe is dominated by round/history covariation, the full probe adds no held-out persistence signal after controls, the sparse residual effect is small and negative, and all layer training runs selected epoch one before TD loss deteriorated.",
+    "recommended_status": "pause confirmatory value steering"
+  },
+  "mechanism": {
+    "control_r_squared": 0.7529147675152958,
+    "evidence_flags": {
+      "integrated_value_pattern_supported": false,
+      "probe_adds_beyond_recent_history": false,
+      "probe_adds_within_last_loss_states": false,
+      "probe_encodes_history_within_last_loss_states": false
+    },
+    "full_probe": {
+      "augmented_r_squared": 0.7532254988483167,
+      "cluster_robust_standard_error": 0.051597588289649325,
+      "control_r_squared": 0.7529147675152958,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.00031073133302084166,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 0.514038179991854,
+      "outcome_scale": 1.4382939340046936,
+      "partial_correlation": -0.035462482067973644,
+      "predictor_scale": 4.866308411003941,
+      "predictor_standardized_beta": -0.03367066623623126,
+      "probe_standardized_beta": -0.03367066623623126,
+      "states": 1800,
+      "z_value": -0.6525627912532828
+    },
+    "history_within_loss": {
+      "augmented_r_squared": 0.7581697859712581,
+      "cluster_robust_standard_error": 0.08451123426332252,
+      "control_r_squared": 0.7436996315420614,
+      "controls": [
+        "intercept",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.014470154429196636,
+      "episode_clusters": 72,
+      "normal_approximation_p_value": 0.07031238274236655,
+      "outcome_scale": 0.06820411080714806,
+      "partial_correlation": 0.23760849731847286,
+      "predictor_scale": 35.469221925072105,
+      "predictor_standardized_beta": 0.15295629084676343,
+      "states": 809,
+      "z_value": 1.8098929944648288
+    },
+    "primary_sparse": {
+      "augmented_r_squared": 0.7556173605567214,
+      "cluster_robust_standard_error": 0.040188734785749705,
+      "control_r_squared": 0.7529147675152958,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.002702593041425505,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 0.014008803912262955,
+      "outcome_scale": 1.4382939340046936,
+      "partial_correlation": -0.10458440554617633,
+      "predictor_scale": 0.06980387676362129,
+      "predictor_standardized_beta": -0.0987452308723904,
+      "probe_standardized_beta": -0.0987452308723904,
+      "states": 1800,
+      "z_value": -2.457037560371368
+    },
+    "test_episodes": 78,
+    "test_states": 1800,
+    "with_score_control": {
+      "augmented_r_squared": 0.772239425516577,
+      "cluster_robust_standard_error": 0.04277880858516528,
+      "control_r_squared": 0.7710553952902722,
+      "controls": [
+        "intercept",
+        "previous_outcome",
+        "initial_state",
+        "loss_streak",
+        "log_round",
+        "log_round_squared",
+        "cumulative_score"
+      ],
+      "delta_r_squared": 0.0011840302263047553,
+      "episode_clusters": 78,
+      "normal_approximation_p_value": 0.12319816960736384,
+      "outcome_scale": 1.4382939340046936,
+      "partial_correlation": -0.07191445407738364,
+      "predictor_scale": 0.06980387676362129,
+      "predictor_standardized_beta": -0.0659430010308037,
+      "probe_standardized_beta": -0.0659430010308037,
+      "states": 1800,
+      "z_value": -1.5414875545101374
+    },
+    "within_gain": {
+      "augmented_r_squared": 0.7321074359319629,
+      "cluster_robust_standard_error": 0.05037170747436799,
+      "control_r_squared": 0.7298786278935012,
+      "controls": [
+        "intercept",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.002228808038461705,
+      "episode_clusters": 57,
+      "normal_approximation_p_value": 0.14978568072090687,
+      "outcome_scale": 1.1884705153692283,
+      "partial_correlation": -0.09083576104333671,
+      "predictor_scale": 0.06092221266380714,
+      "predictor_standardized_beta": -0.07254981111024202,
+      "probe_standardized_beta": -0.07254981111024202,
+      "states": 913,
+      "z_value": -1.4402888992230314
+    },
+    "within_loss": {
+      "augmented_r_squared": 0.742464092379454,
+      "cluster_robust_standard_error": 0.06308325376993715,
+      "control_r_squared": 0.7342073256613426,
+      "controls": [
+        "intercept",
+        "loss_streak",
+        "log_round",
+        "log_round_squared"
+      ],
+      "delta_r_squared": 0.008256766718111375,
+      "episode_clusters": 72,
+      "normal_approximation_p_value": 0.0044380344945134965,
+      "outcome_scale": 1.5691244164222267,
+      "partial_correlation": -0.1762517767762484,
+      "predictor_scale": 0.06820411080714806,
+      "predictor_standardized_beta": -0.17948592268565094,
+      "probe_standardized_beta": -0.17948592268565094,
+      "states": 809,
+      "z_value": -2.8452229705879004
+    }
+  },
+  "probe_output_scale": {
+    "probe_value": {
+      "maximum": 0.2547076940536499,
+      "mean": 0.06804811214976426,
+      "minimum": -0.07231123745441437,
+      "standard_deviation": 0.06980387676362129
+    },
+    "probe_value_full": {
+      "maximum": 17.977554321289062,
+      "mean": 5.596933116637584,
+      "minimum": -2.8240456581115723,
+      "standard_deviation": 4.86630841100394
+    }
+  },
+  "raw_correlations": {
+    "full_probe_with_persistence": 0.6632248783917729,
+    "full_probe_with_round": 0.791157044883123,
+    "sparse_probe_with_persistence": 0.48989361039542517,
+    "sparse_probe_with_round": 0.7176833566520685
+  },
+  "round_bins": [
+    {
+      "label": "0",
+      "persistence_logit": -0.16060806771615707,
+      "probe_value": -2.0107671446080286,
+      "probe_value_full": -1.730465441572094,
+      "states": 78
+    },
+    {
+      "label": "1\u20135",
+      "persistence_logit": -1.0773555859573354,
+      "probe_value": -1.2048221499686462,
+      "probe_value_full": -0.9061614796673156,
+      "states": 306
+    },
+    {
+      "label": "6\u201310",
+      "persistence_logit": -1.174965583253597,
+      "probe_value": -0.4309199161702051,
+      "probe_value_full": -0.7474697343837797,
+      "states": 167
+    },
+    {
+      "label": "11\u201325",
+      "persistence_logit": -0.3506075434886519,
+      "probe_value": 0.010708364609981681,
+      "probe_value_full": -0.4035418576571582,
+      "states": 336
+    },
+    {
+      "label": "26\u201350",
+      "persistence_logit": 0.37836139520217654,
+      "probe_value": 0.3938816637900606,
+      "probe_value_full": 0.34346234166253004,
+      "states": 357
+    },
+    {
+      "label": "51\u201399",
+      "persistence_logit": 0.9373140422898654,
+      "probe_value": 0.8152253177846238,
+      "probe_value_full": 0.9893222501118618,
+      "states": 556
+    }
+  ],
+  "score_bins": [
+    {
+      "label": "<0",
+      "persistence_logit": -0.6792753889115076,
+      "probe_value": -0.4475830539729273,
+      "probe_value_full": -0.6345011158868868,
+      "states": 266
+    },
+    {
+      "label": "0\u20139",
+      "persistence_logit": -0.45339971624618786,
+      "probe_value": -0.7196420156039609,
+      "probe_value_full": -0.7708806481911048,
+      "states": 561
+    },
+    {
+      "label": "10\u201329",
+      "persistence_logit": 0.06098887619938845,
+      "probe_value": 0.273355144887408,
+      "probe_value_full": 0.012440440942305423,
+      "states": 406
+    },
+    {
+      "label": "30+",
+      "persistence_logit": 0.7236031931704061,
+      "probe_value": 0.7262682086178716,
+      "probe_value_full": 1.0514824011261832,
+      "states": 567
+    }
+  ],
+  "selection": {
+    "layer": 17,
+    "layer_count": 32,
+    "layers_best_at_epoch_one": 32,
+    "neuron_count": 26,
+    "pruned_test_layer_range": 0.10957098007202148,
+    "pruned_validation_layer_range": 0.09281253814697266,
+    "test_full_td_mse": 11.593897819519043,
+    "test_pruned_td_mse": 6.373180389404297,
+    "validation_full_td_mse": 9.48533821105957,
+    "validation_gap_to_second_layer": 0.008036136627197266,
+    "validation_pruned_td_mse": 6.154775142669678,
+    "validation_test_layer_rank_correlation": 0.9204545454545454
+  },
+  "variance_decomposition": {
+    "full": {
+      "history_only_r_squared": 0.7529147675152958,
+      "joint_r_squared": 0.7532254988483167,
+      "probe_only_r_squared": 0.439867239317782,
+      "shared_probe_history": 0.4395565079847612,
+      "unexplained": 0.2467745011516833,
+      "unique_history": 0.3133582595305347,
+      "unique_probe": 0.00031073133302084166
+    },
+    "sparse": {
+      "history_only_r_squared": 0.7529147675152958,
+      "joint_r_squared": 0.7556173605567214,
+      "probe_only_r_squared": 0.23999574950626462,
+      "shared_probe_history": 0.23729315646483906,
+      "unexplained": 0.24438263944327865,
+      "unique_history": 0.5156216110504568,
+      "unique_probe": 0.002702593041425505
+    }
+  }
+}

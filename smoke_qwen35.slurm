@@ -47,7 +47,7 @@ if [ ! -d "$MODEL_PATH" ]; then
     exit 1
 fi
 
-echo "Running CPU/unit gate, including probe-mechanism regressions and artifact pipeline"
+echo "Running CPU/unit gate, including matched-history and supervised-probe regressions"
 python -m pytest -q
 
 echo "Running real-model compatibility gate"

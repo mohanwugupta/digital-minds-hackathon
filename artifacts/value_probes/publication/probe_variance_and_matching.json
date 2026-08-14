@@ -1,0 +1,239 @@
+{
+  "exact_history_matching": {
+    "eligible_strata": 147,
+    "episode_clusters": 55,
+    "joint_older_history_and_probe": {
+      "full": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11454023590747614,
+            "normal_approximation_p_value": 0.09700505634825055,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.19008522445368614,
+            "z_value": -1.6595497900600982
+          },
+          "probe_value_full": {
+            "cluster_robust_standard_error": 0.09255928558811681,
+            "normal_approximation_p_value": 0.5041833820053915,
+            "predictor_scale": 2.7269794714249818,
+            "standardized_beta": 0.06182238334434484,
+            "z_value": 0.6679220021149546
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.02961633186759738,
+        "states": 1180
+      },
+      "sparse": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11309598041987501,
+            "normal_approximation_p_value": 0.14408408704201786,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.16520494306323597,
+            "z_value": -1.4607499086165892
+          },
+          "probe_value": {
+            "cluster_robust_standard_error": 0.07815281303628764,
+            "normal_approximation_p_value": 0.7902839766356502,
+            "predictor_scale": 0.03765694003230873,
+            "standardized_beta": 0.020784105405020216,
+            "z_value": 0.265941872052255
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.026960426544827665,
+        "states": 1180
+      }
+    },
+    "matched_states": 1180,
+    "matching_variables": [
+      "round",
+      "previous_outcome",
+      "loss_streak"
+    ],
+    "minimum_stratum_size": 4,
+    "older_history_measure": "cumulative_score minus previous_outcome",
+    "simple_regressions": {
+      "full_probe_to_persistence": {
+        "coefficients": {
+          "probe_value_full": {
+            "cluster_robust_standard_error": 0.09246002593151888,
+            "normal_approximation_p_value": 0.8137004654549874,
+            "predictor_scale": 2.7269794714249818,
+            "standardized_beta": -0.02178865857233482,
+            "z_value": -0.2356549044067188
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.00047474564238192407,
+        "states": 1180
+      },
+      "older_history_to_full_probe": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.10090364908824286,
+            "normal_approximation_p_value": 1.3052914377724538e-05,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": 0.43986081588919784,
+            "z_value": 4.359216141970526
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 2.7269794714249818,
+        "r_squared": 0.19347753735471063,
+        "states": 1180
+      },
+      "older_history_to_persistence": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.11120168658268965,
+            "normal_approximation_p_value": 0.14296628895804525,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": -0.16289198047562786,
+            "z_value": -1.4648337222340713
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 0.026533797303272433,
+        "states": 1180
+      },
+      "older_history_to_sparse_probe": {
+        "coefficients": {
+          "prior_score": {
+            "cluster_robust_standard_error": 0.1037756206119547,
+            "normal_approximation_p_value": 0.2835568962804891,
+            "predictor_scale": 26.36114219312287,
+            "standardized_beta": 0.11128516443384769,
+            "z_value": 1.0723632754746244
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.03765694003230873,
+        "r_squared": 0.012384387823068499,
+        "states": 1180
+      },
+      "sparse_probe_to_persistence": {
+        "coefficients": {
+          "probe_value": {
+            "cluster_robust_standard_error": 0.07935959866451252,
+            "normal_approximation_p_value": 0.9758815579261393,
+            "predictor_scale": 0.03765694003230873,
+            "standardized_beta": 0.0023992461509435648,
+            "z_value": 0.0302325892685801
+          }
+        },
+        "episode_clusters": 55,
+        "outcome_scale": 0.5437589449771344,
+        "r_squared": 5.756382092991785e-06,
+        "states": 1180
+      }
+    },
+    "within_stratum_deciles": [
+      {
+        "decile": 1,
+        "persistence_logit": 0.2540351925373862,
+        "prior_score": -1.9850487704079935,
+        "probe_value": -0.15524149159555328,
+        "probe_value_full": -0.7936737024004655,
+        "states": 118
+      },
+      {
+        "decile": 2,
+        "persistence_logit": 0.3662869708023699,
+        "prior_score": -0.8777686810760121,
+        "probe_value": -0.380926030863418,
+        "probe_value_full": -0.8063882789897494,
+        "states": 118
+      },
+      {
+        "decile": 3,
+        "persistence_logit": -0.2777498490505462,
+        "prior_score": -0.38772175985444585,
+        "probe_value": -0.5151867635415949,
+        "probe_value_full": -0.641247044146295,
+        "states": 118
+      },
+      {
+        "decile": 4,
+        "persistence_logit": 0.08756346753327975,
+        "prior_score": -0.1467761395238499,
+        "probe_value": -0.2027030320007276,
+        "probe_value_full": -0.2932939092178235,
+        "states": 118
+      },
+      {
+        "decile": 5,
+        "persistence_logit": 0.08331108669493481,
+        "prior_score": -0.026977744334300235,
+        "probe_value": -0.021299714896502665,
+        "probe_value_full": 0.014486023373062044,
+        "states": 118
+      },
+      {
+        "decile": 6,
+        "persistence_logit": -0.030190002513233172,
+        "prior_score": 0.07700349588252618,
+        "probe_value": 0.21945508034183747,
+        "probe_value_full": 0.2526754199555117,
+        "states": 118
+      },
+      {
+        "decile": 7,
+        "persistence_logit": 0.11326013883737782,
+        "prior_score": 0.19319052197707381,
+        "probe_value": 0.5715238542633704,
+        "probe_value_full": 0.5678294655317988,
+        "states": 118
+      },
+      {
+        "decile": 8,
+        "persistence_logit": -0.028854695801952397,
+        "prior_score": 0.4578914955018089,
+        "probe_value": 0.3995568260509523,
+        "probe_value_full": 0.6103036323098971,
+        "states": 118
+      },
+      {
+        "decile": 9,
+        "persistence_logit": -0.06501239605899219,
+        "prior_score": 0.9268634465846752,
+        "probe_value": 0.173589507239436,
+        "probe_value_full": 0.6182276953986149,
+        "states": 118
+      },
+      {
+        "decile": 10,
+        "persistence_logit": -0.5026499129806247,
+        "prior_score": 1.7693441352505175,
+        "probe_value": -0.08876823499779976,
+        "probe_value_full": 0.4710806981854488,
+        "states": 118
+      }
+    ]
+  },
+  "variance_decomposition": {
+    "full": {
+      "history_only_r_squared": 0.7529147675152958,
+      "joint_r_squared": 0.7532254988483167,
+      "probe_only_r_squared": 0.439867239317782,
+      "shared_probe_history": 0.4395565079847612,
+      "unexplained": 0.2467745011516833,
+      "unique_history": 0.3133582595305347,
+      "unique_probe": 0.00031073133302084166
+    },
+    "sparse": {
+      "history_only_r_squared": 0.7529147675152958,
+      "joint_r_squared": 0.7556173605567214,
+      "probe_only_r_squared": 0.23999574950626462,
+      "shared_probe_history": 0.23729315646483906,
+      "unexplained": 0.24438263944327865,
+      "unique_history": 0.5156216110504568,
+      "unique_probe": 0.002702593041425505
+    }
+  }
+}

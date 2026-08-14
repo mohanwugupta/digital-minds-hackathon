@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="570" viewBox="0 0 1500 570">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="55.0" y="45.0" class="title" text-anchor="start">Why the raw probe–persistence association is misleading</text>
+<text x="55.0" y="70.0" class="subtitle" text-anchor="start">Held-out test states; lines are bin means after standardizing each variable over all states</text>
+<text x="45.0" y="118.0" class="panel" text-anchor="start">A. All three variables rise with round</text>
+<line x1="107.0" y1="452.0" x2="457.0" y2="452.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="456.0" class="axis" text-anchor="end">-2.2</text>
+<line x1="107.0" y1="249.0" x2="457.0" y2="249.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="253.0" class="axis" text-anchor="end">0</text>
+<line x1="107.0" y1="142.0" x2="457.0" y2="142.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="146.0" class="axis" text-anchor="end">1.1</text>
+<line x1="131.1" y1="452.0" x2="131.1" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="131.1" y="472.0" class="axis" text-anchor="middle">0</text>
+<line x1="191.5" y1="452.0" x2="191.5" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="191.5" y="472.0" class="axis" text-anchor="middle">1–5</text>
+<line x1="251.8" y1="452.0" x2="251.8" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="251.8" y="472.0" class="axis" text-anchor="middle">6–10</text>
+<line x1="312.2" y1="452.0" x2="312.2" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="312.2" y="472.0" class="axis" text-anchor="middle">11–25</text>
+<line x1="372.5" y1="452.0" x2="372.5" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="372.5" y="472.0" class="axis" text-anchor="middle">26–50</text>
+<line x1="432.9" y1="452.0" x2="432.9" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="432.9" y="472.0" class="axis" text-anchor="middle">51–99</text>
+<line x1="107.0" y1="142.0" x2="107.0" y2="452.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="452.0" x2="457.0" y2="452.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="282.0" y="495.0" class="axis" text-anchor="middle">Round bin</text>
+<text x="60.0" y="297.0" class="axis" text-anchor="middle" transform="rotate(-90 60 297.0)">Mean standardized value</text>
+<line x1="107.0" y1="249.0" x2="457.0" y2="249.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<polyline points="131.1,437.9 191.5,362.2 251.8,289.5 312.2,248.0 372.5,212.0 432.9,172.4" fill="none" stroke="#7A5195" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="131.1" cy="437.9" r="4.0" fill="#7A5195"/>
+<circle cx="191.5" cy="362.2" r="4.0" fill="#7A5195"/>
+<circle cx="251.8" cy="289.5" r="4.0" fill="#7A5195"/>
+<circle cx="312.2" cy="248.0" r="4.0" fill="#7A5195"/>
+<circle cx="372.5" cy="212.0" r="4.0" fill="#7A5195"/>
+<circle cx="432.9" cy="172.4" r="4.0" fill="#7A5195"/>
+<polyline points="131.1,411.6 191.5,334.1 251.8,319.2 312.2,286.9 372.5,216.8 432.9,156.1" fill="none" stroke="#E69F00" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="131.1" cy="411.6" r="4.0" fill="#E69F00"/>
+<circle cx="191.5" cy="334.1" r="4.0" fill="#E69F00"/>
+<circle cx="251.8" cy="319.2" r="4.0" fill="#E69F00"/>
+<circle cx="312.2" cy="286.9" r="4.0" fill="#E69F00"/>
+<circle cx="372.5" cy="216.8" r="4.0" fill="#E69F00"/>
+<circle cx="432.9" cy="156.1" r="4.0" fill="#E69F00"/>
+<polyline points="131.1,264.1 191.5,350.2 251.8,359.4 312.2,282.0 372.5,213.5 432.9,161.0" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="131.1" cy="264.1" r="4.0" fill="#009E73"/>
+<circle cx="191.5" cy="350.2" r="4.0" fill="#009E73"/>
+<circle cx="251.8" cy="359.4" r="4.0" fill="#009E73"/>
+<circle cx="312.2" cy="282.0" r="4.0" fill="#009E73"/>
+<circle cx="372.5" cy="213.5" r="4.0" fill="#009E73"/>
+<circle cx="432.9" cy="161.0" r="4.0" fill="#009E73"/>
+<line x1="115.0" y1="160.0" x2="137.0" y2="160.0" stroke="#7A5195" stroke-width="3"/>
+<text x="143.0" y="164.0" class="legend" text-anchor="start">Sparse probe</text>
+<line x1="260.0" y1="160.0" x2="282.0" y2="160.0" stroke="#E69F00" stroke-width="3"/>
+<text x="288.0" y="164.0" class="legend" text-anchor="start">Full probe</text>
+<line x1="405.0" y1="160.0" x2="427.0" y2="160.0" stroke="#009E73" stroke-width="3"/>
+<text x="433.0" y="164.0" class="legend" text-anchor="start">Persistence</text>
+<text x="515.0" y="118.0" class="panel" text-anchor="start">B. All three variables rise with score</text>
+<line x1="577.0" y1="452.0" x2="927.0" y2="452.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="568.0" y="456.0" class="axis" text-anchor="end">-0.9</text>
+<line x1="577.0" y1="317.5" x2="927.0" y2="317.5" stroke="#E5E7EB" stroke-width="1"/>
+<text x="568.0" y="321.5" class="axis" text-anchor="end">0</text>
+<line x1="577.0" y1="142.0" x2="927.0" y2="142.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="568.0" y="146.0" class="axis" text-anchor="end">1.2</text>
+<line x1="613.8" y1="452.0" x2="613.8" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="613.8" y="472.0" class="axis" text-anchor="middle">&lt;0</text>
+<line x1="705.9" y1="452.0" x2="705.9" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="705.9" y="472.0" class="axis" text-anchor="middle">0–9</text>
+<line x1="798.1" y1="452.0" x2="798.1" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="798.1" y="472.0" class="axis" text-anchor="middle">10–29</text>
+<line x1="890.2" y1="452.0" x2="890.2" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="890.2" y="472.0" class="axis" text-anchor="middle">30+</text>
+<line x1="577.0" y1="142.0" x2="577.0" y2="452.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="577.0" y1="452.0" x2="927.0" y2="452.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="752.0" y="495.0" class="axis" text-anchor="middle">Cumulative-score bin</text>
+<text x="530.0" y="297.0" class="axis" text-anchor="middle" transform="rotate(-90 530 297.0)">Mean standardized value</text>
+<line x1="577.0" y1="317.5" x2="927.0" y2="317.5" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<polyline points="613.8,382.9 705.9,422.6 798.1,277.6 890.2,211.4" fill="none" stroke="#7A5195" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="613.8" cy="382.9" r="4.0" fill="#7A5195"/>
+<circle cx="705.9" cy="422.6" r="4.0" fill="#7A5195"/>
+<circle cx="798.1" cy="277.6" r="4.0" fill="#7A5195"/>
+<circle cx="890.2" cy="211.4" r="4.0" fill="#7A5195"/>
+<polyline points="613.8,410.2 705.9,430.1 798.1,315.7 890.2,163.9" fill="none" stroke="#E69F00" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="613.8" cy="410.2" r="4.0" fill="#E69F00"/>
+<circle cx="705.9" cy="430.1" r="4.0" fill="#E69F00"/>
+<circle cx="798.1" cy="315.7" r="4.0" fill="#E69F00"/>
+<circle cx="890.2" cy="163.9" r="4.0" fill="#E69F00"/>
+<polyline points="613.8,416.7 705.9,383.7 798.1,308.6 890.2,211.8" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="613.8" cy="416.7" r="4.0" fill="#009E73"/>
+<circle cx="705.9" cy="383.7" r="4.0" fill="#009E73"/>
+<circle cx="798.1" cy="308.6" r="4.0" fill="#009E73"/>
+<circle cx="890.2" cy="211.8" r="4.0" fill="#009E73"/>
+<line x1="585.0" y1="160.0" x2="607.0" y2="160.0" stroke="#7A5195" stroke-width="3"/>
+<text x="613.0" y="164.0" class="legend" text-anchor="start">Sparse probe</text>
+<line x1="730.0" y1="160.0" x2="752.0" y2="160.0" stroke="#E69F00" stroke-width="3"/>
+<text x="758.0" y="164.0" class="legend" text-anchor="start">Full probe</text>
+<line x1="875.0" y1="160.0" x2="897.0" y2="160.0" stroke="#009E73" stroke-width="3"/>
+<text x="903.0" y="164.0" class="legend" text-anchor="start">Persistence</text>
+<text x="985.0" y="118.0" class="panel" text-anchor="start">C. Adjustment reverses the apparent relation</text>
+<line x1="1047.0" y1="452.0" x2="1397.0" y2="452.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1038.0" y="456.0" class="axis" text-anchor="end">-0.25</text>
+<line x1="1047.0" y1="378.2" x2="1397.0" y2="378.2" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1038.0" y="382.2" class="axis" text-anchor="end">0</text>
+<line x1="1047.0" y1="260.1" x2="1397.0" y2="260.1" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1038.0" y="264.1" class="axis" text-anchor="end">.40</text>
+<line x1="1047.0" y1="142.0" x2="1397.0" y2="142.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1038.0" y="146.0" class="axis" text-anchor="end">0.80</text>
+<line x1="1097.0" y1="452.0" x2="1097.0" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="1097.0" y="472.0" class="axis" text-anchor="middle">Sparse raw</text>
+<line x1="1180.3" y1="452.0" x2="1180.3" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="1180.3" y="472.0" class="axis" text-anchor="middle">Sparse adj.</text>
+<line x1="1263.7" y1="452.0" x2="1263.7" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="1263.7" y="472.0" class="axis" text-anchor="middle">Full raw</text>
+<line x1="1347.0" y1="452.0" x2="1347.0" y2="457.0" stroke="#64748B" stroke-width="1"/>
+<text x="1347.0" y="472.0" class="axis" text-anchor="middle">Full adj.</text>
+<line x1="1047.0" y1="142.0" x2="1047.0" y2="452.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="1047.0" y1="452.0" x2="1397.0" y2="452.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1222.0" y="495.0" class="axis" text-anchor="middle">Estimate</text>
+<text x="1000.0" y="297.0" class="axis" text-anchor="middle" transform="rotate(-90 1000 297.0)">Association with persistence</text>
+<line x1="1047.0" y1="378.2" x2="1397.0" y2="378.2" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<rect x="1069.0" y="233.6" width="56.0" height="144.6" fill="#7A5195" fill-opacity="0.9" stroke="none"/>
+<text x="1097.0" y="225.6" class="axis" text-anchor="middle">0.49</text>
+<rect x="1152.3" y="378.2" width="56.0" height="29.2" fill="#7A5195" fill-opacity="0.9" stroke="none"/>
+<text x="1180.3" y="425.3" class="axis" text-anchor="middle">-0.10</text>
+<rect x="1235.7" y="182.4" width="56.0" height="195.8" fill="#E69F00" fill-opacity="0.9" stroke="none"/>
+<text x="1263.7" y="174.4" class="axis" text-anchor="middle">0.66</text>
+<rect x="1319.0" y="378.2" width="56.0" height="9.9" fill="#E69F00" fill-opacity="0.9" stroke="none"/>
+<text x="1347.0" y="406.1" class="axis" text-anchor="middle">-0.03</text>
+<text x="1055.0" y="162.0" class="note" text-anchor="start">Raw: Pearson r. Adjusted: standardized beta controlling recent outcome, streak, and round.</text>
+</svg>

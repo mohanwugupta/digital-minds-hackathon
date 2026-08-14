@@ -196,6 +196,9 @@ def extract_probe_rows(
     layer: int,
     neuron_indices,
     episode_ids: Iterable[str],
+    full_probe=None,
+    probe_output_mean: float = 0.0,
+    probe_output_std: float = 1.0,
 ) -> list[dict]:
     """Evaluate full and sparse probe outputs with behavioral covariates."""
     import torch
@@ -205,12 +208,14 @@ def extract_probe_rows(
     mask[neuron_indices.long()] = 1.0
     rows = []
     probe.eval()
+    full_probe = probe if full_probe is None else full_probe
+    full_probe.eval()
     with torch.no_grad():
         for shard in shards:
             if shard["episode_id"] not in selected_ids:
                 continue
             activations = shard["activations"][:, layer, :].float()
-            full_values = probe(activations)
+            full_values = full_probe(activations)
             sparse_values = probe(activations, input_mask=mask)
             for record, full_value, sparse_value in zip(
                 shard["records"], full_values, sparse_values
@@ -237,8 +242,10 @@ def extract_probe_rows(
                         "persistence_logit": float(record["persistence_logit"]),
                         "p_stop": float(record["p_stop"]),
                         "sampled_stop": int(record["sampled_action"] == "C"),
-                        "probe_value": float(sparse_value),
-                        "probe_value_full": float(full_value),
+                        "probe_value": float(sparse_value) * probe_output_std
+                        + probe_output_mean,
+                        "probe_value_full": float(full_value) * probe_output_std
+                        + probe_output_mean,
                     }
                 )
     if not rows:
@@ -519,11 +526,21 @@ def run_probe_mechanism_analysis(
     neuron_indices,
     test_episode_ids: Iterable[str],
     output_dir: str | Path,
+    full_probe=None,
+    probe_output_mean: float = 0.0,
+    probe_output_std: float = 1.0,
 ) -> dict:
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     rows = extract_probe_rows(
-        shards, probe, layer, neuron_indices, test_episode_ids
+        shards,
+        probe,
+        layer,
+        neuron_indices,
+        test_episode_ids,
+        full_probe=full_probe,
+        probe_output_mean=probe_output_mean,
+        probe_output_std=probe_output_std,
     )
     result = analyze_probe_rows(rows)
     result["layer"] = int(layer)

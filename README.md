@@ -174,6 +174,30 @@ gate.
    from a latest-reward heuristic, but remains associational. The subsequent
    activation-steering experiment is the causal test.
 
+   If the bootstrapped TD objective is unstable, run the prespecified
+   exploratory Monte Carlo follow-up on the same activation bank:
+
+   ```bash
+   sbatch --export=ALL,PHASE=train_mc_probe run_qwen35_bandit.sh
+   ```
+
+   This directly regresses hidden states onto stored realized future cumulative
+   return, compares against constant and recent-history baselines, refits the
+   validation-selected sparse dimensions rather than merely masking a full
+   probe, and repeats the held-out mechanism diagnostic. Because this follow-up
+   was motivated by inspecting the TD test result, it is labeled exploratory;
+   realized future return under the observed policy is also not the same target
+   as a counterfactual continuation advantage.
+
+   This phase deliberately stops after training and analysis. Inspect
+   `artifacts/mc_value_probes/publication/monte_carlo_probe_report.md` before
+   promoting the probe to a steering direction. If it predicts held-out future
+   return and passes the mechanism diagnostics, calibrate it separately:
+
+   ```bash
+   sbatch --export=ALL,PHASE=calibrate_mc_probe run_qwen35_bandit.sh
+   ```
+
    On SLURM, collection and training can share one allocation. The shell script
    exits immediately if collection, training, mechanism analysis, or
    calibration fails:
@@ -191,7 +215,7 @@ gate.
 
    ```bash
    python -m experiments.collect_bandit_activations \
-     --model /path/to/Qwen3.5-4B --episodes 200 \
+     --model /path/to/Qwen3.5-4B --episodes 48 \
      --seed 52026 --output-dir artifacts/confirmatory_state_bank
    python -m experiments.run_bandit_intervention \
      --model /path/to/Qwen3.5-4B \
@@ -203,6 +227,25 @@ gate.
    canonicalized and hashed, and each state is evaluated at alpha `-1, 0, +1`
    for the value neurons and at least 20 independently sampled random-neuron
    sets. Alpha zero uses the unhooked baseline forward pass exactly.
+
+   The sprint confirmatory bank uses 48 episodes, placing exactly three in each
+   ordered arm-probability cell. Matched effects and confidence intervals use
+   episodes—not decision states—as the independent sampling unit, with equal
+   episode weighting so longer episodes cannot dominate inference.
+   The analysis writes `matched_analysis.json`, a concise
+   `matched_analysis.md` report, and `matched_analysis.svg` with the steering
+   ordering, episode-level confidence intervals, and random-control comparison.
+
+   After reviewing the frozen probe outputs, the complete sprint causal phase
+   can run in one allocation. Six hours allows headroom for roughly 43 forward
+   passes per held-out state (baseline plus bidirectional value and 20 random-
+   set interventions):
+
+   ```bash
+   sbatch --time=06:00:00 \
+     --export=ALL,PHASE=causal_pipeline,CONFIRMATORY_EPISODES=48,MATCHED_RANDOM_SETS=20 \
+     run_qwen35_bandit.sh
+   ```
 
 6. Only after `matched_analysis.json` reports both gates passing, run sequential
    episodes:

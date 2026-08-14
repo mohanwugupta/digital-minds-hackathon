@@ -18,6 +18,8 @@ phases:
   pilot_episodes: 200
   # Research-sprint target; collection is resumable and can be extended later.
   probe_episodes: 512
+  # Three episodes in each of the 16 ordered arm-probability cells.
+  confirmatory_episodes: 48
   sequential_episodes_per_condition: 1000
 
 probe:
@@ -33,6 +35,10 @@ probe:
     stronger_history_control: cumulative_score
     two_sided_alpha: 0.05
     minimum_incremental_r_squared: 0.01
+  monte_carlo_followup:
+    target: realized_future_cumulative_return
+    sparse_refit: true
+    status: exploratory_after_td_test_inspection
 
 intervention:
   alphas: [-1.0, 0.0, 1.0]

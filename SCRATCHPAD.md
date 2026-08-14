@@ -524,3 +524,68 @@ probe-mechanism regression and report pipeline, real-model hidden-state
 compatibility, short behavioral episodes, and two capped real activation
 shards. The sprint probe bank is 512 episodes (resumable), not the original
 2,000-episode target.
+
+---
+
+## Sprint confirmatory causal design
+
+### Decision made before confirmatory data collection
+
+- Use 48 held-out episodes, exactly three per ordered arm-probability cell.
+- Preserve all three matched alpha conditions and all 20 magnitude-matched
+  random-neuron sets.
+- Treat episodes as the independent sampling units. Average paired state effects
+  within episode, then estimate equal-episode-weighted effects, t confidence
+  intervals, and p-values across episodes.
+- The primary gate requires monotonic adjacent means and a positive-versus-
+  negative 95% confidence interval strictly above zero.
+- The specificity gate retains the corrected 20-control empirical test; the
+  value effect must exceed all 20 random-set effects to attain p=1/21.
+- Full 1,000-per-alpha sequential episodes remain out of sprint scope unless
+  both matched-state gates pass.
+
+### Verification
+
+`tests/test_analyze_persistence.py` constructs repeated states within episodes
+and requires the analysis to report six—not eighteen—independent units, a
+positive episode-level confidence interval, and the exact 1/21 random-control
+empirical p-value. Local syntax and whitespace checks pass; pandas/scipy pytest
+execution remains cluster-only.
+
+---
+
+## Probe variance, exact matching, and Monte Carlo follow-up
+
+### Current-data result
+
+- Report probe-only, recent-history-only, and joint persistence models. Sparse
+  probe R² is .240 and full probe R² is .440, but unique increments beyond the
+  .753 history model are only .0027 and .0003.
+- Exact matching on round, previous outcome, and loss streak retains 1,180 test
+  states in 147 strata from 55 episodes. Older cumulative history predicts the
+  full probe (standardized beta .440, p=1.3e-5) but not persistence; neither
+  probe predicts persistence within these exact strata.
+- This distinguishes “the probe contains no information” from the supported
+  conclusion: the unpruned hidden-state-derived probe contains accumulated-
+  history information, but its persistence prediction is shared with recent
+  history/round and does not survive exact matching.
+
+### Exploratory follow-up
+
+`experiments/train_monte_carlo_probe.py` directly predicts stored realized
+future cumulative return, avoiding the moving TD bootstrap target. It freezes
+the existing episode split, evaluates constant and recent-history baselines,
+selects dimensions from a full probe using validation performance, refits the
+sparse probe on only those dimensions, and repeats mechanism and exact-match
+analyses. Because this redesign followed inspection of the TD test result, its
+reuse of the original test split is explicitly labeled exploratory.
+
+Counterfactual continuation advantage remains deferred: it requires defining
+whose expectation is estimated and repeated policy rollouts after forced A/B
+actions. It should only be built if the stable generic future-return probe is
+still insufficient.
+
+The `train_mc_probe` SLURM phase stops after analysis so an exploratory probe is
+not automatically promoted into a steering direction. Use
+`PHASE=calibrate_mc_probe` only after inspecting its held-out target prediction,
+three-model variance decomposition, and exact-match result.

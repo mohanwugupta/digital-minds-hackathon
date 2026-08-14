@@ -20,6 +20,8 @@ FALLBACK_MODEL_PATH="${FALLBACK_MODEL_PATH:-/scratch/gpfs/JORDANAT/${USER}/model
 CONDA_ENV="${CONDA_ENV:-value-steering-bandit}"
 PHASE="${PHASE:-compatibility}"
 PROBE_EPISODES="${PROBE_EPISODES:-512}"
+CONFIRMATORY_EPISODES="${CONFIRMATORY_EPISODES:-48}"
+MATCHED_RANDOM_SETS="${MATCHED_RANDOM_SETS:-20}"
 
 cd "$PROJECT_DIR"
 mkdir -p logs artifacts "$CLUSTER_BASE/hf_cache" "$CLUSTER_BASE/torch_cache" "$CLUSTER_BASE/cache"
@@ -59,6 +61,36 @@ train_probe_phase() {
   python -m experiments.calibrate_steering
 }
 
+train_mc_probe_phase() {
+  echo "Starting supervised Monte Carlo future-return probe analysis"
+  python -m experiments.train_monte_carlo_probe
+  python -m analysis.analyze_monte_carlo_probe
+}
+
+calibrate_mc_probe_phase() {
+  echo "Calibrating the inspected supervised Monte Carlo probe"
+  python -m experiments.calibrate_steering \
+    --probe artifacts/mc_value_probes/frozen_best.pt \
+    --split artifacts/value_probes/episode_split.json \
+    --output artifacts/mc_value_probes/steering_calibration.json
+}
+
+collect_confirmatory_phase() {
+  echo "Starting held-out confirmatory collection (${CONFIRMATORY_EPISODES} episodes)"
+  python -m experiments.collect_bandit_activations \
+    --model "$MODEL_PATH" --episodes "$CONFIRMATORY_EPISODES" --seed 52026 \
+    --output-dir artifacts/confirmatory_state_bank
+}
+
+matched_phase() {
+  echo "Starting matched causal replay (${MATCHED_RANDOM_SETS} random-neuron sets)"
+  python -m experiments.run_bandit_intervention \
+    --model "$MODEL_PATH" \
+    --state-bank artifacts/confirmatory_state_bank \
+    --random-sets "$MATCHED_RANDOM_SETS"
+  python -m analysis.analyze_persistence
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -79,15 +111,21 @@ case "$PHASE" in
     collect_probe_phase
     train_probe_phase
     ;;
+  train_mc_probe)
+    train_mc_probe_phase
+    ;;
+  calibrate_mc_probe)
+    calibrate_mc_probe_phase
+    ;;
   collect_confirmatory)
-    python -m experiments.collect_bandit_activations \
-      --model "$MODEL_PATH" --episodes 200 --seed 52026 \
-      --output-dir artifacts/confirmatory_state_bank
+    collect_confirmatory_phase
     ;;
   matched)
-    python -m experiments.run_bandit_intervention \
-      --model "$MODEL_PATH" --state-bank artifacts/confirmatory_state_bank
-    python -m analysis.analyze_persistence
+    matched_phase
+    ;;
+  causal_pipeline)
+    collect_confirmatory_phase
+    matched_phase
     ;;
   sequential)
     python -m experiments.run_bandit_sequential \
