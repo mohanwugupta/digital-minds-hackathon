@@ -1,0 +1,50 @@
+{
+  "action_frequencies": {
+    "A": 0.6645979492714517,
+    "B": 0.2868321640582839,
+    "C": 0.048569886670264434
+  },
+  "all_actions_observed": true,
+  "arm_expected_values": {
+    "0.2": -1.0,
+    "0.35": -0.2500000000000002,
+    "0.5": 0.5,
+    "0.65": 1.2500000000000002
+  },
+  "arm_preference_variation": 0.5459623635328595,
+  "condition_diagnostics": {
+    "both_negative": {
+      "decision_states": 764,
+      "episodes": 50,
+      "mean_p_continue": 0.9417231207097264,
+      "mean_p_stop": 0.058276879290273406,
+      "near_boundary_fraction": 0.09162303664921466
+    },
+    "both_positive": {
+      "decision_states": 958,
+      "episodes": 50,
+      "mean_p_continue": 0.9555119434356711,
+      "mean_p_stop": 0.044488056564328804,
+      "near_boundary_fraction": 0.05219206680584551
+    },
+    "one_positive": {
+      "decision_states": 1984,
+      "episodes": 100,
+      "mean_p_continue": 0.9609016951958362,
+      "mean_p_stop": 0.03909830480416366,
+      "near_boundary_fraction": 0.051915322580645164
+    }
+  },
+  "decision_states": 3706,
+  "episodes": 200,
+  "favorable_history_increases_persistence": true,
+  "loss_streak_stop_correlation": 0.2449840580453722,
+  "mean_p_continue_after_gain": 0.9810500250986532,
+  "mean_p_continue_after_loss": 0.9301791528380033,
+  "mean_p_stop": 0.0444452592277001,
+  "mean_raw_action_probability_mass": 0.9987662905818118,
+  "repeated_losses_increase_stopping": true,
+  "sampled_actions_valid": true,
+  "stop_not_floor_or_ceiling": true,
+  "top_token_action_rate": 1.0
+}
