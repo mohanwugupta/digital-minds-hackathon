@@ -22,7 +22,7 @@ used for baseline or intervention data.
 - `tests/`: CPU unit/integration tests plus a tiny mocked pipeline.
 - `config/bandit_experiment.yaml`: frozen design defaults.
 - `smoke_qwen35.slurm`: short unit-test plus real-model compatibility gate.
-- `download_qwen_models.slurm`: CPU-only, resumable Hugging Face model download.
+- `scripts/download_qwen_models.py`: resumable Hugging Face model downloader.
 
 Model-visible state is represented only by `BanditConversation`. True arm
 probabilities, score, schedules, seeds, round, and structured histories live in
@@ -83,12 +83,12 @@ offline by default. Pass `--online` only when downloads are intentional.
 
 ## Downloading the model checkpoints
 
-Submit the CPU-only download job from the repository root before running the
-GPU smoke test:
+Run the downloader directly from an internet-connected cluster login node
+before running the offline GPU smoke test:
 
 ```bash
-mkdir -p logs
-sbatch download_qwen_models.slurm
+conda activate value-steering-bandit
+python scripts/download_qwen_models.py
 ```
 
 It downloads both public Hugging Face checkpoints into these directories:
@@ -99,17 +99,18 @@ It downloads both public Hugging Face checkpoints into these directories:
 ```
 
 The first is the primary model and the second is the compatibility fallback.
-Downloads are resumable: if the job is interrupted, submit the same command
+Downloads are resumable: if the process is interrupted, run the same command
 again. Each completed directory contains `.download_manifest.json` with the
 resolved Hugging Face commit. The models are public, so a token is normally not
-needed; if the cluster requires authenticated Hub access, export `HF_TOKEN`
-before submitting with `sbatch --export=ALL download_qwen_models.slurm`.
+needed; if authenticated Hub access is required, export `HF_TOKEN` before
+running the command.
 
-To download only one checkpoint, set `MODEL_SELECTION` to `primary` or
-`fallback`:
+To download only one checkpoint, use `--selection primary` or
+`--selection fallback`:
 
 ```bash
-MODEL_SELECTION=primary sbatch --export=ALL download_qwen_models.slurm
+python scripts/download_qwen_models.py --selection primary
+python scripts/download_qwen_models.py --selection fallback
 ```
 
 ## Experimental sequence
