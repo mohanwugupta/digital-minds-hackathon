@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1030" viewBox="0 0 1500 1030">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="55.0" y="45.0" class="title" text-anchor="start">Linear decoding: return → advantage → persistence</text>
+<text x="55.0" y="70.0" class="subtitle" text-anchor="start">Ridge probes with episode-held-out layer and regularization selection</text>
+<text x="45.0" y="113.0" class="panel" text-anchor="start">A. Ridge future-return decoding</text>
+<line x1="107.0" y1="467.0" x2="717.0" y2="467.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="471.0" class="axis" text-anchor="end">-0.1</text>
+<line x1="107.0" y1="384.3" x2="717.0" y2="384.3" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="388.3" class="axis" text-anchor="end">0</text>
+<line x1="107.0" y1="137.0" x2="717.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="141.0" class="axis" text-anchor="end">0.3</text>
+<line x1="107.0" y1="467.0" x2="107.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="107.0" y="487.0" class="axis" text-anchor="middle">0</text>
+<line x1="264.4" y1="467.0" x2="264.4" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="264.4" y="487.0" class="axis" text-anchor="middle">8</text>
+<line x1="421.8" y1="467.0" x2="421.8" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="421.8" y="487.0" class="axis" text-anchor="middle">16</text>
+<line x1="579.3" y1="467.0" x2="579.3" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="579.3" y="487.0" class="axis" text-anchor="middle">24</text>
+<line x1="717.0" y1="467.0" x2="717.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="717.0" y="487.0" class="axis" text-anchor="middle">31</text>
+<line x1="107.0" y1="137.0" x2="107.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="467.0" x2="717.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="412.0" y="510.0" class="axis" text-anchor="middle">Layer</text>
+<text x="60.0" y="302.0" class="axis" text-anchor="middle" transform="rotate(-90 60 302.0)">R²</text>
+<polyline points="107.0,260.2 126.7,257.5 146.4,257.7 166.0,261.2 185.7,272.3 205.4,268.6 225.1,274.9 244.7,284.1 264.4,288.8 284.1,287.7 303.8,291.1 323.5,286.0 343.1,279.4 362.8,301.2 382.5,289.8 402.2,304.7 421.8,292.3 441.5,285.2 461.2,297.4 480.9,321.7 500.5,312.4 520.2,303.0 539.9,297.0 559.6,292.6 579.3,296.5 598.9,302.3 618.6,296.3 638.3,289.5 658.0,338.7 677.6,338.6 697.3,345.0 717.0,343.1" fill="none" stroke="#7A5195" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="107.0,178.4 126.7,185.9 146.4,189.5 166.0,188.2 185.7,268.7 205.4,267.8 225.1,269.5 244.7,273.5 264.4,271.6 284.1,267.0 303.8,268.8 323.5,214.7 343.1,220.9 362.8,271.3 382.5,272.7 402.2,266.2 421.8,246.0 441.5,246.1 461.2,247.4 480.9,257.9 500.5,259.5 520.2,263.7 539.9,255.5 559.6,257.7 579.3,256.3 598.9,258.1 618.6,260.7 638.3,258.4 658.0,287.8 677.6,287.4 697.3,340.0 717.0,334.7" fill="none" stroke="#E69F00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="112.0" y1="155.0" x2="134.0" y2="155.0" stroke="#7A5195" stroke-width="3"/>
+<text x="140.0" y="159.0" class="legend" text-anchor="start">Return validation</text>
+<line x1="257.0" y1="155.0" x2="279.0" y2="155.0" stroke="#E69F00" stroke-width="3"/>
+<text x="285.0" y="159.0" class="legend" text-anchor="start">Return test</text>
+<text x="760.0" y="113.0" class="panel" text-anchor="start">B. Where persistence becomes linearly decodable</text>
+<line x1="822.0" y1="467.0" x2="1432.0" y2="467.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="471.0" class="axis" text-anchor="end">-0.1</text>
+<line x1="822.0" y1="451.7" x2="1432.0" y2="451.7" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="455.7" class="axis" text-anchor="end">0</text>
+<line x1="822.0" y1="298.7" x2="1432.0" y2="298.7" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="302.7" class="axis" text-anchor="end">.5</text>
+<line x1="822.0" y1="137.0" x2="1432.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="141.0" class="axis" text-anchor="end">1.0</text>
+<line x1="822.0" y1="467.0" x2="822.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="822.0" y="487.0" class="axis" text-anchor="middle">0</text>
+<line x1="979.4" y1="467.0" x2="979.4" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="979.4" y="487.0" class="axis" text-anchor="middle">8</text>
+<line x1="1136.8" y1="467.0" x2="1136.8" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1136.8" y="487.0" class="axis" text-anchor="middle">16</text>
+<line x1="1294.3" y1="467.0" x2="1294.3" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1294.3" y="487.0" class="axis" text-anchor="middle">24</text>
+<line x1="1432.0" y1="467.0" x2="1432.0" y2="472.0" stroke="#64748B" stroke-width="1"/>
+<text x="1432.0" y="487.0" class="axis" text-anchor="middle">31</text>
+<line x1="822.0" y1="137.0" x2="822.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="822.0" y1="467.0" x2="1432.0" y2="467.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1127.0" y="510.0" class="axis" text-anchor="middle">Layer</text>
+<text x="775.0" y="302.0" class="axis" text-anchor="middle" transform="rotate(-90 775 302.0)">Test R²</text>
+<polyline points="822.0,180.4 841.7,178.8 861.4,177.3 881.0,175.2 900.7,174.4 920.4,171.4 940.1,167.8 959.7,166.8 979.4,164.0 999.1,162.4 1018.8,160.7 1038.5,160.2 1058.1,160.2 1077.8,160.4 1097.5,160.3 1117.2,156.1 1136.8,154.0 1156.5,151.0 1176.2,150.1 1195.9,148.7 1215.5,147.9 1235.2,147.7 1254.9,147.8 1274.6,147.9 1294.3,147.6 1313.9,147.5 1333.6,147.4 1353.3,147.2 1373.0,146.4 1392.6,146.3 1412.3,146.4 1432.0,146.2" fill="none" stroke="#009E73" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="45.0" y="583.0" class="panel" text-anchor="start">C. Exact matched-state discriminator</text>
+<line x1="107.0" y1="875.1" x2="717.0" y2="875.1" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="879.1" class="axis" text-anchor="end">Ridge return → return</text>
+<line x1="107.0" y1="772.0" x2="717.0" y2="772.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="776.0" class="axis" text-anchor="end">Ridge return → persist</text>
+<line x1="107.0" y1="668.9" x2="717.0" y2="668.9" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="672.9" class="axis" text-anchor="end">Direct probe → persist</text>
+<line x1="107.0" y1="937.0" x2="107.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="107.0" y="957.0" class="axis" text-anchor="middle">-0.3</text>
+<line x1="241.7" y1="937.0" x2="241.7" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="241.7" y="957.0" class="axis" text-anchor="middle">0</text>
+<line x1="717.0" y1="937.0" x2="717.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="717.0" y="957.0" class="axis" text-anchor="middle">1.1</text>
+<line x1="107.0" y1="607.0" x2="107.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="937.0" x2="717.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="412.0" y="980.0" class="axis" text-anchor="middle">Standardized coefficient</text>
+<text x="60.0" y="772.0" class="axis" text-anchor="middle" transform="rotate(-90 60 772.0)">Target</text>
+<line x1="241.7" y1="607.0" x2="241.7" y2="937.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<line x1="369.9" y1="875.1" x2="549.7" y2="875.1" stroke="#7A5195" stroke-width="2"/>
+<circle cx="459.8" cy="875.1" r="5.0" fill="#7A5195"/>
+<line x1="146.8" y1="772.0" x2="342.8" y2="772.0" stroke="#E69F00" stroke-width="2"/>
+<circle cx="244.8" cy="772.0" r="5.0" fill="#E69F00"/>
+<line x1="681.8" y1="668.9" x2="694.5" y2="668.9" stroke="#009E73" stroke-width="2"/>
+<circle cx="688.2" cy="668.9" r="5.0" fill="#009E73"/>
+<text x="760.0" y="583.0" class="panel" text-anchor="start">D. Return/persistence direction overlap</text>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="937.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="941.0" class="axis" text-anchor="end">0</text>
+<line x1="822.0" y1="772.0" x2="1432.0" y2="772.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="776.0" class="axis" text-anchor="end">.5</text>
+<line x1="822.0" y1="607.0" x2="1432.0" y2="607.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="813.0" y="611.0" class="axis" text-anchor="end">1</text>
+<line x1="822.0" y1="937.0" x2="822.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="822.0" y="957.0" class="axis" text-anchor="middle">0</text>
+<line x1="979.4" y1="937.0" x2="979.4" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="979.4" y="957.0" class="axis" text-anchor="middle">8</text>
+<line x1="1136.8" y1="937.0" x2="1136.8" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1136.8" y="957.0" class="axis" text-anchor="middle">16</text>
+<line x1="1294.3" y1="937.0" x2="1294.3" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1294.3" y="957.0" class="axis" text-anchor="middle">24</text>
+<line x1="1432.0" y1="937.0" x2="1432.0" y2="942.0" stroke="#64748B" stroke-width="1"/>
+<text x="1432.0" y="957.0" class="axis" text-anchor="middle">31</text>
+<line x1="822.0" y1="607.0" x2="822.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="822.0" y1="937.0" x2="1432.0" y2="937.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1127.0" y="980.0" class="axis" text-anchor="middle">Layer</text>
+<text x="775.0" y="772.0" class="axis" text-anchor="middle" transform="rotate(-90 775 772.0)">Overlap</text>
+<polyline points="822.0,918.3 841.7,936.3 861.4,928.1 881.0,918.4 900.7,920.9 920.4,922.9 940.1,919.4 959.7,907.4 979.4,900.0 999.1,918.1 1018.8,922.3 1038.5,931.4 1058.1,931.9 1077.8,917.8 1097.5,886.1 1117.2,918.1 1136.8,925.4 1156.5,934.6 1176.2,934.7 1195.9,918.9 1215.5,921.3 1235.2,920.0 1254.9,921.5 1274.6,933.4 1294.3,933.4 1313.9,932.5 1333.6,936.9 1353.3,935.3 1373.0,934.3 1392.6,936.2 1412.3,926.9 1432.0,924.8" fill="none" stroke="#7A5195" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="822.0,909.5 841.7,885.7 861.4,916.8 881.0,930.5 900.7,916.8 920.4,916.8 940.1,909.5 959.7,923.8 979.4,916.8 999.1,930.5 1018.8,937.0 1038.5,916.8 1058.1,923.8 1077.8,930.5 1097.5,930.5 1117.2,923.8 1136.8,937.0 1156.5,916.8 1176.2,916.8 1195.9,923.8 1215.5,923.8 1235.2,937.0 1254.9,909.5 1274.6,923.8 1294.3,937.0 1313.9,937.0 1333.6,937.0 1353.3,930.5 1373.0,930.5 1392.6,923.8 1412.3,916.8 1432.0,930.5" fill="none" stroke="#E69F00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="827.0" y1="625.0" x2="849.0" y2="625.0" stroke="#7A5195" stroke-width="3"/>
+<text x="855.0" y="629.0" class="legend" text-anchor="start">|Cosine|</text>
+<line x1="972.0" y1="625.0" x2="994.0" y2="625.0" stroke="#E69F00" stroke-width="3"/>
+<text x="1000.0" y="629.0" class="legend" text-anchor="start">Top-1% Jaccard</text>
+</svg>
