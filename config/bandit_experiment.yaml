@@ -54,3 +54,20 @@ intervention:
   alphas: [-1.0, 0.0, 1.0]
   calibration_candidates: [0.01, 0.025, 0.05, 0.1, 0.2]
   random_neuron_sets: 20
+  ridge_causal_comparison:
+    directions:
+      persistence: {layer: 31, role: positive_control}
+      generic_return: {layer: 1, role: causal_value_test}
+      continuation_advantage: {layer: 2, role: causal_value_test}
+    decoded_sd_candidates: [1.0, 0.5, 0.25, 0.1]
+    max_relative_rms: 0.25
+    random_directions_per_layer: 20
+    calibration_split: validation
+
+value_dissociation:
+  stop_payoffs: [-10, 0, 10, 20]
+  continue_bonuses: [-10, 0, 10]
+  temporary_current_decision_only: true
+  reuse_held_out_histories: true
+  primary_dv: persistence_logit
+  representations: [generic_return, continuation_advantage, persistence]

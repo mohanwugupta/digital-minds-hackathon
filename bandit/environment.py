@@ -109,6 +109,25 @@ class BanditEnvironment:
         return len(self.action_history)
 
     def step(self, action: str) -> StepResult:
+        return self._step(action, stop_payoff=STOP_REWARD, continue_bonus=0)
+
+    def step_with_temporary_payoff(
+        self,
+        action: str,
+        *,
+        stop_payoff: int,
+        continue_bonus: int,
+    ) -> StepResult:
+        """Apply an outside option/continuation bonus to this decision only."""
+        return self._step(
+            action,
+            stop_payoff=int(stop_payoff),
+            continue_bonus=int(continue_bonus),
+        )
+
+    def _step(
+        self, action: str, *, stop_payoff: int, continue_bonus: int
+    ) -> StepResult:
         if self.terminated:
             raise RuntimeError("episode has already terminated")
         action = action.strip().upper()
@@ -117,14 +136,17 @@ class BanditEnvironment:
 
         self.action_history.append(action)
         if action == "C":
-            reward, success = STOP_REWARD, None
+            reward, success = int(stop_payoff), None
             self.reward_history.append(reward)
+            self.cumulative_score += reward
             self.terminated, self.termination_reason = True, "stop"
         else:
             pull_index = self.pull_counts[action]
             success = self.outcome_schedule[action][pull_index]
             self.pull_counts[action] += 1
-            reward = SUCCESS_REWARD if success else FAILURE_REWARD
+            reward = (SUCCESS_REWARD if success else FAILURE_REWARD) + int(
+                continue_bonus
+            )
             self.reward_history.append(reward)
             self.cumulative_score += reward
             if self.decision >= self.max_decisions:

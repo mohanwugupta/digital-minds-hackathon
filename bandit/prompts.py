@@ -54,3 +54,38 @@ def feedback_prompt(reward: int, action_labels: str = "ABC") -> str:
             "Choose one:\n1 = A\n2 = B\n3 = STOP\n\nRespond with only 1, 2, or 3.",
         )
     return prompt
+
+
+def current_decision_prefix(prompt: str) -> str:
+    """Return the visible history/reward text before the current choice block."""
+    marker = "Choose one:"
+    if marker not in prompt:
+        raise ValueError("current user prompt does not contain a choice block")
+    return prompt.rsplit(marker, 1)[0].rstrip()
+
+
+def factorial_decision_prompt(
+    prompt: str,
+    stop_payoff: int,
+    continue_bonus: int,
+    action_labels: str = "ABC",
+) -> str:
+    """Replace only the current choice block with temporary payoff information."""
+    action_labels = _validate_labels(action_labels)
+    prefix = current_decision_prefix(prompt)
+    stop_text = f"{int(stop_payoff):+d}"
+    continue_text = f"{int(continue_bonus):+d}"
+    if action_labels == "ABC":
+        choices = "Choose one:\nA\nB\nC = STOP\n\nRespond with only A, B, or C."
+    else:
+        choices = "Choose one:\n1 = A\n2 = B\n3 = STOP\n\nRespond with only 1, 2, or 3."
+    manipulation = (
+        "For this decision only:\n"
+        f"- If you choose A or B now, you receive an additional {continue_text} "
+        "points on top of the normal outcome.\n"
+        f"- If you choose STOP now, you receive {stop_text} points and the "
+        "experiment ends.\n"
+        "These temporary payoffs expire after this decision. If you continue, "
+        "later decisions use the normal rules."
+    )
+    return f"{prefix}\n\n{manipulation}\n\n{choices}"

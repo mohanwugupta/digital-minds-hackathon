@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="620" viewBox="0 0 1500 620">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="55.0" y="45.0" class="title" text-anchor="start">A linear probe replicates the nonlinear future-return result</text>
+<text x="55.0" y="70.0" class="subtitle" text-anchor="start">Identical held-out episodes; error bars resample episodes, not individual states</text>
+<text x="45.0" y="113.0" class="panel" text-anchor="start">A. Held-out return decoding</text>
+<line x1="107.0" y1="497.0" x2="477.0" y2="497.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="501.0" class="axis" text-anchor="end">-0.1</text>
+<line x1="107.0" y1="450.1" x2="477.0" y2="450.1" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="454.1" class="axis" text-anchor="end">0</text>
+<line x1="107.0" y1="290.4" x2="477.0" y2="290.4" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="294.4" class="axis" text-anchor="end">.2</text>
+<line x1="107.0" y1="137.0" x2="477.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="98.0" y="141.0" class="axis" text-anchor="end">0.4</text>
+<line x1="176.4" y1="497.0" x2="176.4" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="176.4" y="517.0" class="axis" text-anchor="middle">Ridge linear</text>
+<line x1="292.0" y1="497.0" x2="292.0" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="292.0" y="517.0" class="axis" text-anchor="middle">Nonlinear sparse</text>
+<line x1="407.6" y1="497.0" x2="407.6" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="407.6" y="517.0" class="axis" text-anchor="middle">Nonlinear full</text>
+<line x1="107.0" y1="137.0" x2="107.0" y2="497.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="107.0" y1="497.0" x2="477.0" y2="497.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="292.0" y="540.0" class="axis" text-anchor="middle">Decoder</text>
+<text x="60.0" y="317.0" class="axis" text-anchor="middle" transform="rotate(-90 60 317.0)">Prediction R²</text>
+<line x1="107.0" y1="450.1" x2="477.0" y2="450.1" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<line x1="176.4" y1="427.6" x2="176.4" y2="178.6" stroke="#7A5195" stroke-width="2"/>
+<line x1="169.4" y1="427.6" x2="183.4" y2="427.6" stroke="#7A5195" stroke-width="2"/>
+<line x1="169.4" y1="178.6" x2="183.4" y2="178.6" stroke="#7A5195" stroke-width="2"/>
+<circle cx="176.4" cy="258.6" r="6.0" fill="#7A5195"/>
+<line x1="292.0" y1="465.1" x2="292.0" y2="237.0" stroke="#E69F00" stroke-width="2"/>
+<line x1="285.0" y1="465.1" x2="299.0" y2="465.1" stroke="#E69F00" stroke-width="2"/>
+<line x1="285.0" y1="237.0" x2="299.0" y2="237.0" stroke="#E69F00" stroke-width="2"/>
+<circle cx="292.0" cy="307.4" r="6.0" fill="#E69F00"/>
+<line x1="407.6" y1="427.4" x2="407.6" y2="168.9" stroke="#009E73" stroke-width="2"/>
+<line x1="400.6" y1="427.4" x2="414.6" y2="427.4" stroke="#009E73" stroke-width="2"/>
+<line x1="400.6" y1="168.9" x2="414.6" y2="168.9" stroke="#009E73" stroke-width="2"/>
+<circle cx="407.6" cy="249.9" r="6.0" fill="#009E73"/>
+<text x="520.0" y="113.0" class="panel" text-anchor="start">B. Within exactly matched states</text>
+<line x1="582.0" y1="407.0" x2="952.0" y2="407.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="573.0" y="411.0" class="axis" text-anchor="end">Future return</text>
+<line x1="582.0" y1="227.0" x2="952.0" y2="227.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="573.0" y="231.0" class="axis" text-anchor="end">Persistence logit</text>
+<line x1="600.0" y1="497.0" x2="600.0" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="600.0" y="517.0" class="axis" text-anchor="middle">-.3</text>
+<line x1="707.7" y1="497.0" x2="707.7" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="707.7" y="517.0" class="axis" text-anchor="middle">0</text>
+<line x1="815.5" y1="497.0" x2="815.5" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="815.5" y="517.0" class="axis" text-anchor="middle">.3</text>
+<line x1="923.3" y1="497.0" x2="923.3" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="923.3" y="517.0" class="axis" text-anchor="middle">.6</text>
+<line x1="582.0" y1="137.0" x2="582.0" y2="497.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="582.0" y1="497.0" x2="952.0" y2="497.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="767.0" y="540.0" class="axis" text-anchor="middle">Standardized coefficient</text>
+<text x="535.0" y="317.0" class="axis" text-anchor="middle" transform="rotate(-90 535 317.0)">Outcome</text>
+<line x1="707.7" y1="137.0" x2="707.7" y2="497.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<line x1="810.3" y1="435.8" x2="954.1" y2="435.8" stroke="#7A5195" stroke-width="2"/>
+<circle cx="882.2" cy="435.8" r="5.0" fill="#7A5195"/>
+<line x1="631.8" y1="255.8" x2="788.6" y2="255.8" stroke="#7A5195" stroke-width="2"/>
+<circle cx="710.2" cy="255.8" r="5.0" fill="#7A5195"/>
+<line x1="798.7" y1="407.0" x2="944.3" y2="407.0" stroke="#E69F00" stroke-width="2"/>
+<circle cx="871.5" cy="407.0" r="5.0" fill="#E69F00"/>
+<line x1="612.7" y1="227.0" x2="752.4" y2="227.0" stroke="#E69F00" stroke-width="2"/>
+<circle cx="682.5" cy="227.0" r="5.0" fill="#E69F00"/>
+<line x1="807.8" y1="378.2" x2="951.8" y2="378.2" stroke="#009E73" stroke-width="2"/>
+<circle cx="879.8" cy="378.2" r="5.0" fill="#009E73"/>
+<line x1="608.7" y1="198.2" x2="761.7" y2="198.2" stroke="#009E73" stroke-width="2"/>
+<circle cx="685.2" cy="198.2" r="5.0" fill="#009E73"/>
+<line x1="587.0" y1="155.0" x2="609.0" y2="155.0" stroke="#7A5195" stroke-width="3"/>
+<text x="615.0" y="159.0" class="legend" text-anchor="start">Ridge linear</text>
+<line x1="732.0" y1="155.0" x2="754.0" y2="155.0" stroke="#E69F00" stroke-width="3"/>
+<text x="760.0" y="159.0" class="legend" text-anchor="start">Nonlinear sparse</text>
+<line x1="877.0" y1="155.0" x2="899.0" y2="155.0" stroke="#009E73" stroke-width="3"/>
+<text x="905.0" y="159.0" class="legend" text-anchor="start">Nonlinear full</text>
+<text x="995.0" y="113.0" class="panel" text-anchor="start">C. Decoding depends on reward regime</text>
+<line x1="1057.0" y1="497.0" x2="1437.0" y2="497.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1048.0" y="501.0" class="axis" text-anchor="end">-.8</text>
+<line x1="1057.0" y1="407.0" x2="1437.0" y2="407.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1048.0" y="411.0" class="axis" text-anchor="end">-.4</text>
+<line x1="1057.0" y1="317.0" x2="1437.0" y2="317.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1048.0" y="321.0" class="axis" text-anchor="end">0</text>
+<line x1="1057.0" y1="227.0" x2="1437.0" y2="227.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1048.0" y="231.0" class="axis" text-anchor="end">.4</text>
+<line x1="1057.0" y1="137.0" x2="1437.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1048.0" y="141.0" class="axis" text-anchor="end">.8</text>
+<line x1="1128.2" y1="497.0" x2="1128.2" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="1128.2" y="517.0" class="axis" text-anchor="middle">Both negative</text>
+<line x1="1247.0" y1="497.0" x2="1247.0" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="1247.0" y="517.0" class="axis" text-anchor="middle">One positive</text>
+<line x1="1365.8" y1="497.0" x2="1365.8" y2="502.0" stroke="#64748B" stroke-width="1"/>
+<text x="1365.8" y="517.0" class="axis" text-anchor="middle">Both positive</text>
+<line x1="1057.0" y1="137.0" x2="1057.0" y2="497.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="1057.0" y1="497.0" x2="1437.0" y2="497.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1247.0" y="540.0" class="axis" text-anchor="middle">Condition</text>
+<text x="1010.0" y="317.0" class="axis" text-anchor="middle" transform="rotate(-90 1010 317.0)">Return correlation</text>
+<line x1="1057.0" y1="317.0" x2="1437.0" y2="317.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<polyline points="1111.6,474.3 1230.4,214.8 1349.1,190.5" fill="none" stroke="#7A5195" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1111.6" cy="474.3" r="5.0" fill="#7A5195"/>
+<circle cx="1230.4" cy="214.8" r="5.0" fill="#7A5195"/>
+<circle cx="1349.1" cy="190.5" r="5.0" fill="#7A5195"/>
+<polyline points="1128.2,476.7 1247.0,222.3 1365.8,202.3" fill="none" stroke="#E69F00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1128.2" cy="476.7" r="5.0" fill="#E69F00"/>
+<circle cx="1247.0" cy="222.3" r="5.0" fill="#E69F00"/>
+<circle cx="1365.8" cy="202.3" r="5.0" fill="#E69F00"/>
+<polyline points="1144.9,476.5 1263.6,218.0 1382.4,189.9" fill="none" stroke="#009E73" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1144.9" cy="476.5" r="5.0" fill="#009E73"/>
+<circle cx="1263.6" cy="218.0" r="5.0" fill="#009E73"/>
+<circle cx="1382.4" cy="189.9" r="5.0" fill="#009E73"/>
+<line x1="1062.0" y1="155.0" x2="1084.0" y2="155.0" stroke="#7A5195" stroke-width="3"/>
+<text x="1090.0" y="159.0" class="legend" text-anchor="start">Ridge linear</text>
+<line x1="1207.0" y1="155.0" x2="1229.0" y2="155.0" stroke="#E69F00" stroke-width="3"/>
+<text x="1235.0" y="159.0" class="legend" text-anchor="start">Nonlinear sparse</text>
+<line x1="1352.0" y1="155.0" x2="1374.0" y2="155.0" stroke="#009E73" stroke-width="3"/>
+<text x="1380.0" y="159.0" class="legend" text-anchor="start">Nonlinear full</text>
+<text x="1450.0" y="600.0" class="note" text-anchor="end">Intervals: 5,000 episode-cluster bootstrap samples. Matched-state errors cluster by episode.</text>
+</svg>

@@ -76,3 +76,20 @@ def test_tokenize_unpacks_mapping_style_batch_encoding():
 
     assert torch.equal(encoded["input_ids"], torch.tensor([[0, 1]]))
     assert torch.equal(encoded["attention_mask"], torch.tensor([[1, 1]]))
+
+
+def test_target_layer_hook_leaves_earlier_layer_unchanged():
+    model = TinyModel()
+    wrapper = HookedQwen(model, FakeTokenizer(), "tiny")
+    wrapper.tokenize = lambda messages: {"input_ids": torch.tensor([[0]])}
+    messages = [{"role": "user", "content": "x"}]
+    baseline = wrapper.decision(messages, capture_hidden_states=True)
+    steered = wrapper.decision(
+        messages,
+        layer=1,
+        transform=lambda hidden: hidden + torch.tensor([[0.0, 2.0, 0.0]]),
+        capture_hidden_states=True,
+    )
+
+    assert torch.equal(steered["hidden_states"][0], baseline["hidden_states"][0])
+    assert not torch.equal(steered["hidden_states"][1], baseline["hidden_states"][1])

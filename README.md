@@ -306,6 +306,65 @@ gate.
    python -m analysis.analyze_sequential
    ```
 
+7. Run the frozen ridge-direction causal comparison. Calibration reads only the
+   existing validation episodes and freezes a native-layer intervention near a
+   one-SD decoded shift subject to the activation-RMS safety bound:
+
+   ```bash
+   # Only needed once if artifacts/confirmatory_state_bank is not already present.
+   sbatch --export=ALL,PHASE=collect_confirmatory run_qwen35_bandit.sh
+
+   sbatch --export=ALL,PHASE=causal_calibrate run_qwen35_bandit.sh
+   sbatch --export=ALL,PHASE=causal_positive_control run_qwen35_bandit.sh
+   ```
+
+   Inspect
+   `artifacts/causal_steering/publication_positive_control/causal_steering_report.md`.
+   Do not interpret generic-return or advantage null effects unless the frozen
+   layer-31 persistence direction has a monotonic `-1,0,+1` dose response and a
+   positive episode-bootstrap confidence interval.
+
+   The full comparison uses the layer-31 persistence direction, layer-1 generic
+   future-return direction, layer-2 continuation-advantage direction, and 20
+   sign-randomized controls per native layer. Sign randomization preserves every
+   coordinate magnitude, hence both Euclidean norm and activation-standardized
+   RMS. Collection is resumable and can be sharded:
+
+   ```bash
+   sbatch --array=0-3 --time=06:00:00 \
+     --export=ALL,PHASE=causal_steering_collect,CAUSAL_NUM_SHARDS=4 \
+     run_qwen35_bandit.sh
+   sbatch --export=ALL,PHASE=causal_steering_analyze run_qwen35_bandit.sh
+   ```
+
+   `alpha=0` always reuses the unhooked baseline result. The primary outcome is
+   `logsumexp(logit_A, logit_B) - logit_C`; sampled actions are not used for the
+   causal test. The analysis resamples episodes and compares each target's
+   positive-minus-negative effect with its matched random-direction distribution.
+
+8. Independently run the external-value dissociation. Each held-out conversation
+   history is replayed under all 12 combinations of STOP payoff
+   `[-10, 0, +10, +20]` and common CONTINUE bonus `[-10, 0, +10]`. Temporary
+   payoffs apply only to the current decision, and no new histories or private arm
+   probabilities enter the prompt.
+
+   ```bash
+   sbatch --array=0-3 --time=03:00:00 \
+     --export=ALL,PHASE=value_dissociation_collect,DISSOCIATION_NUM_SHARDS=4 \
+     run_qwen35_bandit.sh
+   sbatch --export=ALL,PHASE=value_dissociation_analyze run_qwen35_bandit.sh
+   ```
+
+   Every factorial forward pass records persistence probability/logit and native-
+   layer projections onto the frozen generic-return, provisional advantage, and
+   direct-persistence directions. All-layer float16 activation tensors are also
+   saved as one atomic shard per state under
+   `artifacts/value_dissociation/activations/`, preserving the optional
+   orthogonalized-probe analysis without putting tensors in CSV. The primary analysis uses state fixed effects
+   with episode-clustered uncertainty. Because `C-S` is exactly collinear with
+   `C` and `S`, the report fits equivalent `S+C` and relative-plus-common-value
+   parameterizations rather than putting all three variables in a singular model.
+
 The sequential runner shares bandit and action-sampling seeds across all three
 conditions. `--force` exists for diagnostics but should not be used for the
 confirmatory workflow.

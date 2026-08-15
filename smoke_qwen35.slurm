@@ -79,4 +79,26 @@ python -m experiments.check_advantage_rollout \
     --activation-dir "artifacts/activation_smoke_${SMOKE_RUN_ID}" \
     --output "artifacts/advantage_rollout_smoke_${SMOKE_RUN_ID}.json"
 
+echo "Calibrating frozen ridge directions for causal smoke"
+python -m experiments.calibrate_causal_directions \
+    --output "artifacts/causal_calibration_smoke_${SMOKE_RUN_ID}.json"
+
+echo "Running one-state persistence-direction causal replay"
+python -m experiments.run_causal_steering \
+    --model "$MODEL_PATH" \
+    --state-bank "artifacts/activation_smoke_${SMOKE_RUN_ID}" \
+    --calibration "artifacts/causal_calibration_smoke_${SMOKE_RUN_ID}.json" \
+    --directions persistence \
+    --random-directions 0 \
+    --maximum-states 1 \
+    --output "artifacts/causal_replay_smoke_${SMOKE_RUN_ID}.csv"
+
+echo "Running one-state 12-cell external-value factorial"
+python -m experiments.run_value_dissociation \
+    --model "$MODEL_PATH" \
+    --state-bank "artifacts/activation_smoke_${SMOKE_RUN_ID}" \
+    --maximum-states 1 \
+    --activation-output-dir "artifacts/value_dissociation_smoke_${SMOKE_RUN_ID}_activations" \
+    --output "artifacts/value_dissociation_smoke_${SMOKE_RUN_ID}.csv"
+
 echo "Smoke test passed"

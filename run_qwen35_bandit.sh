@@ -28,6 +28,13 @@ ADVANTAGE_NUM_SHARDS="${ADVANTAGE_NUM_SHARDS:-1}"
 ADVANTAGE_SHARD_INDEX="${ADVANTAGE_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
 ADVANTAGE_TARGET_DIR="${ADVANTAGE_TARGET_DIR:-artifacts/advantage_targets}"
 ADVANTAGE_PROBE_DIR="${ADVANTAGE_PROBE_DIR:-artifacts/advantage_probes}"
+CAUSAL_NUM_SHARDS="${CAUSAL_NUM_SHARDS:-1}"
+CAUSAL_SHARD_INDEX="${CAUSAL_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+CAUSAL_MAXIMUM_STATES="${CAUSAL_MAXIMUM_STATES:-0}"
+CAUSAL_RANDOM_DIRECTIONS="${CAUSAL_RANDOM_DIRECTIONS:-20}"
+DISSOCIATION_NUM_SHARDS="${DISSOCIATION_NUM_SHARDS:-1}"
+DISSOCIATION_SHARD_INDEX="${DISSOCIATION_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+DISSOCIATION_MAXIMUM_STATES="${DISSOCIATION_MAXIMUM_STATES:-0}"
 
 cd "$PROJECT_DIR"
 mkdir -p logs artifacts "$CLUSTER_BASE/hf_cache" "$CLUSTER_BASE/torch_cache" "$CLUSTER_BASE/cache"
@@ -115,6 +122,67 @@ train_advantage_phase() {
     --output-dir "$ADVANTAGE_PROBE_DIR/publication"
 }
 
+calibrate_causal_directions_phase() {
+  echo "Calibrating frozen ridge directions on validation episodes only"
+  python -m experiments.calibrate_causal_directions
+}
+
+causal_positive_control_phase() {
+  echo "Running persistence-direction positive-control steering"
+  python -m experiments.run_causal_steering \
+    --model "$MODEL_PATH" \
+    --directions persistence \
+    --random-directions 0 \
+    --maximum-states "$CAUSAL_MAXIMUM_STATES" \
+    --output artifacts/causal_steering/positive_control.csv
+  python -m analysis.analyze_causal_steering \
+    --input artifacts/causal_steering/positive_control.csv \
+    --output-dir artifacts/causal_steering/publication_positive_control
+}
+
+causal_steering_collect_phase() {
+  local output
+  if [ "$CAUSAL_NUM_SHARDS" -eq 1 ]; then
+    output="artifacts/causal_steering/replays.csv"
+  else
+    printf -v output "artifacts/causal_steering/replays_shard_%03d.csv" "$CAUSAL_SHARD_INDEX"
+  fi
+  echo "Collecting ridge causal replays; shard ${CAUSAL_SHARD_INDEX}/${CAUSAL_NUM_SHARDS}"
+  python -m experiments.run_causal_steering \
+    --model "$MODEL_PATH" \
+    --random-directions "$CAUSAL_RANDOM_DIRECTIONS" \
+    --maximum-states "$CAUSAL_MAXIMUM_STATES" \
+    --num-shards "$CAUSAL_NUM_SHARDS" \
+    --shard-index "$CAUSAL_SHARD_INDEX" \
+    --output "$output"
+}
+
+causal_steering_analyze_phase() {
+  echo "Analyzing ridge causal steering"
+  python -m analysis.analyze_causal_steering
+}
+
+value_dissociation_collect_phase() {
+  local output
+  if [ "$DISSOCIATION_NUM_SHARDS" -eq 1 ]; then
+    output="artifacts/value_dissociation/factorial.csv"
+  else
+    printf -v output "artifacts/value_dissociation/factorial_shard_%03d.csv" "$DISSOCIATION_SHARD_INDEX"
+  fi
+  echo "Collecting STOP x CONTINUE payoff factorial; shard ${DISSOCIATION_SHARD_INDEX}/${DISSOCIATION_NUM_SHARDS}"
+  python -m experiments.run_value_dissociation \
+    --model "$MODEL_PATH" \
+    --maximum-states "$DISSOCIATION_MAXIMUM_STATES" \
+    --num-shards "$DISSOCIATION_NUM_SHARDS" \
+    --shard-index "$DISSOCIATION_SHARD_INDEX" \
+    --output "$output"
+}
+
+value_dissociation_analyze_phase() {
+  echo "Analyzing STOP x CONTINUE value dissociation"
+  python -m analysis.analyze_value_dissociation
+}
+
 collect_confirmatory_phase() {
   echo "Starting held-out confirmatory collection (${CONFIRMATORY_EPISODES} episodes)"
   python -m experiments.collect_bandit_activations \
@@ -173,6 +241,32 @@ case "$PHASE" in
     fi
     collect_advantage_phase
     train_advantage_phase
+    ;;
+  causal_calibrate)
+    calibrate_causal_directions_phase
+    ;;
+  causal_positive_control)
+    causal_positive_control_phase
+    ;;
+  causal_steering_collect)
+    causal_steering_collect_phase
+    ;;
+  causal_steering_analyze)
+    causal_steering_analyze_phase
+    ;;
+  value_dissociation_collect)
+    value_dissociation_collect_phase
+    ;;
+  value_dissociation_analyze)
+    value_dissociation_analyze_phase
+    ;;
+  value_dissociation_pipeline)
+    if [ "$DISSOCIATION_NUM_SHARDS" -ne 1 ]; then
+      echo "value_dissociation_pipeline requires DISSOCIATION_NUM_SHARDS=1" >&2
+      exit 2
+    fi
+    value_dissociation_collect_phase
+    value_dissociation_analyze_phase
     ;;
   collect_confirmatory)
     collect_confirmatory_phase

@@ -628,3 +628,162 @@ three-model variance decomposition, and exact-match result.
   exact matched-state tests, and compares advantage directions with the direct
   persistence directions. The max of noisy Q estimates is acknowledged as
   upward biased, so raw per-arm returns and standard errors are preserved.
+
+### Ridge-linear replication result
+
+- The validation-selected ridge future-return probe is at layer 1 and obtains
+  validation/test prediction R² of .153/.240 on 1,800 states from 78 held-out
+  episodes. The selected layer ranks second on test; layer 0 is slightly higher
+  at .249. Validation/test layer-rank Spearman correlation is .505.
+- On the identical states, nonlinear sparse/full prediction R² is .179/.251.
+  Ridge and full-nonlinear predictions correlate r=.951. An episode-bootstrap
+  95% interval for ridge minus full-nonlinear R² is [-.033, .013], so the data
+  do not distinguish their predictive performance. Future return is therefore
+  linearly decodable rather than only recoverable by a flexible decoder.
+- Within 1,180 exactly matched states, ridge output predicts future return
+  (standardized beta .486, p=2.0e-6) but not persistence (beta .007, p=.951),
+  replicating the nonlinear representational/behavioral dissociation.
+- Recent history explains .753 of persistence-logit variance; ridge return alone
+  explains .068 and raises the joint model only to .755 (increment .0017;
+  adjusted beta .049, p=.352). The direct persistence probe peaks at layer 31
+  with test R² .998, localizing an explicit late decision variable without
+  showing that it is a value signal.
+- Important limitation: ridge/sparse/full return correlations are
+  -.699/-.710/-.709 in both-negative environments, versus .454/.421/.440 with
+  one positive arm and .562/.510/.565 with both positive arms. The replication
+  supports a future-return/trajectory signal mainly in favorable regimes, not
+  a uniformly calibrated signed value code across all reward conditions.
+- The publication report, full JSON, layer figure, and direct replication figure
+  are in `artifacts/linear_probes/publication/`. The continuation-advantage probe
+  remains the decisive next experiment.
+
+### Continuation-advantage adjudication result
+
+- The target audit passes: 384 unique states, no duplicates, exactly 128 states
+  per train/validation/test split, and 10 paired rollouts per forced action.
+- The validation-selected ridge probe is at layer 2. Validation/test target R²
+  is .197/.314 (episode-bootstrap test 95% interval [.068, .472]); exact matching
+  retains 124 states in 31 strata from 50 episodes and gives probe-to-advantage
+  beta .575, p=3.4e-11. Integrated continuation-return information is therefore
+  linearly decodable beyond the immediately preceding outcome.
+- Actual rollout advantage predicts persistence within exact recent-state
+  matches (beta .280, p=.0095), but decoded advantage does not (beta .129,
+  p=.297). Recent history explains .687 of persistence variance; the probe adds
+  .0084 R² (adjusted beta .113, p=.155), whereas actual advantage adds .0264
+  (adjusted beta .176, p=.0024).
+- The nominal advantage target is not sharply distinct from generic value:
+  Q_A and Q_B correlate .926, max(Q_A,Q_B) correlates .990 with their mean, and
+  the arm-choice premium has SD 4.5 versus 30.1 for common Q level. Advantage
+  and generic-return probe outputs correlate .913. Within exact matches, the
+  generic probe predicts rollout advantage (beta .666); with both probes in the
+  model, generic beta is .746 while advantage-probe beta is -.090. This decoder
+  comparison is qualified because the generic probe had many more training
+  labels.
+- All 24 held-out states with negative rollout advantage still had P(continue)
+  above .5 (mean .944). In both-negative environments actual advantage averages
+  -8.5, the probe predicts +15.0, and mean P(continue) is .941. The model is not
+  implementing a zero-crossing continuation-value threshold.
+- Adjudication: early states encode integrated return information, while recent
+  loss/time cues plus a strong continue prior best explain STOP. A distinct
+  continuation-advantage direction read out into persistence is not established.
+  The target itself mostly measures common continuation value. Causal steering
+  against matched generic-return and random directions is the remaining test.
+- The expanded report, JSON, layer figure, and computational-adjudication figure
+  are in `artifacts/advantage_probes/publication/`.
+
+---
+
+## Causal steering and value dissociation: RED cycle
+
+## Current objective
+
+Implement the frozen-ridge causal steering comparison and the repeated-state
+STOP-payoff × CONTINUE-bonus experiment without tuning on confirmatory states.
+
+## RED test
+
+- `tests/test_causal_ridge_steering.py` requires a normalized direction that
+  raises the frozen ridge output, validation-only calibration near a one-SD
+  decoded shift, and 20 sign-randomized controls exactly matched on Euclidean
+  norm and activation-standardized RMS.
+- `tests/test_value_dissociation.py` requires all 12 factorial cells to share
+  one underlying history, forbids private arm-probability leakage, and requires
+  temporary STOP/CONTINUE rewards to apply exactly once.
+
+## Expected failure
+
+The new ridge-steering and factorial-runner modules do not exist yet.
+
+## Actual failure
+
+Direct import checks fail with `ModuleNotFoundError` for both
+`interventions.ridge_steering` and `experiments.run_value_dissociation`, as
+expected. The local host still does not provide pytest.
+
+## GREEN implementation
+
+- `interventions/ridge_steering.py` derives the normalized raw activation-space
+  gradient of each frozen ridge probe, chooses the largest validation-checked
+  decoded-SD displacement below the RMS cap, and constructs exact norm/RMS-
+  matched Rademacher-sign controls.
+- `experiments/calibrate_causal_directions.py` freezes persistence, generic-
+  return, and advantage magnitudes using only the original validation episodes.
+- `experiments/run_causal_steering.py` replays held-out states at alpha -1/0/+1,
+  reuses the exact unhooked baseline at alpha zero, applies hooks only at native
+  layers, records probe movement and logits, and supports resumable shards.
+- `analysis/analyze_causal_steering.py` performs episode-bootstrap paired
+  inference, random-control empirical tests, full dose-response plots, and a
+  mandatory persistence-positive-control interpretation gate.
+- `experiments/run_value_dissociation.py` creates all 12 temporary payoff
+  prompts per held-out history, records behavior and three frozen native-layer
+  projections, and atomically stores all-layer float16 activations per state.
+- `BanditEnvironment.step_with_temporary_payoff` applies STOP payoff or common
+  A/B bonus exactly once; the ordinary next `step` returns to baseline rewards.
+- `analysis/analyze_value_dissociation.py` uses state fixed effects and episode-
+  clustered uncertainty for behavior and representations. It fits S+C and
+  relative+common parameterizations separately because C-S is exactly
+  collinear with the two factorial terms.
+- Both confirmatory runners now fail loudly when the held-out bank or selected
+  shard is empty. Both publication analyses reject duplicated, incomplete, or
+  mismatched replay cells instead of silently analyzing partial output.
+- Calibration checks that the supplied frozen artifacts are exactly the
+  preregistered layer-31 persistence, layer-1 generic-return, and layer-2
+  advantage probes.
+
+## Test command
+
+Direct `python3 -B` execution of payoff, causal-analysis, factorial-analysis,
+and replay-matching tests; AST parsing for all new/modified Python modules;
+`bash -n run_qwen35_bandit.sh smoke_qwen35.slurm`. The cluster smoke gate will
+run the full pytest suite plus one-state real-model causal/factorial checks.
+
+## Result
+
+All dependency-free tests pass, including synthetic recovery of STOP and
+CONTINUE effects, positive-control gating, exact 12-cell history matching,
+private-probability exclusion, and one-decision-only reward semantics. Python
+and shell syntax checks pass. Torch/pytest-dependent tests remain for the GPU
+smoke environment because neither package is installed on this host.
+
+## Decisions / assumptions
+
+- Random controls will use independent Rademacher sign randomizations of the
+  exact target delta. This preserves dimensionality, native layer, Euclidean
+  norm, and activation-standardized RMS simultaneously.
+- Factorial prompts will preserve the existing visible history and replace only
+  the final current-decision choice block with a fixed incentive template.
+- All-layer factorial activations are retained so an orthogonalized advantage
+  probe remains possible, but that optional probe is not trained automatically.
+- The external-value experiment is independent of steering success. The full
+  value-direction steering interpretation remains blocked unless the layer-31
+  persistence positive control passes.
+
+## Open issues
+
+Run the GPU smoke gate; no real-model causal result is claimed locally.
+
+## Next step
+
+Run `PHASE=causal_calibrate`, then `PHASE=causal_positive_control`. In parallel,
+the held-out payoff factorial may be collected. Only after the positive control
+passes should generic-return and advantage steering nulls be interpreted.
