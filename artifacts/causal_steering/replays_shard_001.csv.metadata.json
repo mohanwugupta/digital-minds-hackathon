@@ -1,0 +1,31 @@
+{
+  "config": {
+    "calibration": "artifacts/causal_steering/calibration.json",
+    "calibration_frozen_before_confirmatory_replay": true,
+    "directions": "all",
+    "maximum_states": 0,
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "num_shards": 8,
+    "online": false,
+    "output": "artifacts/causal_steering/replays_shard_001.csv",
+    "probe_split": "artifacts/value_probes/episode_split.json",
+    "random_directions": 20,
+    "revision": null,
+    "seed": 62026,
+    "selected_directions": [
+      "persistence",
+      "generic_return",
+      "advantage"
+    ],
+    "selected_states_this_shard": 142,
+    "shard_index": 1,
+    "state_bank": "artifacts/confirmatory_state_bank"
+  },
+  "created_at_utc": "2026-08-15T15:33:03.317475+00:00",
+  "git_commit": "7bec82599ecaf8887de9e7d732e62a68593e3342",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}
