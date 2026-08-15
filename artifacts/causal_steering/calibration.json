@@ -1,0 +1,44 @@
+{
+  "decoded_sd_candidates": [
+    1.0,
+    0.5,
+    0.25,
+    0.1
+  ],
+  "directions": {
+    "advantage": {
+      "decoded_sd_shift": 0.9999998027119739,
+      "decoded_shift": 29.003507614135742,
+      "direction_l2_norm": 1.0,
+      "layer": 2,
+      "magnitude": 0.0022119458353597366,
+      "probe_path": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/artifacts/advantage_probes/frozen_best_advantage.pt",
+      "relative_rms": 0.0824594646692276,
+      "validation_states": 1812
+    },
+    "generic_return": {
+      "decoded_sd_shift": 1.0000002208183085,
+      "decoded_shift": 34.550559997558594,
+      "direction_l2_norm": 1.0,
+      "layer": 1,
+      "magnitude": 0.0014452322633941403,
+      "probe_path": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/artifacts/linear_probes/frozen_best_future_return.pt",
+      "relative_rms": 0.06488616019487381,
+      "validation_states": 1812
+    },
+    "persistence": {
+      "decoded_sd_shift": 1.0000000822545039,
+      "decoded_shift": 1.4492738246917725,
+      "direction_l2_norm": 0.9999998211860657,
+      "layer": 31,
+      "magnitude": 1.1297503263830402,
+      "probe_path": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/artifacts/linear_probes/frozen_best_persistence.pt",
+      "relative_rms": 0.13677458465099335,
+      "validation_states": 1812
+    }
+  },
+  "max_relative_rms": 0.25,
+  "selection_data": "probe validation episodes only",
+  "split_path": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/artifacts/value_probes/episode_split.json",
+  "validation_episode_count": 76
+}

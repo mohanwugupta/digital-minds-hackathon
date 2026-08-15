@@ -1,0 +1,41 @@
+{
+  "config": {
+    "activation_output_dir": "artifacts/value_dissociation/activations",
+    "advantage_probe": "artifacts/advantage_probes/frozen_best_advantage.pt",
+    "continue_bonuses": [
+      -10,
+      0,
+      10
+    ],
+    "generic_probe": "artifacts/linear_probes/frozen_best_future_return.pt",
+    "maximum_states": 0,
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "num_shards": 4,
+    "online": false,
+    "output": "artifacts/value_dissociation/factorial_shard_000.csv",
+    "persistence_probe": "artifacts/linear_probes/frozen_best_persistence.pt",
+    "probe_layers": {
+      "advantage": 2,
+      "generic_return": 1,
+      "persistence": 31
+    },
+    "probe_split": "artifacts/value_probes/episode_split.json",
+    "revision": null,
+    "selected_states_this_shard": 294,
+    "shard_index": 0,
+    "state_bank": "artifacts/confirmatory_state_bank",
+    "stop_payoffs": [
+      -10,
+      0,
+      10,
+      20
+    ]
+  },
+  "created_at_utc": "2026-08-15T14:24:33.232130+00:00",
+  "git_commit": "9c4f3e0cf6ca651503cc80d641f9880549945844",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}

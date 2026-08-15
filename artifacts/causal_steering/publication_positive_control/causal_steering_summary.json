@@ -1,0 +1,41 @@
+{
+  "audit": {
+    "alpha_zero_exact_across_conditions": true,
+    "contexts_per_state": [
+      1
+    ],
+    "duplicate_keys": 0,
+    "episodes": 48,
+    "incomplete_alpha_groups": 0,
+    "rows": 3561,
+    "states": 1187,
+    "target_probe_ordering_failures": 0,
+    "unique_keys": 3561
+  },
+  "directions": {
+    "persistence": {
+      "dose_response": {
+        "-1": 2.368249003155303,
+        "0": 3.371662482881754,
+        "1": 4.36175896814821
+      },
+      "matched_states": 1187,
+      "random_control_empirical_p_absolute": null,
+      "random_control_empirical_p_one_sided": null,
+      "random_controls": [],
+      "target": {
+        "bootstrap_samples": 10000,
+        "bootstrap_two_sided_p": 0.0,
+        "confidence_interval_95": [
+          1.9777282506427694,
+          2.0111031179752783
+        ],
+        "episode_count": 48,
+        "mean": 1.993509964992906
+      }
+    }
+  },
+  "interpretation_gate": "Persistence-direction dose ordering and positive episode-bootstrap 95% interval must pass before interpreting return/advantage nulls.",
+  "positive_control_passed": true,
+  "value_direction_interpretation_allowed": true
+}
