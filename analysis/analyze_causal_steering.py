@@ -24,10 +24,28 @@ LABELS = {
 
 def read_rows(pattern: str) -> list[dict]:
     rows = []
+    retained = (
+        "state_id",
+        "episode_id",
+        "direction_name",
+        "control_type",
+        "control_id",
+        "context_hash",
+        "logit_A",
+        "logit_B",
+        "logit_C",
+        "alpha",
+        "persistence_logit",
+        "p_continue",
+        "probe_value_pre",
+        "probe_value_post",
+        "direction_l2_norm",
+        "intervention_relative_rms",
+    )
     for path in sorted(glob.glob(pattern)):
         with open(path, newline="", encoding="utf-8") as handle:
             for source in csv.DictReader(handle):
-                row = dict(source)
+                row = {key: source[key] for key in retained}
                 for key in (
                     "alpha",
                     "persistence_logit",

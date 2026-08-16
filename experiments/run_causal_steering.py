@@ -7,7 +7,7 @@ import hashlib
 import json
 import os
 
-from experiments.run_bandit_intervention import build_matched_replays
+from experiments.replay_utils import build_matched_replays
 
 
 DIRECTION_NAMES = ("persistence", "generic_return", "advantage")

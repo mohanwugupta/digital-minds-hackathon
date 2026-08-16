@@ -4,3 +4,10 @@ __pycache__/
 logs/*
 !logs/.gitkeep
 .coverage
+artifacts/*smoke*
+artifacts/activation_smoke_*/
+artifacts/value_probes/layer_*.pt
+artifacts/mc_value_probes/layer_*.pt
+artifacts/value_dissociation/activations/
+artifacts/causal_steering/positive_control.csv*
+artifacts/causal_steering/publication_positive_control/

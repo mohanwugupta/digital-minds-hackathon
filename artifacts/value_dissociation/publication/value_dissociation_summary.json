@@ -1,0 +1,1128 @@
+{
+  "audit": {
+    "complete_states": 1187,
+    "context_uniqueness_failures": 0,
+    "duplicate_cells": 0,
+    "episodes": 48,
+    "history_hash_failures": 0,
+    "incomplete_states": 0,
+    "rows": 14244,
+    "states": 1187
+  },
+  "cell_means": {
+    "advantage_projection": [
+      {
+        "continue_bonus": -10,
+        "mean": 49.8618655032035,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 55.861894066833905,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 53.437254266971884,
+        "relative_incentive": 20,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 51.682723034101066,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 56.867550408830134,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 54.161712766999244,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 50.58120214868817,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 58.39637691430315,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 54.10386065183413,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 46.35768358508579,
+        "relative_incentive": -30,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 52.77513397653864,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 49.55642820388807,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 20
+      }
+    ],
+    "arm_logit_gap": [
+      {
+        "continue_bonus": -10,
+        "mean": 1.1062552653748947,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 1.3774220724515585,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 1.51969250210615,
+        "relative_incentive": 20,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 1.0240101095197978,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 1.915122156697557,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 1.839827295703454,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 1.237468407750632,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 1.3330876158382476,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 1.6361625947767482,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 1.2730623420387532,
+        "relative_incentive": -30,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 1.5157961246840774,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 1.120050547598989,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 20
+      }
+    ],
+    "generic_return_projection": [
+      {
+        "continue_bonus": -10,
+        "mean": 15.408196218694673,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 17.723652382909297,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 16.711640972195298,
+        "relative_incentive": 20,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 16.168892749940635,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 17.423158774982507,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 17.592586127669247,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 17.707090921731385,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 20.406667893738334,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 18.684245307604204,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": 19.46777298717611,
+        "relative_incentive": -30,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 23.017495273439042,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 20.609415867394926,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 20
+      }
+    ],
+    "persistence_logit": [
+      {
+        "continue_bonus": -10,
+        "mean": 0.6103226175473166,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 1.9232309373493395,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 2.4721223208981167,
+        "relative_incentive": 20,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": -0.4442160796050091,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 2.178002160311918,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 3.131069723315667,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": -10,
+        "mean": -1.2101254910984787,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": -1.0235008102690801,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 1.2697494813987729,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": -1.506548697967423,
+        "relative_incentive": -30,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 0,
+        "mean": -1.0872565536295573,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 10,
+        "mean": -0.8497338605135822,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 20
+      }
+    ],
+    "persistence_projection": [
+      {
+        "continue_bonus": -10,
+        "mean": 0.5893874379297014,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 1.9137130850186947,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 2.466676996652078,
+        "relative_incentive": 20,
+        "states": 1187,
+        "stop_payoff": -10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": -0.49426875700946604,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 0,
+        "mean": 2.201596079901074,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 3.12313725793673,
+        "relative_incentive": 10,
+        "states": 1187,
+        "stop_payoff": 0
+      },
+      {
+        "continue_bonus": -10,
+        "mean": -0.823487573043579,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 0,
+        "mean": -0.6920289975208903,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": 10,
+        "mean": 1.1386341660988863,
+        "relative_incentive": 0,
+        "states": 1187,
+        "stop_payoff": 10
+      },
+      {
+        "continue_bonus": -10,
+        "mean": -0.9068840907819149,
+        "relative_incentive": -30,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 0,
+        "mean": -0.7368898447963904,
+        "relative_incentive": -20,
+        "states": 1187,
+        "stop_payoff": 20
+      },
+      {
+        "continue_bonus": 10,
+        "mean": -0.6611185351036734,
+        "relative_incentive": -10,
+        "states": 1187,
+        "stop_payoff": 20
+      }
+    ]
+  },
+  "collinearity_note": "continue_bonus - stop_payoff is exactly collinear with the two factor terms. Models use either STOP+CONTINUE or relative+common parameterizations, never all three in one design matrix.",
+  "pooled_behavior_with_recent_history": {
+    "relative_and_common": {
+      "coefficients": {
+        "common_incentive": {
+          "cluster_robust_standard_error": 0.0058574709979323045,
+          "normal_approximation_p_value": 0.0240942664329866,
+          "predictor_scale": 13.844373104863458,
+          "standardized_beta": 0.013212244913041515,
+          "z_value": 2.2556227624012917
+        },
+        "initial_state": {
+          "cluster_robust_standard_error": 0.00944773785338248,
+          "normal_approximation_p_value": 3.6930001907626495e-43,
+          "predictor_scale": 0.19698436725426094,
+          "standardized_beta": 0.13012591119075742,
+          "z_value": 13.7732347372625
+        },
+        "log_round": {
+          "cluster_robust_standard_error": 0.06112276351593124,
+          "normal_approximation_p_value": 0.150532624203234,
+          "predictor_scale": 1.2705081551057065,
+          "standardized_beta": -0.08787330510338731,
+          "z_value": -1.437652685328662
+        },
+        "log_round_squared": {
+          "cluster_robust_standard_error": 0.06483069745396716,
+          "normal_approximation_p_value": 7.358516575289589e-06,
+          "predictor_scale": 6.670992432209143,
+          "standardized_beta": 0.2906389788710724,
+          "z_value": 4.483045691085457
+        },
+        "loss_streak": {
+          "cluster_robust_standard_error": 0.008415719469746025,
+          "normal_approximation_p_value": 1.4558311414043707e-05,
+          "predictor_scale": 1.9185257423632702,
+          "standardized_beta": 0.036484393349949254,
+          "z_value": 4.335267291300324
+        },
+        "previous_outcome": {
+          "cluster_robust_standard_error": 0.009988988596511848,
+          "normal_approximation_p_value": 0.01309829755357475,
+          "predictor_scale": 2.4386601690543164,
+          "standardized_beta": 0.02478353408865235,
+          "z_value": 2.4810854321434257
+        },
+        "relative_incentive": {
+          "cluster_robust_standard_error": 0.01182806853151095,
+          "normal_approximation_p_value": 0.0,
+          "predictor_scale": 13.844373104863458,
+          "standardized_beta": 0.8579132545385345,
+          "z_value": 72.53198206055222
+        }
+      },
+      "episode_clusters": 48,
+      "outcome_scale": 1.703235418860163,
+      "r_squared": 0.7759299564762812,
+      "states": 14244
+    },
+    "relative_only": {
+      "coefficients": {
+        "initial_state": {
+          "cluster_robust_standard_error": 0.009447406045285245,
+          "normal_approximation_p_value": 3.6683489049587246e-43,
+          "predictor_scale": 0.19698436725426094,
+          "standardized_beta": 0.13012591119075742,
+          "z_value": 13.773718475421846
+        },
+        "log_round": {
+          "cluster_robust_standard_error": 0.0611206168615496,
+          "normal_approximation_p_value": 0.15051829101069764,
+          "predictor_scale": 1.2705081551057065,
+          "standardized_beta": -0.08787330510338731,
+          "z_value": -1.4377031780035514
+        },
+        "log_round_squared": {
+          "cluster_robust_standard_error": 0.0648284205755548,
+          "normal_approximation_p_value": 7.3530868914670285e-06,
+          "predictor_scale": 6.670992432209143,
+          "standardized_beta": 0.2906389788710724,
+          "z_value": 4.483203142861469
+        },
+        "loss_streak": {
+          "cluster_robust_standard_error": 0.008415423906521544,
+          "normal_approximation_p_value": 1.4548237367301703e-05,
+          "predictor_scale": 1.9185257423632702,
+          "standardized_beta": 0.036484393349949254,
+          "z_value": 4.33541955286122
+        },
+        "previous_outcome": {
+          "cluster_robust_standard_error": 0.009988637779485509,
+          "normal_approximation_p_value": 0.013095095729100637,
+          "predictor_scale": 2.4386601690543164,
+          "standardized_beta": 0.02478353408865235,
+          "z_value": 2.481172571854827
+        },
+        "relative_incentive": {
+          "cluster_robust_standard_error": 0.012906659989496258,
+          "normal_approximation_p_value": 0.0,
+          "predictor_scale": 13.844373104863458,
+          "standardized_beta": 0.8538921365215218,
+          "z_value": 66.1590324077987
+        }
+      },
+      "episode_clusters": 48,
+      "outcome_scale": 1.703235418860163,
+      "r_squared": 0.7757715624507457,
+      "states": 14244
+    },
+    "stop_and_continue": {
+      "coefficients": {
+        "continue_bonus": {
+          "cluster_robust_standard_error": 0.00580729408851077,
+          "normal_approximation_p_value": 0.0,
+          "predictor_scale": 8.16496580927726,
+          "standardized_beta": 0.5137617907822086,
+          "z_value": 88.46836115957034
+        },
+        "initial_state": {
+          "cluster_robust_standard_error": 0.009447737853382482,
+          "normal_approximation_p_value": 3.693000190762778e-43,
+          "predictor_scale": 0.19698436725426094,
+          "standardized_beta": 0.13012591119075742,
+          "z_value": 13.773234737262497
+        },
+        "log_round": {
+          "cluster_robust_standard_error": 0.06112276351593124,
+          "normal_approximation_p_value": 0.150532624203234,
+          "predictor_scale": 1.2705081551057065,
+          "standardized_beta": -0.08787330510338731,
+          "z_value": -1.437652685328662
+        },
+        "log_round_squared": {
+          "cluster_robust_standard_error": 0.06483069745396716,
+          "normal_approximation_p_value": 7.358516575289589e-06,
+          "predictor_scale": 6.670992432209143,
+          "standardized_beta": 0.2906389788710724,
+          "z_value": 4.483045691085457
+        },
+        "loss_streak": {
+          "cluster_robust_standard_error": 0.008415719469746027,
+          "normal_approximation_p_value": 1.4558311414043748e-05,
+          "predictor_scale": 1.9185257423632702,
+          "standardized_beta": 0.036484393349949254,
+          "z_value": 4.335267291300323
+        },
+        "previous_outcome": {
+          "cluster_robust_standard_error": 0.00998898859651185,
+          "normal_approximation_p_value": 0.013098297553574771,
+          "predictor_scale": 2.4386601690543164,
+          "standardized_beta": 0.02478353408865235,
+          "z_value": 2.4810854321434253
+        },
+        "stop_payoff": {
+          "cluster_robust_standard_error": 0.012806280707975778,
+          "normal_approximation_p_value": 0.0,
+          "predictor_scale": 11.180339887498949,
+          "standardized_beta": -0.6821576043489385,
+          "z_value": -53.26742556284037
+        }
+      },
+      "episode_clusters": 48,
+      "outcome_scale": 1.703235418860163,
+      "r_squared": 0.7759299564762812,
+      "states": 14244
+    }
+  },
+  "state_fixed_effects": {
+    "advantage_projection": {
+      "continue_only": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.011142350224195786,
+            "normal_approximation_p_value": 3.21361100398449e-126,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.1596972702326851,
+            "standardized_beta": 0.2662797902436299,
+            "z_value": 23.89799143679753
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 4.896814550183379,
+        "r_squared": 0.0709049266921915,
+        "states": 14244
+      },
+      "relative_and_common": {
+        "coefficients": {
+          "common_incentive": {
+            "cluster_robust_standard_error": 0.016512607852709332,
+            "normal_approximation_p_value": 1.493407858405493e-06,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.028105550600350228,
+            "standardized_beta": 0.07946058092281569,
+            "z_value": 4.81211578640972
+          },
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.010575634305530978,
+            "normal_approximation_p_value": 4.209662718694146e-271,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.13159171963233487,
+            "standardized_beta": 0.3720387703946039,
+            "z_value": 35.17886111096244
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 4.896814550183379,
+        "r_squared": 0.12673231601040214,
+        "states": 14244
+      },
+      "relative_only": {
+        "coefficients": {
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.012061281182703568,
+            "normal_approximation_p_value": 6.638769736602341e-183,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.12303785640614134,
+            "standardized_beta": 0.3478551153311383,
+            "z_value": 28.840643880351493
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 4.896814550183379,
+        "r_squared": 0.12100318126203946,
+        "states": 14244
+      },
+      "stop_and_continue": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.01114274142406334,
+            "normal_approximation_p_value": 3.278810023607232e-126,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.1596972702326851,
+            "standardized_beta": 0.2662797902436299,
+            "z_value": 23.897152425038296
+          },
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.016393103227687094,
+            "normal_approximation_p_value": 4.2701247381699237e-47,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.10348616903198464,
+            "standardized_beta": -0.2362782032228335,
+            "z_value": -14.41326879609786
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 4.896814550183379,
+        "r_squared": 0.12673231601040214,
+        "states": 14244
+      },
+      "stop_only": {
+        "coefficients": {
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.016392527697880972,
+            "normal_approximation_p_value": 4.2389451386436607e-47,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.10348616903198464,
+            "standardized_beta": -0.2362782032228335,
+            "z_value": -14.413774835553683
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 4.896814550183379,
+        "r_squared": 0.05582738931821063,
+        "states": 14244
+      }
+    },
+    "arm_logit_gap": {
+      "continue_only": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.05247681416782723,
+            "normal_approximation_p_value": 7.446462466811052e-13,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.018436710193765797,
+            "standardized_beta": 0.3763100072179462,
+            "z_value": 7.170976614823855
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 0.40002951152044797,
+        "r_squared": 0.14160922153237077,
+        "states": 14244
+      },
+      "relative_and_common": {
+        "coefficients": {
+          "common_incentive": {
+            "cluster_robust_standard_error": 0.05381011809833805,
+            "normal_approximation_p_value": 5.395511673491494e-07,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.007792316062903679,
+            "standardized_beta": 0.269679430689565,
+            "z_value": 5.011686281690101
+          },
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.08926973772555215,
+            "normal_approximation_p_value": 3.68081156373329e-05,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.010644394130862118,
+            "standardized_beta": 0.3683852305365256,
+            "z_value": 4.126652994871304
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 0.40002951152044797,
+        "r_squared": 0.1479632443085196,
+        "states": 14244
+      },
+      "relative_only": {
+        "coefficients": {
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.0955694213672705,
+            "normal_approximation_p_value": 0.0027370702688737838,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.008272819676934912,
+            "standardized_beta": 0.2863088820657884,
+            "z_value": 2.9958210269528758
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 0.40002951152044797,
+        "r_squared": 0.08197277594976149,
+        "states": 14244
+      },
+      "stop_and_continue": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.052478656590865376,
+            "normal_approximation_p_value": 7.460170496050842e-13,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.018436710193765797,
+            "standardized_beta": 0.3763100072179462,
+            "z_value": 7.170724855854029
+          },
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.09490768769650895,
+            "normal_approximation_p_value": 0.40096943531090196,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.0028520780679584384,
+            "standardized_beta": -0.07971212439866882,
+            "z_value": -0.8398911229780274
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 0.40002951152044797,
+        "r_squared": 0.1479632443085196,
+        "states": 14244
+      },
+      "stop_only": {
+        "coefficients": {
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.09490435567313663,
+            "normal_approximation_p_value": 0.40095290046347154,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.0028520780679584384,
+            "standardized_beta": -0.07971212439866882,
+            "z_value": -0.8399206109486492
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 0.40002951152044797,
+        "r_squared": 0.006354022776148827,
+        "states": 14244
+      }
+    },
+    "generic_return_projection": {
+      "continue_only": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.022525725886610674,
+            "normal_approximation_p_value": 3.903566925047699e-09,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.06057419246651088,
+            "standardized_beta": 0.1326366256732002,
+            "z_value": 5.888228700857965
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 3.728881128446672,
+        "r_squared": 0.017592474469972585,
+        "states": 14244
+      },
+      "relative_and_common": {
+        "coefficients": {
+          "common_incentive": {
+            "cluster_robust_standard_error": 0.03282483806095214,
+            "normal_approximation_p_value": 4.636141414092636e-33,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.1058986797884454,
+            "standardized_beta": 0.3931744627414363,
+            "z_value": 11.977955900691855
+          },
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.015310067013048552,
+            "normal_approximation_p_value": 4.206432818990596e-28,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": -0.04532448732193451,
+            "standardized_beta": -0.1682781219504592,
+            "z_value": -10.99133803967273
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 3.728881128446672,
+        "r_squared": 0.22317660807250095,
+        "states": 14244
+      },
+      "relative_only": {
+        "coefficients": {
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.017012702398230068,
+            "normal_approximation_p_value": 2.943685298679872e-64,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": -0.0775545203010266,
+            "standardized_beta": -0.28793991495872245,
+            "z_value": -16.924995701369497
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 3.728881128446672,
+        "r_squared": 0.08290939462643632,
+        "states": 14244
+      },
+      "stop_and_continue": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.02252651674857481,
+            "normal_approximation_p_value": 3.908451561162369e-09,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.06057419246651088,
+            "standardized_beta": 0.1326366256732002,
+            "z_value": 5.888021976659652
+          },
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.027562201379335342,
+            "normal_approximation_p_value": 8.308551414070643e-61,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": 0.15122316711037992,
+            "standardized_beta": 0.453413865692844,
+            "z_value": 16.4505679155508
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 3.728881128446672,
+        "r_squared": 0.22317660807250095,
+        "states": 14244
+      },
+      "stop_only": {
+        "coefficients": {
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.027561233724328487,
+            "normal_approximation_p_value": 8.229694883410407e-61,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": 0.15122316711037992,
+            "standardized_beta": 0.453413865692844,
+            "z_value": 16.451145483107037
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 3.728881128446672,
+        "r_squared": 0.20558413360252836,
+        "states": 14244
+      }
+    },
+    "persistence_logit": {
+      "continue_only": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.006019200357055293,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.1071721914527821,
+            "standardized_beta": 0.532620996620851,
+            "z_value": 88.48700242990738
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.6429267424096623,
+        "r_squared": 0.2836851260413886,
+        "states": 14244
+      },
+      "relative_and_common": {
+        "coefficients": {
+          "common_incentive": {
+            "cluster_robust_standard_error": 0.006071421361282162,
+            "normal_approximation_p_value": 0.024069451259901033,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.0016254664135454413,
+            "standardized_beta": 0.013697240977124547,
+            "z_value": 2.2560188400812895
+          },
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.012260101325345898,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.10554672503923668,
+            "standardized_beta": 0.8894055977787905,
+            "z_value": 72.54471836542487
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.6429267424096623,
+        "r_squared": 0.7838145561537411,
+        "states": 14244
+      },
+      "relative_only": {
+        "coefficients": {
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.013378089649429908,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.10505201786989674,
+            "standardized_beta": 0.8852368722640134,
+            "z_value": 66.1706488341358
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.6429267424096623,
+        "r_squared": 0.7836443200157732,
+        "states": 14244
+      },
+      "stop_and_continue": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.006019411686831784,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.1071721914527821,
+            "standardized_beta": 0.532620996620851,
+            "z_value": 88.48389582424244
+          },
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.013274043742841673,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.10392125862569121,
+            "standardized_beta": -0.7071982961746673,
+            "z_value": -53.276779094240965
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.6429267424096623,
+        "r_squared": 0.7838145561537411,
+        "states": 14244
+      },
+      "stop_only": {
+        "coefficients": {
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.013273577717116361,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.10392125862569121,
+            "standardized_beta": -0.7071982961746673,
+            "z_value": -53.27864960346981
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.6429267424096623,
+        "r_squared": 0.5001294301123524,
+        "states": 14244
+      }
+    },
+    "persistence_projection": {
+      "continue_only": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.0062184494972294235,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.09628228585611598,
+            "standardized_beta": 0.5335443450046913,
+            "z_value": 85.80022162154849
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.4734324886291024,
+        "r_squared": 0.284669568086485,
+        "states": 14244
+      },
+      "relative_and_common": {
+        "coefficients": {
+          "common_incentive": {
+            "cluster_robust_standard_error": 0.005021204332964338,
+            "normal_approximation_p_value": 7.465014984396792e-09,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.0030888813344891923,
+            "standardized_beta": 0.02902313204122753,
+            "z_value": 5.780113717079766
+          },
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.011513868474559036,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.09319340452162679,
+            "standardized_beta": 0.8756453200718348,
+            "z_value": 76.0513568490603
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.4734324886291024,
+        "r_squared": 0.7521276958684847,
+        "states": 14244
+      },
+      "relative_only": {
+        "coefficients": {
+          "relative_incentive": {
+            "cluster_robust_standard_error": 0.012209698042331706,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 13.844373104863458,
+            "raw_slope": 0.09225331020243444,
+            "standardized_beta": 0.8668121929288526,
+            "z_value": 70.99374529358272
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.4734324886291024,
+        "r_squared": 0.7513633778101263,
+        "states": 14244
+      },
+      "stop_and_continue": {
+        "coefficients": {
+          "continue_bonus": {
+            "cluster_robust_standard_error": 0.006218667822499297,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 8.16496580927726,
+            "raw_slope": 0.09628228585611598,
+            "standardized_beta": 0.5335443450046913,
+            "z_value": 85.79720934350512
+          },
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.011545236472008362,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.09010452318713759,
+            "standardized_beta": -0.6837090958748463,
+            "z_value": -59.22001663045288
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.4734324886291024,
+        "r_squared": 0.7521276958684847,
+        "states": 14244
+      },
+      "stop_only": {
+        "coefficients": {
+          "stop_payoff": {
+            "cluster_robust_standard_error": 0.011544831141326543,
+            "normal_approximation_p_value": 0.0,
+            "predictor_scale": 11.180339887498949,
+            "raw_slope": -0.09010452318713759,
+            "standardized_beta": -0.6837090958748463,
+            "z_value": -59.222095802458455
+          }
+        },
+        "episode_clusters": 48,
+        "fixed_effect": "state",
+        "outcome_scale": 1.4734324886291024,
+        "r_squared": 0.4674581277819998,
+        "states": 14244
+      }
+    }
+  }
+}

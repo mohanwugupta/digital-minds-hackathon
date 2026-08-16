@@ -9,7 +9,6 @@ pandas
 numpy
 scipy
 pyyaml
-openai
 
 # Dev / formatting
 black

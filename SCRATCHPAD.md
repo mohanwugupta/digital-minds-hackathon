@@ -787,3 +787,66 @@ Run the GPU smoke gate; no real-model causal result is claimed locally.
 Run `PHASE=causal_calibrate`, then `PHASE=causal_positive_control`. In parallel,
 the held-out payoff factorial may be collected. Only after the positive control
 passes should generic-return and advantage steering nulls be interpreted.
+
+---
+
+## Confirmatory causal/value-dissociation analysis
+
+## Current objective
+
+Adjudicate generic-value, continuation-advantage, and recent-state heuristic
+accounts using the completed held-out causal and factorial data.
+
+## Data audit
+
+- Factorial data contain 14,244 rows: all 12 conditions for 1,187 states from
+  48 episodes, with no duplicated cells, missing cells, context mismatches, or
+  history-hash failures.
+- Persistence positive-control data contain all three alpha conditions for the
+  same 1,187 states, with exact alpha-zero logits and no probe-order failures.
+- The completed full causal comparison contains 224,343 unique rows covering
+  all 1,187 states, three target directions, 20 matched random controls per
+  direction, and all three alpha levels. There are no duplicate keys,
+  incomplete alpha groups, context mismatches, or alpha-zero discrepancies.
+
+## Result
+
+- Persistence steering passes its positive-control gate: positive-minus-
+  negative steering changes the persistence logit by 1.994 (episode-bootstrap
+  95% CI 1.978 to 2.011), exceeding all 20 matched random controls.
+- Generic-return steering changes persistence by 0.0028 logits (95% CI -0.0010
+  to 0.0069; p=.151; random-control absolute empirical p=.571).
+- Provisional-advantage steering changes persistence by -0.0012 logits (95% CI
+  -0.0063 to 0.0041; p=.665; random-control absolute empirical p=.810).
+- STOP value causally reduces persistence and CONTINUE bonus increases it.
+  Relative incentive explains 78.4% of within-state logit variation, and 99.9%
+  of histories cross the decision boundary somewhere in the factorial.
+- The generic-return projection moves in the wrong direction as STOP value
+  rises (within-state correlation with persistence r=-.282; relative R2=.083).
+- The provisional advantage projection has the predicted signs but is partial
+  (r=.313; relative R2=.121).
+- The final persistence projection closely follows the operative decision
+  (r=.991; relative R2=.751).
+- The zero/zero incentive template lowers persistence by 1.444 logits relative
+  to the unmodified matched prompt. Categorical relative value explains 88.3%
+  of variation versus 94.9% for unrestricted cells, so relative value is
+  dominant but not an exact invariant scalar under this prompt manipulation.
+
+## Decision / interpretation
+
+The original-task stopping policy is well described by recent-loss/time cues,
+but it is not a rigid history-only heuristic: explicit action-relative payoffs
+reverse the same histories almost universally. Early layers encode integrated
+return and a partial advantage-like signal, but neither fitted linear direction
+causally influences persistence at the calibrated one-SD scale. The late
+persistence representation is the clearest operative variable and is causally
+steerable. This supports a separation between decodable upstream information
+and the representation actually used by the final CONTINUE/STOP policy.
+
+## Outputs
+
+`artifacts/mechanism_synthesis/` contains the combined JSON, report, and
+publication SVG. The optimized float-moment implementation in
+`analysis/probe_history_matching.py` is algebraically equivalent to the prior
+standardization but reduces the factorial analysis from tens of minutes to
+seconds.

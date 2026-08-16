@@ -20,7 +20,6 @@ phases:
   probe_episodes: 512
   # Three episodes in each of the 16 ordered arm-probability cells.
   confirmatory_episodes: 48
-  sequential_episodes_per_condition: 1000
 
 probe:
   hidden_dim: 1024

@@ -70,6 +70,11 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--seed", type=int, default=22026)
+    parser.add_argument(
+        "--save-layer-checkpoints",
+        action="store_true",
+        help="retain every layer checkpoint instead of only metrics and frozen_best.pt",
+    )
     args = parser.parse_args()
 
     shards = load_shards(args.activation_dir)
@@ -115,10 +120,14 @@ def main() -> None:
         }
         summaries.append(summary)
         trained[layer] = (result.probe, indices, summary)
-        save_frozen_probe(
-            os.path.join(args.output_dir, f"layer_{layer:02d}.pt"),
-            result.probe, layer, indices, summary,
-        )
+        if args.save_layer_checkpoints:
+            save_frozen_probe(
+                os.path.join(args.output_dir, f"layer_{layer:02d}.pt"),
+                result.probe,
+                layer,
+                indices,
+                summary,
+            )
         print(
             f"layer {layer}: pruned validation TD MSE="
             f"{validation_metrics['pruned_td_mse']:.6f}; "

@@ -86,8 +86,13 @@ def _matrix_multiply(left, right):
 
 
 def _standardize(values: list[float]) -> tuple[list[float], float]:
-    mean = statistics.mean(values)
-    scale = statistics.pstdev(values)
+    # ``statistics.pstdev`` preserves exact numeric ratios internally. That is
+    # useful for small mixed numeric inputs, but makes the repeated factorial
+    # regressions unnecessarily slow for tens of thousands of float rows.
+    # These analyses are floating-point throughout, so use the equivalent
+    # population moments directly.
+    mean = sum(values) / len(values)
+    scale = math.sqrt(sum((value - mean) ** 2 for value in values) / len(values))
     if scale < 1e-12:
         return [0.0] * len(values), 0.0
     return [(value - mean) / scale for value in values], scale
@@ -125,7 +130,8 @@ def _clustered_regression(
     beta = [sum(row[index] * xty[index] for index in range(parameter_count)) for row in bread]
     fitted = [sum(value * coefficient for value, coefficient in zip(row, beta)) for row in design]
     residual = [value - prediction for value, prediction in zip(standardized_outcome, fitted)]
-    total = sum((value - statistics.mean(standardized_outcome)) ** 2 for value in standardized_outcome)
+    outcome_mean = sum(standardized_outcome) / len(standardized_outcome)
+    total = sum((value - outcome_mean) ** 2 for value in standardized_outcome)
     r_squared = 1.0 - sum(value * value for value in residual) / total if total else 0.0
 
     grouped = defaultdict(list)

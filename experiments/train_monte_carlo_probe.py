@@ -148,6 +148,11 @@ def main() -> None:
     parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--top-fraction", type=float, default=0.01)
     parser.add_argument("--seed", type=int, default=62026)
+    parser.add_argument(
+        "--save-layer-checkpoints",
+        action="store_true",
+        help="retain all full/sparse layer checkpoints after selecting the best layer",
+    )
     args = parser.parse_args()
 
     import torch
@@ -314,6 +319,17 @@ def main() -> None:
             ),
         },
     )
+    save_frozen_probe(
+        os.path.join(args.output_dir, "frozen_best_full.pt"),
+        full_probe,
+        full_layer,
+        _full_indices,
+        {
+            **_full_artifact["metadata"],
+            "selection_metric": "sparse_validation_future_return_r_squared",
+            "selected_via_sparse_probe": True,
+        },
+    )
     mechanism = run_probe_mechanism_analysis(
         shards,
         sparse_probe,
@@ -349,6 +365,15 @@ def main() -> None:
     with open(os.path.join(args.output_dir, "metrics.json"), "w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2)
         handle.write("\n")
+    if not args.save_layer_checkpoints:
+        for candidate_layer in layers:
+            for suffix in ("sparse", "full"):
+                checkpoint = os.path.join(
+                    args.output_dir,
+                    f"layer_{candidate_layer:02d}_{suffix}.pt",
+                )
+                if os.path.exists(checkpoint):
+                    os.remove(checkpoint)
     print(
         f"Monte Carlo probe runtime: {time.perf_counter() - total_started:.1f}s "
         f"for {len(layers)} layers; best layer={layer}",

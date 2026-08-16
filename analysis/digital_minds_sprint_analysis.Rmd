@@ -1,0 +1,945 @@
+---
+title: "digital_minds_sprint_analysis"
+output: html_document
+date: "2026-08-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+library(patchwork)
+library(ComplexHeatmap)
+library(circlize)
+library(grid)
+
+metrics_path <- "C:/Users/sheik/OneDrive/Desktop/digital_minds_hackathon/artifacts/linear_probes/metrics.json"
+metrics <- fromJSON(metrics_path)
+
+base_path <- "C:/Users/sheik/OneDrive/Desktop/digital_minds_hackathon"
+
+factorial_files <- list.files(
+  file.path(base_path, "artifacts/value_dissociation"),
+  pattern = "^factorial.*\\.csv$",
+  full.names = TRUE
+)
+
+factorial_data <- factorial_files %>%
+  map_dfr(read_csv, show_col_types = FALSE)
+
+causal_files <- list.files(
+  file.path(base_path, "artifacts/causal_steering"),
+  pattern = "^replays.*\\.csv$",
+  full.names = TRUE
+)
+
+causal_data <- causal_files %>%
+  map_dfr(read_csv, show_col_types = FALSE)
+
+pilot_data <- read_csv(
+  file.path(base_path, "artifacts/bandit_pilot.csv"),
+  show_col_types = FALSE
+)
+
+```
+
+```{r,echo=FALSE}
+# ============================================================
+# Calculate current loss streak
+# ============================================================
+
+get_loss_streak <- function(x) {
+  
+  rewards <- fromJSON(x)
+  
+  if (length(rewards) == 0) {
+    return(0L)
+  }
+  
+  reversed <- rev(rewards)
+  first_nonloss <- which(reversed != -2)[1]
+  
+  if (is.na(first_nonloss)) {
+    return(length(reversed))
+  }
+  
+  first_nonloss - 1L
+}
+
+
+pilot_data <- pilot_data %>%
+  mutate(
+    loss_streak = map_int(
+      reward_history,
+      get_loss_streak
+    ),
+    
+    loss_streak_group = case_when(
+      loss_streak == 0 ~ "0",
+      loss_streak == 1 ~ "1",
+      loss_streak == 2 ~ "2",
+      loss_streak == 3 ~ "3",
+      loss_streak >= 4 ~ "4+"
+
+    ),
+    
+    loss_streak_group = factor(
+      loss_streak_group,
+      levels = c("0", "1", "2", "3", "4+")
+    ),
+    
+    stopped = sampled_action == "C"
+  )
+
+pilot_streak <- pilot_data
+# pilot_streak <- pilot_data %>%
+#   filter(loss_streak <= 4)
+# ============================================================
+# Episode-level counts for each exact loss streak
+# ============================================================
+
+episode_streak <- pilot_streak %>%
+  group_by(
+    episode_id,
+    loss_streak
+  ) %>%
+  summarise(
+    stops = sum(stopped),
+    states = n(),
+    .groups = "drop"
+  ) %>%
+  complete(
+    episode_id,
+    loss_streak = 0:10,
+    fill = list(
+      stops = 0,
+      states = 0
+    )
+  )
+
+
+# ============================================================
+# Episode bootstrap
+# ============================================================
+
+set.seed(812026)
+
+bootstrap_streak <- function(streak, n_boot = 100) {
+
+  dat <- episode_streak %>%
+    filter(loss_streak == streak)
+
+  n_episodes <- n_distinct(dat$episode_id)
+
+  boot_rates <- replicate(
+    n_boot,
+    {
+      sampled_episodes <- sample(
+        unique(dat$episode_id),
+        size = n_episodes,
+        replace = TRUE
+      )
+
+      # Preserve duplicated sampled episodes
+      sampled <- map_dfr(
+        sampled_episodes,
+        ~ dat %>% filter(episode_id == .x)
+      )
+
+      denominator <- sum(sampled$states)
+
+      if (denominator == 0) {
+        NA_real_
+      } else {
+        sum(sampled$stops) / denominator
+      }
+    }
+  )
+
+  boot_rates <- boot_rates[is.finite(boot_rates)]
+
+  tibble(
+    loss_streak = streak,
+    stop_rate =
+      sum(dat$stops) / sum(dat$states),
+    ci_lo = quantile(
+      boot_rates,
+      0.025,
+      na.rm = TRUE
+    ),
+    ci_hi = quantile(
+      boot_rates,
+      0.975,
+      na.rm = TRUE
+    ),
+    states = sum(dat$states)
+  )
+}
+
+
+streak_summary <- map_dfr(
+  0:4,
+  bootstrap_streak
+)
+
+streak_summary
+
+# ============================================================
+# Figure 2A
+# ============================================================
+
+figure_2a <- ggplot(
+  streak_summary,
+  aes(
+    x = loss_streak,
+    y = stop_rate
+  )
+) +
+
+  # Episode-bootstrap 95% CI
+  geom_ribbon(
+    aes(
+      ymin = ci_lo,
+      ymax = ci_hi
+    ),
+    fill = "red",
+    alpha = 0.15
+  ) +
+
+  geom_line(
+    linewidth = 6,
+    color = "red",
+    alpha = 0.8
+  ) +
+
+  scale_x_continuous(
+    breaks = 0:4,
+    limits = c(0, 4)
+  ) +
+
+  scale_y_continuous(
+    labels = scales::number_format(
+      accuracy = 0.01
+    ),
+    expand = expansion(
+      mult = c(0, 0.05)
+    )
+  ) +
+
+  labs(
+    x = "Consecutive Losses Before Decision",
+    y = "Observed STOP Rate"
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2
+    ),
+
+    axis.text = element_text(
+      size = 40
+    ),
+
+    axis.title = element_text(
+      size = 40
+    ),
+
+    plot.margin = margin(
+      20, 25, 20, 20
+    )
+  )
+
+figure_2a
+```
+
+```{r, echo = FALSE}
+# ============================================================
+# Load layer-wise probe performance
+# ============================================================
+
+# Export this from the probe analysis.
+# Required columns:
+# layer, target, validation_r2, test_r2
+layer_results <- tibble(
+  layer = metrics$layers$layer,
+
+  future_return = metrics$layers$targets$future_return$test$r_squared,
+
+  persistence = metrics$layers$targets$persistence$test$r_squared
+)
+
+layer_results
+
+layer_results_long <- layer_results %>%
+  pivot_longer(
+    cols = c(future_return, persistence),
+    names_to = "target",
+    values_to = "test_r2"
+  ) %>%
+  mutate(
+    target = recode(
+      target,
+      future_return = "Future return",
+      persistence = "Persistence"
+    )
+  )
+
+head(layer_results_long)
+# ============================================================
+# Colors
+# Matches the simple red / blue palette used in your Rmd
+# ============================================================
+
+cols <- c(
+  "Future return" = "red",
+  "Persistence" = "blue"
+)
+
+
+# ============================================================
+# Prepare plotting data
+# ============================================================
+
+layer_results_long <- layer_results_long %>%
+  mutate(
+    target = factor(
+      target,
+      levels = c("Future return", "Persistence")
+    )
+  )
+
+cols <- c(
+  "Future return" = "red",
+  "Persistence" = "blue"
+)
+
+# Allow negative R2 values if any layers fall below zero
+y_min <- min(-0.1, min(layer_results_long$test_r2, na.rm = TRUE) - 0.03)
+
+
+# ============================================================
+# Main layer-wise plot
+# ============================================================
+
+probe_layer_plot <- ggplot(
+  layer_results_long,
+  aes(
+    x = layer,
+    y = test_r2,
+    color = target,
+    group = target
+  )
+) +
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed",
+    linewidth = 1,
+    color = "black",
+    alpha = 0.5
+  ) +
+  
+  geom_line(
+    linewidth = 6,
+  ) +
+  # Highlight validation-selected layers
+  geom_point(
+    data = layer_results_long %>%
+      filter(
+        (target == "Future return" & layer == 1) |
+        (target == "Persistence" & layer == 31)
+      ),
+    aes(
+      x = layer,
+      y = test_r2,
+      color = target
+    ),
+    size = 9,
+    shape = 21,
+    stroke = 2,
+    fill = "white",
+    show.legend = FALSE
+  ) +
+  
+  scale_color_manual(values = cols) +
+  
+  scale_x_continuous(
+    breaks = c(0, 5, 10, 15, 20, 25, 31),
+    limits = c(0, 31)
+  ) +
+  
+  scale_y_continuous(
+    breaks = seq(-0.2, 1, 0.2),
+    limits = c(y_min, 1.02),
+    expand = expansion(mult = c(0, 0.02))
+  ) +
+  
+  labs(
+    x = "Transformer Layer",
+    y = expression("Held-out " * R^2),
+    color = NULL
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    legend.title = element_blank(),
+    legend.position.inside = c(0.27, 0.82),
+    legend.text = element_text(size = 25),
+    legend.key.size = unit(1.5, "cm"),
+    
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2,
+      linetype = "solid"
+    ),
+    
+    axis.text = element_text(size = 40),
+    axis.title = element_text(size = 40),
+    
+    plot.margin = margin(20, 25, 20, 20)
+  )
+
+probe_layer_plot
+
+# ============================================================
+# Matched-state inset
+# ============================================================
+
+matched_results <- tibble(
+  outcome = c(
+    "Future\nreturn",
+    "Persistence"
+  ),
+  beta = c(
+    0.4856757,
+    0.0068298
+  ),
+  se = c(
+    0.1021647,
+    0.1113429
+  )
+) %>%
+  mutate(
+    ci_lo = beta - 1.96 * se,
+    ci_hi = beta + 1.96 * se,
+    outcome = factor(
+      outcome,
+      levels = c("Future\nreturn", "Persistence")
+    )
+  )
+
+
+matched_inset <- ggplot(
+  matched_results,
+  aes(x = outcome, y = beta)
+) +
+  
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed",
+    linewidth = 0.8,
+    color = "black",
+    alpha = 0.5
+  ) +
+  
+  geom_linerange(
+    aes(ymin = ci_lo, ymax = ci_hi),
+    color = "black",
+    linewidth = 1.5
+  ) +
+  
+  geom_point(
+    size = 5,
+    color = "red",
+    alpha = 0.8
+  ) +
+  
+  labs(
+    x = NULL,
+    y = expression("Standardized " * beta)
+  ) +
+  
+  coord_cartesian(
+    ylim = c(-0.25, 0.75)
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 1.3
+    ),
+    
+    axis.text = element_text(size = 40),
+    axis.title = element_text(size = 40),
+    
+    plot.background = element_rect(
+      fill = "white",
+      color = "black",
+      linewidth = 0.8
+    ),
+    
+    plot.margin = margin(10, 10, 10, 10)
+  )
+
+matched_inset
+
+# ============================================================
+# Combine into Figure 2A
+# ============================================================
+
+# figure_2a <- probe_layer_plot +
+#   inset_element(
+#     matched_inset,
+#     left = 0.53,
+#     bottom = 0.18,
+#     right = 0.95,
+#     top = 0.65,
+#     align_to = "panel"
+#   )
+
+figure_2a
+
+ggsave(
+  "Figure2A_probe_layers.png",
+  figure_2a,
+  width = 13,
+  height = 10,
+  dpi = 600,
+  bg = "white"
+)
+```
+
+```{r, echo=FALSE}
+
+# ============================================================
+# Calculate mean persistence for each factorial cell
+# ============================================================
+
+cell_summary <- factorial_data %>%
+  group_by(
+    stop_payoff,
+    continue_bonus
+  ) %>%
+  summarise(
+    mean_persistence = mean(
+      persistence_logit,
+      na.rm = TRUE
+    ),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    stop_payoff = factor(
+      stop_payoff,
+      levels = c(-10, 0, 10, 20),
+      labels = c("-10", "0", "+10", "+20")
+    ),
+
+    # Put +10 at top of heatmap
+    continue_bonus = factor(
+      continue_bonus,
+      levels = c(10, 0, -10),
+      labels = c("+10", "0", "-10")
+    )
+  )
+# ============================================================
+# Convert summarized data to matrix
+# ============================================================
+
+heat_mat <- cell_summary %>%
+  select(stop_payoff, continue_bonus, mean_persistence) %>%
+  mutate(
+    stop_payoff = factor(
+      stop_payoff,
+      levels = c("-10", "0", "+10", "+20")
+    ),
+    continue_bonus = factor(
+      continue_bonus,
+      levels = c("-10", "0", "+10")
+    )
+  ) %>%
+  pivot_wider(
+    names_from = stop_payoff,
+    values_from = mean_persistence
+  ) %>%
+  arrange(continue_bonus)
+
+row_names <- heat_mat$continue_bonus
+
+heat_mat <- heat_mat %>%
+  select(-continue_bonus) %>%
+  as.matrix()
+# ============================================================
+# Color scale
+# ============================================================
+
+max_abs <- max(
+  abs(heat_mat),
+  na.rm = TRUE
+)
+
+col_fun <- colorRamp2(
+  c(-max_abs, 0, max_abs),
+  c("red", "white", "blue")
+)
+
+rownames(heat_mat) <- row_names
+heat_mat <- heat_mat[c("+10", "0", "-10"), ]
+col_fun <- colorRamp2(
+  c(-max_abs, 0, max_abs),
+  c("red", "white", "blue")
+)
+# ============================================================
+# Color scale centered at zero
+# ============================================================
+
+max_abs <- max(abs(heat_mat), na.rm = TRUE)
+
+col_fun <- colorRamp2(
+  c(-max_abs, 0, max_abs),
+  c("red", "white", "blue")
+)
+
+
+# ============================================================
+# Figure 2B
+# ============================================================
+
+# Desired physical size of each heatmap cell
+cell_size <- unit(6, "cm")
+
+figure_2c <- Heatmap(
+  heat_mat,
+
+  name = "Persistence\nLogit",
+  col = col_fun,
+
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+
+  row_names_side = "left",
+
+  column_title = "STOP Payoff",
+  column_title_side = "bottom",
+  row_title = "CONTINUE Bonus",
+
+  column_title_gp = gpar(fontsize = 40),
+  row_title_gp = gpar(fontsize = 40),
+
+  column_names_gp = gpar(fontsize = 40),
+  row_names_gp = gpar(fontsize = 40),
+
+  # ----------------------------------------------------------
+  # Make cells square and proportional to text
+  # ----------------------------------------------------------
+  width = ncol(heat_mat) * cell_size,
+  height = nrow(heat_mat) * cell_size,
+
+  rect_gp = gpar(
+    col = "white",
+    lwd = 2
+  ),
+
+  heatmap_legend_param = list(
+    title = "Mean Persistence Logit",
+    title_position = "leftcenter-rot",
+
+    title_gp = gpar(fontsize = 30),
+    labels_gp = gpar(fontsize = 28),
+
+    legend_height = unit(8, "cm"),
+    grid_width = unit(0.8, "cm")
+  ),
+
+  cell_fun = function(j, i, x, y, width, height, fill) {
+
+    value <- heat_mat[i, j]
+
+    text_col <- ifelse(
+      abs(value) > max_abs * 0.55,
+      "white",
+      "black"
+    )
+
+    grid.text(
+      sprintf("%.2f", value),
+      x,
+      y,
+      gp = gpar(
+        fontsize = 30,
+        fontface = "bold",
+        col = text_col
+      )
+    )
+  }
+)
+
+draw(
+  figure_2c,
+  heatmap_legend_side = "right"
+)
+```
+
+```{r, echo=FALSE}
+# ============================================================
+# Target steering conditions only
+# ============================================================
+
+target_data <- causal_data %>%
+  filter(
+    control_type == "target",
+    alpha %in% c(-1, 0, 1)
+  ) %>%
+  mutate(
+    direction = recode(
+      direction_name,
+      generic_return = "Future return",
+      advantage = "Continuation advantage",
+      persistence = "Persistence"
+    ),
+    direction = factor(
+      direction,
+      levels = c(
+        "Future return",
+        "Continuation advantage",
+        "Persistence"
+      )
+    )
+  )
+
+# ============================================================
+# Episode-level observations
+# ============================================================
+
+episode_means <- target_data %>%
+  group_by(
+    episode_id,
+    direction,
+    alpha
+  ) %>%
+  summarise(
+    persistence_logit = mean(persistence_logit),
+    .groups = "drop"
+  )
+
+glimpse(episode_means)
+
+# ============================================================
+# Episode-bootstrap CI
+# ============================================================
+
+set.seed(812026)
+
+bootstrap_ci <- function(x, n_boot = 500) {
+
+  boot_means <- replicate(
+    n_boot,
+    mean(
+      sample(x, size = length(x), replace = TRUE)
+    )
+  )
+
+  tibble(
+    mean = mean(x),
+    ci_lo = quantile(boot_means, 0.025),
+    ci_hi = quantile(boot_means, 0.975)
+  )
+}
+
+
+dose_summary <- episode_means %>%
+  group_by(
+    direction,
+    alpha
+  ) %>%
+  summarise(
+    bootstrap_ci(persistence_logit),
+    .groups = "drop"
+  )
+
+dose_summary
+
+# ============================================================
+# Colors
+# ============================================================
+
+cols_2d <- c(
+  "Future return" = "red",
+  "Continuation advantage" = "darkorange",
+  "Persistence" = "blue"
+)
+
+
+# ============================================================
+# Plot
+# ============================================================
+
+figure_2d <- ggplot() +
+
+  # ----------------------------------------------------------
+  # Individual episode means
+  # ----------------------------------------------------------
+  geom_point(
+    data = episode_means,
+    aes(
+      x = alpha,
+      y = persistence_logit,
+      color = direction
+    ),
+    position = position_jitter(
+      width = 0.035,
+      height = 0
+    ),
+    size = 3,
+    alpha = 0.15
+  ) +
+
+  # ----------------------------------------------------------
+  # 95% episode-bootstrap confidence intervals
+  # ----------------------------------------------------------
+  geom_linerange(
+  data = dose_summary,
+  aes(
+    x = alpha,
+    ymin = ci_lo,
+    ymax = ci_hi,
+    color = direction
+  ),
+  linewidth = 2
+) +
+
+  # ----------------------------------------------------------
+  # Mean dose-response lines
+  # ----------------------------------------------------------
+  geom_line(
+    data = dose_summary,
+    aes(
+      x = alpha,
+      y = mean,
+      color = direction,
+      group = direction
+    ),
+    linewidth = 3
+  ) +
+
+  geom_point(
+    data = dose_summary,
+    aes(
+      x = alpha,
+      y = mean,
+      color = direction
+    ),
+    size = 7,
+    alpha = 0.9
+  ) +
+
+  scale_color_manual(
+    values = cols_2d
+  ) +
+
+  scale_x_continuous(
+    breaks = c(-1, 0, 1),
+    labels = c("-1", "0", "+1"),
+    limits = c(-1.1, 1.1)
+  ) +
+
+  labs(
+    x = "Steering Direction",
+    y = "Persistence Logit",
+    color = NULL
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    legend.title = element_blank(),
+
+    legend.position = c(0.23, 0.81),
+
+    legend.text = element_text(
+      size = 24
+    ),
+
+    legend.key.size = unit(
+      1.5,
+      "cm"
+    ),
+
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2
+    ),
+
+    axis.text = element_text(
+      size = 40
+    ),
+
+    axis.title = element_text(
+      size = 40
+    ),
+
+    plot.margin = margin(
+      20, 25, 20, 20
+    )
+  )
+
+figure_2d
+
+```
+
+```{r, echo=FALSE}
+library(ggpubr)
+library(ggplotify)
+library(grid)
+library(ComplexHeatmap)
+
+# --------------------------------------------------
+# Convert ComplexHeatmap object to something ggarrange can use
+# --------------------------------------------------
+
+figure_2b_grob <- grid.grabExpr(
+  draw(
+    figure_2b,
+    heatmap_legend_side = "right"
+  )
+)
+
+figure_2b_plot <- as.ggplot(figure_2b_grob)
+
+# --------------------------------------------------
+# Arrange all four panels
+# --------------------------------------------------
+
+final_figure_2 <- ggarrange(
+  figure_2a,
+  figure_2b_plot,
+  figure_2c,
+  figure_2d,
+  labels = c("A", "B", "C", "D"),
+  ncol = 2,
+  nrow = 2,
+  align = "hv",
+  font.label = list(size = 20, face = "bold"),
+  hjust = -0.3,
+  vjust = 1.2
+)
+
+final_figure_2
+
+```

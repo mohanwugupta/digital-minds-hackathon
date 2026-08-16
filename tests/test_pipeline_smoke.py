@@ -1,5 +1,5 @@
 from experiments.run_bandit_baseline import run_episode
-from experiments.run_bandit_intervention import build_matched_replays
+from experiments.replay_utils import build_matched_replays
 
 
 class StopAfterOnePull:

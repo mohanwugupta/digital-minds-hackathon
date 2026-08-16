@@ -98,7 +98,6 @@ python -m experiments.run_value_dissociation \
     --model "$MODEL_PATH" \
     --state-bank "artifacts/activation_smoke_${SMOKE_RUN_ID}" \
     --maximum-states 1 \
-    --activation-output-dir "artifacts/value_dissociation_smoke_${SMOKE_RUN_ID}_activations" \
     --output "artifacts/value_dissociation_smoke_${SMOKE_RUN_ID}.csv"
 
 echo "Smoke test passed"

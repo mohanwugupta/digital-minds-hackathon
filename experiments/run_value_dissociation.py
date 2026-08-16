@@ -10,7 +10,7 @@ import os
 from typing import Iterable
 
 from bandit.prompts import current_decision_prefix, factorial_decision_prompt
-from experiments.run_bandit_intervention import canonical_context
+from experiments.replay_utils import canonical_context
 
 
 STOP_PAYOFFS = (-10, 0, 10, 20)
@@ -134,7 +134,12 @@ def main() -> None:
     parser.add_argument(
         "--activation-output-dir",
         default="artifacts/value_dissociation/activations",
-        help="per-state all-layer factorial activation shards",
+        help="destination used only with --save-activations",
+    )
+    parser.add_argument(
+        "--save-activations",
+        action="store_true",
+        help="retain optional all-layer factorial tensors (about 2.2 GB for the full run)",
     )
     parser.add_argument("--maximum-states", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
@@ -198,11 +203,16 @@ def main() -> None:
         if isinstance(conversation, str):
             conversation = json.loads(conversation)
         output_rows, activation_rows, activation_conditions = [], [], []
-        activation_name = hashlib.sha256(source["state_id"].encode("utf-8")).hexdigest()[:20]
-        activation_path = os.path.join(
-            args.activation_output_dir, f"state_{activation_name}.pt"
-        )
-        activation_complete = os.path.exists(activation_path)
+        activation_path = None
+        activation_complete = not args.save_activations
+        if args.save_activations:
+            activation_name = hashlib.sha256(
+                source["state_id"].encode("utf-8")
+            ).hexdigest()[:20]
+            activation_path = os.path.join(
+                args.activation_output_dir, f"state_{activation_name}.pt"
+            )
+            activation_complete = os.path.exists(activation_path)
         for replay in build_factorial_replays(
             source["state_id"], conversation, action_labels=model.action_labels
         ):
@@ -218,15 +228,18 @@ def main() -> None:
                 replay.conversation, capture_hidden_states=True
             )
             hidden_states = metrics.pop("hidden_states")
-            activation_rows.append(torch.stack(hidden_states).to(dtype=torch.float16))
-            activation_conditions.append(
-                {
-                    "stop_payoff": replay.stop_payoff,
-                    "continue_bonus": replay.continue_bonus,
-                    "relative_incentive": replay.relative_incentive,
-                    "context_hash": replay.context_hash,
-                }
-            )
+            if args.save_activations:
+                activation_rows.append(
+                    torch.stack(hidden_states).to(dtype=torch.float16)
+                )
+                activation_conditions.append(
+                    {
+                        "stop_payoff": replay.stop_payoff,
+                        "continue_bonus": replay.continue_bonus,
+                        "relative_incentive": replay.relative_incentive,
+                        "context_hash": replay.context_hash,
+                    }
+                )
             projections = {}
             for name, spec in probes.items():
                 hidden = hidden_states[spec["layer"]].unsqueeze(0)
@@ -253,7 +266,7 @@ def main() -> None:
             )
             output_rows.append(row)
         _append(args.output, output_rows)
-        if not activation_complete:
+        if args.save_activations and not activation_complete:
             from experiments.runtime import atomic_torch_save
 
             os.makedirs(args.activation_output_dir, exist_ok=True)

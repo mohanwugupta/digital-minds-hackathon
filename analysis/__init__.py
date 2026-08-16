@@ -1,2 +1,1 @@
-"""Statistical summaries for matched-state and sequential experiments."""
-
+"""Statistical summaries for the bandit, probe, and causal experiments."""

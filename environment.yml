@@ -16,6 +16,5 @@ dependencies:
       - numpy
       - scipy
       - pyyaml
-      - openai
       - black
       - ruff

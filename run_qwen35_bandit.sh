@@ -21,7 +21,6 @@ CONDA_ENV="${CONDA_ENV:-value-steering-bandit}"
 PHASE="${PHASE:-compatibility}"
 PROBE_EPISODES="${PROBE_EPISODES:-512}"
 CONFIRMATORY_EPISODES="${CONFIRMATORY_EPISODES:-48}"
-MATCHED_RANDOM_SETS="${MATCHED_RANDOM_SETS:-20}"
 ADVANTAGE_ROLLOUTS="${ADVANTAGE_ROLLOUTS:-20}"
 ADVANTAGE_STATES_PER_SPLIT="${ADVANTAGE_STATES_PER_SPLIT:-128}"
 ADVANTAGE_NUM_SHARDS="${ADVANTAGE_NUM_SHARDS:-1}"
@@ -69,23 +68,14 @@ collect_probe_phase() {
 }
 
 train_probe_phase() {
-  echo "Starting probe training, mechanism analysis, and calibration"
+  echo "Starting initial TD probe training and mechanism analysis"
   python -m experiments.train_value_probe
-  python -m experiments.calibrate_steering
 }
 
 train_mc_probe_phase() {
   echo "Starting supervised Monte Carlo future-return probe analysis"
   python -m experiments.train_monte_carlo_probe
   python -m analysis.analyze_monte_carlo_probe
-}
-
-calibrate_mc_probe_phase() {
-  echo "Calibrating the inspected supervised Monte Carlo probe"
-  python -m experiments.calibrate_steering \
-    --probe artifacts/mc_value_probes/frozen_best.pt \
-    --split artifacts/value_probes/episode_split.json \
-    --output artifacts/mc_value_probes/steering_calibration.json
 }
 
 linear_probe_phase() {
@@ -125,19 +115,6 @@ train_advantage_phase() {
 calibrate_causal_directions_phase() {
   echo "Calibrating frozen ridge directions on validation episodes only"
   python -m experiments.calibrate_causal_directions
-}
-
-causal_positive_control_phase() {
-  echo "Running persistence-direction positive-control steering"
-  python -m experiments.run_causal_steering \
-    --model "$MODEL_PATH" \
-    --directions persistence \
-    --random-directions 0 \
-    --maximum-states "$CAUSAL_MAXIMUM_STATES" \
-    --output artifacts/causal_steering/positive_control.csv
-  python -m analysis.analyze_causal_steering \
-    --input artifacts/causal_steering/positive_control.csv \
-    --output-dir artifacts/causal_steering/publication_positive_control
 }
 
 causal_steering_collect_phase() {
@@ -190,15 +167,6 @@ collect_confirmatory_phase() {
     --output-dir artifacts/confirmatory_state_bank
 }
 
-matched_phase() {
-  echo "Starting matched causal replay (${MATCHED_RANDOM_SETS} random-neuron sets)"
-  python -m experiments.run_bandit_intervention \
-    --model "$MODEL_PATH" \
-    --state-bank artifacts/confirmatory_state_bank \
-    --random-sets "$MATCHED_RANDOM_SETS"
-  python -m analysis.analyze_persistence
-}
-
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -207,7 +175,7 @@ case "$PHASE" in
     ;;
   pilot)
     python -m experiments.run_bandit_baseline --model "$MODEL_PATH" --episodes 200
-    python -m analysis.analyze_pilot
+    python -m analysis.analyze_pilot_detailed
     ;;
   collect_probe)
     collect_probe_phase
@@ -221,9 +189,6 @@ case "$PHASE" in
     ;;
   train_mc_probe)
     train_mc_probe_phase
-    ;;
-  calibrate_mc_probe)
-    calibrate_mc_probe_phase
     ;;
   linear_probes)
     linear_probe_phase
@@ -244,9 +209,6 @@ case "$PHASE" in
     ;;
   causal_calibrate)
     calibrate_causal_directions_phase
-    ;;
-  causal_positive_control)
-    causal_positive_control_phase
     ;;
   causal_steering_collect)
     causal_steering_collect_phase
@@ -270,18 +232,6 @@ case "$PHASE" in
     ;;
   collect_confirmatory)
     collect_confirmatory_phase
-    ;;
-  matched)
-    matched_phase
-    ;;
-  causal_pipeline)
-    collect_confirmatory_phase
-    matched_phase
-    ;;
-  sequential)
-    python -m experiments.run_bandit_sequential \
-      --model "$MODEL_PATH" --matched-analysis artifacts/matched_analysis.json
-    python -m analysis.analyze_sequential
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2
