@@ -1,0 +1,91 @@
+{
+  "n_episodes": 200,
+  "n_states": 3706,
+  "models": [
+    {
+      "model": "bayesian_hybrid",
+      "log_loss": 0.45270716051916104,
+      "auc": 0.8021483267158253,
+      "brier": 0.1429030855641166
+    },
+    {
+      "model": "heuristic",
+      "log_loss": 0.45534309407194484,
+      "auc": 0.8048670196004286,
+      "brier": 0.14451857846759086
+    },
+    {
+      "model": "rw_hybrid",
+      "log_loss": 0.46122742066031014,
+      "auc": 0.7867712863175144,
+      "brier": 0.1456612766248247
+    },
+    {
+      "model": "bayesian",
+      "log_loss": 0.4624529543209277,
+      "auc": 0.7458183651603958,
+      "brier": 0.14528273127941968
+    },
+    {
+      "model": "rw",
+      "log_loss": 0.4710676008598071,
+      "auc": 0.7373117161404172,
+      "brier": 0.14918157872911886
+    },
+    {
+      "model": "time",
+      "log_loss": 0.49898511563973025,
+      "auc": 0.7529912711917817,
+      "brier": 0.15995262701901525
+    }
+  ],
+  "paired_episode_comparisons": [
+    {
+      "model": "bayesian_hybrid",
+      "reference": "heuristic",
+      "log_loss_improvement": 0.002635933552783828,
+      "ci_low": -0.003232125052351942,
+      "ci_high": 0.008298984553960338,
+      "p_two_sided": 0.3788
+    },
+    {
+      "model": "rw_hybrid",
+      "reference": "heuristic",
+      "log_loss_improvement": -0.0058843265883652615,
+      "ci_low": -0.01080147581424129,
+      "ci_high": -0.0011292612987090962,
+      "p_two_sided": 0.0142
+    },
+    {
+      "model": "bayesian",
+      "reference": "heuristic",
+      "log_loss_improvement": -0.007109860248982883,
+      "ci_low": -0.018815487536758956,
+      "ci_high": 0.0047128534940567655,
+      "p_two_sided": 0.2444
+    },
+    {
+      "model": "rw",
+      "reference": "heuristic",
+      "log_loss_improvement": -0.01572450678786222,
+      "ci_low": -0.027803462959836475,
+      "ci_high": -0.0031042234643947203,
+      "p_two_sided": 0.016
+    },
+    {
+      "model": "time",
+      "reference": "heuristic",
+      "log_loss_improvement": -0.04364202156778541,
+      "ci_low": -0.06062424801238492,
+      "ci_high": -0.025159314710236816,
+      "p_two_sided": 0.0
+    }
+  ],
+  "selected_alphas": [
+    0.05,
+    0.25,
+    0.5499999999999999,
+    0.49999999999999994,
+    0.95
+  ]
+}
