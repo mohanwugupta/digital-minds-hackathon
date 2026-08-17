@@ -11,24 +11,36 @@ FALLBACK_MODEL = "Qwen/Qwen3-4B-Instruct-2507"
 ACTION_LABELS = ("A", "B", "C")
 
 
-def verify_action_tokens(tokenizer, labels: Iterable[str] = ACTION_LABELS) -> Dict[str, int]:
+def verify_choice_tokens(tokenizer, labels: Iterable[str]) -> Dict[str, int]:
+    """Validate an arbitrary response vocabulary outside a chat template."""
+    labels = tuple(labels)
+    if len(labels) < 2 or len(set(labels)) != len(labels):
+        raise ValueError("choice labels must contain at least two distinct strings")
     token_ids: Dict[str, int] = {}
     for label in labels:
         encoded = tokenizer.encode(label, add_special_tokens=False)
         if len(encoded) != 1:
-            raise ValueError(f"action {label!r} is not a single token: {encoded}")
+            raise ValueError(f"choice {label!r} is not a single token: {encoded}")
         token_ids[label] = int(encoded[0])
     if len(set(token_ids.values())) != len(token_ids):
-        raise ValueError("action labels do not map to distinct tokens")
-    if len(token_ids) != 3:
-        raise ValueError("exactly three action labels are required")
+        raise ValueError("choice labels do not map to distinct tokens")
     return token_ids
 
 
-def verify_chat_action_tokens(
-    tokenizer, messages: List[dict], labels: Iterable[str] = ACTION_LABELS
+def verify_action_tokens(tokenizer, labels: Iterable[str] = ACTION_LABELS) -> Dict[str, int]:
+    labels = tuple(labels)
+    if len(labels) != 3:
+        raise ValueError("exactly three action labels are required")
+    return verify_choice_tokens(tokenizer, labels)
+
+
+def verify_chat_choice_tokens(
+    tokenizer, messages: List[dict], labels: Iterable[str]
 ) -> Dict[str, int]:
     """Verify labels as continuations of the actual generation prompt."""
+    labels = tuple(labels)
+    if len(labels) < 2 or len(set(labels)) != len(labels):
+        raise ValueError("choice labels must contain at least two distinct strings")
     template_kwargs = {"tokenize": False, "add_generation_prompt": True}
     try:
         prompt = tokenizer.apply_chat_template(
@@ -42,12 +54,52 @@ def verify_chat_action_tokens(
         completed = tokenizer.encode(prompt + label, add_special_tokens=False)
         if completed[: len(prefix)] != prefix or len(completed) != len(prefix) + 1:
             raise ValueError(
-                f"action {label!r} is not a clean single-token completion under the chat template"
+                f"choice {label!r} is not a clean single-token completion under the chat template"
             )
         token_ids[label] = int(completed[-1])
-    if len(set(token_ids.values())) != 3:
-        raise ValueError("chat action labels do not map to distinct tokens")
+    if len(set(token_ids.values())) != len(labels):
+        raise ValueError("chat choice labels do not map to distinct tokens")
     return token_ids
+
+
+def verify_chat_action_tokens(
+    tokenizer, messages: List[dict], labels: Iterable[str] = ACTION_LABELS
+) -> Dict[str, int]:
+    labels = tuple(labels)
+    if len(labels) != 3:
+        raise ValueError("exactly three action labels are required")
+    return verify_chat_choice_tokens(tokenizer, messages, labels)
+
+
+def binary_choice_metrics(
+    logits: Mapping[str, float], *, positive_label: str
+) -> Dict[str, float]:
+    """Renormalize two labels and orient the logit by semantic choice."""
+    if len(logits) != 2 or positive_label not in logits:
+        raise ValueError("binary logits must contain the positive label and one alternative")
+    negative_label = next(label for label in logits if label != positive_label)
+    maximum = max(float(value) for value in logits.values())
+    exponentials = {
+        key: math.exp(float(value) - maximum) for key, value in logits.items()
+    }
+    denominator = sum(exponentials.values())
+    result = {
+        f"logit_{label}": float(logits[label]) for label in logits
+    }
+    result.update(
+        {f"p_{label}": exponentials[label] / denominator for label in logits}
+    )
+    result.update(
+        {
+            "positive_label": positive_label,
+            "negative_label": negative_label,
+            "p_positive": exponentials[positive_label] / denominator,
+            "p_negative": exponentials[negative_label] / denominator,
+            "choice_logit": float(logits[positive_label])
+            - float(logits[negative_label]),
+        }
+    )
+    return result
 
 
 def action_metrics(logits: Mapping[str, float]) -> Dict[str, float]:
@@ -311,6 +363,56 @@ class HookedQwen:
             result["hidden_states"] = [
                 state for state in outputs.hidden_states
             ]
+        return result
+
+    def binary_decision(
+        self,
+        messages: List[dict],
+        labels: Iterable[str],
+        *,
+        positive_label: str,
+        layer: Optional[int] = None,
+        transform=None,
+        capture_hidden_states: bool = False,
+    ) -> dict:
+        """Score a counterbalanced binary response vocabulary.
+
+        Token compatibility is checked against the exact rendered chat prompt
+        on every call. This deliberately avoids assuming that a token that is
+        valid for the bandit prompt has identical continuation geometry in a
+        cross-task prompt.
+        """
+        import torch
+
+        labels = tuple(labels)
+        if hasattr(self.tokenizer, "apply_chat_template"):
+            token_ids = verify_chat_choice_tokens(self.tokenizer, messages, labels)
+        else:
+            token_ids = verify_choice_tokens(self.tokenizer, labels)
+        outputs = self.forward(
+            messages,
+            layer=layer,
+            transform=transform,
+            capture_hidden_states=capture_hidden_states,
+        )
+        last_logits = outputs.logits[0, -1]
+        selected = {
+            label: float(last_logits[token_id].detach().float().cpu())
+            for label, token_id in token_ids.items()
+        }
+        result = binary_choice_metrics(selected, positive_label=positive_label)
+        choice_ids = torch.tensor(
+            list(token_ids.values()), device=last_logits.device, dtype=torch.long
+        )
+        result["p_action_mass_raw"] = float(
+            torch.exp(
+                torch.logsumexp(last_logits[choice_ids].float(), dim=0)
+                - torch.logsumexp(last_logits.float(), dim=0)
+            ).cpu()
+        )
+        result["top_token_is_action"] = int(last_logits.argmax()) in token_ids.values()
+        if getattr(outputs, "hidden_states", None) is not None:
+            result["hidden_states"] = list(outputs.hidden_states)
         return result
 
 

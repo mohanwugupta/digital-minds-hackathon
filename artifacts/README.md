@@ -34,6 +34,19 @@ is deliberately separate from source code.
 - `*/publication/`: compact JSON, Markdown, and SVG summaries.
 - `mechanism_synthesis/`: cross-experiment computational interpretation.
 
+## Cross-task follow-up
+
+- `value_dissociation/layerwise_projections*.csv`: compact all-layer frozen
+  persistence projections for Track A.
+- `cross_task/foraging_activation_bank/`: counterbalanced depleting-patch
+  episodes.
+- `cross_task/control_activation_bank/`: paired number comparisons with no
+  persistence semantics.
+- `cross_task/foraging_probes/`: within-task linear ceiling.
+- `cross_task/transfer/`: strict zero-shot and calibration-only summaries.
+- `cross_task/causal/`: validation-only calibration, held-out replays, and
+  causal-transfer summaries.
+
 ## Regeneration policy
 
 Smoke outputs, per-layer TD/nonlinear checkpoints, the superseded standalone

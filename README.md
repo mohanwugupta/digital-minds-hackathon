@@ -14,6 +14,8 @@ The original requirements and research log remain in `PRD.md` and
 
 - `bandit/`: deterministic environment, prompts, conversation state, schemas,
   and episode-level splitting.
+- `cross_task/`: depleting-patch foraging, a non-persistence binary control,
+  label counterbalancing, and pair-safe split utilities.
 - `models/hooked_qwen.py`: Qwen loading, action-token validation, hidden-state
   capture, and final-position activation hooks.
 - `interventions/`: TD, nonlinear, and ridge probes plus calibrated ridge
@@ -157,6 +159,23 @@ This replays confirmatory states under the future-return, provisional-advantage,
 and persistence directions plus 20 layer-matched random controls. Alpha zero
 reuses the exact unhooked baseline. Inference is clustered or bootstrapped at
 the episode level as described in the paper.
+
+### 7. Persistence trajectory and cross-task checkpoint
+
+The follow-up in
+[`docs/cross-task-generalization.md`](docs/cross-task-generalization.md) adds a
+compact all-layer re-projection of the existing factorial, counterbalanced X/Y
+foraging and non-persistence tasks, a within-foraging ceiling, strict frozen
+bandit-probe transfer, and validation-calibrated causal transfer.
+
+Before either extension, verify that the retained sprint baseline has not
+drifted:
+
+```bash
+python -m analysis.check_baseline_regression
+```
+
+Held-out transfer thresholds are frozen in `config/cross_task_experiment.yaml`.
 
 ## Smoke test
 

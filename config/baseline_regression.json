@@ -1,0 +1,33 @@
+{
+  "linear_probe_metrics": {
+    "best_layers": {
+      "future_return": 1,
+      "persistence": 31
+    },
+    "selected_test_r_squared": {
+      "future_return": 0.23986220131891833,
+      "persistence": 0.9982580454909683
+    }
+  },
+  "episode_split": {
+    "counts": {
+      "test": 78,
+      "train": 358,
+      "validation": 76
+    },
+    "canonical_sha256": "2e9b9261a62f652075c336a58aa57bede3a9ef878950732e3613b2b175efe01b"
+  },
+  "factorial": {
+    "episodes": 48,
+    "states": 1187,
+    "rows": 14244,
+    "complete_states": 1187,
+    "stop_raw_slope_sign": -1,
+    "continue_raw_slope_sign": 1
+  },
+  "causal": {
+    "alpha_zero_exact_across_conditions": true,
+    "positive_control_passed": true
+  },
+  "absolute_tolerance": 1e-08
+}

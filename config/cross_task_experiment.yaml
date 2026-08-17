@@ -1,0 +1,35 @@
+# Frozen before held-out cross-task test evaluation.
+model: Qwen/Qwen3.5-4B
+split_seed: 72026
+analysis_seed: 82026
+
+collection:
+  response_labels: [X, Y]
+  foraging_episodes: 384
+  control_episodes: 384
+  max_foraging_decisions: 20
+  initial_qualities: [0.35, 0.55, 0.75]
+  depletions: [0.05, 0.12]
+  outside_options: [0, 2]
+  stay_costs: [0, 1]
+  food_reward: 4
+
+representational_transfer:
+  primary: strict_zero_shot_bandit_standardization_and_weights
+  secondary: validation_affine_calibration_only
+  matched_random_directions: 100
+  episode_bootstrap_samples: 2000
+  strong_transfer_ceiling_fraction: 0.50
+  negative_control_max_absolute_correlation: 0.10
+  negative_control_relative_correlation_fraction: 0.50
+  required_checks:
+    - expected_direction
+    - label_reversal_consistency
+    - exceeds_random_95th_percentile
+    - negative_control_absent_or_weaker
+
+causal_transfer:
+  decoded_sd_candidates: [1.0, 0.5, 0.25, 0.1]
+  max_relative_rms: 0.25
+  matched_random_directions: 20
+  episode_bootstrap_samples: 2000

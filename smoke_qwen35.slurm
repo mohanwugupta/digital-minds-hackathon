@@ -49,12 +49,16 @@ fi
 
 echo "Running CPU/unit gate, including ridge, counterfactual-rollout, matched-history, and supervised-probe regressions"
 python -m pytest -q
+python -m analysis.check_baseline_regression
 
 echo "Running real-model compatibility gate"
 python -m experiments.check_qwen_compatibility \
     --model "$MODEL_PATH" \
     --fallback-model "$FALLBACK_MODEL_PATH" \
     --output artifacts/qwen_compatibility_smoke.json
+
+echo "Checking counterbalanced cross-task response tokens"
+python -m experiments.check_cross_task_compatibility --model "$MODEL_PATH"
 
 echo "Running two short end-to-end bandit episodes"
 SMOKE_RUN_ID="${SLURM_JOB_ID:-manual}"
@@ -99,5 +103,13 @@ python -m experiments.run_value_dissociation \
     --state-bank "artifacts/activation_smoke_${SMOKE_RUN_ID}" \
     --maximum-states 1 \
     --output "artifacts/value_dissociation_smoke_${SMOKE_RUN_ID}.csv"
+
+echo "Collecting one counterbalanced pair from each cross-task environment"
+python -m experiments.collect_cross_task_activations \
+    --task foraging --model "$MODEL_PATH" --episodes 2 --max-decisions 2 \
+    --output-dir "artifacts/cross_task_smoke_foraging_${SMOKE_RUN_ID}"
+python -m experiments.collect_cross_task_activations \
+    --task control --model "$MODEL_PATH" --episodes 2 \
+    --output-dir "artifacts/cross_task_smoke_control_${SMOKE_RUN_ID}"
 
 echo "Smoke test passed"

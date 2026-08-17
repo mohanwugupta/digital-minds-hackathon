@@ -34,6 +34,17 @@ CAUSAL_RANDOM_DIRECTIONS="${CAUSAL_RANDOM_DIRECTIONS:-20}"
 DISSOCIATION_NUM_SHARDS="${DISSOCIATION_NUM_SHARDS:-1}"
 DISSOCIATION_SHARD_INDEX="${DISSOCIATION_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
 DISSOCIATION_MAXIMUM_STATES="${DISSOCIATION_MAXIMUM_STATES:-0}"
+CROSS_TASK_NUM_SHARDS="${CROSS_TASK_NUM_SHARDS:-1}"
+CROSS_TASK_SHARD_INDEX="${CROSS_TASK_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+CROSS_TASK_MAXIMUM_STATES="${CROSS_TASK_MAXIMUM_STATES:-0}"
+LAYERWISE_NUM_SHARDS="${LAYERWISE_NUM_SHARDS:-1}"
+LAYERWISE_SHARD_INDEX="${LAYERWISE_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+TRACK_A_RUN_ID="${TRACK_A_RUN_ID:-track_a_v1}"
+
+if [[ ! "$TRACK_A_RUN_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
+    echo "TRACK_A_RUN_ID may contain only letters, digits, underscores, and hyphens" >&2
+    exit 2
+fi
 
 cd "$PROJECT_DIR"
 mkdir -p logs artifacts "$CLUSTER_BASE/hf_cache" "$CLUSTER_BASE/torch_cache" "$CLUSTER_BASE/cache"
@@ -167,6 +178,91 @@ collect_confirmatory_phase() {
     --output-dir artifacts/confirmatory_state_bank
 }
 
+factorial_layerwise_project_phase() {
+  local output
+  if [ "$LAYERWISE_NUM_SHARDS" -eq 1 ]; then
+    output="artifacts/value_dissociation/layerwise_projections_${TRACK_A_RUN_ID}.csv"
+  else
+    printf -v output "artifacts/value_dissociation/layerwise_projections_%s_shard_%03d.csv" "$TRACK_A_RUN_ID" "$LAYERWISE_SHARD_INDEX"
+  fi
+  echo "Projecting the existing factorial through all frozen persistence probes; shard ${LAYERWISE_SHARD_INDEX}/${LAYERWISE_NUM_SHARDS}"
+  python -m experiments.project_factorial_layers \
+    --model "$MODEL_PATH" \
+    --save-activations \
+    --num-shards "$LAYERWISE_NUM_SHARDS" \
+    --shard-index "$LAYERWISE_SHARD_INDEX" \
+    --output "$output"
+}
+
+factorial_layerwise_analyze_phase() {
+  echo "Analyzing complete Track A replay ${TRACK_A_RUN_ID}"
+  python -m analysis.analyze_factorial_layerwise \
+    --input "artifacts/value_dissociation/layerwise_projections_${TRACK_A_RUN_ID}*.csv" \
+    --output-dir "artifacts/value_dissociation/layerwise_publication_${TRACK_A_RUN_ID}"
+}
+
+track_a_tests_phase() {
+  echo "Running Track A unit, integration, and frozen-baseline gates"
+  python -m pytest -q \
+    tests/test_baseline_regression_manifest.py \
+    tests/test_value_dissociation.py \
+    tests/test_value_dissociation_analysis.py \
+    tests/test_factorial_layerwise_analysis.py \
+    tests/test_factorial_source_coverage.py \
+    tests/test_layerwise_detection.py
+  python -m analysis.check_baseline_regression
+}
+
+track_a_smoke_phase() {
+  local smoke_id="${SLURM_JOB_ID:-manual}"
+  local smoke_root="artifacts/track_a_smoke_${smoke_id}"
+  echo "Running one-state Track A replay smoke into ${smoke_root}"
+  python -m experiments.project_factorial_layers \
+    --model "$MODEL_PATH" \
+    --maximum-states 1 \
+    --save-activations \
+    --activation-output-dir "${smoke_root}/activations" \
+    --output "${smoke_root}/layerwise_projections.csv"
+  python -m analysis.analyze_factorial_layerwise \
+    --input "${smoke_root}/layerwise_projections.csv" \
+    --output-dir "${smoke_root}/analysis" \
+    --allow-partial
+  test -s "${smoke_root}/analysis/factorial_layerwise_summary.json"
+  test -s "${smoke_root}/analysis/factorial_layerwise_effects.csv"
+  test -s "${smoke_root}/analysis/factorial_layerwise_effects.svg"
+  test -s "${smoke_root}/analysis/factorial_layerwise_trajectory.svg"
+  test -s "${smoke_root}/analysis/factorial_layerwise_report.md"
+  echo "Track A replay smoke passed"
+}
+
+cross_task_collect_phase() {
+  local task="$1"
+  echo "Collecting counterbalanced ${task} activation bank; shard ${CROSS_TASK_SHARD_INDEX}/${CROSS_TASK_NUM_SHARDS}"
+  python -m experiments.collect_cross_task_activations \
+    --task "$task" \
+    --model "$MODEL_PATH" \
+    --num-shards "$CROSS_TASK_NUM_SHARDS" \
+    --shard-index "$CROSS_TASK_SHARD_INDEX"
+}
+
+cross_task_causal_collect_phase() {
+  local task="$1"
+  local output
+  if [ "$CROSS_TASK_NUM_SHARDS" -eq 1 ]; then
+    output="artifacts/cross_task/causal/${task}_replays.csv"
+  else
+    printf -v output "artifacts/cross_task/causal/${task}_replays_shard_%03d.csv" "$CROSS_TASK_SHARD_INDEX"
+  fi
+  echo "Collecting ${task} cross-task causal replays; shard ${CROSS_TASK_SHARD_INDEX}/${CROSS_TASK_NUM_SHARDS}"
+  python -m experiments.run_cross_task_steering \
+    --task "$task" \
+    --model "$MODEL_PATH" \
+    --maximum-states "$CROSS_TASK_MAXIMUM_STATES" \
+    --num-shards "$CROSS_TASK_NUM_SHARDS" \
+    --shard-index "$CROSS_TASK_SHARD_INDEX" \
+    --output "$output"
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -232,6 +328,48 @@ case "$PHASE" in
     ;;
   collect_confirmatory)
     collect_confirmatory_phase
+    ;;
+  baseline_regression)
+    python -m analysis.check_baseline_regression
+    ;;
+  factorial_layerwise_project)
+    factorial_layerwise_project_phase
+    ;;
+  factorial_layerwise_analyze)
+    factorial_layerwise_analyze_phase
+    ;;
+  track_a_tests)
+    track_a_tests_phase
+    ;;
+  track_a_smoke)
+    track_a_smoke_phase
+    ;;
+  cross_task_compatibility)
+    python -m experiments.check_cross_task_compatibility --model "$MODEL_PATH"
+    ;;
+  cross_task_collect_foraging)
+    cross_task_collect_phase foraging
+    ;;
+  cross_task_collect_control)
+    cross_task_collect_phase control
+    ;;
+  cross_task_train_ceiling)
+    python -m experiments.train_foraging_probes
+    ;;
+  cross_task_representational)
+    python -m analysis.analyze_cross_task_transfer
+    ;;
+  cross_task_causal_calibrate)
+    python -m experiments.calibrate_cross_task_steering
+    ;;
+  cross_task_causal_foraging)
+    cross_task_causal_collect_phase foraging
+    ;;
+  cross_task_causal_control)
+    cross_task_causal_collect_phase control
+    ;;
+  cross_task_causal_analyze)
+    python -m analysis.analyze_cross_task_causal
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2

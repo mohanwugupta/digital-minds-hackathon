@@ -43,6 +43,421 @@ pilot_data <- read_csv(
 
 ```
 
+```{r, echo=FALSE}
+# ============================================================
+# Reward-condition classification
+# ============================================================
+
+pilot_data <- pilot_data %>%
+  mutate(
+    condition = case_when(
+      p_A_true < .40 & p_B_true < .40 ~ "Both negative",
+      
+      (p_A_true > .40 & p_B_true < .40) |
+      (p_A_true < .40 & p_B_true > .40) ~ "One positive",
+      
+      p_A_true > .40 & p_B_true > .40 ~ "Both positive"
+    ),
+    
+    condition = factor(
+      condition,
+      levels = c(
+        "Both negative",
+        "One positive",
+        "Both positive"
+      )
+    )
+  )
+
+
+# ============================================================
+# Colors
+# ============================================================
+
+condition_cols <- c(
+  "Both negative" = "#D55E00",
+  "One positive" = "#0072B2",
+  "Both positive" = "#009E73"
+)
+
+
+# ============================================================
+# One row per episode
+# ============================================================
+
+episode_data <- pilot_data %>%
+  arrange(episode_id, round) %>%
+  group_by(episode_id) %>%
+  summarise(
+    condition = first(condition),
+    n_decisions = n(),
+    stopped = last(sampled_action) == "C",
+    .groups = "drop"
+  )
+
+
+# Check expected means
+episode_data %>%
+  group_by(condition) %>%
+  summarise(
+    episodes = n(),
+    mean_decisions = mean(n_decisions),
+    .groups = "drop"
+  )
+
+# ============================================================
+# Create persistence curves
+# ============================================================
+
+persistence_curves <- crossing(
+  episode_data,
+  decision = 1:100
+) %>%
+  mutate(
+    not_yet_stopped =
+      !stopped | n_decisions > decision
+  ) %>%
+  group_by(condition, decision) %>%
+  summarise(
+    persistence = mean(not_yet_stopped),
+    .groups = "drop"
+  )
+
+
+# ============================================================
+# Plot A
+# ============================================================
+
+plot_A <- ggplot(
+  persistence_curves,
+  aes(
+    x = decision,
+    y = persistence,
+    color = condition,
+    group = condition
+  )
+) +
+
+  geom_line(
+    linewidth = 6,
+    alpha = 0.85
+  ) +
+
+  scale_color_manual(
+    values = condition_cols
+  ) +
+
+  scale_x_continuous(
+    breaks = c(1, 5, 10, 20, 50, 100),
+    limits = c(1, 100),
+    expand = expansion(mult = c(0, 0))
+  ) +
+
+  scale_y_continuous(
+    breaks = seq(0, 1, .25),
+    limits = c(0, 1),
+    expand = expansion(mult = c(0, 0.02))
+  ) +
+
+  labs(
+    x = "Decision",
+    y = "Proportion Not Yet Stopped",
+    color = NULL
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    legend.title = element_blank(),
+
+    legend.position = c(.70, .83),
+
+    legend.text = element_text(
+      size = 34
+    ),
+
+    legend.key.width = unit(
+      4,
+      "cm"
+    ),
+
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2
+    ),
+
+    axis.text = element_text(
+      size = 40
+    ),
+
+    axis.title = element_text(
+      size = 40
+    ),
+
+    plot.margin = margin(
+      20, 25, 20, 20
+    )
+  ) +
+  scale_x_continuous(
+  breaks = c(1, 5, 10, 20, 50, 100),
+  expand = expansion(add = c(0, 3))
+)
+
+plot_A
+
+
+```
+
+```{r, echo=FALSE}
+# ============================================================
+# Overall bootstrap CI across all episodes
+# ============================================================
+
+set.seed(812026)
+
+overall_duration_summary <- bootstrap_mean_ci(
+  episode_data$n_decisions
+) %>%
+  mutate(group = "All Episodes")
+
+overall_duration_summary
+
+# ============================================================
+# One collapsed bar across all reward conditions
+# ============================================================
+
+plot_C_collapsed <- ggplot(
+  overall_duration_summary,
+  aes(
+    x = group,
+    y = mean_decisions
+  )
+) +
+
+  # Mean bar
+  geom_col(
+    width = .6,
+    fill = "blue",
+    alpha = .65,
+    color = "blue",
+    linewidth = 1.5
+  ) +
+
+  # Individual episodes
+  geom_jitter(
+    data = episode_data,
+    aes(
+      x = "All Episodes",
+      y = n_decisions
+    ),
+    inherit.aes = FALSE,
+    width = .16,
+    height = 0,
+    size = 5,
+    alpha = .30,
+    color = "black"
+  ) +
+
+  # 95% bootstrap CI
+  geom_linerange(
+    aes(
+      ymin = ci_lo,
+      ymax = ci_hi
+    ),
+    linewidth = 3,
+    color = "black"
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, 100, 20),
+    limits = c(0, 102),
+    expand = expansion(
+      mult = c(0, .02)
+    )
+  ) +
+
+  labs(
+    x = NULL,
+    y = "Decisions Until Stopping"
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2
+    ),
+
+    axis.text = element_text(
+      size = 40
+    ),
+
+    axis.title = element_text(
+      size = 40
+    ),
+
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+
+    plot.margin = margin(
+      20, 25, 20, 20
+    )
+  )
+
+plot_C_collapsed
+```
+
+```{r, echo=FALSE}
+# ============================================================
+# Bootstrap CIs across episodes
+# ============================================================
+
+set.seed(812026)
+
+bootstrap_mean_ci <- function(x, n_boot = 10000) {
+
+  boot_means <- replicate(
+    n_boot,
+    mean(
+      sample(
+        x,
+        size = length(x),
+        replace = TRUE
+      )
+    )
+  )
+
+  tibble(
+    mean_decisions = mean(x),
+    ci_lo = quantile(
+      boot_means,
+      .025
+    ),
+    ci_hi = quantile(
+      boot_means,
+      .975
+    )
+  )
+}
+
+
+duration_summary <- episode_data %>%
+  group_by(condition) %>%
+  summarise(
+    bootstrap_mean_ci(n_decisions),
+    .groups = "drop"
+  )
+
+duration_summary
+
+# ============================================================
+# Plot C
+# ============================================================
+
+plot_C <- ggplot(
+  duration_summary,
+  aes(
+    x = condition,
+    y = mean_decisions,
+    fill = condition
+  )
+) +
+
+  # Mean bars
+  geom_col(
+    width = .65,
+    alpha = .8,
+    color = "black",
+    linewidth = 1.5
+  ) +
+
+  # Individual episodes
+  geom_jitter(
+    data = episode_data,
+    aes(
+      x = condition,
+      y = n_decisions
+    ),
+    inherit.aes = FALSE,
+    width = .15,
+    height = 0,
+    size = 4,
+    alpha = .30
+  ) +
+
+  # 95% episode-bootstrap CI
+  geom_linerange(
+    aes(
+      ymin = ci_lo,
+      ymax = ci_hi
+    ),
+    linewidth = 2.5,
+    color = "black"
+  ) +
+
+  scale_fill_manual(
+    values = condition_cols
+  ) +
+
+  scale_color_manual(
+    values = condition_cols
+  ) +
+
+  scale_y_continuous(
+    breaks = seq(0, 100, 20),
+    limits = c(0, 102),
+    expand = expansion(
+      mult = c(0, .02)
+    )
+  ) +
+
+  labs(
+    x = NULL,
+    y = "Decisions per Episode"
+  ) +
+
+  guides(
+    fill = "none",
+    color = "none"
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2
+    ),
+
+    axis.text = element_text(
+      size = 40
+    ),
+
+    axis.text.x = element_text(
+      size = 40
+    ),
+
+    axis.title = element_text(
+      size = 40
+    ),
+
+    plot.margin = margin(
+      20, 25, 20, 20
+    )
+  )
+
+plot_C
+```
+
 ```{r,echo=FALSE}
 # ============================================================
 # Calculate current loss streak
@@ -941,5 +1356,112 @@ final_figure_2 <- ggarrange(
 )
 
 final_figure_2
+
+```
+
+```{r, echo=FALSE}
+# ============================================================
+# Persistence by relative incentive
+# ============================================================
+
+relative_summary <- factorial_data %>%
+  mutate(
+    relative_incentive = continue_bonus - stop_payoff
+  ) %>%
+  group_by(relative_incentive) %>%
+  summarise(
+    mean_persistence = mean(
+      persistence_logit,
+      na.rm = TRUE
+    ),
+    .groups = "drop"
+  ) %>%
+  arrange(relative_incentive)
+
+relative_summary
+
+# ============================================================
+# Figure 2C: Persistence by relative incentive
+# ============================================================
+
+figure_2c <- ggplot(
+  relative_summary,
+  aes(
+    x = relative_incentive,
+    y = mean_persistence
+  )
+) +
+
+  # Zero = CONTINUE / STOP decision boundary
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed",
+    linewidth = 1.5,
+    color = "black",
+    alpha = .5
+  ) +
+
+  # Dose-response line
+  geom_line(
+    linewidth = 6,
+    color = "#7A5195",
+    alpha = .85
+  ) +
+
+  scale_x_continuous(
+    breaks = c(
+      -30, -20, -10,
+      0, 10, 20
+    ),
+    labels = c(
+      "-30", "-20", "-10",
+      "0", "+10", "+20"
+    ),
+    expand = expansion(
+      add = c(2, 2)
+    )
+  ) +
+
+  scale_y_continuous(
+    breaks = seq(
+      -2, 3,
+      by = 1
+    ),
+    limits = c(-1.7, 2.8),
+    expand = expansion(
+      mult = c(0, .02)
+    )
+  ) +
+
+  labs(
+    x = "CONTINUE Bonus - STOP Payoff",
+    y = "Mean Persistence Logit"
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+
+    axis.line = element_line(
+      colour = "black",
+      linewidth = 2
+    ),
+
+    axis.text = element_text(
+      size = 40
+    ),
+
+    axis.title = element_text(
+      size = 40
+    ),
+
+    plot.margin = margin(
+      20, 25, 20, 20
+    )
+  )
+
+figure_2c
 
 ```
