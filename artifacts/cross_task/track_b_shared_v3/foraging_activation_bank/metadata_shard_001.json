@@ -1,0 +1,27 @@
+{
+  "config": {
+    "config": "config/cross_task_experiment.yaml",
+    "counterbalanced_labels": [
+      "X",
+      "Y"
+    ],
+    "episodes": 768,
+    "max_attempts": 8,
+    "max_decisions": 20,
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "num_shards": 4,
+    "online": false,
+    "output_dir": "artifacts/cross_task/track_b_shared_v3/foraging_activation_bank",
+    "revision": null,
+    "seed": 72026,
+    "shard_index": 1,
+    "task": "foraging"
+  },
+  "created_at_utc": "2026-08-17T21:38:45.584249+00:00",
+  "git_commit": "25aacafc2292550eabfb4fe645eb495c80bbcbf6",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}

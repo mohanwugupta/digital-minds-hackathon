@@ -1,0 +1,50 @@
+{
+  "analysis_role": "prospective_sample_size_check_not_an_observed_effect",
+  "bandit_reference_layer": 15,
+  "bandit_reference_test_correlation": 0.9838628768920898,
+  "design_pair_preference": [
+    300,
+    400
+  ],
+  "desired_power": 0.8,
+  "passed": true,
+  "planned_primary_test_independent_pairs": 59,
+  "primary_test_power_meets_desired_by_attenuation": {
+    "0.15": false,
+    "0.2": false,
+    "0.25": false
+  },
+  "rows": [
+    {
+      "approximate_power_if_all_pairs_were_confirmatory": 0.8268690166645556,
+      "approximate_primary_test_power": 0.1994318313546622,
+      "assumed_heldout_correlation": 0.14757943153381348,
+      "attenuation_fraction_of_bandit_reference": 0.15,
+      "heldout_test_independent_pairs": 59,
+      "independent_pairs": 384
+    },
+    {
+      "approximate_power_if_all_pairs_were_confirmatory": 0.973298010384581,
+      "approximate_primary_test_power": 0.32017279685202293,
+      "assumed_heldout_correlation": 0.19677257537841797,
+      "attenuation_fraction_of_bandit_reference": 0.2,
+      "heldout_test_independent_pairs": 59,
+      "independent_pairs": 384
+    },
+    {
+      "approximate_power_if_all_pairs_were_confirmatory": 0.9983673361248706,
+      "approximate_primary_test_power": 0.4678632122722923,
+      "assumed_heldout_correlation": 0.24596571922302246,
+      "attenuation_fraction_of_bandit_reference": 0.25,
+      "heldout_test_independent_pairs": 59,
+      "independent_pairs": 384
+    }
+  ],
+  "split_fractions": {
+    "test": 0.15,
+    "train": 0.7,
+    "validation": 0.15
+  },
+  "underlying_counterbalanced_pairs": 384,
+  "warning": "Power is governed by held-out test pairs, not all collected pairs; the conservative attenuation scenarios may remain underpowered."
+}

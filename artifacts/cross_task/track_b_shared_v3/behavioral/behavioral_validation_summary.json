@@ -1,0 +1,277 @@
+{
+  "analysis_role": "confirmatory_gate",
+  "behavioral_validation": {
+    "analysis_role": "confirmatory_gate",
+    "criteria": {
+      "enough_development_episodes": true,
+      "enough_development_states": true,
+      "episode_termination_nondegenerate": false,
+      "episodes_contain_repeated_decisions": true,
+      "label_mapping_initial_gap_bounded": true,
+      "outside_option_reduces_persistence": true,
+      "persistence_logit_varies": true,
+      "semantic_choices_nondegenerate": true,
+      "stay_cost_reduces_persistence": true,
+      "stay_probability_spans_decisions": true
+    },
+    "data_scope": [
+      "train",
+      "validation"
+    ],
+    "development_episodes": 650,
+    "development_states": 1831,
+    "economic_manipulation_logit_effects": {
+      "higher_outside_option_minus_lower": -1.1993019246798517,
+      "higher_stay_cost_minus_lower": -0.6988636363636365
+    },
+    "episodes_ending_by_leave_rate": 1.0,
+    "initial_mapping_p_stay_gap": 0.03764798619921661,
+    "initial_state_p_stay_by_mapping": {
+      "stay_x": 0.8884803689073584,
+      "stay_y": 0.8508323827081418
+    },
+    "level": "behavioral_generalization",
+    "mean_episode_decisions": 2.816923076923077,
+    "p_stay": {
+      "interdecile_range": 0.5940796541683728,
+      "mean": 0.6531362233316036,
+      "p10": 0.32082130082460697,
+      "p90": 0.9149009549929797,
+      "standard_deviation": 0.228742657852281
+    },
+    "passed": false,
+    "persistence_logit_standard_deviation": 1.2423865458208505,
+    "semantic_stay_choice_rate": 0.645002730748225,
+    "test_episodes_inspected": false,
+    "thresholds": {
+      "episode_leave_rate_bounds": [
+        0.2,
+        0.98
+      ],
+      "maximum_initial_mapping_p_stay_gap": 0.2,
+      "minimum_development_episodes": 300,
+      "minimum_development_states": 400,
+      "minimum_expected_economic_logit_effect": 0.05,
+      "minimum_mean_episode_decisions": 1.25,
+      "minimum_p_stay_interdecile_range": 0.15,
+      "minimum_persistence_logit_sd": 0.25,
+      "semantic_stay_rate_bounds": [
+        0.1,
+        0.9
+      ]
+    }
+  },
+  "control_integrity": {
+    "episodes": 768,
+    "expected_episodes": 768,
+    "issue_counts": {
+      "control_episode_shape": 0,
+      "counterbalance_mapping": 0,
+      "counterbalance_pair_size": 0,
+      "duplicate_episode_id": 0,
+      "duplicate_state_id": 0,
+      "empty_episode": 0,
+      "episode_count": 0,
+      "mapping_record_fields": 0,
+      "mapping_schema": 0,
+      "paired_condition": 0,
+      "probability_geometry": 0,
+      "raw_label_semantics": 0,
+      "record_episode": 0,
+      "record_mapping_id": 0,
+      "record_pair": 0,
+      "round_or_state_id": 0,
+      "task": 0,
+      "terminal_position": 0,
+      "terminal_semantics": 0
+    },
+    "pairs": 384,
+    "passed": true,
+    "response_labels": [
+      "M",
+      "N"
+    ],
+    "states": 768,
+    "task": "binary_control"
+  },
+  "foraging_integrity": {
+    "episodes": 768,
+    "expected_episodes": 768,
+    "issue_counts": {
+      "control_episode_shape": 0,
+      "counterbalance_mapping": 0,
+      "counterbalance_pair_size": 0,
+      "duplicate_episode_id": 0,
+      "duplicate_state_id": 0,
+      "empty_episode": 0,
+      "episode_count": 0,
+      "mapping_record_fields": 0,
+      "mapping_schema": 0,
+      "paired_condition": 0,
+      "probability_geometry": 0,
+      "raw_label_semantics": 0,
+      "record_episode": 0,
+      "record_mapping_id": 0,
+      "record_pair": 0,
+      "round_or_state_id": 0,
+      "task": 0,
+      "terminal_position": 0,
+      "terminal_semantics": 0
+    },
+    "pairs": 384,
+    "passed": true,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "states": 2195,
+    "task": "foraging"
+  },
+  "passed": false,
+  "preregistered_config": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/config/cross_task_experiment.yaml",
+  "provenance": {
+    "config": {
+      "analysis": "cross_task_behavioral_validation",
+      "config": "/scratch/gpfs/JORDANAT/mg9965/digital-minds-hackathon/config/cross_task_experiment.yaml",
+      "model": "Qwen/Qwen3.5-4B"
+    },
+    "created_at_utc": "2026-08-17T21:48:00.566143+00:00",
+    "git_commit": "25aacafc2292550eabfb4fe645eb495c80bbcbf6",
+    "model_identifier": "Qwen/Qwen3.5-4B",
+    "model_revision": null,
+    "python_version": "3.10.20",
+    "torch_version": "2.13.0+cu130",
+    "transformers_version": "5.15.0"
+  },
+  "solvability_behavioral_validation": {
+    "analysis_role": "confirmatory_gate",
+    "criteria": {
+      "attempt_cost_reduces_persistence": true,
+      "enough_development_episodes": true,
+      "enough_development_states": true,
+      "episode_termination_nondegenerate": true,
+      "episodes_contain_repeated_decisions": true,
+      "give_up_value_reduces_persistence": true,
+      "label_mapping_initial_gap_bounded": false,
+      "persistence_logit_varies": true,
+      "persistence_probability_spans_decisions": true,
+      "semantic_choices_nondegenerate": true,
+      "solvability_evidence_increases_persistence": true
+    },
+    "data_scope": [
+      "train",
+      "validation"
+    ],
+    "development_episodes": 650,
+    "development_states": 1756,
+    "episodes_ending_by_disengagement_rate": 0.9584615384615385,
+    "initial_mapping_probability_gap": 0.24110905290508028,
+    "initial_probability_by_mapping": {
+      "try_again_m": 0.6599202008636659,
+      "try_again_n": 0.4188111479585856
+    },
+    "level": "behavioral_generalization",
+    "manipulation_logit_effects": {
+      "higher_attempt_cost_minus_lower": -0.5570561614784519,
+      "higher_give_up_value_minus_lower": -0.36118580518103316,
+      "higher_progress_evidence_minus_lower": 3.205768268268268
+    },
+    "mean_episode_decisions": 2.7015384615384614,
+    "passed": false,
+    "persistence_logit_standard_deviation": 3.1524499725027404,
+    "persistence_probability": {
+      "interdecile_range": 0.8165422451568889,
+      "mean": 0.6599239585362517,
+      "p10": 0.18242552380635632,
+      "p90": 0.9989677689632452,
+      "standard_deviation": 0.33305885010768244
+    },
+    "semantic_persistence_choice_rate": 0.6452164009111617,
+    "task": "solvability",
+    "test_episodes_inspected": false,
+    "thresholds": {
+      "episode_disengagement_rate_bounds": [
+        0.2,
+        0.98
+      ],
+      "maximum_initial_mapping_probability_gap": 0.2,
+      "minimum_development_episodes": 300,
+      "minimum_development_states": 400,
+      "minimum_expected_logit_effect": 0.05,
+      "minimum_mean_episode_decisions": 1.25,
+      "minimum_persistence_logit_sd": 0.25,
+      "minimum_persistence_probability_interdecile_range": 0.15,
+      "semantic_persistence_rate_bounds": [
+        0.1,
+        0.9
+      ]
+    }
+  },
+  "solvability_integrity": {
+    "episodes": 768,
+    "expected_episodes": 768,
+    "issue_counts": {
+      "control_episode_shape": 0,
+      "counterbalance_mapping": 0,
+      "counterbalance_pair_size": 0,
+      "duplicate_episode_id": 0,
+      "duplicate_state_id": 0,
+      "empty_episode": 0,
+      "episode_count": 0,
+      "mapping_record_fields": 0,
+      "mapping_schema": 0,
+      "paired_condition": 0,
+      "probability_geometry": 0,
+      "raw_label_semantics": 0,
+      "record_episode": 0,
+      "record_mapping_id": 0,
+      "record_pair": 0,
+      "round_or_state_id": 0,
+      "task": 0,
+      "terminal_position": 0,
+      "terminal_semantics": 0
+    },
+    "pairs": 384,
+    "passed": true,
+    "response_labels": [
+      "M",
+      "N"
+    ],
+    "states": 2069,
+    "task": "solvability"
+  },
+  "terminality_integrity": {
+    "episodes": 768,
+    "expected_episodes": 768,
+    "issue_counts": {
+      "control_episode_shape": 0,
+      "counterbalance_mapping": 0,
+      "counterbalance_pair_size": 0,
+      "duplicate_episode_id": 0,
+      "duplicate_state_id": 0,
+      "empty_episode": 0,
+      "episode_count": 0,
+      "mapping_record_fields": 0,
+      "mapping_schema": 0,
+      "paired_condition": 0,
+      "probability_geometry": 0,
+      "raw_label_semantics": 0,
+      "record_episode": 0,
+      "record_mapping_id": 0,
+      "record_pair": 0,
+      "round_or_state_id": 0,
+      "task": 0,
+      "terminal_position": 0,
+      "terminal_semantics": 0
+    },
+    "pairs": 384,
+    "passed": true,
+    "response_labels": [
+      "M",
+      "N"
+    ],
+    "states": 768,
+    "task": "terminality_control"
+  },
+  "test_episodes_inspected": false
+}

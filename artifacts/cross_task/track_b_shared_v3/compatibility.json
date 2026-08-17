@@ -1,0 +1,243 @@
+{
+  "checks": [
+    {
+      "mapping": {
+        "LEAVE": "Y",
+        "STAY": "X"
+      },
+      "mapping_id": "stay_x",
+      "stage": "initial",
+      "task": "foraging",
+      "token_ids": {
+        "X": 55,
+        "Y": 56
+      }
+    },
+    {
+      "mapping": {
+        "LEAVE": "Y",
+        "STAY": "X"
+      },
+      "mapping_id": "stay_x",
+      "stage": "feedback_found",
+      "task": "foraging",
+      "token_ids": {
+        "X": 55,
+        "Y": 56
+      }
+    },
+    {
+      "mapping": {
+        "LEAVE": "Y",
+        "STAY": "X"
+      },
+      "mapping_id": "stay_x",
+      "stage": "feedback_empty",
+      "task": "foraging",
+      "token_ids": {
+        "X": 55,
+        "Y": 56
+      }
+    },
+    {
+      "mapping": {
+        "LEAVE": "X",
+        "STAY": "Y"
+      },
+      "mapping_id": "stay_y",
+      "stage": "initial",
+      "task": "foraging",
+      "token_ids": {
+        "X": 55,
+        "Y": 56
+      }
+    },
+    {
+      "mapping": {
+        "LEAVE": "X",
+        "STAY": "Y"
+      },
+      "mapping_id": "stay_y",
+      "stage": "feedback_found",
+      "task": "foraging",
+      "token_ids": {
+        "X": 55,
+        "Y": 56
+      }
+    },
+    {
+      "mapping": {
+        "LEAVE": "X",
+        "STAY": "Y"
+      },
+      "mapping_id": "stay_y",
+      "stage": "feedback_empty",
+      "task": "foraging",
+      "token_ids": {
+        "X": 55,
+        "Y": 56
+      }
+    },
+    {
+      "mapping": {
+        "GIVE_UP": "N",
+        "TRY_AGAIN": "M"
+      },
+      "mapping_id": "try_again_m",
+      "stage": "initial",
+      "task": "solvability",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "GIVE_UP": "N",
+        "TRY_AGAIN": "M"
+      },
+      "mapping_id": "try_again_m",
+      "stage": "feedback_progress",
+      "task": "solvability",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "GIVE_UP": "N",
+        "TRY_AGAIN": "M"
+      },
+      "mapping_id": "try_again_m",
+      "stage": "feedback_no_progress",
+      "task": "solvability",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "GIVE_UP": "M",
+        "TRY_AGAIN": "N"
+      },
+      "mapping_id": "try_again_n",
+      "stage": "initial",
+      "task": "solvability",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "GIVE_UP": "M",
+        "TRY_AGAIN": "N"
+      },
+      "mapping_id": "try_again_n",
+      "stage": "feedback_progress",
+      "task": "solvability",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "GIVE_UP": "M",
+        "TRY_AGAIN": "N"
+      },
+      "mapping_id": "try_again_n",
+      "stage": "feedback_no_progress",
+      "task": "solvability",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "LEFT_GREATER": "M",
+        "RIGHT_GREATER": "N"
+      },
+      "mapping_id": "left_greater_m",
+      "stage": "initial",
+      "task": "control",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "LEFT_GREATER": "N",
+        "RIGHT_GREATER": "M"
+      },
+      "mapping_id": "left_greater_n",
+      "stage": "initial",
+      "task": "control",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "END": "N",
+        "PROCEED": "M"
+      },
+      "mapping_id": "proceed_m",
+      "stage": "initial",
+      "task": "terminality",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    },
+    {
+      "mapping": {
+        "END": "M",
+        "PROCEED": "N"
+      },
+      "mapping_id": "proceed_n",
+      "stage": "initial",
+      "task": "terminality",
+      "token_ids": {
+        "M": 44,
+        "N": 45
+      }
+    }
+  ],
+  "config": {
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "online": false,
+    "response_labels": {
+      "control": [
+        "M",
+        "N"
+      ],
+      "foraging": [
+        "X",
+        "Y"
+      ],
+      "solvability": [
+        "M",
+        "N"
+      ],
+      "terminality": [
+        "M",
+        "N"
+      ]
+    },
+    "revision": null
+  },
+  "created_at_utc": "2026-08-17T21:35:45.969368+00:00",
+  "git_commit": "25aacafc2292550eabfb4fe645eb495c80bbcbf6",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "passed": true,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}
