@@ -1,0 +1,24 @@
+{
+  "config": {
+    "activation_dir": "artifacts/cross_task/track_b_shared_v3/foraging_activation_bank",
+    "config": "config/cross_task_experiment.yaml",
+    "maximum_states": 0,
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "num_shards": 4,
+    "online": false,
+    "output_dir": "artifacts/cross_task/track_b_shared_v3/foraging_matched_label_bank",
+    "revision": null,
+    "selected_histories": 193,
+    "shard_index": 0,
+    "source_scope": "one canonical organic trajectory per held-out pair",
+    "split": "artifacts/cross_task/track_b_shared_v3/foraging_episode_split.json",
+    "task": "foraging"
+  },
+  "created_at_utc": "2026-08-17T22:12:28.884433+00:00",
+  "git_commit": "7c3fe8cd78f4d6019a00f470715fb79e6ddd5fa7",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}
