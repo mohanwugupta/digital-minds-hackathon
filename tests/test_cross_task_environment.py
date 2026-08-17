@@ -1,3 +1,5 @@
+from math import isclose
+
 from cross_task.common import counterbalanced_mappings, grouped_episode_split
 from cross_task.foraging import (
     LEAVE,
@@ -15,10 +17,10 @@ def test_foraging_is_deterministic_and_depletes_after_stay():
     right = ForagingEnvironment(condition, 17, max_decisions=4)
 
     assert left.uniform_schedule == right.uniform_schedule
-    assert left.patch_probability() == 0.8
+    assert isclose(left.patch_probability(), 0.8)
     first = left.step(STAY)
     assert first.reward in {-1, 3}
-    assert left.patch_probability() == 0.6
+    assert isclose(left.patch_probability(), 0.6)
     final = left.step(LEAVE)
     assert final.reward == 2
     assert final.terminated and final.reason == "leave"
