@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="560" viewBox="0 0 1500 560">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="50.0" y="42.0" class="title" text-anchor="start">Incentive effects emerge along frozen persistence directions</text>
+<text x="50.0" y="68.0" class="subtitle" text-anchor="start">State fixed effects; normalized to the final behavioral persistence-logit effect</text>
+<text x="35.0" y="113.0" class="panel" text-anchor="start">A. STOP payoff</text>
+<line x1="97.0" y1="442.0" x2="467.0" y2="442.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="88.0" y="446.0" class="axis" text-anchor="end">-0.2</text>
+<line x1="97.0" y1="158.0" x2="467.0" y2="158.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="88.0" y="162.0" class="axis" text-anchor="end">1.0</text>
+<line x1="97.0" y1="137.0" x2="467.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="88.0" y="141.0" class="axis" text-anchor="end">1.1</text>
+<line x1="97.0" y1="442.0" x2="97.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="97.0" y="462.0" class="axis" text-anchor="middle">0</text>
+<line x1="467.0" y1="442.0" x2="467.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="467.0" y="462.0" class="axis" text-anchor="middle">31</text>
+<line x1="97.0" y1="137.0" x2="97.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="97.0" y1="442.0" x2="467.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="282.0" y="485.0" class="axis" text-anchor="middle">Layer</text>
+<text x="50.0" y="289.5" class="axis" text-anchor="middle" transform="rotate(-90 50 289.5)">Behavior-normalized effect</text>
+<line x1="97.0" y1="158.0" x2="467.0" y2="158.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<polyline points="97.0,421.0 108.9,402.8 120.9,402.5 132.8,381.5 144.7,373.7 156.7,386.5 168.6,394.7 180.5,398.9 192.5,398.6 204.4,408.2 216.4,407.5 228.3,406.7 240.2,386.8 252.2,381.5 264.1,379.6 276.0,321.1 288.0,331.0 299.9,355.3 311.8,361.7 323.8,395.1 335.7,386.2 347.6,387.6 359.6,383.5 371.5,329.2 383.5,281.0 395.4,276.7 407.3,262.1 419.3,255.7 431.2,217.5 443.1,205.3 455.1,215.6 467.0,188.3" fill="none" stroke="#D55E00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="97.0" cy="421.0" r="3.0" fill="#D55E00"/>
+<circle cx="108.9" cy="402.8" r="3.0" fill="#D55E00"/>
+<circle cx="120.9" cy="402.5" r="3.0" fill="#D55E00"/>
+<circle cx="132.8" cy="381.5" r="3.0" fill="#D55E00"/>
+<circle cx="144.7" cy="373.7" r="3.0" fill="#D55E00"/>
+<circle cx="156.7" cy="386.5" r="3.0" fill="#D55E00"/>
+<circle cx="168.6" cy="394.7" r="3.0" fill="#D55E00"/>
+<circle cx="180.5" cy="398.9" r="3.0" fill="#D55E00"/>
+<circle cx="192.5" cy="398.6" r="3.0" fill="#D55E00"/>
+<circle cx="204.4" cy="408.2" r="3.0" fill="#D55E00"/>
+<circle cx="216.4" cy="407.5" r="3.0" fill="#D55E00"/>
+<circle cx="228.3" cy="406.7" r="3.0" fill="#D55E00"/>
+<circle cx="240.2" cy="386.8" r="3.0" fill="#D55E00"/>
+<circle cx="252.2" cy="381.5" r="3.0" fill="#D55E00"/>
+<circle cx="264.1" cy="379.6" r="3.0" fill="#D55E00"/>
+<circle cx="276.0" cy="321.1" r="3.0" fill="#D55E00"/>
+<circle cx="288.0" cy="331.0" r="3.0" fill="#D55E00"/>
+<circle cx="299.9" cy="355.3" r="3.0" fill="#D55E00"/>
+<circle cx="311.8" cy="361.7" r="3.0" fill="#D55E00"/>
+<circle cx="323.8" cy="395.1" r="3.0" fill="#D55E00"/>
+<circle cx="335.7" cy="386.2" r="3.0" fill="#D55E00"/>
+<circle cx="347.6" cy="387.6" r="3.0" fill="#D55E00"/>
+<circle cx="359.6" cy="383.5" r="3.0" fill="#D55E00"/>
+<circle cx="371.5" cy="329.2" r="3.0" fill="#D55E00"/>
+<circle cx="383.5" cy="281.0" r="3.0" fill="#D55E00"/>
+<circle cx="395.4" cy="276.7" r="3.0" fill="#D55E00"/>
+<circle cx="407.3" cy="262.1" r="3.0" fill="#D55E00"/>
+<circle cx="419.3" cy="255.7" r="3.0" fill="#D55E00"/>
+<circle cx="431.2" cy="217.5" r="3.0" fill="#D55E00"/>
+<circle cx="443.1" cy="205.3" r="3.0" fill="#D55E00"/>
+<circle cx="455.1" cy="215.6" r="3.0" fill="#D55E00"/>
+<circle cx="467.0" cy="188.3" r="3.0" fill="#D55E00"/>
+<text x="525.0" y="113.0" class="panel" text-anchor="start">B. CONTINUE bonus</text>
+<line x1="587.0" y1="442.0" x2="957.0" y2="442.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="578.0" y="446.0" class="axis" text-anchor="end">-0.2</text>
+<line x1="587.0" y1="158.0" x2="957.0" y2="158.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="578.0" y="162.0" class="axis" text-anchor="end">1.0</text>
+<line x1="587.0" y1="137.0" x2="957.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="578.0" y="141.0" class="axis" text-anchor="end">1.1</text>
+<line x1="587.0" y1="442.0" x2="587.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="587.0" y="462.0" class="axis" text-anchor="middle">0</text>
+<line x1="957.0" y1="442.0" x2="957.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="957.0" y="462.0" class="axis" text-anchor="middle">31</text>
+<line x1="587.0" y1="137.0" x2="587.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="587.0" y1="442.0" x2="957.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="772.0" y="485.0" class="axis" text-anchor="middle">Layer</text>
+<text x="540.0" y="289.5" class="axis" text-anchor="middle" transform="rotate(-90 540 289.5)">Behavior-normalized effect</text>
+<line x1="587.0" y1="158.0" x2="957.0" y2="158.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<polyline points="587.0,353.9 598.9,334.3 610.9,348.7 622.8,372.2 634.7,421.0 646.7,403.1 658.6,366.9 670.5,372.9 682.5,372.6 694.4,381.9 706.4,354.3 718.3,352.8 730.2,376.3 742.2,347.0 754.1,364.6 766.0,320.5 778.0,292.4 789.9,311.3 801.8,295.4 813.8,268.9 825.7,256.0 837.6,278.6 849.6,281.7 861.5,222.4 873.5,206.1 885.4,211.7 897.3,198.2 909.3,204.6 921.2,201.7 933.1,200.3 945.1,203.2 957.0,181.9" fill="none" stroke="#009E73" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="587.0" cy="353.9" r="3.0" fill="#009E73"/>
+<circle cx="598.9" cy="334.3" r="3.0" fill="#009E73"/>
+<circle cx="610.9" cy="348.7" r="3.0" fill="#009E73"/>
+<circle cx="622.8" cy="372.2" r="3.0" fill="#009E73"/>
+<circle cx="634.7" cy="421.0" r="3.0" fill="#009E73"/>
+<circle cx="646.7" cy="403.1" r="3.0" fill="#009E73"/>
+<circle cx="658.6" cy="366.9" r="3.0" fill="#009E73"/>
+<circle cx="670.5" cy="372.9" r="3.0" fill="#009E73"/>
+<circle cx="682.5" cy="372.6" r="3.0" fill="#009E73"/>
+<circle cx="694.4" cy="381.9" r="3.0" fill="#009E73"/>
+<circle cx="706.4" cy="354.3" r="3.0" fill="#009E73"/>
+<circle cx="718.3" cy="352.8" r="3.0" fill="#009E73"/>
+<circle cx="730.2" cy="376.3" r="3.0" fill="#009E73"/>
+<circle cx="742.2" cy="347.0" r="3.0" fill="#009E73"/>
+<circle cx="754.1" cy="364.6" r="3.0" fill="#009E73"/>
+<circle cx="766.0" cy="320.5" r="3.0" fill="#009E73"/>
+<circle cx="778.0" cy="292.4" r="3.0" fill="#009E73"/>
+<circle cx="789.9" cy="311.3" r="3.0" fill="#009E73"/>
+<circle cx="801.8" cy="295.4" r="3.0" fill="#009E73"/>
+<circle cx="813.8" cy="268.9" r="3.0" fill="#009E73"/>
+<circle cx="825.7" cy="256.0" r="3.0" fill="#009E73"/>
+<circle cx="837.6" cy="278.6" r="3.0" fill="#009E73"/>
+<circle cx="849.6" cy="281.7" r="3.0" fill="#009E73"/>
+<circle cx="861.5" cy="222.4" r="3.0" fill="#009E73"/>
+<circle cx="873.5" cy="206.1" r="3.0" fill="#009E73"/>
+<circle cx="885.4" cy="211.7" r="3.0" fill="#009E73"/>
+<circle cx="897.3" cy="198.2" r="3.0" fill="#009E73"/>
+<circle cx="909.3" cy="204.6" r="3.0" fill="#009E73"/>
+<circle cx="921.2" cy="201.7" r="3.0" fill="#009E73"/>
+<circle cx="933.1" cy="200.3" r="3.0" fill="#009E73"/>
+<circle cx="945.1" cy="203.2" r="3.0" fill="#009E73"/>
+<circle cx="957.0" cy="181.9" r="3.0" fill="#009E73"/>
+<text x="1015.0" y="113.0" class="panel" text-anchor="start">C. Relative-incentive R²</text>
+<line x1="1077.0" y1="442.0" x2="1447.0" y2="442.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1068.0" y="446.0" class="axis" text-anchor="end">-0.1</text>
+<line x1="1077.0" y1="158.0" x2="1447.0" y2="158.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1068.0" y="162.0" class="axis" text-anchor="end">1.0</text>
+<line x1="1077.0" y1="137.0" x2="1447.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1068.0" y="141.0" class="axis" text-anchor="end">1.1</text>
+<line x1="1077.0" y1="442.0" x2="1077.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="1077.0" y="462.0" class="axis" text-anchor="middle">0</text>
+<line x1="1447.0" y1="442.0" x2="1447.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="1447.0" y="462.0" class="axis" text-anchor="middle">31</text>
+<line x1="1077.0" y1="137.0" x2="1077.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="1077.0" y1="442.0" x2="1447.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1262.0" y="485.0" class="axis" text-anchor="middle">Layer</text>
+<text x="1030.0" y="289.5" class="axis" text-anchor="middle" transform="rotate(-90 1030 289.5)">Behavior-normalized effect</text>
+<line x1="1077.0" y1="158.0" x2="1447.0" y2="158.0" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<polyline points="1077.0,412.6 1088.9,413.6 1100.9,419.5 1112.8,413.3 1124.7,420.5 1136.7,415.1 1148.6,419.4 1160.5,419.5 1172.5,419.9 1184.4,406.5 1196.4,420.9 1208.3,421.0 1220.2,406.4 1232.2,326.5 1244.1,323.9 1256.0,167.2 1268.0,220.9 1279.9,255.7 1291.8,313.7 1303.8,385.0 1315.7,373.8 1327.6,381.8 1339.6,375.5 1351.5,291.0 1363.5,223.0 1375.4,216.4 1387.3,203.6 1399.3,203.4 1411.2,181.5 1423.1,176.7 1435.1,176.9 1447.0,168.9" fill="none" stroke="#7A5195" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1077.0" cy="412.6" r="3.0" fill="#7A5195"/>
+<circle cx="1088.9" cy="413.6" r="3.0" fill="#7A5195"/>
+<circle cx="1100.9" cy="419.5" r="3.0" fill="#7A5195"/>
+<circle cx="1112.8" cy="413.3" r="3.0" fill="#7A5195"/>
+<circle cx="1124.7" cy="420.5" r="3.0" fill="#7A5195"/>
+<circle cx="1136.7" cy="415.1" r="3.0" fill="#7A5195"/>
+<circle cx="1148.6" cy="419.4" r="3.0" fill="#7A5195"/>
+<circle cx="1160.5" cy="419.5" r="3.0" fill="#7A5195"/>
+<circle cx="1172.5" cy="419.9" r="3.0" fill="#7A5195"/>
+<circle cx="1184.4" cy="406.5" r="3.0" fill="#7A5195"/>
+<circle cx="1196.4" cy="420.9" r="3.0" fill="#7A5195"/>
+<circle cx="1208.3" cy="421.0" r="3.0" fill="#7A5195"/>
+<circle cx="1220.2" cy="406.4" r="3.0" fill="#7A5195"/>
+<circle cx="1232.2" cy="326.5" r="3.0" fill="#7A5195"/>
+<circle cx="1244.1" cy="323.9" r="3.0" fill="#7A5195"/>
+<circle cx="1256.0" cy="167.2" r="3.0" fill="#7A5195"/>
+<circle cx="1268.0" cy="220.9" r="3.0" fill="#7A5195"/>
+<circle cx="1279.9" cy="255.7" r="3.0" fill="#7A5195"/>
+<circle cx="1291.8" cy="313.7" r="3.0" fill="#7A5195"/>
+<circle cx="1303.8" cy="385.0" r="3.0" fill="#7A5195"/>
+<circle cx="1315.7" cy="373.8" r="3.0" fill="#7A5195"/>
+<circle cx="1327.6" cy="381.8" r="3.0" fill="#7A5195"/>
+<circle cx="1339.6" cy="375.5" r="3.0" fill="#7A5195"/>
+<circle cx="1351.5" cy="291.0" r="3.0" fill="#7A5195"/>
+<circle cx="1363.5" cy="223.0" r="3.0" fill="#7A5195"/>
+<circle cx="1375.4" cy="216.4" r="3.0" fill="#7A5195"/>
+<circle cx="1387.3" cy="203.6" r="3.0" fill="#7A5195"/>
+<circle cx="1399.3" cy="203.4" r="3.0" fill="#7A5195"/>
+<circle cx="1411.2" cy="181.5" r="3.0" fill="#7A5195"/>
+<circle cx="1423.1" cy="176.7" r="3.0" fill="#7A5195"/>
+<circle cx="1435.1" cy="176.9" r="3.0" fill="#7A5195"/>
+<circle cx="1447.0" cy="168.9" r="3.0" fill="#7A5195"/>
+<text x="1450.0" y="540.0" class="note" text-anchor="end">Trajectory indicates expression along a direction, not where persistence is computed.</text>
+</svg>

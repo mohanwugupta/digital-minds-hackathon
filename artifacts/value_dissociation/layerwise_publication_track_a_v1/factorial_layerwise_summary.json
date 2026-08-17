@@ -1,0 +1,1327 @@
+{
+  "analysis": "representational trajectory; not a computation-location test",
+  "audit": {
+    "complete_states": 1187,
+    "context_uniqueness_failures": 0,
+    "duplicate_cells": 0,
+    "episodes": 48,
+    "history_hash_failures": 0,
+    "incomplete_states": 0,
+    "rows": 14244,
+    "states": 1187
+  },
+  "behavioral_reference": {
+    "continue": {
+      "cluster_robust_standard_error": 0.00601941168683188,
+      "normal_approximation_p_value": 0.0,
+      "predictor_scale": 8.16496580927726,
+      "raw_cluster_robust_standard_error": 0.001211205614925257,
+      "raw_slope": 0.10717219145278227,
+      "raw_slope_lower_95": 0.10479822844752877,
+      "raw_slope_upper_95": 0.10954615445803577,
+      "standardized_beta": 0.5326209966208513,
+      "standardized_beta_lower_95": 0.5208229497146608,
+      "standardized_beta_upper_95": 0.5444190435270417,
+      "z_value": 88.48389582424106
+    },
+    "relative_incentive_r_squared": 0.7836443200157741,
+    "stop": {
+      "cluster_robust_standard_error": 0.013274043742841761,
+      "normal_approximation_p_value": 0.0,
+      "predictor_scale": 11.180339887498949,
+      "raw_cluster_robust_standard_error": 0.0019505919913414124,
+      "raw_slope": -0.10392125862569132,
+      "raw_slope_lower_95": -0.10774441892872048,
+      "raw_slope_upper_95": -0.10009809832266216,
+      "standardized_beta": -0.7071982961746673,
+      "standardized_beta_lower_95": -0.7332154219106372,
+      "standardized_beta_upper_95": -0.6811811704386975,
+      "z_value": -53.27677909424061
+    }
+  },
+  "detection_summary": {
+    "continue": {
+      "alpha_two_sided": 0.05,
+      "expected_sign": "positive",
+      "final_behavior_normalized_effect": 0.8983887009396093,
+      "final_layer": 31,
+      "final_raw_slope": 0.09628228585611616,
+      "final_standardized_beta": 0.5335443450046898,
+      "first_holm_detectable_layer": 0,
+      "first_nominal_detectable_layer": 0,
+      "first_sustained_holm_layer": 6,
+      "first_sustained_nominal_layer": 6,
+      "holm_detectable_layers": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "largest_absolute_growth_step": {
+        "absolute_effect_growth": 0.2523924996033107,
+        "from_layer": 22,
+        "to_layer": 23
+      },
+      "multiple_comparison_correction": "Holm-Bonferroni within effect across layers",
+      "nominal_detectable_layers": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    "interpretation": "Detectability marks where an incentive-induced difference is expressed along a frozen direction; it does not locate the computation.",
+    "relative_incentive": {
+      "final_behavior_normalized_r_squared": 0.9588066404858306,
+      "final_layer": 31,
+      "final_r_squared": 0.7513633778101275,
+      "first_half_final_layer": 15,
+      "first_quarter_final_layer": 13,
+      "first_three_quarters_final_layer": 15,
+      "largest_absolute_growth_step": {
+        "absolute_effect_growth": 0.5960929862871008,
+        "from_layer": 14,
+        "to_layer": 15
+      }
+    },
+    "stop": {
+      "alpha_two_sided": 0.05,
+      "expected_sign": "negative",
+      "final_behavior_normalized_effect": 0.8670461114378988,
+      "final_layer": 31,
+      "final_raw_slope": -0.09010452318713785,
+      "final_standardized_beta": -0.6837090958748453,
+      "first_holm_detectable_layer": 4,
+      "first_nominal_detectable_layer": 3,
+      "first_sustained_holm_layer": 23,
+      "first_sustained_nominal_layer": 23,
+      "holm_detectable_layers": [
+        4,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "largest_absolute_growth_step": {
+        "absolute_effect_growth": 0.25750495940733636,
+        "from_layer": 14,
+        "to_layer": 15
+      },
+      "multiple_comparison_correction": "Holm-Bonferroni within effect across layers",
+      "nominal_detectable_layers": [
+        3,
+        4,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    }
+  },
+  "layers": [
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.018203815009837195,
+        "normal_approximation_p_value": 1.156074380920944e-95,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0008587878628671764,
+        "raw_slope": 0.017822270046389217,
+        "raw_slope_lower_95": 0.01613904583516955,
+        "raw_slope_upper_95": 0.019505494257608884,
+        "standardized_beta": 0.37778049854671736,
+        "standardized_beta_lower_95": 0.34210102112743646,
+        "standardized_beta_upper_95": 0.41345997596599826,
+        "z_value": 20.752820128229594
+      },
+      "layer": 0,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.1662956575282994,
+        "relative_incentive_r_squared": 0.03170123084515441,
+        "stop_raw_slope": -0.1561699796059481
+      },
+      "relative_incentive_r_squared": 0.024842489489314112,
+      "stop": {
+        "cluster_robust_standard_error": 0.01852242336908942,
+        "normal_approximation_p_value": 1.1154587835156984e-142,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0006381468872258958,
+        "raw_slope": 0.016229380840198673,
+        "raw_slope_lower_95": 0.014978612941235918,
+        "raw_slope_upper_95": 0.017480148739161427,
+        "standardized_beta": 0.4710631187862188,
+        "standardized_beta_lower_95": 0.43475916898280353,
+        "standardized_beta_upper_95": 0.5073670685896341,
+        "z_value": 25.43204576418106
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.026099530614702913,
+        "normal_approximation_p_value": 4.212830420830145e-104,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0012348153057935888,
+        "raw_slope": 0.026754605026935982,
+        "raw_slope_lower_95": 0.024334367027580548,
+        "raw_slope_upper_95": 0.029174843026291416,
+        "standardized_beta": 0.5654956087024117,
+        "standardized_beta_lower_95": 0.514340528697594,
+        "standardized_beta_upper_95": 0.6166506887072294,
+        "z_value": 21.66688807743712
+      },
+      "layer": 1,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.24964129840270624,
+        "relative_incentive_r_squared": 0.028016040080682036,
+        "stop_raw_slope": -0.0763048710927613
+      },
+      "relative_incentive_r_squared": 0.02195461067856075,
+      "stop": {
+        "cluster_robust_standard_error": 0.02240030871329622,
+        "normal_approximation_p_value": 1.2395710827219379e-24,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0007739674115448808,
+        "raw_slope": 0.007929698243230884,
+        "raw_slope_lower_95": 0.0064127221166029175,
+        "raw_slope_upper_95": 0.00944667436985885,
+        "standardized_beta": 0.22950280076663696,
+        "standardized_beta_lower_95": 0.18559819568857636,
+        "standardized_beta_upper_95": 0.2734074058446975,
+        "z_value": 10.24551954636278
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.007425785883826995,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00037250889340436873,
+        "raw_slope": 0.020180343004867637,
+        "raw_slope_lower_95": 0.019450225573795075,
+        "raw_slope_upper_95": 0.0209104604359402,
+        "standardized_beta": 0.4022854457159531,
+        "standardized_beta_lower_95": 0.3877309053836522,
+        "standardized_beta_upper_95": 0.416839986048254,
+        "z_value": 54.17412406033838
+      },
+      "layer": 2,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.1882983144350338,
+        "relative_incentive_r_squared": 0.005541107380175176,
+        "stop_raw_slope": -0.07480229417222986
+      },
+      "relative_incentive_r_squared": 0.004342257325071763,
+      "stop": {
+        "cluster_robust_standard_error": 0.01656676703407449,
+        "normal_approximation_p_value": 1.475245513302485e-37,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0006069198645724599,
+        "raw_slope": 0.007773548558467343,
+        "raw_slope_lower_95": 0.006583985623905321,
+        "raw_slope_upper_95": 0.008963111493029363,
+        "standardized_beta": 0.21219039862357109,
+        "standardized_beta_lower_95": 0.17971953523678508,
+        "standardized_beta_upper_95": 0.2446612620103571,
+        "z_value": 12.808195961658564
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.0091762121377581,
+        "normal_approximation_p_value": 5.666585890957091e-95,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00045850735940673303,
+        "raw_slope": 0.009480218040712116,
+        "raw_slope_lower_95": 0.00858154361627492,
+        "raw_slope_upper_95": 0.010378892465149312,
+        "standardized_beta": 0.18972976129834915,
+        "standardized_beta_lower_95": 0.17174438550834328,
+        "standardized_beta_upper_95": 0.207715137088355,
+        "z_value": 20.676261451896128
+      },
+      "layer": 3,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.0884578164559497,
+        "relative_incentive_r_squared": 0.029337232555668814,
+        "stop_raw_slope": 0.017273944763997687
+      },
+      "relative_incentive_r_squared": 0.02298995565723172,
+      "stop": {
+        "cluster_robust_standard_error": 0.01919762439995584,
+        "normal_approximation_p_value": 0.01039174728362781,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0007005348094230958,
+        "raw_slope": -0.00179513008130531,
+        "raw_slope_lower_95": -0.0031681783077745773,
+        "raw_slope_upper_95": -0.0004220818548360424,
+        "standardized_beta": -0.049194176486878446,
+        "standardized_beta_lower_95": -0.08682152031079189,
+        "standardized_beta_upper_95": -0.011566832662965001,
+        "z_value": -2.5625137497216377
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.018228700759687168,
+        "normal_approximation_p_value": 5.950440429606021e-57,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.000803506468090234,
+        "raw_slope": -0.012778916535702945,
+        "raw_slope_lower_95": -0.014353789213159805,
+        "raw_slope_upper_95": -0.011204043858246086,
+        "standardized_beta": -0.2899081150099561,
+        "standardized_beta_lower_95": -0.32563636849894295,
+        "standardized_beta_upper_95": -0.2541798615209693,
+        "z_value": -15.903937358557604
+      },
+      "layer": 4,
+      "normalized_to_behavior": {
+        "continue_raw_slope": -0.11923724207256746,
+        "relative_incentive_r_squared": 0.0016337048970258648,
+        "stop_raw_slope": 0.05185816450755974
+      },
+      "relative_incentive_r_squared": 0.001280243563136274,
+      "stop": {
+        "cluster_robust_standard_error": 0.014398959653192307,
+        "normal_approximation_p_value": 3.0144221548488503e-31,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00046351537046696094,
+        "raw_slope": -0.0053891657256437625,
+        "raw_slope_lower_95": -0.006297655851759006,
+        "raw_slope_upper_95": -0.004480675599528519,
+        "standardized_beta": -0.1674127435509553,
+        "standardized_beta_lower_95": -0.19563470447121223,
+        "standardized_beta_upper_95": -0.1391907826306984,
+        "z_value": -11.626724956746388
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.01621255340208109,
+        "normal_approximation_p_value": 1.7769006819901744e-30,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0004051061640182218,
+        "raw_slope": -0.004648293696638898,
+        "raw_slope_lower_95": -0.005442301778114613,
+        "raw_slope_upper_95": -0.0038542856151631832,
+        "standardized_beta": -0.1860270627279947,
+        "standardized_beta_lower_95": -0.21780366739607365,
+        "standardized_beta_upper_95": -0.15425045805991577,
+        "z_value": -11.47426060006783
+      },
+      "layer": 5,
+      "normalized_to_behavior": {
+        "continue_raw_slope": -0.043372199762163444,
+        "relative_incentive_r_squared": 0.02214585427704998,
+        "stop_raw_slope": -0.004788715171621077
+      },
+      "relative_incentive_r_squared": 0.017354472916107255,
+      "stop": {
+        "cluster_robust_standard_error": 0.011994934557580607,
+        "normal_approximation_p_value": 0.022991728253184154,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00021888433363418582,
+        "raw_slope": 0.0004976493078348058,
+        "raw_slope_lower_95": 6.863601391180157e-05,
+        "raw_slope_upper_95": 0.00092666260175781,
+        "standardized_beta": 0.027271348209324236,
+        "standardized_beta_lower_95": 0.003761276476466246,
+        "standardized_beta_upper_95": 0.05078141994218223,
+        "z_value": 2.273572071478221
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.007287507575501673,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00024535132557637607,
+        "raw_slope": 0.011863565454989197,
+        "raw_slope_lower_95": 0.0113826768568595,
+        "raw_slope_upper_95": 0.012344454053118894,
+        "standardized_beta": 0.35237561045408194,
+        "standardized_beta_lower_95": 0.33809209560609865,
+        "standardized_beta_upper_95": 0.36665912530206524,
+        "z_value": 48.35337827142147
+      },
+      "layer": 6,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.11069630371621192,
+        "relative_incentive_r_squared": 0.006042194181562206,
+        "stop_raw_slope": -0.04072540781732611
+      },
+      "relative_incentive_r_squared": 0.004734931150813582,
+      "stop": {
+        "cluster_robust_standard_error": 0.005149595797607068,
+        "normal_approximation_p_value": 5.69441793353722e-245,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00012661404836546101,
+        "raw_slope": 0.004232235638421097,
+        "raw_slope_lower_95": 0.003984072103624794,
+        "raw_slope_upper_95": 0.004480399173217401,
+        "standardized_beta": 0.1721317905828956,
+        "standardized_beta_lower_95": 0.16203858281958575,
+        "standardized_beta_upper_95": 0.18222499834620545,
+        "z_value": 33.42627214797759
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.013568557057262419,
+        "normal_approximation_p_value": 8.507738193867136e-220,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00028913277804626993,
+        "raw_slope": 0.009150002566625206,
+        "raw_slope_lower_95": 0.008583302321654517,
+        "raw_slope_upper_95": 0.009716702811595895,
+        "standardized_beta": 0.4293955626140859,
+        "standardized_beta_lower_95": 0.40280119078185156,
+        "standardized_beta_upper_95": 0.45598993444632024,
+        "z_value": 31.64636893974343
+      },
+      "layer": 7,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.08537664894774964,
+        "relative_incentive_r_squared": 0.0056361476351742676,
+        "stop_raw_slope": -0.05928196006193852
+      },
+      "relative_incentive_r_squared": 0.004416735081074652,
+      "stop": {
+        "cluster_robust_standard_error": 0.007652470826735206,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00011908709750142717,
+        "raw_slope": 0.006160655903434616,
+        "raw_slope_lower_95": 0.005927245192331819,
+        "raw_slope_upper_95": 0.0063940666145374135,
+        "standardized_beta": 0.39588033098230846,
+        "standardized_beta_lower_95": 0.3808814881619075,
+        "standardized_beta_upper_95": 0.41087917380270944,
+        "z_value": 51.732354156677516
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.01606421308387024,
+        "normal_approximation_p_value": 1.6955602615312073e-164,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00034049803610145706,
+        "raw_slope": 0.009307010440436816,
+        "raw_slope_lower_95": 0.00863963428967796,
+        "raw_slope_upper_95": 0.009974386591195672,
+        "standardized_beta": 0.43909151606511204,
+        "standardized_beta_lower_95": 0.4076056584207264,
+        "standardized_beta_upper_95": 0.4705773737094977,
+        "z_value": 27.33352164669648
+      },
+      "layer": 8,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.08684165467062678,
+        "relative_incentive_r_squared": 0.00393751946831764,
+        "stop_raw_slope": -0.05801006648200318
+      },
+      "relative_incentive_r_squared": 0.00308561476629865,
+      "stop": {
+        "cluster_robust_standard_error": 0.007257251396817648,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00011233799976303055,
+        "raw_slope": 0.0060284791217698,
+        "raw_slope_lower_95": 0.00580829664223426,
+        "raw_slope_upper_95": 0.00624866160130534,
+        "standardized_beta": 0.38945137548681646,
+        "standardized_beta_lower_95": 0.3752271627490539,
+        "standardized_beta_upper_95": 0.40367558822457905,
+        "z_value": 53.66375700552325
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.006161842014681511,
+        "normal_approximation_p_value": 9.347164765973187e-89,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00025303969869122623,
+        "raw_slope": 0.005054113193530442,
+        "raw_slope_lower_95": 0.004558155384095639,
+        "raw_slope_upper_95": 0.005550071002965245,
+        "standardized_beta": 0.12307415470350404,
+        "standardized_beta_lower_95": 0.11099694435472827,
+        "standardized_beta_upper_95": 0.1351513650522798,
+        "z_value": 19.97359789658051
+      },
+      "layer": 9,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.047158811675108596,
+        "relative_incentive_r_squared": 0.0551728194841757,
+        "stop_raw_slope": -0.10024238116861976
+      },
+      "relative_incentive_r_squared": 0.043235866608029916,
+      "stop": {
+        "cluster_robust_standard_error": 0.005526239235990201,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00016573229662797555,
+        "raw_slope": 0.010417314418679264,
+        "raw_slope_lower_95": 0.010092479117288432,
+        "raw_slope_upper_95": 0.010742149720070095,
+        "standardized_beta": 0.3473587999771569,
+        "standardized_beta_lower_95": 0.3365273710746161,
+        "standardized_beta_upper_95": 0.3581902288796977,
+        "z_value": 62.856272619351515
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.007310762833989497,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0002997614099366176,
+        "raw_slope": 0.017645895039221707,
+        "raw_slope_lower_95": 0.017058362675745935,
+        "raw_slope_upper_95": 0.01823342740269748,
+        "standardized_beta": 0.4303587765099547,
+        "standardized_beta_lower_95": 0.41602968135533525,
+        "standardized_beta_upper_95": 0.44468787166457413,
+        "z_value": 58.866466644098075
+      },
+      "layer": 10,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.16464994137024905,
+        "relative_incentive_r_squared": 0.0003996113353047964,
+        "stop_raw_slope": -0.09687433668894598
+      },
+      "relative_incentive_r_squared": 0.0003131531531255227,
+      "stop": {
+        "cluster_robust_standard_error": 0.0050613106478677155,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00015155678545697847,
+        "raw_slope": 0.010067302997244253,
+        "raw_slope_lower_95": 0.009770251697748575,
+        "raw_slope_upper_95": 0.01036435429673993,
+        "standardized_beta": 0.3362023528120213,
+        "standardized_beta_lower_95": 0.3262821839422006,
+        "standardized_beta_upper_95": 0.34612252168184204,
+        "z_value": 66.42594699332679
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.009086418308233748,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00029220422067569973,
+        "raw_slope": 0.018312835075720683,
+        "raw_slope_lower_95": 0.017740114803196313,
+        "raw_slope_upper_95": 0.018885555348245053,
+        "standardized_beta": 0.5694581670412249,
+        "standardized_beta_lower_95": 0.5516487871570868,
+        "standardized_beta_upper_95": 0.587267546925363,
+        "z_value": 62.671357153478695
+      },
+      "layer": 11,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.17087301124927468,
+        "relative_incentive_r_squared": 1.724771528390668e-06,
+        "stop_raw_slope": -0.09365779593584435
+      },
+      "relative_incentive_r_squared": 1.3516074115482724e-06,
+      "stop": {
+        "cluster_robust_standard_error": 0.010935963822134409,
+        "normal_approximation_p_value": 2.9481766584e-314,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.00025683262296213313,
+        "raw_slope": 0.009733036033761102,
+        "raw_slope_lower_95": 0.009229644092755321,
+        "raw_slope_upper_95": 0.010236427974766883,
+        "standardized_beta": 0.41443383911721876,
+        "standardized_beta_lower_95": 0.3929993500258353,
+        "standardized_beta_upper_95": 0.4358683282086022,
+        "z_value": 37.89641643459024
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.013276356178581035,
+        "normal_approximation_p_value": 1.1996676192400228e-214,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0002429066496786941,
+        "raw_slope": 0.007595654034072294,
+        "raw_slope_lower_95": 0.007119557000702053,
+        "raw_slope_upper_95": 0.008071751067442534,
+        "standardized_beta": 0.4151496408147315,
+        "standardized_beta_lower_95": 0.38912798270471266,
+        "standardized_beta_upper_95": 0.4411712989247503,
+        "z_value": 31.26984808410754
+      },
+      "layer": 12,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.07087336678581191,
+        "relative_incentive_r_squared": 0.05531670877388212,
+        "stop_raw_slope": -0.005833273527471677
+      },
+      "relative_incentive_r_squared": 0.04334862463261946,
+      "stop": {
+        "cluster_robust_standard_error": 0.028728952577994866,
+        "normal_approximation_p_value": 0.11429024099622682,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0003838660158946909,
+        "raw_slope": 0.0006062011268827829,
+        "raw_slope_lower_95": -0.0001461762642708112,
+        "raw_slope_upper_95": 0.001358578518036377,
+        "standardized_beta": 0.04536875551838448,
+        "standardized_beta_lower_95": -0.010939991534485459,
+        "standardized_beta_upper_95": 0.10167750257125441,
+        "z_value": 1.5791997774793565
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.00983157172709624,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00026634653831399374,
+        "raw_slope": 0.020947597713759678,
+        "raw_slope_lower_95": 0.020425558498664252,
+        "raw_slope_upper_95": 0.021469636928855104,
+        "standardized_beta": 0.7732325365925924,
+        "standardized_beta_lower_95": 0.7539626560074838,
+        "standardized_beta_upper_95": 0.792502417177701,
+        "z_value": 78.64790676973142
+      },
+      "layer": 13,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.1954573983213615,
+        "relative_incentive_r_squared": 0.35912754911536404,
+        "stop_raw_slope": 0.01755583049906845
+      },
+      "relative_incentive_r_squared": 0.28142826402544097,
+      "stop": {
+        "cluster_robust_standard_error": 0.00874152265213474,
+        "normal_approximation_p_value": 5.12884831390351e-26,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0001729460135797259,
+        "raw_slope": -0.0018244240016824919,
+        "raw_slope_lower_95": -0.0021633981882987546,
+        "raw_slope_upper_95": -0.0014854498150662292,
+        "standardized_beta": -0.09221515667057498,
+        "standardized_beta_lower_95": -0.10934854106875908,
+        "standardized_beta_upper_95": -0.07508177227239088,
+        "z_value": -10.549095431109523
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.01897000824930385,
+        "normal_approximation_p_value": 9.185903291835177e-264,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0003726464964799269,
+        "raw_slope": 0.012929185536998369,
+        "raw_slope_lower_95": 0.012198798403897712,
+        "raw_slope_upper_95": 0.013659572670099025,
+        "standardized_beta": 0.6581753984284424,
+        "standardized_beta_lower_95": 0.6209941822598068,
+        "standardized_beta_upper_95": 0.695356614597078,
+        "z_value": 34.6955778710637
+      },
+      "layer": 14,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.12063936886738652,
+        "relative_incentive_r_squared": 0.36902255104644033,
+        "stop_raw_slope": 0.025570206216129255
+      },
+      "relative_incentive_r_squared": 0.289182426085274,
+      "stop": {
+        "cluster_robust_standard_error": 0.018130662643763777,
+        "normal_approximation_p_value": 1.6751839922445838e-24,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.000260101324522408,
+        "raw_slope": -0.002657288013298628,
+        "raw_slope_lower_95": -0.0031670866093625478,
+        "raw_slope_upper_95": -0.0021474894172347084,
+        "standardized_beta": -0.18522932401401163,
+        "standardized_beta_lower_95": -0.22076542279578862,
+        "standardized_beta_upper_95": -0.14969322523223463,
+        "z_value": -10.216357099210773
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.011092636081121791,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0006635686955553007,
+        "raw_slope": 0.03305241533358165,
+        "raw_slope_lower_95": 0.03175182069029326,
+        "raw_slope_upper_95": 0.03435300997687004,
+        "standardized_beta": 0.5525251829287898,
+        "standardized_beta_lower_95": 0.5307836162097911,
+        "standardized_beta_upper_95": 0.5742667496477886,
+        "z_value": 49.810088322388495
+      },
+      "layer": 15,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.30840477259573273,
+        "relative_incentive_r_squared": 0.9651155373335412,
+        "stop_raw_slope": 0.28307516562346563
+      },
+      "relative_incentive_r_squared": 0.7563073089904013,
+      "stop": {
+        "cluster_robust_standard_error": 0.01641241497877378,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0007170063100037136,
+        "raw_slope": -0.029417527497266574,
+        "raw_slope_lower_95": -0.030822859864873854,
+        "raw_slope_upper_95": -0.028012195129659294,
+        "standardized_beta": -0.673372970639724,
+        "standardized_beta_lower_95": -0.7055413039981207,
+        "standardized_beta_upper_95": -0.6412046372813274,
+        "z_value": -41.02826863143535
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.011083335993349973,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0007835725877570381,
+        "raw_slope": 0.04587993442058159,
+        "raw_slope_lower_95": 0.04434413214857779,
+        "raw_slope_upper_95": 0.047415736692585385,
+        "standardized_beta": 0.648954208558709,
+        "standardized_beta_lower_95": 0.627230870011743,
+        "standardized_beta_upper_95": 0.670677547105675,
+        "z_value": 58.55224536620409
+      },
+      "layer": 16,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.4280955143181455,
+        "relative_incentive_r_squared": 0.7607520867427644,
+        "stop_raw_slope": 0.2395503487562942
+      },
+      "relative_incentive_r_squared": 0.5961590517161148,
+      "stop": {
+        "cluster_robust_standard_error": 0.012030124937043696,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0006211238946066306,
+        "raw_slope": -0.0248943737469774,
+        "raw_slope_lower_95": -0.026111776580406396,
+        "raw_slope_upper_95": -0.023676970913548406,
+        "standardized_beta": -0.4821621402848566,
+        "standardized_beta_lower_95": -0.5057411851614623,
+        "standardized_beta_upper_95": -0.45858309540825093,
+        "z_value": -40.07956216648769
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.010496076849434887,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0005563397044095563,
+        "raw_slope": 0.037257915486682926,
+        "raw_slope_lower_95": 0.03616748966604019,
+        "raw_slope_upper_95": 0.03834834130732566,
+        "standardized_beta": 0.7029193514293727,
+        "standardized_beta_lower_95": 0.6823470408044803,
+        "standardized_beta_upper_95": 0.7234916620542651,
+        "z_value": 66.96972226029558
+      },
+      "layer": 17,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.34764536379848077,
+        "relative_incentive_r_squared": 0.6284982240105463,
+        "stop_raw_slope": 0.13248536642905048
+      },
+      "relative_incentive_r_squared": 0.49251906338586626,
+      "stop": {
+        "cluster_robust_standard_error": 0.017209605539353478,
+        "normal_approximation_p_value": 6.787682493091121e-95,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.000666167334970957,
+        "raw_slope": -0.013768046028792837,
+        "raw_slope_lower_95": -0.015073734005335912,
+        "raw_slope_upper_95": -0.012462358052249762,
+        "standardized_beta": -0.35568036552485255,
+        "standardized_beta_lower_95": -0.38941119238198535,
+        "standardized_beta_upper_95": -0.32194953866771975,
+        "z_value": -20.667548986611727
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.007078407592765678,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.00047882440195926756,
+        "raw_slope": 0.044516815120870246,
+        "raw_slope_lower_95": 0.043578319293030084,
+        "raw_slope_upper_95": 0.04545531094871041,
+        "standardized_beta": 0.6580871001309565,
+        "standardized_beta_lower_95": 0.6442134212491357,
+        "standardized_beta_upper_95": 0.6719607790127773,
+        "z_value": 92.97106609169259
+      },
+      "layer": 18,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.4153765498066108,
+        "relative_incentive_r_squared": 0.4079269946800123,
+        "stop_raw_slope": 0.10435203433501834
+      },
+      "relative_incentive_r_squared": 0.31966967236209654,
+      "stop": {
+        "cluster_robust_standard_error": 0.018262620318958568,
+        "normal_approximation_p_value": 2.7918757329741432e-33,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0009022007053014138,
+        "raw_slope": -0.010844394748246462,
+        "raw_slope_lower_95": -0.012612708130637232,
+        "raw_slope_upper_95": -0.009076081365855691,
+        "standardized_beta": -0.21951552765630836,
+        "standardized_beta_lower_95": -0.2553102634814671,
+        "standardized_beta_upper_95": -0.18372079183114956,
+        "z_value": -12.019936012600972
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.018548932940154462,
+        "normal_approximation_p_value": 4.538407543161372e-269,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0016146498689158563,
+        "raw_slope": 0.05658648946301325,
+        "raw_slope_lower_95": 0.05342177571993817,
+        "raw_slope_upper_95": 0.05975120320608833,
+        "standardized_beta": 0.6500598170381967,
+        "standardized_beta_lower_95": 0.6137039084754939,
+        "standardized_beta_upper_95": 0.6864157256008995,
+        "z_value": 35.04567185268952
+      },
+      "layer": 19,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.5279960099345736,
+        "relative_incentive_r_squared": 0.1369495579180029,
+        "stop_raw_slope": -0.04225801918833048
+      },
+      "relative_incentive_r_squared": 0.10731974319111426,
+      "stop": {
+        "cluster_robust_standard_error": 0.016154791197119638,
+        "normal_approximation_p_value": 1.9014926652803052e-05,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0010269756432853406,
+        "raw_slope": 0.004391506541079918,
+        "raw_slope_lower_95": 0.0023786342802406503,
+        "raw_slope_upper_95": 0.006404378801919185,
+        "standardized_beta": 0.06908038343049555,
+        "standardized_beta_lower_95": 0.03741699268414106,
+        "standardized_beta_upper_95": 0.10074377417685004,
+        "z_value": 4.2761545220598345
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.021306913388268893,
+        "normal_approximation_p_value": 2.6669937491022874e-199,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.002074806623784916,
+        "raw_slope": 0.0624927765246496,
+        "raw_slope_lower_95": 0.05842615554203116,
+        "raw_slope_upper_95": 0.06655939750726804,
+        "standardized_beta": 0.641760133951252,
+        "standardized_beta_lower_95": 0.599998583710245,
+        "standardized_beta_upper_95": 0.683521684192259,
+        "z_value": 30.119807700752688
+      },
+      "layer": 20,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.5831062673770421,
+        "relative_incentive_r_squared": 0.17924076582560947,
+        "stop_raw_slope": -0.0031421957461061053
+      },
+      "relative_incentive_r_squared": 0.14046100805451633,
+      "stop": {
+        "cluster_robust_standard_error": 0.029748612540944727,
+        "normal_approximation_p_value": 0.8773315795775526,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0021155493688287453,
+        "raw_slope": 0.00032654093678363965,
+        "raw_slope_lower_95": -0.0038199358261207014,
+        "raw_slope_upper_95": 0.0044730176996879804,
+        "standardized_beta": 0.004591781194173581,
+        "standardized_beta_lower_95": -0.05371549938607808,
+        "standardized_beta_upper_95": 0.06289906177442524,
+        "z_value": 0.15435278495269816
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.01996237737883862,
+        "normal_approximation_p_value": 1.400730782377463e-198,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0017353593800915113,
+        "raw_slope": 0.05217314650004135,
+        "raw_slope_lower_95": 0.04877184211506199,
+        "raw_slope_upper_95": 0.055574450885020714,
+        "standardized_beta": 0.6001638919428534,
+        "standardized_beta_lower_95": 0.5610376322803297,
+        "standardized_beta_upper_95": 0.639290151605377,
+        "z_value": 30.064750332746687
+      },
+      "layer": 21,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.4868160834709413,
+        "relative_incentive_r_squared": 0.1488626494287881,
+        "stop_raw_slope": -0.009386906187447053
+      },
+      "relative_incentive_r_squared": 0.11665536968736923,
+      "stop": {
+        "cluster_robust_standard_error": 0.0314137200689244,
+        "normal_approximation_p_value": 0.6247443409226068,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.001994324844277354,
+        "raw_slope": 0.0009754991056007873,
+        "raw_slope_lower_95": -0.0029333775891828267,
+        "raw_slope_upper_95": 0.004884375800384401,
+        "standardized_beta": 0.01536562908432962,
+        "standardized_beta_lower_95": -0.04620526225076221,
+        "standardized_beta_upper_95": 0.07693652041942145,
+        "z_value": 0.48913751859429927
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.019058490532313527,
+        "normal_approximation_p_value": 6.921559110271114e-221,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0015998990573125795,
+        "raw_slope": 0.05075755150456742,
+        "raw_slope_lower_95": 0.04762174935223477,
+        "raw_slope_upper_95": 0.053893353656900074,
+        "standardized_beta": 0.6046395929616555,
+        "standardized_beta_lower_95": 0.5672849515183209,
+        "standardized_beta_upper_95": 0.64199423440499,
+        "z_value": 31.7254712243078
+      },
+      "layer": 22,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.47360747985572443,
+        "relative_incentive_r_squared": 0.17294623069297366,
+        "stop_raw_slope": 0.008433383754853582
+      },
+      "relative_incentive_r_squared": 0.13552833135068654,
+      "stop": {
+        "cluster_robust_standard_error": 0.030432146374794057,
+        "normal_approximation_p_value": 0.6385309802395878,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.001865675162668541,
+        "raw_slope": -0.0008764078542778429,
+        "raw_slope_lower_95": -0.004533131173108183,
+        "raw_slope_upper_95": 0.0027803154645524974,
+        "standardized_beta": -0.01429561406995099,
+        "standardized_beta_lower_95": -0.07394262096454735,
+        "standardized_beta_upper_95": 0.04535139282464536,
+        "z_value": -0.4697537233782358
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.018006547025289022,
+        "normal_approximation_p_value": 7.533869082890398e-287,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.002149714224982213,
+        "raw_slope": 0.07780700879329971,
+        "raw_slope_lower_95": 0.07359356891233458,
+        "raw_slope_upper_95": 0.08202044867426485,
+        "standardized_beta": 0.6517310749735677,
+        "standardized_beta_lower_95": 0.6164382428040013,
+        "standardized_beta_upper_95": 0.6870239071431342,
+        "z_value": 36.19411728735409
+      },
+      "layer": 23,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.7259999794590352,
+        "relative_incentive_r_squared": 0.49417239913466765,
+        "stop_raw_slope": 0.2471780690566821
+      },
+      "relative_incentive_r_squared": 0.38725539369045037,
+      "stop": {
+        "cluster_robust_standard_error": 0.03128745833016805,
+        "normal_approximation_p_value": 4.659050918930248e-21,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0027278465666685913,
+        "raw_slope": -0.02568705604103845,
+        "raw_slope_lower_95": -0.031033635311708888,
+        "raw_slope_upper_95": -0.020340476770368012,
+        "standardized_beta": -0.2946216643299653,
+        "standardized_beta_lower_95": -0.3559450826570947,
+        "standardized_beta_upper_95": -0.2332982460028359,
+        "z_value": -9.4166058879217
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.011951751606860895,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0016034115543429417,
+        "raw_slope": 0.08525343719860416,
+        "raw_slope_lower_95": 0.082110750552092,
+        "raw_slope_upper_95": 0.08839612384511633,
+        "standardized_beta": 0.6354749672777403,
+        "standardized_beta_lower_95": 0.612049534128293,
+        "standardized_beta_upper_95": 0.6589004004271877,
+        "z_value": 53.17002797422148
+      },
+      "layer": 24,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.7954809549281725,
+        "relative_incentive_r_squared": 0.7527556407584359,
+        "stop_raw_slope": 0.4591015039566551
+      },
+      "relative_incentive_r_squared": 0.5898926822401829,
+      "stop": {
+        "cluster_robust_standard_error": 0.019894231853070113,
+        "normal_approximation_p_value": 2.5437518603499274e-132,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0019491263343444577,
+        "raw_slope": -0.047710406128123405,
+        "raw_slope_lower_95": -0.05153069374343854,
+        "raw_slope_upper_95": -0.04389011851280827,
+        "standardized_beta": -0.4869678607242522,
+        "standardized_beta_lower_95": -0.5259605551562696,
+        "standardized_beta_upper_95": -0.44797516629223477,
+        "z_value": -24.47784183479808
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.012053952384930516,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0016018477017563464,
+        "raw_slope": 0.08271193220621388,
+        "raw_slope_lower_95": 0.07957231071077145,
+        "raw_slope_upper_95": 0.08585155370165631,
+        "standardized_beta": 0.6224097905101313,
+        "standardized_beta_lower_95": 0.5987840438356675,
+        "standardized_beta_upper_95": 0.6460355371845952,
+        "z_value": 51.63532844946767
+      },
+      "layer": 25,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.7717667343086378,
+        "relative_incentive_r_squared": 0.7778673287962506,
+        "stop_raw_slope": 0.47836831356233117
+      },
+      "relative_incentive_r_squared": 0.6095713139370245,
+      "stop": {
+        "cluster_robust_standard_error": 0.018923364890585635,
+        "normal_approximation_p_value": 2.262887859892654e-161,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.001836493851067297,
+        "raw_slope": -0.049712637232046816,
+        "raw_slope_lower_95": -0.05331216518013872,
+        "raw_slope_upper_95": -0.046113109283954914,
+        "standardized_beta": -0.5122425939344256,
+        "standardized_beta_lower_95": -0.5493323891199735,
+        "standardized_beta_upper_95": -0.4751527987488778,
+        "z_value": -27.069318638423873
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.010392067667558276,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0014814901572692287,
+        "raw_slope": 0.08886365547788787,
+        "raw_slope_lower_95": 0.08595993476964017,
+        "raw_slope_upper_95": 0.09176737618613556,
+        "standardized_beta": 0.6233434062194545,
+        "standardized_beta_lower_95": 0.6029749535910403,
+        "standardized_beta_upper_95": 0.6437118588478687,
+        "z_value": 59.98261617997292
+      },
+      "layer": 26,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.8291671027090947,
+        "relative_incentive_r_squared": 0.8268806516931878,
+        "stop_raw_slope": 0.5425422900199194
+      },
+      "relative_incentive_r_squared": 0.6479803260303083,
+      "stop": {
+        "cluster_robust_standard_error": 0.016851840551121638,
+        "normal_approximation_p_value": 1.3769952110636182e-226,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0017544601557548847,
+        "raw_slope": -0.056381677636534865,
+        "raw_slope_lower_95": -0.05982041954181444,
+        "raw_slope_upper_95": -0.05294293573125529,
+        "standardized_beta": -0.5415540720141435,
+        "standardized_beta_lower_95": -0.574583679494342,
+        "standardized_beta_upper_95": -0.5085244645339451,
+        "z_value": -32.1361972522401
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.008781883077681735,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0012674901780408037,
+        "raw_slope": 0.08591050475509335,
+        "raw_slope_lower_95": 0.08342622400613338,
+        "raw_slope_upper_95": 0.08839478550405332,
+        "standardized_beta": 0.5952361769540772,
+        "standardized_beta_lower_95": 0.578023686121821,
+        "standardized_beta_upper_95": 0.6124486677863333,
+        "z_value": 67.78001616382362
+      },
+      "layer": 27,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.8016119068811207,
+        "relative_incentive_r_squared": 0.8273483337817737,
+        "stop_raw_slope": 0.5703852689229614
+      },
+      "relative_incentive_r_squared": 0.6483468224426018,
+      "stop": {
+        "cluster_robust_standard_error": 0.017912717398839248,
+        "normal_approximation_p_value": 2.3978919362129807e-216,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0018880686895958144,
+        "raw_slope": -0.059275155048027564,
+        "raw_slope_lower_95": -0.06297576967963536,
+        "raw_slope_upper_95": -0.055574540416419765,
+        "standardized_beta": -0.5623625385022386,
+        "standardized_beta_lower_95": -0.5974714646039635,
+        "standardized_beta_upper_95": -0.5272536124005137,
+        "z_value": -31.394596698024163
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.006546620732026846,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0010564020780629653,
+        "raw_slope": 0.087239854041528,
+        "raw_slope_lower_95": 0.08516930596852458,
+        "raw_slope_upper_95": 0.08931040211453141,
+        "standardized_beta": 0.5406333904364224,
+        "standardized_beta_lower_95": 0.5278020138016498,
+        "standardized_beta_upper_95": 0.5534647670711951,
+        "z_value": 82.58205455397466
+      },
+      "layer": 28,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.8140157708724652,
+        "relative_incentive_r_squared": 0.9106604424076757,
+        "stop_raw_slope": 0.7384911642398566
+      },
+      "relative_incentive_r_squared": 0.7136338831558271,
+      "stop": {
+        "cluster_robust_standard_error": 0.00942599925879056,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0011108075695956791,
+        "raw_slope": -0.07674493127175802,
+        "raw_slope_lower_95": -0.07892211410816555,
+        "raw_slope_upper_95": -0.0745677484353505,
+        "standardized_beta": -0.6512358081488694,
+        "standardized_beta_lower_95": -0.6697107666960989,
+        "standardized_beta_upper_95": -0.6327608496016399,
+        "z_value": -69.08931247172926
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.006073527033237476,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0010170707448728627,
+        "raw_slope": 0.0878849271223537,
+        "raw_slope_lower_95": 0.08589146846240289,
+        "raw_slope_upper_95": 0.0898783857823045,
+        "standardized_beta": 0.52481253972008,
+        "standardized_beta_lower_95": 0.5129084267349345,
+        "standardized_beta_upper_95": 0.5367166527052255,
+        "z_value": 86.4098466752572
+      },
+      "layer": 29,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.8200348050275139,
+        "relative_incentive_r_squared": 0.9290695056794973,
+        "stop_raw_slope": 0.792355647202228
+      },
+      "relative_incentive_r_squared": 0.7280600410256011,
+      "stop": {
+        "cluster_robust_standard_error": 0.009044900357802982,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0011061482697895702,
+        "raw_slope": -0.08234259613642976,
+        "raw_slope_lower_95": -0.08451064674521731,
+        "raw_slope_upper_95": -0.08017454552764221,
+        "standardized_beta": -0.6733098966908879,
+        "standardized_beta_lower_95": -0.6910379013921818,
+        "standardized_beta_upper_95": -0.655581891989594,
+        "z_value": -74.44083075055963
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.0076829865254106405,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0012331141773204671,
+        "raw_slope": 0.08656170377735337,
+        "raw_slope_lower_95": 0.08414479998980524,
+        "raw_slope_upper_95": 0.08897860756490149,
+        "standardized_beta": 0.5393275140045337,
+        "standardized_beta_lower_95": 0.5242688604147289,
+        "standardized_beta_upper_95": 0.5543861675943386,
+        "z_value": 70.19763892865967
+      },
+      "layer": 30,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.8076881008399512,
+        "relative_incentive_r_squared": 0.9282890355995845,
+        "stop_raw_slope": 0.7469654175769823
+      },
+      "relative_incentive_r_squared": 0.7274484300805352,
+      "stop": {
+        "cluster_robust_standard_error": 0.011822837403517618,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0013857800354358128,
+        "raw_slope": -0.07762558634446509,
+        "raw_slope_lower_95": -0.08034171521391928,
+        "raw_slope_upper_95": -0.0749094574750109,
+        "standardized_beta": -0.6622657725146865,
+        "standardized_beta_lower_95": -0.6854385338255811,
+        "standardized_beta_upper_95": -0.639093011203792,
+        "z_value": -56.01580652015432
+      }
+    },
+    {
+      "continue": {
+        "cluster_robust_standard_error": 0.006218667822499353,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 8.16496580927726,
+        "raw_cluster_robust_standard_error": 0.0011222076637788208,
+        "raw_slope": 0.09628228585611616,
+        "raw_slope_lower_95": 0.09408275883510966,
+        "raw_slope_upper_95": 0.09848181287712265,
+        "standardized_beta": 0.5335443450046898,
+        "standardized_beta_lower_95": 0.5213557560725911,
+        "standardized_beta_upper_95": 0.5457329339367886,
+        "z_value": 85.79720934350411
+      },
+      "layer": 31,
+      "normalized_to_behavior": {
+        "continue_raw_slope": 0.8983887009396093,
+        "relative_incentive_r_squared": 0.9588066404858306,
+        "stop_raw_slope": 0.8670461114378988
+      },
+      "relative_incentive_r_squared": 0.7513633778101275,
+      "stop": {
+        "cluster_robust_standard_error": 0.011545236472008509,
+        "normal_approximation_p_value": 0.0,
+        "predictor_scale": 11.180339887498949,
+        "raw_cluster_robust_standard_error": 0.0015215214097188286,
+        "raw_slope": -0.09010452318713785,
+        "raw_slope_lower_95": -0.09308670515018676,
+        "raw_slope_upper_95": -0.08712234122408895,
+        "standardized_beta": -0.6837090958748453,
+        "standardized_beta_lower_95": -0.706337759359982,
+        "standardized_beta_upper_95": -0.6610804323897086,
+        "z_value": -59.22001663045204
+      }
+    }
+  ],
+  "probes": "frozen bandit persistence probes; no factorial retraining",
+  "source_coverage": {
+    "allow_partial": false,
+    "expected_cells": 14244,
+    "expected_states": 1187,
+    "extra_cells": 0,
+    "missing_cells": 0,
+    "observed_cells": 14244,
+    "observed_states": 1187
+  }
+}

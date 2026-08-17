@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="560" viewBox="0 0 1500 560">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#17212B}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#4B5563}.panel{font-size:17px;font-weight:700}.axis{font-size:12px;fill:#4B5563}.legend{font-size:12px}.note{font-size:11px;fill:#6B7280}</style>
+<text x="50.0" y="42.0" class="title" text-anchor="start">Factorial effects along frozen persistence directions</text>
+<text x="50.0" y="68.0" class="subtitle" text-anchor="start">State fixed effects; coefficient intervals use episode-clustered standard errors</text>
+<text x="35.0" y="113.0" class="panel" text-anchor="start">A. STOP payoff</text>
+<line x1="97.0" y1="442.0" x2="467.0" y2="442.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="88.0" y="446.0" class="axis" text-anchor="end">-0.80</text>
+<line x1="97.0" y1="267.9" x2="467.0" y2="267.9" stroke="#E5E7EB" stroke-width="1"/>
+<text x="88.0" y="271.9" class="axis" text-anchor="end">0</text>
+<line x1="97.0" y1="137.0" x2="467.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="88.0" y="141.0" class="axis" text-anchor="end">0.60</text>
+<line x1="97.0" y1="442.0" x2="97.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="97.0" y="462.0" class="axis" text-anchor="middle">0</text>
+<line x1="467.0" y1="442.0" x2="467.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="467.0" y="462.0" class="axis" text-anchor="middle">31</text>
+<line x1="97.0" y1="137.0" x2="97.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="97.0" y1="442.0" x2="467.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="282.0" y="485.0" class="axis" text-anchor="middle">Layer</text>
+<text x="50.0" y="289.5" class="axis" text-anchor="middle" transform="rotate(-90 50 289.5)">Standardized beta</text>
+<line x1="97.0" y1="267.9" x2="467.0" y2="267.9" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<line x1="97.0" y1="173.8" x2="97.0" y2="158.0" stroke="#D55E00" stroke-width="1"/>
+<line x1="108.9" y1="227.7" x2="108.9" y2="208.7" stroke="#D55E00" stroke-width="1"/>
+<line x1="120.9" y1="229.0" x2="120.9" y2="214.9" stroke="#D55E00" stroke-width="1"/>
+<line x1="132.8" y1="286.8" x2="132.8" y2="270.5" stroke="#D55E00" stroke-width="1"/>
+<line x1="144.7" y1="310.3" x2="144.7" y2="298.1" stroke="#D55E00" stroke-width="1"/>
+<line x1="156.7" y1="267.1" x2="156.7" y2="256.9" stroke="#D55E00" stroke-width="1"/>
+<line x1="168.6" y1="232.8" x2="168.6" y2="228.5" stroke="#D55E00" stroke-width="1"/>
+<line x1="180.5" y1="185.4" x2="180.5" y2="178.9" stroke="#D55E00" stroke-width="1"/>
+<line x1="192.5" y1="186.7" x2="192.5" y2="180.5" stroke="#D55E00" stroke-width="1"/>
+<line x1="204.4" y1="195.0" x2="204.4" y2="190.4" stroke="#D55E00" stroke-width="1"/>
+<line x1="216.4" y1="197.3" x2="216.4" y2="193.0" stroke="#D55E00" stroke-width="1"/>
+<line x1="228.3" y1="182.8" x2="228.3" y2="173.5" stroke="#D55E00" stroke-width="1"/>
+<line x1="240.2" y1="270.3" x2="240.2" y2="245.9" stroke="#D55E00" stroke-width="1"/>
+<line x1="252.2" y1="291.6" x2="252.2" y2="284.2" stroke="#D55E00" stroke-width="1"/>
+<line x1="264.1" y1="315.8" x2="264.1" y2="300.4" stroke="#D55E00" stroke-width="1"/>
+<line x1="276.0" y1="420.8" x2="276.0" y2="406.9" stroke="#D55E00" stroke-width="1"/>
+<line x1="288.0" y1="377.5" x2="288.0" y2="367.3" stroke="#D55E00" stroke-width="1"/>
+<line x1="299.9" y1="352.3" x2="299.9" y2="337.7" stroke="#D55E00" stroke-width="1"/>
+<line x1="311.8" y1="323.3" x2="311.8" y2="307.7" stroke="#D55E00" stroke-width="1"/>
+<line x1="323.8" y1="259.8" x2="323.8" y2="246.1" stroke="#D55E00" stroke-width="1"/>
+<line x1="335.7" y1="279.6" x2="335.7" y2="254.3" stroke="#D55E00" stroke-width="1"/>
+<line x1="347.6" y1="278.0" x2="347.6" y2="251.3" stroke="#D55E00" stroke-width="1"/>
+<line x1="359.6" y1="284.0" x2="359.6" y2="258.1" stroke="#D55E00" stroke-width="1"/>
+<line x1="371.5" y1="345.1" x2="371.5" y2="318.5" stroke="#D55E00" stroke-width="1"/>
+<line x1="383.5" y1="381.9" x2="383.5" y2="365.0" stroke="#D55E00" stroke-width="1"/>
+<line x1="395.4" y1="387.0" x2="395.4" y2="370.9" stroke="#D55E00" stroke-width="1"/>
+<line x1="407.3" y1="392.4" x2="407.3" y2="378.1" stroke="#D55E00" stroke-width="1"/>
+<line x1="419.3" y1="397.4" x2="419.3" y2="382.2" stroke="#D55E00" stroke-width="1"/>
+<line x1="431.2" y1="413.0" x2="431.2" y2="405.0" stroke="#D55E00" stroke-width="1"/>
+<line x1="443.1" y1="417.7" x2="443.1" y2="410.0" stroke="#D55E00" stroke-width="1"/>
+<line x1="455.1" y1="416.4" x2="455.1" y2="406.4" stroke="#D55E00" stroke-width="1"/>
+<line x1="467.0" y1="421.0" x2="467.0" y2="411.2" stroke="#D55E00" stroke-width="1"/>
+<polyline points="97.0,165.9 108.9,218.2 120.9,222.0 132.8,278.6 144.7,304.2 156.7,262.0 168.6,230.7 180.5,182.2 192.5,183.6 204.4,192.7 216.4,195.1 228.3,178.2 240.2,258.1 252.2,287.9 264.1,308.1 276.0,413.8 288.0,372.4 299.9,345.0 311.8,315.5 323.8,253.0 335.7,267.0 347.6,264.6 359.6,271.0 371.5,331.8 383.5,373.4 395.4,378.9 407.3,385.3 419.3,389.8 431.2,409.0 443.1,413.8 455.1,411.4 467.0,416.1" fill="none" stroke="#D55E00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="97.0" cy="165.9" r="3.0" fill="#D55E00"/>
+<circle cx="108.9" cy="218.2" r="3.0" fill="#D55E00"/>
+<circle cx="120.9" cy="222.0" r="3.0" fill="#D55E00"/>
+<circle cx="132.8" cy="278.6" r="3.0" fill="#D55E00"/>
+<circle cx="144.7" cy="304.2" r="3.0" fill="#D55E00"/>
+<circle cx="156.7" cy="262.0" r="3.0" fill="#D55E00"/>
+<circle cx="168.6" cy="230.7" r="3.0" fill="#D55E00"/>
+<circle cx="180.5" cy="182.2" r="3.0" fill="#D55E00"/>
+<circle cx="192.5" cy="183.6" r="3.0" fill="#D55E00"/>
+<circle cx="204.4" cy="192.7" r="3.0" fill="#D55E00"/>
+<circle cx="216.4" cy="195.1" r="3.0" fill="#D55E00"/>
+<circle cx="228.3" cy="178.2" r="3.0" fill="#D55E00"/>
+<circle cx="240.2" cy="258.1" r="3.0" fill="#D55E00"/>
+<circle cx="252.2" cy="287.9" r="3.0" fill="#D55E00"/>
+<circle cx="264.1" cy="308.1" r="3.0" fill="#D55E00"/>
+<circle cx="276.0" cy="413.8" r="3.0" fill="#D55E00"/>
+<circle cx="288.0" cy="372.4" r="3.0" fill="#D55E00"/>
+<circle cx="299.9" cy="345.0" r="3.0" fill="#D55E00"/>
+<circle cx="311.8" cy="315.5" r="3.0" fill="#D55E00"/>
+<circle cx="323.8" cy="253.0" r="3.0" fill="#D55E00"/>
+<circle cx="335.7" cy="267.0" r="3.0" fill="#D55E00"/>
+<circle cx="347.6" cy="264.6" r="3.0" fill="#D55E00"/>
+<circle cx="359.6" cy="271.0" r="3.0" fill="#D55E00"/>
+<circle cx="371.5" cy="331.8" r="3.0" fill="#D55E00"/>
+<circle cx="383.5" cy="373.4" r="3.0" fill="#D55E00"/>
+<circle cx="395.4" cy="378.9" r="3.0" fill="#D55E00"/>
+<circle cx="407.3" cy="385.3" r="3.0" fill="#D55E00"/>
+<circle cx="419.3" cy="389.8" r="3.0" fill="#D55E00"/>
+<circle cx="431.2" cy="409.0" r="3.0" fill="#D55E00"/>
+<circle cx="443.1" cy="413.8" r="3.0" fill="#D55E00"/>
+<circle cx="455.1" cy="411.4" r="3.0" fill="#D55E00"/>
+<circle cx="467.0" cy="416.1" r="3.0" fill="#D55E00"/>
+<text x="525.0" y="113.0" class="panel" text-anchor="start">B. CONTINUE bonus</text>
+<line x1="587.0" y1="442.0" x2="957.0" y2="442.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="578.0" y="446.0" class="axis" text-anchor="end">-0.42</text>
+<line x1="587.0" y1="344.4" x2="957.0" y2="344.4" stroke="#E5E7EB" stroke-width="1"/>
+<text x="578.0" y="348.4" class="axis" text-anchor="end">0</text>
+<line x1="587.0" y1="137.0" x2="957.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="578.0" y="141.0" class="axis" text-anchor="end">0.88</text>
+<line x1="587.0" y1="442.0" x2="587.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="587.0" y="462.0" class="axis" text-anchor="middle">0</text>
+<line x1="957.0" y1="442.0" x2="957.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="957.0" y="462.0" class="axis" text-anchor="middle">31</text>
+<line x1="587.0" y1="137.0" x2="587.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="587.0" y1="442.0" x2="957.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="772.0" y="485.0" class="axis" text-anchor="middle">Layer</text>
+<text x="540.0" y="289.5" class="axis" text-anchor="middle" transform="rotate(-90 540 289.5)">Standardized beta</text>
+<line x1="587.0" y1="344.4" x2="957.0" y2="344.4" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<line x1="587.0" y1="263.9" x2="587.0" y2="247.2" stroke="#009E73" stroke-width="1"/>
+<line x1="598.9" y1="223.4" x2="598.9" y2="199.4" stroke="#009E73" stroke-width="1"/>
+<line x1="610.9" y1="253.2" x2="610.9" y2="246.4" stroke="#009E73" stroke-width="1"/>
+<line x1="622.8" y1="304.0" x2="622.8" y2="295.5" stroke="#009E73" stroke-width="1"/>
+<line x1="634.7" y1="421.0" x2="634.7" y2="404.2" stroke="#009E73" stroke-width="1"/>
+<line x1="646.7" y1="395.6" x2="646.7" y2="380.7" stroke="#009E73" stroke-width="1"/>
+<line x1="658.6" y1="264.9" x2="658.6" y2="258.2" stroke="#009E73" stroke-width="1"/>
+<line x1="670.5" y1="249.7" x2="670.5" y2="237.2" stroke="#009E73" stroke-width="1"/>
+<line x1="682.5" y1="248.5" x2="682.5" y2="233.7" stroke="#009E73" stroke-width="1"/>
+<line x1="694.4" y1="318.3" x2="694.4" y2="312.6" stroke="#009E73" stroke-width="1"/>
+<line x1="706.4" y1="246.6" x2="706.4" y2="239.8" stroke="#009E73" stroke-width="1"/>
+<line x1="718.3" y1="214.7" x2="718.3" y2="206.3" stroke="#009E73" stroke-width="1"/>
+<line x1="730.2" y1="252.9" x2="730.2" y2="240.7" stroke="#009E73" stroke-width="1"/>
+<line x1="742.2" y1="167.1" x2="742.2" y2="158.0" stroke="#009E73" stroke-width="1"/>
+<line x1="754.1" y1="198.4" x2="754.1" y2="180.9" stroke="#009E73" stroke-width="1"/>
+<line x1="766.0" y1="219.6" x2="766.0" y2="209.4" stroke="#009E73" stroke-width="1"/>
+<line x1="778.0" y1="196.9" x2="778.0" y2="186.7" stroke="#009E73" stroke-width="1"/>
+<line x1="789.9" y1="183.9" x2="789.9" y2="174.3" stroke="#009E73" stroke-width="1"/>
+<line x1="801.8" y1="192.9" x2="801.8" y2="186.4" stroke="#009E73" stroke-width="1"/>
+<line x1="813.8" y1="200.1" x2="813.8" y2="183.0" stroke="#009E73" stroke-width="1"/>
+<line x1="825.7" y1="203.3" x2="825.7" y2="183.7" stroke="#009E73" stroke-width="1"/>
+<line x1="837.6" y1="212.5" x2="837.6" y2="194.1" stroke="#009E73" stroke-width="1"/>
+<line x1="849.6" y1="211.0" x2="849.6" y2="193.4" stroke="#009E73" stroke-width="1"/>
+<line x1="861.5" y1="199.4" x2="861.5" y2="182.8" stroke="#009E73" stroke-width="1"/>
+<line x1="873.5" y1="200.5" x2="873.5" y2="189.5" stroke="#009E73" stroke-width="1"/>
+<line x1="885.4" y1="203.6" x2="885.4" y2="192.5" stroke="#009E73" stroke-width="1"/>
+<line x1="897.3" y1="202.6" x2="897.3" y2="193.0" stroke="#009E73" stroke-width="1"/>
+<line x1="909.3" y1="208.5" x2="909.3" y2="200.4" stroke="#009E73" stroke-width="1"/>
+<line x1="921.2" y1="220.3" x2="921.2" y2="214.2" stroke="#009E73" stroke-width="1"/>
+<line x1="933.1" y1="223.8" x2="933.1" y2="218.2" stroke="#009E73" stroke-width="1"/>
+<line x1="945.1" y1="221.1" x2="945.1" y2="214.0" stroke="#009E73" stroke-width="1"/>
+<line x1="957.0" y1="221.8" x2="957.0" y2="216.1" stroke="#009E73" stroke-width="1"/>
+<polyline points="587.0,255.6 598.9,211.4 610.9,249.8 622.8,299.8 634.7,412.6 646.7,388.1 658.6,261.5 670.5,243.4 682.5,241.1 694.4,315.5 706.4,243.2 718.3,210.5 730.2,246.8 742.2,162.6 754.1,189.6 766.0,214.5 778.0,191.8 789.9,179.1 801.8,189.6 813.8,191.5 825.7,193.5 837.6,203.3 849.6,202.2 861.5,191.1 873.5,195.0 885.4,198.0 897.3,197.8 909.3,204.4 921.2,217.3 933.1,221.0 945.1,217.6 957.0,218.9" fill="none" stroke="#009E73" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="587.0" cy="255.6" r="3.0" fill="#009E73"/>
+<circle cx="598.9" cy="211.4" r="3.0" fill="#009E73"/>
+<circle cx="610.9" cy="249.8" r="3.0" fill="#009E73"/>
+<circle cx="622.8" cy="299.8" r="3.0" fill="#009E73"/>
+<circle cx="634.7" cy="412.6" r="3.0" fill="#009E73"/>
+<circle cx="646.7" cy="388.1" r="3.0" fill="#009E73"/>
+<circle cx="658.6" cy="261.5" r="3.0" fill="#009E73"/>
+<circle cx="670.5" cy="243.4" r="3.0" fill="#009E73"/>
+<circle cx="682.5" cy="241.1" r="3.0" fill="#009E73"/>
+<circle cx="694.4" cy="315.5" r="3.0" fill="#009E73"/>
+<circle cx="706.4" cy="243.2" r="3.0" fill="#009E73"/>
+<circle cx="718.3" cy="210.5" r="3.0" fill="#009E73"/>
+<circle cx="730.2" cy="246.8" r="3.0" fill="#009E73"/>
+<circle cx="742.2" cy="162.6" r="3.0" fill="#009E73"/>
+<circle cx="754.1" cy="189.6" r="3.0" fill="#009E73"/>
+<circle cx="766.0" cy="214.5" r="3.0" fill="#009E73"/>
+<circle cx="778.0" cy="191.8" r="3.0" fill="#009E73"/>
+<circle cx="789.9" cy="179.1" r="3.0" fill="#009E73"/>
+<circle cx="801.8" cy="189.6" r="3.0" fill="#009E73"/>
+<circle cx="813.8" cy="191.5" r="3.0" fill="#009E73"/>
+<circle cx="825.7" cy="193.5" r="3.0" fill="#009E73"/>
+<circle cx="837.6" cy="203.3" r="3.0" fill="#009E73"/>
+<circle cx="849.6" cy="202.2" r="3.0" fill="#009E73"/>
+<circle cx="861.5" cy="191.1" r="3.0" fill="#009E73"/>
+<circle cx="873.5" cy="195.0" r="3.0" fill="#009E73"/>
+<circle cx="885.4" cy="198.0" r="3.0" fill="#009E73"/>
+<circle cx="897.3" cy="197.8" r="3.0" fill="#009E73"/>
+<circle cx="909.3" cy="204.4" r="3.0" fill="#009E73"/>
+<circle cx="921.2" cy="217.3" r="3.0" fill="#009E73"/>
+<circle cx="933.1" cy="221.0" r="3.0" fill="#009E73"/>
+<circle cx="945.1" cy="217.6" r="3.0" fill="#009E73"/>
+<circle cx="957.0" cy="218.9" r="3.0" fill="#009E73"/>
+<text x="1015.0" y="113.0" class="panel" text-anchor="start">C. Relative-incentive fit</text>
+<line x1="1077.0" y1="442.0" x2="1447.0" y2="442.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1068.0" y="446.0" class="axis" text-anchor="end">0</text>
+<line x1="1077.0" y1="137.0" x2="1447.0" y2="137.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="1068.0" y="141.0" class="axis" text-anchor="end">0.82</text>
+<line x1="1077.0" y1="442.0" x2="1077.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="1077.0" y="462.0" class="axis" text-anchor="middle">0</text>
+<line x1="1447.0" y1="442.0" x2="1447.0" y2="447.0" stroke="#64748B" stroke-width="1"/>
+<text x="1447.0" y="462.0" class="axis" text-anchor="middle">31</text>
+<line x1="1077.0" y1="137.0" x2="1077.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<line x1="1077.0" y1="442.0" x2="1447.0" y2="442.0" stroke="#64748B" stroke-width="1.2"/>
+<text x="1262.0" y="485.0" class="axis" text-anchor="middle">Layer</text>
+<text x="1030.0" y="289.5" class="axis" text-anchor="middle" transform="rotate(-90 1030 289.5)">Within-state R²</text>
+<polyline points="1077.0,432.7 1088.9,433.8 1100.9,440.4 1112.8,433.4 1124.7,441.5 1136.7,435.5 1148.6,440.2 1160.5,440.4 1172.5,440.8 1184.4,425.9 1196.4,441.9 1208.3,442.0 1220.2,425.8 1232.2,336.9 1244.1,334.0 1256.0,159.6 1268.0,219.4 1279.9,258.1 1291.8,322.6 1303.8,401.9 1315.7,389.6 1327.6,398.4 1339.6,391.4 1351.5,297.4 1363.5,221.7 1375.4,214.4 1387.3,200.0 1399.3,199.9 1411.2,175.5 1423.1,170.1 1435.1,170.4 1447.0,161.4" fill="none" stroke="#7A5195" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1077.0" cy="432.7" r="3.0" fill="#7A5195"/>
+<circle cx="1088.9" cy="433.8" r="3.0" fill="#7A5195"/>
+<circle cx="1100.9" cy="440.4" r="3.0" fill="#7A5195"/>
+<circle cx="1112.8" cy="433.4" r="3.0" fill="#7A5195"/>
+<circle cx="1124.7" cy="441.5" r="3.0" fill="#7A5195"/>
+<circle cx="1136.7" cy="435.5" r="3.0" fill="#7A5195"/>
+<circle cx="1148.6" cy="440.2" r="3.0" fill="#7A5195"/>
+<circle cx="1160.5" cy="440.4" r="3.0" fill="#7A5195"/>
+<circle cx="1172.5" cy="440.8" r="3.0" fill="#7A5195"/>
+<circle cx="1184.4" cy="425.9" r="3.0" fill="#7A5195"/>
+<circle cx="1196.4" cy="441.9" r="3.0" fill="#7A5195"/>
+<circle cx="1208.3" cy="442.0" r="3.0" fill="#7A5195"/>
+<circle cx="1220.2" cy="425.8" r="3.0" fill="#7A5195"/>
+<circle cx="1232.2" cy="336.9" r="3.0" fill="#7A5195"/>
+<circle cx="1244.1" cy="334.0" r="3.0" fill="#7A5195"/>
+<circle cx="1256.0" cy="159.6" r="3.0" fill="#7A5195"/>
+<circle cx="1268.0" cy="219.4" r="3.0" fill="#7A5195"/>
+<circle cx="1279.9" cy="258.1" r="3.0" fill="#7A5195"/>
+<circle cx="1291.8" cy="322.6" r="3.0" fill="#7A5195"/>
+<circle cx="1303.8" cy="401.9" r="3.0" fill="#7A5195"/>
+<circle cx="1315.7" cy="389.6" r="3.0" fill="#7A5195"/>
+<circle cx="1327.6" cy="398.4" r="3.0" fill="#7A5195"/>
+<circle cx="1339.6" cy="391.4" r="3.0" fill="#7A5195"/>
+<circle cx="1351.5" cy="297.4" r="3.0" fill="#7A5195"/>
+<circle cx="1363.5" cy="221.7" r="3.0" fill="#7A5195"/>
+<circle cx="1375.4" cy="214.4" r="3.0" fill="#7A5195"/>
+<circle cx="1387.3" cy="200.0" r="3.0" fill="#7A5195"/>
+<circle cx="1399.3" cy="199.9" r="3.0" fill="#7A5195"/>
+<circle cx="1411.2" cy="175.5" r="3.0" fill="#7A5195"/>
+<circle cx="1423.1" cy="170.1" r="3.0" fill="#7A5195"/>
+<circle cx="1435.1" cy="170.4" r="3.0" fill="#7A5195"/>
+<circle cx="1447.0" cy="161.4" r="3.0" fill="#7A5195"/>
+<text x="1450.0" y="540.0" class="note" text-anchor="end">Frozen probes were trained only on the original bandit activation bank.</text>
+</svg>
