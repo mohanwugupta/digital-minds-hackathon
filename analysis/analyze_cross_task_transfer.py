@@ -8,12 +8,18 @@ import random
 import statistics
 from pathlib import Path
 
+from analysis.analyze_pilot_detailed import COLORS, Svg, axes
+from analysis.cross_task_integrity import (
+    audit_cross_task_shards,
+    require_behavioral_clearance,
+)
 from experiments.cross_task_utils import (
     layer_dataset,
     load_activation_shards,
     make_or_validate_split,
     probe_layer,
 )
+from experiments.runtime import run_metadata
 from interventions.ridge_probe import load_ridge_probe, regression_metrics
 from interventions.ridge_steering import matched_sign_random_directions
 
@@ -86,7 +92,14 @@ def _bootstrap_metrics(
     return result
 
 
-def _mapping_metrics(prediction, target, records: list[dict]) -> dict:
+def _mapping_metrics(
+    prediction,
+    target,
+    records: list[dict],
+    *,
+    bootstrap_samples: int,
+    seed: int,
+) -> dict:
     import torch
 
     result = {}
@@ -102,39 +115,15 @@ def _mapping_metrics(prediction, target, records: list[dict]) -> dict:
             **regression_metrics(
                 prediction[torch.tensor(indices)], target[torch.tensor(indices)]
             ),
+            "episode_bootstrap": _bootstrap_metrics(
+                prediction[torch.tensor(indices)],
+                target[torch.tensor(indices)],
+                [records[index]["episode_id"] for index in indices],
+                samples=bootstrap_samples,
+                seed=seed + len(result),
+            ),
         }
     return result
-
-
-def _counterbalance_audit(shards: list[dict]) -> dict:
-    pairs = {}
-    for shard in shards:
-        pairs.setdefault(shard["pair_id"], []).append(shard)
-    failures = {}
-    condition_failures = {}
-    for pair_id, selected in pairs.items():
-        mappings = [shard["mapping_id"] for shard in selected]
-        if len(mappings) != 2 or len(set(mappings)) != 2:
-            failures[pair_id] = mappings
-            continue
-        first_records = [shard["records"][0] for shard in selected]
-        condition_keys = (
-            ("seed", "action_seed", "initial_quality", "depletion", "outside_option", "stay_cost")
-            if selected[0]["task"] == "foraging"
-            else ("seed", "left_integer", "right_integer")
-        )
-        signatures = {
-            tuple(record.get(key) for key in condition_keys)
-            for record in first_records
-        }
-        if len(signatures) != 1:
-            condition_failures[pair_id] = sorted(signatures)
-    return {
-        "episodes": len(shards),
-        "pairs": len(pairs),
-        "counterbalanced_pair_failures": len(failures),
-        "paired_condition_failures": len(condition_failures),
-    }
 
 
 def behavioral_summary(shards: list[dict]) -> dict:
@@ -170,6 +159,7 @@ def behavioral_summary(shards: list[dict]) -> dict:
     ordered_probabilities = sorted(probabilities)
     return {
         "level": "behavioral_generalization",
+        "analysis_role": "exploratory_post_test_description",
         "states": len(records),
         "episodes": len(shards),
         "semantic_stay_choice_rate": statistics.mean(
@@ -284,10 +274,18 @@ def evaluate_transfer(
     negative_control = regression_metrics(control_prediction, control_test["target"])
 
     mapping_metrics = _mapping_metrics(
-        strict_prediction, foraging_test["target"], foraging_test["records"]
+        strict_prediction,
+        foraging_test["target"],
+        foraging_test["records"],
+        bootstrap_samples=bootstrap_samples,
+        seed=random_seed + 100,
     )
     control_mapping_metrics = _mapping_metrics(
-        control_prediction, control_test["target"], control_test["records"]
+        control_prediction,
+        control_test["target"],
+        control_test["records"],
+        bootstrap_samples=bootstrap_samples,
+        seed=random_seed + 200,
     )
     transfer_ratio = (
         strict["r_squared"] / ceiling["r_squared"]
@@ -303,7 +301,9 @@ def evaluate_transfer(
     criteria = {
         "expected_direction": strict["correlation"] > 0,
         "label_reversal_consistency": all(
-            row["correlation"] > 0 for row in mapping_metrics.values()
+            row["correlation"] > 0
+            and row["episode_bootstrap"]["correlation"]["lower_95"] > 0
+            for row in mapping_metrics.values()
         ),
         "exceeds_random_95th_percentile": strict["correlation"] > correlation_95,
         "negative_control_absent_or_weaker": (
@@ -316,7 +316,21 @@ def evaluate_transfer(
             and transfer_ratio >= float(thresholds["strong_transfer_ceiling_fraction"])
         ),
     }
-    first_four = all(list(criteria.values())[:4])
+    required = thresholds.get(
+        "required_checks",
+        (
+            "expected_direction",
+            "label_reversal_consistency",
+            "exceeds_random_95th_percentile",
+            "negative_control_absent_or_weaker",
+        ),
+    )
+    unknown_checks = set(required) - set(criteria)
+    if unknown_checks:
+        raise ValueError(
+            f"representational preregistration names unknown checks: {sorted(unknown_checks)}"
+        )
+    first_four = all(criteria[name] for name in required)
     classification = (
         "strong_transfer"
         if first_four and criteria["at_least_half_ceiling"]
@@ -324,8 +338,26 @@ def evaluate_transfer(
         if first_four
         else "no_convincing_transfer"
     )
+    decision_matrix_outcome = (
+        "representational_transfer_pending_causal_checkpoint"
+        if classification in {"strong_transfer", "partial_transfer"}
+        else "outcome_d_generic_binary_or_output_geometry"
+        if not criteria["negative_control_absent_or_weaker"]
+        else "outcome_c_task_specific_persistence_representations"
+        if ceiling["r_squared"] > 0
+        else "no_interpretable_cross_task_result"
+    )
     return {
         "classification": classification,
+        "decision_matrix_outcome": decision_matrix_outcome,
+        "analysis_roles": {
+            "strict_zero_shot": "confirmatory_primary",
+            "mapping_consistency": "confirmatory",
+            "matched_random_directions": "confirmatory",
+            "negative_control": "confirmatory",
+            "foraging_specific_ceiling": "confirmatory_comparison",
+            "calibration_only": "exploratory_secondary",
+        },
         "criteria": criteria,
         "strict_zero_shot": {
             **strict,
@@ -369,6 +401,71 @@ def evaluate_transfer(
     }
 
 
+def load_bandit_within_task(path: str, selected_layer: int) -> dict:
+    with open(path, encoding="utf-8") as handle:
+        payload = json.load(handle)
+    selected = next(
+        (
+            row["targets"]["persistence"]["test"]
+            for row in payload["layers"]
+            if int(row["layer"]) == int(selected_layer)
+        ),
+        None,
+    )
+    if selected is None:
+        raise ValueError(
+            f"bandit metrics do not contain layer-{selected_layer} persistence test"
+        )
+    return {
+        "analysis_role": "previously_frozen_reference",
+        "selected_layer": int(selected_layer),
+        **selected,
+    }
+
+
+def make_summary_figure(result: dict, path: Path) -> None:
+    values = [
+        ("Bandit", result["bandit_within_task"]["r_squared"], COLORS["reference"]),
+        ("Zero-shot", result["strict_zero_shot"]["r_squared"], COLORS["observed"]),
+        ("Ceiling", result["foraging_specific_ceiling"]["r_squared"], COLORS["both_positive"]),
+        ("Control", result["negative_control"]["r_squared"], COLORS["both_negative"]),
+    ]
+    lower = min(-0.05, min(value for _name, value, _color in values) - 0.05)
+    upper = max(1.0, max(value for _name, value, _color in values) + 0.05)
+    svg = Svg(920, 620)
+    svg.text(50, 42, "Track B representational checkpoint", "title")
+    svg.text(50, 68, "Held-out R²; frozen bandit direction is strict zero-shot", "subtitle")
+    sx, sy, box = axes(
+        svg,
+        70,
+        105,
+        780,
+        410,
+        "",
+        "Evaluation",
+        "R²",
+        [(index, name) for index, (name, _value, _color) in enumerate(values)],
+        [(lower, f"{lower:.2f}"), (0.0, "0"), (0.5, "0.5"), (1.0, "1.0")],
+        (-0.6, 3.6),
+        (lower, upper),
+    )
+    svg.line(box[0], sy(0), box[2], sy(0), COLORS["reference"], 1.2, "5 5")
+    bar_half_width = abs(sx(0.30) - sx(0.0))
+    for index, (_name, value, color) in enumerate(values):
+        x0, x1 = sx(index) - bar_half_width, sx(index) + bar_half_width
+        y0, y1 = sy(0), sy(value)
+        svg.rect(x0, min(y0, y1), x1 - x0, abs(y1 - y0), color, 0.9)
+        svg.text(sx(index), min(y0, y1) - 9, f"{value:.3f}", "axis", "middle")
+    svg.text(
+        870,
+        585,
+        f"Classification: {result['classification'].replace('_', ' ')}",
+        "note",
+        "end",
+    )
+    svg.save(path)
+
+
 def write_report(result: dict, path: Path) -> None:
     strict = result["strict_zero_shot"]
     ceiling = result["foraging_specific_ceiling"]
@@ -384,11 +481,14 @@ def write_report(result: dict, path: Path) -> None:
         "## Level 2 — representational generalization",
         "",
         f"Classification: **{result['classification'].replace('_', ' ')}**.",
+        f"Decision-matrix status: **{result['decision_matrix_outcome'].replace('_', ' ')}**.",
         "",
         f"Strict zero-shot: R² **{strict['r_squared']:.3f}**, correlation **{strict['correlation']:.3f}**.",
+        f"Bandit within-task reference: R² **{result['bandit_within_task']['r_squared']:.3f}** at layer {result['bandit_within_task']['selected_layer']}.",
         f"Foraging-specific ceiling: R² **{ceiling['r_squared']:.3f}** at layer {ceiling['selected_layer']}.",
         f"Transfer ratio: **{ratio:.3f}**." if ratio is not None else "Transfer ratio: undefined because one R² is non-positive.",
         f"Non-persistence control correlation: **{control['correlation']:.3f}**.",
+        f"Strict zero-shot episode-bootstrap R² interval: **{strict['episode_bootstrap']['r_squared']['lower_95']:.3f} to {strict['episode_bootstrap']['r_squared']['upper_95']:.3f}**.",
         "",
         "## Preregistered checks",
         "",
@@ -428,6 +528,13 @@ def main() -> None:
         "--foraging-probe",
         default="artifacts/cross_task/foraging_probes/frozen_best_persistence.pt",
     )
+    parser.add_argument(
+        "--behavioral-gate",
+        default="artifacts/cross_task/behavioral/behavioral_validation_summary.json",
+    )
+    parser.add_argument(
+        "--bandit-metrics", default="artifacts/linear_probes/metrics.json"
+    )
     parser.add_argument("--config", default="config/cross_task_experiment.yaml")
     parser.add_argument("--output-dir", default="artifacts/cross_task/transfer")
     args = parser.parse_args()
@@ -436,6 +543,7 @@ def main() -> None:
 
     with open(args.config, encoding="utf-8") as handle:
         config = yaml.safe_load(handle)
+    behavioral_gate = require_behavioral_clearance(args.behavioral_gate)
     prereg = config["representational_transfer"]
     foraging_shards = load_activation_shards(args.foraging_bank)
     control_shards = load_activation_shards(args.control_bank)
@@ -469,17 +577,37 @@ def main() -> None:
             "bandit_layer": bandit_layer,
             "strict_zero_shot_parameters_fit_on_foraging": 0,
             "preregistered_config": os.path.abspath(args.config),
+            "provenance": run_metadata(
+                {
+                    "model": foraging_shards[0].get("model_id", config["model"]),
+                    "analysis": "bandit_to_foraging_representational_transfer",
+                    "config": os.path.abspath(args.config),
+                }
+            ),
+            "development_behavioral_gate": behavioral_gate,
+            "bandit_within_task": load_bandit_within_task(
+                args.bandit_metrics, bandit_layer
+            ),
             "behavioral_generalization": behavioral_summary(foraging_shards),
-            "foraging_audit": _counterbalance_audit(foraging_shards),
-            "control_audit": _counterbalance_audit(control_shards),
+            "foraging_audit": audit_cross_task_shards(
+                foraging_shards,
+                "foraging",
+                response_labels=tuple(
+                    config["collection"]["foraging_response_labels"]
+                ),
+                expected_episodes=int(config["collection"]["foraging_episodes"]),
+            ),
+            "control_audit": audit_cross_task_shards(
+                control_shards,
+                "control",
+                response_labels=tuple(
+                    config["collection"]["control_response_labels"]
+                ),
+                expected_episodes=int(config["collection"]["control_episodes"]),
+            ),
         }
     )
-    if (
-        result["foraging_audit"]["counterbalanced_pair_failures"]
-        or result["control_audit"]["counterbalanced_pair_failures"]
-        or result["foraging_audit"]["paired_condition_failures"]
-        or result["control_audit"]["paired_condition_failures"]
-    ):
+    if not result["foraging_audit"]["passed"] or not result["control_audit"]["passed"]:
         raise ValueError("cross-task counterbalancing audit failed")
     output = Path(args.output_dir)
     output.mkdir(parents=True, exist_ok=True)
@@ -487,6 +615,7 @@ def main() -> None:
         json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     write_report(result, output / "representational_transfer_report.md")
+    make_summary_figure(result, output / "representational_transfer_summary.svg")
     print(json.dumps({"classification": result["classification"], "criteria": result["criteria"]}, indent=2))
 
 

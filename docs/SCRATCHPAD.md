@@ -850,3 +850,100 @@ publication SVG. The optimized float-moment implementation in
 `analysis/probe_history_matching.py` is algebraically equivalent to the prior
 standardization but reduces the factorial analysis from tens of minutes to
 seconds.
+
+---
+
+## Track B critical-test completion: RED → GREEN
+
+### Goal and hypothesis
+
+Finish the cross-task checkpoint before any deeper mechanistic dissection. The
+critical hypothesis is that the frozen bandit persistence direction predicts
+and causally changes semantic STAY versus LEAVE decisions in a structurally
+different foraging task, across reversed X/Y mappings, more strongly than
+matched random directions or a non-persistence binary-choice task.
+
+### RED test
+
+Added `tests/test_track_b_critical.py` before the gate implementation. It
+requires rejection of malformed foraging termination, verification of actual
+inverse label mappings rather than merely distinct mapping IDs,
+train+validation-only behavioral validation, a hard representational gate
+before causal calibration, complete random-direction state coverage, and
+causal specificity relative to the binary control.
+
+### Observed RED failure
+
+`python3 -m unittest tests.test_track_b_critical` failed with
+`ModuleNotFoundError: analysis.cross_task_integrity`, the intended missing
+implementation boundary. After adding the integrity module, the next RED run
+failed because causal analysis did not accept or enforce expected random
+direction coverage and negative-control specificity.
+
+### GREEN implementation
+
+- Added a dependency-free integrity audit and preregistered behavioral gate.
+  It requires the complete 384-episode banks, exact inverse X/Y mappings,
+  paired conditions, valid terminal semantics, repeated/nondegenerate
+  persistence behavior, bounded initial mapping bias, and expected
+  outside-option/search-cost effects. Behavioral criteria inspect only train
+  and validation episodes.
+- The foraging ceiling and strict transfer analyzer now require that gate.
+  Strict zero-shot remains the frozen bandit standardization plus frozen
+  weights; the affine validation fit is labeled exploratory.
+- Representational output now labels confirmatory versus exploratory analyses
+  and writes the required bandit/zero-shot/ceiling/control summary SVG.
+- Causal calibration refuses to run after `no_convincing_transfer`. Causal
+  analysis requires exact alpha-zero reproduction, decoded ordering,
+  monotonic behavior, a positive episode-bootstrap interval, both reversed
+  mappings, all 20 random directions on every held-out state, and a weak/absent
+  binary-control effect. Missing array shards cannot silently pass.
+- Added run-isolated Track B paths plus dependency-chained Slurm helpers for the
+  representational checkpoint and the conditionally submitted causal test.
+  Neither helper launches Track C.
+
+### GREEN tests and result
+
+The six dependency-free critical-gate tests pass. Modified Python modules pass
+AST/bytecode compilation, shell launchers pass `bash -n`, and the frozen
+baseline regression gate reports no failures. The local host lacks pytest and
+torch, so the full pytest suite and real-model smoke remain mandatory first
+jobs in the cluster dependency chain.
+
+No Track B scientific outcome is claimed yet. The next action is to run
+`scripts/submit_track_b.sh`; only a strong/partial representational result
+permits `scripts/submit_track_b_causal.sh`.
+
+---
+
+## Track B construct-level protocol amendment: shared direction first
+
+`new_direction.txt` correctly distinguishes the Bandit A/B-versus-C logit
+operationalization from the proposed persistence construct. The earlier direct
+Bandit→Foraging test remains useful, but it no longer defines or gates task
+generality.
+
+The new primary test is Bandit+Foraging shared discovery followed by a frozen,
+zero-shot Solvability test. Targets are per-task training-standardized semantic
+continue-versus-disengage logits; activation moments and ridge loss give each
+discovery task equal weight. Solvability cannot affect direction, layer,
+regularization, or standardization selection. The implementation additionally
+freezes all three leave-one-task-out folds, compares each held-out result to a
+task-specific ceiling and matched random directions, checks task-probe cosine
+alignment, and uses a separately counterbalanced M/N integer comparison as the
+primary negative control.
+
+The causal gate now reads only
+`shared_transfer/shared_persistence_transfer_summary.json`. If shared transfer
+clears, the Bandit+Foraging direction is recalibrated on Solvability validation
+states and replayed on untouched Solvability test states plus the M/N control.
+The historical direct Bandit→Foraging analysis is scheduled only after the
+shared held-out result and cannot authorize causal work.
+
+TDD evidence: the first dependency-free run failed at the intended missing
+`analysis.shared_persistence_integrity` import. The implemented critical tests
+now pass for leakage rejection, equal task weighting, deterministic
+Solvability termination, reversed M/N mappings, and shared-only causal
+clearance. Torch numerical and collection tests are included in the cluster
+test job. No new scientific outcome is claimed until the cluster collection,
+fit, and held-out analysis complete.

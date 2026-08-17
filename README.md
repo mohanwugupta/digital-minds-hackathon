@@ -14,8 +14,8 @@ The original requirements and research log remain in `PRD.md` and
 
 - `bandit/`: deterministic environment, prompts, conversation state, schemas,
   and episode-level splitting.
-- `cross_task/`: depleting-patch foraging, a non-persistence binary control,
-  label counterbalancing, and pair-safe split utilities.
+- `cross_task/`: depleting-patch foraging, repeated Solvability, a
+  non-persistence binary control, label counterbalancing, and pair-safe splits.
 - `models/hooked_qwen.py`: Qwen loading, action-token validation, hidden-state
   capture, and final-position activation hooks.
 - `interventions/`: TD, nonlinear, and ridge probes plus calibrated ridge
@@ -164,9 +164,12 @@ the episode level as described in the paper.
 
 The follow-up in
 [`docs/cross-task-generalization.md`](docs/cross-task-generalization.md) adds a
-compact all-layer re-projection of the existing factorial, counterbalanced X/Y
-foraging and non-persistence tasks, a within-foraging ceiling, strict frozen
-bandit-probe transfer, and validation-calibrated causal transfer.
+compact all-layer re-projection of the existing factorial and a construct-level
+test across Bandit, counterbalanced X/Y Foraging, counterbalanced M/N
+Solvability, an M/N non-persistence control, and an M/N externally
+rule-determined PROCEED/END control. The primary direction is learned with
+equal task weight on Bandit+Foraging and frozen before Solvability. Exact
+semantic-history label replays isolate raw-token mapping effects.
 
 Before either extension, verify that the retained sprint baseline has not
 drifted:
@@ -176,6 +179,20 @@ python -m analysis.check_baseline_regression
 ```
 
 Held-out transfer thresholds are frozen in `config/cross_task_experiment.yaml`.
+
+```bash
+TRACK_B_RUN_ID=track_b_shared_v3 TRACK_B_SHARDS=4 bash scripts/submit_track_b.sh
+```
+
+If and only if that run is classified as strong or partial *shared* transfer,
+submit Solvability-validation-calibrated causal transfer:
+
+```bash
+TRACK_B_RUN_ID=track_b_shared_v3 TRACK_B_CAUSAL_SHARDS=8 \
+  bash scripts/submit_track_b_causal.sh
+```
+
+Neither helper launches Track C mechanistic dissection.
 
 ## Smoke test
 

@@ -1,4 +1,6 @@
-"""Train the validation-selected within-foraging persistence ceiling."""
+"""Train a validation-selected task-specific persistence ceiling."""
+
+from __future__ import annotations
 
 import argparse
 import csv
@@ -7,13 +9,14 @@ import os
 import time
 
 from analysis.cross_task_integrity import require_behavioral_clearance
-from experiments.cross_task_utils import (
-    layer_dataset,
-    load_activation_shards,
-    make_or_validate_split,
+from experiments.runtime import run_metadata
+from experiments.shared_persistence_utils import (
+    activation_shape,
+    load_task_shards,
+    load_task_split,
+    semantic_layer_dataset,
 )
 from experiments.train_value_probe import parse_layers
-from experiments.runtime import run_metadata
 from interventions.ridge_probe import (
     fit_ridge_targets,
     load_ridge_probe,
@@ -22,20 +25,18 @@ from interventions.ridge_probe import (
 )
 
 
-def _write_test_rows(path: str, records: list[dict], prediction) -> None:
+def _write_predictions(path: str, data: dict, prediction) -> None:
     rows = [
         {
+            "task": record["task"],
             "episode_id": record["episode_id"],
-            "pair_id": record["pair_id"],
             "state_id": record["state_id"],
             "mapping_id": record["mapping_id"],
-            "round": record["round"],
             "persistence_logit": record["persistence_logit"],
-            "foraging_probe_prediction": float(prediction[index]),
+            "task_specific_prediction": float(prediction[index]),
         }
-        for index, record in enumerate(records)
+        for index, record in enumerate(data["records"])
     ]
-    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
@@ -44,53 +45,53 @@ def _write_test_rows(path: str, records: list[dict], prediction) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--activation-dir", default="artifacts/cross_task/foraging_activation_bank"
-    )
-    parser.add_argument(
-        "--split", default="artifacts/cross_task/foraging_episode_split.json"
-    )
-    parser.add_argument(
-        "--output-dir", default="artifacts/cross_task/foraging_probes"
-    )
+    parser.add_argument("--task", choices=("foraging", "solvability"), required=True)
+    parser.add_argument("--activation-dir", required=True)
+    parser.add_argument("--split", required=True)
+    parser.add_argument("--output-dir", required=True)
     parser.add_argument(
         "--behavioral-gate",
         default="artifacts/cross_task/behavioral/behavioral_validation_summary.json",
     )
+    parser.add_argument("--config", default="config/cross_task_experiment.yaml")
     parser.add_argument("--layers", default="all")
     parser.add_argument("--alphas", default="0.0001,0.001,0.01,0.1,1,10,100")
-    parser.add_argument("--split-seed", type=int, default=72026)
     parser.add_argument("--device", default=None)
+    parser.add_argument(
+        "--defer-test",
+        action="store_true",
+        help="freeze validation-selected ceiling without evaluating its test split",
+    )
     args = parser.parse_args()
 
-    behavioral_gate = require_behavioral_clearance(args.behavioral_gate)
-    shards = load_activation_shards(args.activation_dir)
-    if {shard["task"] for shard in shards} != {"foraging"}:
-        raise ValueError("the foraging ceiling requires a foraging activation bank")
-    split = make_or_validate_split(shards, args.split, seed=args.split_seed)
-    split_sets = {name: set(episodes) for name, episodes in split.items()}
-    if not split_sets["train"] or not split_sets["validation"] or not split_sets["test"]:
-        raise ValueError("foraging ceiling requires nonempty train/validation/test splits")
-    layer_count = int(shards[0]["activations"].shape[1])
+    import yaml
+
+    gate = require_behavioral_clearance(args.behavioral_gate)
+    with open(args.config, encoding="utf-8") as handle:
+        config = yaml.safe_load(handle)
+    shards = load_task_shards(args.task, args.activation_dir)
+    split = load_task_split(
+        args.task, shards, args.split, seed=int(config["split_seed"])
+    )
+    split_sets = {name: set(values) for name, values in split.items()}
+    layer_count, _ = activation_shape(shards)
     layers = parse_layers(args.layers, layer_count)
     alphas = tuple(float(value) for value in args.alphas.split(","))
     os.makedirs(args.output_dir, exist_ok=True)
-
     provenance = run_metadata(
         {
-            "model": shards[0].get("model_id", "unknown"),
-            "experiment": "foraging_specific_persistence_ceiling",
+            "experiment": "task_specific_persistence_ceiling",
+            "task": args.task,
             "activation_dir": os.path.abspath(args.activation_dir),
             "split": os.path.abspath(args.split),
         }
     )
+
     summaries, started = [], time.perf_counter()
     for layer in layers:
-        train = layer_dataset(
-            shards, layer, split_sets["train"], target_key="persistence_logit"
-        )
-        validation = layer_dataset(
-            shards, layer, split_sets["validation"], target_key="persistence_logit"
+        train = semantic_layer_dataset(args.task, shards, layer, split_sets["train"])
+        validation = semantic_layer_dataset(
+            args.task, shards, layer, split_sets["validation"]
         )
         probes, fit = fit_ridge_targets(
             train["states"],
@@ -104,7 +105,6 @@ def main() -> None:
         summary = {
             "layer": layer,
             "alpha": probe.alpha,
-            "solver": fit["solver"],
             "validation": regression_metrics(
                 probe.predict(validation["states"]), validation["target"]
             ),
@@ -116,7 +116,7 @@ def main() -> None:
             probe,
             {
                 "layer": layer,
-                "task": "foraging",
+                "task": args.task,
                 "fit": fit,
                 "metrics": summary,
                 "split_path": os.path.abspath(args.split),
@@ -124,7 +124,7 @@ def main() -> None:
             },
         )
         print(
-            f"foraging ridge layer {layer}: validation R2="
+            f"{args.task} layer {layer}: validation R2="
             f"{summary['validation']['r_squared']:.4f}",
             flush=True,
         )
@@ -134,10 +134,13 @@ def main() -> None:
         args.output_dir, f"layer_{best['layer']:02d}_persistence.pt"
     )
     probe, payload = load_ridge_probe(source)
-    test = layer_dataset(
-        shards, best["layer"], split_sets["test"], target_key="persistence_logit"
-    )
-    selected_test = regression_metrics(probe.predict(test["states"]), test["target"])
+    selected_test = None
+    if not args.defer_test:
+        test = semantic_layer_dataset(
+            args.task, shards, best["layer"], split_sets["test"]
+        )
+        test_prediction = probe.predict(test["states"])
+        selected_test = regression_metrics(test_prediction, test["target"])
     save_ridge_probe(
         os.path.join(args.output_dir, "frozen_best_persistence.pt"),
         probe,
@@ -146,33 +149,33 @@ def main() -> None:
             "selected_layer": best["layer"],
             "selection_metric": "validation_r_squared",
             "selected_test": selected_test,
+            "test_evaluation_deferred": args.defer_test,
         },
     )
-    _write_test_rows(
-        os.path.join(args.output_dir, "test_predictions.csv"),
-        test["records"],
-        probe.predict(test["states"]),
-    )
+    if not args.defer_test:
+        _write_predictions(
+            os.path.join(args.output_dir, "test_predictions.csv"),
+            test,
+            test_prediction,
+        )
     result = {
-        "task": "foraging",
-        "target": "persistence_logit",
-        "split_path": os.path.abspath(args.split),
-        "split_episode_counts": {name: len(values) for name, values in split.items()},
+        "task": args.task,
+        "target": "semantic_persistence_logit",
         "best_layer": best["layer"],
         "selection_metric": "validation_r_squared",
         "selected_test": selected_test,
+        "test_evaluation_deferred": args.defer_test,
         "layers": summaries,
+        "split_episode_counts": {name: len(values) for name, values in split.items()},
         "runtime_seconds": time.perf_counter() - started,
-        "provenance": provenance,
         "development_behavioral_gate": {
             "path": os.path.abspath(args.behavioral_gate),
-            "passed": behavioral_gate["passed"],
-            "test_episodes_inspected": behavioral_gate["test_episodes_inspected"],
+            "passed": gate["passed"],
+            "test_episodes_inspected": gate["test_episodes_inspected"],
         },
+        "provenance": provenance,
     }
-    with open(
-        os.path.join(args.output_dir, "metrics.json"), "w", encoding="utf-8"
-    ) as handle:
+    with open(os.path.join(args.output_dir, "metrics.json"), "w", encoding="utf-8") as handle:
         json.dump(result, handle, indent=2, sort_keys=True)
         handle.write("\n")
 

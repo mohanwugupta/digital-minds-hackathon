@@ -1,4 +1,4 @@
-"""Replay cross-task test states under bandit persistence steering."""
+"""Replay held-out persistence or binary-control states under frozen steering."""
 
 import argparse
 import csv
@@ -98,7 +98,11 @@ def _append(path: str, rows: list[dict]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--task", choices=("foraging", "control"), required=True)
+    parser.add_argument(
+        "--task",
+        choices=("foraging", "solvability", "control", "terminality"),
+        required=True,
+    )
     parser.add_argument("--model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--activation-dir", default=None)
     parser.add_argument("--split", default=None)
@@ -134,7 +138,7 @@ def main() -> None:
     with open(args.calibration, encoding="utf-8") as handle:
         calibration = json.load(handle)
     if calibration.get("status") != "valid":
-        raise ValueError("foraging validation calibration is not valid")
+        raise ValueError("cross-task validation calibration is not valid")
     probe, payload = load_ridge_probe(calibration["probe_path"])
     layer = probe_layer(payload, calibration["probe_path"])
     if layer != int(calibration["layer"]):
@@ -144,22 +148,20 @@ def main() -> None:
     if abs(observed_rms - float(calibration["relative_rms"])) > 1e-5:
         raise ValueError("reconstructed intervention does not match calibration")
 
-    bank = args.activation_dir or (
-        "artifacts/cross_task/foraging_activation_bank"
-        if args.task == "foraging"
-        else "artifacts/cross_task/control_activation_bank"
-    )
-    split_path = args.split or (
-        "artifacts/cross_task/foraging_episode_split.json"
-        if args.task == "foraging"
-        else "artifacts/cross_task/control_episode_split.json"
-    )
+    bank = args.activation_dir or f"artifacts/cross_task/{args.task}_activation_bank"
+    split_path = args.split or f"artifacts/cross_task/{args.task}_episode_split.json"
     output = args.output or f"artifacts/cross_task/causal/{args.task}_replays.csv"
     shards = load_activation_shards(bank)
     split = make_or_validate_split(
         shards, split_path, seed=int(config["split_seed"])
     )
-    target_key = "persistence_logit" if args.task == "foraging" else "choice_logit"
+    target_key = (
+        "persistence_logit"
+        if args.task in {"foraging", "solvability"}
+        else "terminality_logit"
+        if args.task == "terminality"
+        else "choice_logit"
+    )
     data = layer_dataset(shards, layer, set(split["test"]), target_key=target_key)
     records = sorted(data["records"], key=lambda row: row["state_id"])
     if args.maximum_states > 0:
@@ -195,8 +197,16 @@ def main() -> None:
             "split": split_path,
             "output": output,
             "selected_test_states": len(records),
-            "foraging_validation_calibration_frozen": True,
-            "semantic_positive": "STAY" if args.task == "foraging" else "LEFT_GREATER",
+            "validation_calibration_frozen": True,
+            "semantic_positive": (
+                "STAY"
+                if args.task == "foraging"
+                else "TRY_AGAIN"
+                if args.task == "solvability"
+                else "PROCEED"
+                if args.task == "terminality"
+                else "LEFT_GREATER"
+            ),
         },
         model,
     )

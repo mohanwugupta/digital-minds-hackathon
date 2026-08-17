@@ -5,14 +5,90 @@ analysis_seed: 82026
 
 collection:
   response_labels: [X, Y]
-  foraging_episodes: 384
-  control_episodes: 384
+  foraging_response_labels: [X, Y]
+  solvability_response_labels: [M, N]
+  control_response_labels: [M, N]
+  terminality_response_labels: [M, N]
+  foraging_episodes: 768
+  solvability_episodes: 768
+  control_episodes: 768
+  terminality_episodes: 768
   max_foraging_decisions: 20
+  max_solvability_attempts: 8
   initial_qualities: [0.35, 0.55, 0.75]
   depletions: [0.05, 0.12]
   outside_options: [0, 2]
   stay_costs: [0, 1]
   food_reward: 4
+  progress_probabilities: [0.2, 0.5, 0.8]
+  attempt_costs: [0, 1]
+  give_up_values: [0, 2]
+
+cross_task_power:
+  bandit_reference_layer: 15
+  attenuation_fractions: [0.15, 0.20, 0.25]
+  desired_power: 0.80
+  minimum_underlying_pairs: 300
+  maximum_underlying_pairs: 400
+
+solvability_behavioral_validation:
+  minimum_development_episodes: 300
+  minimum_development_states: 400
+  minimum_mean_episode_decisions: 1.25
+  minimum_persistence_logit_sd: 0.25
+  minimum_persistence_probability_interdecile_range: 0.15
+  semantic_persistence_rate_bounds: [0.10, 0.90]
+  episode_disengagement_rate_bounds: [0.20, 0.98]
+  maximum_initial_mapping_probability_gap: 0.20
+  minimum_expected_logit_effect: 0.05
+
+# Primary construct-level test. The layer, ridge penalty, activation moments,
+# target moments, and direction are learned from Bandit + Foraging only.
+# Solvability is never used for direction discovery or selection.
+shared_persistence_transfer:
+  protocol_version: shared_construct_v3
+  primary_discovery_tasks: [bandit, foraging]
+  primary_heldout_task: solvability
+  primary_metric: strict_zero_shot_correlation
+  target: per_task_train_standardized_semantic_persistence_logit
+  task_weighting: equal_macro_weight
+  uncertainty_cluster: counterbalanced_pair_else_episode
+  layers: all
+  alphas: [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0]
+  matched_random_directions: 100
+  source_task_matched_random_directions: 100
+  episode_bootstrap_samples: 2000
+  strong_transfer_ceiling_fraction: 0.50
+  negative_control_max_absolute_correlation: 0.10
+  negative_control_relative_correlation_fraction: 0.50
+  matched_label_max_projection_difference_sd: 0.25
+  matched_label_max_target_difference_sd: 0.50
+  primary_required_checks:
+    - expected_direction
+    - label_reversal_consistency
+    - exceeds_random_95th_percentile
+    - negative_control_absent_or_weaker
+    - terminality_control_absent_or_weaker
+  leave_one_task_out_folds:
+    - discovery: [bandit, foraging]
+      heldout: solvability
+    - discovery: [bandit, solvability]
+      heldout: foraging
+    - discovery: [foraging, solvability]
+      heldout: bandit
+
+# Frozen before any held-out cross-task test is evaluated. These checks are
+# computed on train+validation episodes only and gate probe/test execution.
+behavioral_validation:
+  minimum_development_episodes: 300
+  minimum_development_states: 400
+  minimum_mean_episode_decisions: 1.25
+  minimum_persistence_logit_sd: 0.25
+  minimum_p_stay_interdecile_range: 0.15
+  semantic_stay_rate_bounds: [0.10, 0.90]
+  episode_leave_rate_bounds: [0.20, 0.98]
+  maximum_initial_mapping_p_stay_gap: 0.20
+  minimum_expected_economic_logit_effect: 0.05
 
 representational_transfer:
   primary: strict_zero_shot_bandit_standardization_and_weights
@@ -33,3 +109,23 @@ causal_transfer:
   max_relative_rms: 0.25
   matched_random_directions: 20
   episode_bootstrap_samples: 2000
+  baseline_tolerance: 0.0001
+  negative_control_max_absolute_probability_effect: 0.05
+  negative_control_relative_effect_fraction: 0.50
+  required_checks:
+    - decoded_quantity_ordered
+    - zero_steering_reproduces_baseline
+    - behavior_monotonic
+    - episode_bootstrap_effect_positive
+    - exceeds_random_directions
+    - survives_label_reversal
+    - negative_control_specificity
+  shared_required_checks:
+    - decoded_quantity_ordered
+    - zero_steering_reproduces_baseline
+    - behavior_monotonic
+    - episode_bootstrap_effect_positive
+    - exceeds_random_directions
+    - survives_label_reversal
+    - negative_control_specificity
+    - terminality_control_specificity

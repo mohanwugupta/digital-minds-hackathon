@@ -75,7 +75,7 @@ def test_binary_causal_replay_reuses_zero_and_orders_frozen_projection():
     assert by_alpha[-1]["probe_value_post"] < by_alpha[0]["probe_value_post"] < by_alpha[1]["probe_value_post"]
 
 
-def synthetic_causal_rows():
+def synthetic_causal_rows(target_effect=0.1):
     rows = []
     for episode in range(12):
         mapping = "stay_x" if episode % 2 == 0 else "stay_y"
@@ -85,7 +85,7 @@ def synthetic_causal_rows():
             ("random", tuple(f"random_{index:02d}" for index in range(20))),
         ):
             for control_id in ids:
-                effect = 0.1 if control_type == "target" else 0.001
+                effect = target_effect if control_type == "target" else 0.001
                 for alpha in (-1.0, 0.0, 1.0):
                     rows.append(
                         {
@@ -111,7 +111,13 @@ def synthetic_causal_rows():
 
 
 def test_causal_analysis_requires_all_cross_task_controls():
-    result = analyze(synthetic_causal_rows(), bootstrap_samples=20)
+    result = analyze(
+        synthetic_causal_rows(),
+        synthetic_causal_rows(target_effect=0.005),
+        bootstrap_samples=20,
+        expected_random_directions=20,
+        require_negative_control=True,
+    )
 
     assert result["classification"] == "causal_transfer"
     assert all(result["criteria"].values())

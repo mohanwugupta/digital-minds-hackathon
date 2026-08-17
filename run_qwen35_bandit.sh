@@ -40,9 +40,15 @@ CROSS_TASK_MAXIMUM_STATES="${CROSS_TASK_MAXIMUM_STATES:-0}"
 LAYERWISE_NUM_SHARDS="${LAYERWISE_NUM_SHARDS:-1}"
 LAYERWISE_SHARD_INDEX="${LAYERWISE_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
 TRACK_A_RUN_ID="${TRACK_A_RUN_ID:-track_a_v1}"
+TRACK_B_RUN_ID="${TRACK_B_RUN_ID:-track_b_shared_v3}"
+TRACK_B_ROOT="artifacts/cross_task/${TRACK_B_RUN_ID}"
 
 if [[ ! "$TRACK_A_RUN_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
     echo "TRACK_A_RUN_ID may contain only letters, digits, underscores, and hyphens" >&2
+    exit 2
+fi
+if [[ ! "$TRACK_B_RUN_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
+    echo "TRACK_B_RUN_ID may contain only letters, digits, underscores, and hyphens" >&2
     exit 2
 fi
 
@@ -237,30 +243,199 @@ track_a_smoke_phase() {
 
 cross_task_collect_phase() {
   local task="$1"
+  local output_dir="${TRACK_B_ROOT}/${task}_activation_bank"
   echo "Collecting counterbalanced ${task} activation bank; shard ${CROSS_TASK_SHARD_INDEX}/${CROSS_TASK_NUM_SHARDS}"
   python -m experiments.collect_cross_task_activations \
     --task "$task" \
     --model "$MODEL_PATH" \
+    --output-dir "$output_dir" \
     --num-shards "$CROSS_TASK_NUM_SHARDS" \
     --shard-index "$CROSS_TASK_SHARD_INDEX"
+}
+
+cross_task_power_phase() {
+  echo "Running prospective independent-pair power check before Track B collection"
+  python -m analysis.cross_task_power \
+    --output "${TRACK_B_ROOT}/prospective_power.json"
+}
+
+cross_task_matched_label_phase() {
+  local task="$1"
+  echo "Replaying exact matched ${task} semantic histories under both label mappings; shard ${CROSS_TASK_SHARD_INDEX}/${CROSS_TASK_NUM_SHARDS}"
+  python -m experiments.collect_matched_label_replays \
+    --task "$task" \
+    --model "$MODEL_PATH" \
+    --activation-dir "${TRACK_B_ROOT}/${task}_activation_bank" \
+    --split "${TRACK_B_ROOT}/${task}_episode_split.json" \
+    --output-dir "${TRACK_B_ROOT}/${task}_matched_label_bank" \
+    --maximum-states "$CROSS_TASK_MAXIMUM_STATES" \
+    --num-shards "$CROSS_TASK_NUM_SHARDS" \
+    --shard-index "$CROSS_TASK_SHARD_INDEX"
+}
+
+cross_task_behavioral_validate_phase() {
+  echo "Auditing all tasks and validating Foraging + Solvability behavior on development episodes only"
+  python -m analysis.validate_cross_task_behavior \
+    --foraging-bank "${TRACK_B_ROOT}/foraging_activation_bank" \
+    --solvability-bank "${TRACK_B_ROOT}/solvability_activation_bank" \
+    --control-bank "${TRACK_B_ROOT}/control_activation_bank" \
+    --terminality-bank "${TRACK_B_ROOT}/terminality_activation_bank" \
+    --foraging-split "${TRACK_B_ROOT}/foraging_episode_split.json" \
+    --solvability-split "${TRACK_B_ROOT}/solvability_episode_split.json" \
+    --output-dir "${TRACK_B_ROOT}/behavioral"
+}
+
+cross_task_train_ceiling_phase() {
+  local task="$1"
+  python -m experiments.train_task_persistence_probes \
+    --task "$task" \
+    --activation-dir "${TRACK_B_ROOT}/${task}_activation_bank" \
+    --split "${TRACK_B_ROOT}/${task}_episode_split.json" \
+    --behavioral-gate "${TRACK_B_ROOT}/behavioral/behavioral_validation_summary.json" \
+    --output-dir "${TRACK_B_ROOT}/${task}_probes" \
+    --defer-test
+}
+
+cross_task_train_shared_phase() {
+  python -m experiments.train_shared_persistence \
+    --foraging-bank "${TRACK_B_ROOT}/foraging_activation_bank" \
+    --foraging-split "${TRACK_B_ROOT}/foraging_episode_split.json" \
+    --solvability-bank "${TRACK_B_ROOT}/solvability_activation_bank" \
+    --solvability-split "${TRACK_B_ROOT}/solvability_episode_split.json" \
+    --behavioral-gate "${TRACK_B_ROOT}/behavioral/behavioral_validation_summary.json" \
+    --output-dir "${TRACK_B_ROOT}/shared_probes"
+}
+
+cross_task_shared_representational_phase() {
+  python -m analysis.analyze_shared_persistence_transfer \
+    --shared-probe-dir "${TRACK_B_ROOT}/shared_probes" \
+    --foraging-bank "${TRACK_B_ROOT}/foraging_activation_bank" \
+    --foraging-split "${TRACK_B_ROOT}/foraging_episode_split.json" \
+    --solvability-bank "${TRACK_B_ROOT}/solvability_activation_bank" \
+    --solvability-split "${TRACK_B_ROOT}/solvability_episode_split.json" \
+    --control-bank "${TRACK_B_ROOT}/control_activation_bank" \
+    --control-split "${TRACK_B_ROOT}/control_episode_split.json" \
+    --terminality-bank "${TRACK_B_ROOT}/terminality_activation_bank" \
+    --terminality-split "${TRACK_B_ROOT}/terminality_episode_split.json" \
+    --foraging-label-bank "${TRACK_B_ROOT}/foraging_matched_label_bank" \
+    --solvability-label-bank "${TRACK_B_ROOT}/solvability_matched_label_bank" \
+    --foraging-probe-dir "${TRACK_B_ROOT}/foraging_probes" \
+    --solvability-probe-dir "${TRACK_B_ROOT}/solvability_probes" \
+    --behavioral-gate "${TRACK_B_ROOT}/behavioral/behavioral_validation_summary.json" \
+    --output-dir "${TRACK_B_ROOT}/shared_transfer"
+}
+
+cross_task_bandit_diagnostic_phase() {
+  python -m analysis.analyze_cross_task_transfer \
+    --foraging-bank "${TRACK_B_ROOT}/foraging_activation_bank" \
+    --control-bank "${TRACK_B_ROOT}/control_activation_bank" \
+    --foraging-split "${TRACK_B_ROOT}/foraging_episode_split.json" \
+    --control-split "${TRACK_B_ROOT}/control_episode_split.json" \
+    --foraging-probe "${TRACK_B_ROOT}/foraging_probes/frozen_best_persistence.pt" \
+    --behavioral-gate "${TRACK_B_ROOT}/behavioral/behavioral_validation_summary.json" \
+    --output-dir "${TRACK_B_ROOT}/transfer"
+}
+
+cross_task_causal_calibrate_phase() {
+  python -m experiments.calibrate_shared_persistence_steering \
+    --activation-dir "${TRACK_B_ROOT}/solvability_activation_bank" \
+    --split "${TRACK_B_ROOT}/solvability_episode_split.json" \
+    --probe "${TRACK_B_ROOT}/shared_probes/frozen_primary.pt" \
+    --representational-summary "${TRACK_B_ROOT}/shared_transfer/shared_persistence_transfer_summary.json" \
+    --output "${TRACK_B_ROOT}/causal/calibration.json"
 }
 
 cross_task_causal_collect_phase() {
   local task="$1"
   local output
   if [ "$CROSS_TASK_NUM_SHARDS" -eq 1 ]; then
-    output="artifacts/cross_task/causal/${task}_replays.csv"
+    output="${TRACK_B_ROOT}/causal/${task}_replays.csv"
   else
-    printf -v output "artifacts/cross_task/causal/${task}_replays_shard_%03d.csv" "$CROSS_TASK_SHARD_INDEX"
+    printf -v output "%s/causal/%s_replays_shard_%03d.csv" "$TRACK_B_ROOT" "$task" "$CROSS_TASK_SHARD_INDEX"
   fi
   echo "Collecting ${task} cross-task causal replays; shard ${CROSS_TASK_SHARD_INDEX}/${CROSS_TASK_NUM_SHARDS}"
   python -m experiments.run_cross_task_steering \
     --task "$task" \
     --model "$MODEL_PATH" \
+    --activation-dir "${TRACK_B_ROOT}/${task}_activation_bank" \
+    --split "${TRACK_B_ROOT}/${task}_episode_split.json" \
+    --calibration "${TRACK_B_ROOT}/causal/calibration.json" \
     --maximum-states "$CROSS_TASK_MAXIMUM_STATES" \
     --num-shards "$CROSS_TASK_NUM_SHARDS" \
     --shard-index "$CROSS_TASK_SHARD_INDEX" \
     --output "$output"
+}
+
+cross_task_causal_analyze_phase() {
+  python -m analysis.analyze_shared_persistence_causal \
+    --solvability-input "${TRACK_B_ROOT}/causal/solvability_replays*.csv" \
+    --control-input "${TRACK_B_ROOT}/causal/control_replays*.csv" \
+    --terminality-input "${TRACK_B_ROOT}/causal/terminality_replays*.csv" \
+    --solvability-bank "${TRACK_B_ROOT}/solvability_activation_bank" \
+    --control-bank "${TRACK_B_ROOT}/control_activation_bank" \
+    --terminality-bank "${TRACK_B_ROOT}/terminality_activation_bank" \
+    --solvability-split "${TRACK_B_ROOT}/solvability_episode_split.json" \
+    --control-split "${TRACK_B_ROOT}/control_episode_split.json" \
+    --terminality-split "${TRACK_B_ROOT}/terminality_episode_split.json" \
+    --calibration "${TRACK_B_ROOT}/causal/calibration.json" \
+    --representational-summary "${TRACK_B_ROOT}/shared_transfer/shared_persistence_transfer_summary.json" \
+    --output-dir "${TRACK_B_ROOT}/causal/publication"
+}
+
+track_b_tests_phase() {
+  echo "Running Track B unit, integration, and frozen-baseline gates"
+  python -m pytest -q \
+    tests/test_baseline_regression_manifest.py \
+    tests/test_binary_action_tokens.py \
+    tests/test_causal_ridge_steering.py \
+    tests/test_replay_matching.py \
+    tests/test_cross_task_environment.py \
+    tests/test_cross_task_collection.py \
+    tests/test_cross_task_transfer.py \
+    tests/test_cross_task_causal.py \
+    tests/test_track_b_critical.py \
+    tests/test_shared_persistence_critical.py \
+    tests/test_new_direction_controls.py \
+    tests/test_shared_ridge_probe.py
+  python -m analysis.check_baseline_regression
+}
+
+track_b_smoke_phase() {
+  local smoke_id="${SLURM_JOB_ID:-manual}"
+  local smoke_root="artifacts/track_b_smoke_${smoke_id}"
+  echo "Running counterbalanced real-model Track B smoke into ${smoke_root}"
+  python -m experiments.check_cross_task_compatibility \
+    --model "$MODEL_PATH" \
+    --output "${smoke_root}/compatibility.json"
+  python -m experiments.collect_cross_task_activations \
+    --task foraging --model "$MODEL_PATH" --episodes 16 --max-decisions 2 \
+    --output-dir "${smoke_root}/foraging_activation_bank"
+  python -m experiments.collect_cross_task_activations \
+    --task solvability --model "$MODEL_PATH" --episodes 16 --max-attempts 2 \
+    --output-dir "${smoke_root}/solvability_activation_bank"
+  python -m experiments.collect_cross_task_activations \
+    --task control --model "$MODEL_PATH" --episodes 16 \
+    --output-dir "${smoke_root}/control_activation_bank"
+  python -m experiments.collect_cross_task_activations \
+    --task terminality --model "$MODEL_PATH" --episodes 16 \
+    --output-dir "${smoke_root}/terminality_activation_bank"
+  python -m analysis.validate_cross_task_behavior \
+    --foraging-bank "${smoke_root}/foraging_activation_bank" \
+    --solvability-bank "${smoke_root}/solvability_activation_bank" \
+    --control-bank "${smoke_root}/control_activation_bank" \
+    --terminality-bank "${smoke_root}/terminality_activation_bank" \
+    --output-dir "${smoke_root}/audit" \
+    --integrity-only
+  python -m experiments.smoke_shared_persistence \
+    --foraging-bank "${smoke_root}/foraging_activation_bank" \
+    --solvability-bank "${smoke_root}/solvability_activation_bank" \
+    --control-bank "${smoke_root}/control_activation_bank" \
+    --terminality-bank "${smoke_root}/terminality_activation_bank" \
+    --output-dir "${smoke_root}/shared"
+  test -s "${smoke_root}/compatibility.json"
+  test -s "${smoke_root}/audit/cross_task_integrity_summary.json"
+  test -s "${smoke_root}/shared/shared_pipeline_smoke_summary.json"
+  echo "Track B real-model smoke passed"
 }
 
 case "$PHASE" in
@@ -345,31 +520,72 @@ case "$PHASE" in
     track_a_smoke_phase
     ;;
   cross_task_compatibility)
-    python -m experiments.check_cross_task_compatibility --model "$MODEL_PATH"
+    python -m experiments.check_cross_task_compatibility \
+      --model "$MODEL_PATH" \
+      --output "${TRACK_B_ROOT}/compatibility.json"
+    ;;
+  cross_task_power)
+    cross_task_power_phase
     ;;
   cross_task_collect_foraging)
     cross_task_collect_phase foraging
     ;;
+  cross_task_collect_solvability)
+    cross_task_collect_phase solvability
+    ;;
   cross_task_collect_control)
     cross_task_collect_phase control
     ;;
+  cross_task_collect_terminality)
+    cross_task_collect_phase terminality
+    ;;
+  cross_task_matched_label_foraging)
+    cross_task_matched_label_phase foraging
+    ;;
+  cross_task_matched_label_solvability)
+    cross_task_matched_label_phase solvability
+    ;;
+  cross_task_behavioral_validate)
+    cross_task_behavioral_validate_phase
+    ;;
   cross_task_train_ceiling)
-    python -m experiments.train_foraging_probes
+    cross_task_train_ceiling_phase foraging
+    ;;
+  cross_task_train_foraging_ceiling)
+    cross_task_train_ceiling_phase foraging
+    ;;
+  cross_task_train_solvability_ceiling)
+    cross_task_train_ceiling_phase solvability
+    ;;
+  cross_task_train_shared)
+    cross_task_train_shared_phase
+    ;;
+  cross_task_shared_representational)
+    cross_task_shared_representational_phase
     ;;
   cross_task_representational)
-    python -m analysis.analyze_cross_task_transfer
+    cross_task_bandit_diagnostic_phase
     ;;
   cross_task_causal_calibrate)
-    python -m experiments.calibrate_cross_task_steering
+    cross_task_causal_calibrate_phase
     ;;
-  cross_task_causal_foraging)
-    cross_task_causal_collect_phase foraging
+  cross_task_causal_solvability)
+    cross_task_causal_collect_phase solvability
     ;;
   cross_task_causal_control)
     cross_task_causal_collect_phase control
     ;;
+  cross_task_causal_terminality)
+    cross_task_causal_collect_phase terminality
+    ;;
   cross_task_causal_analyze)
-    python -m analysis.analyze_cross_task_causal
+    cross_task_causal_analyze_phase
+    ;;
+  track_b_tests)
+    track_b_tests_phase
+    ;;
+  track_b_smoke)
+    track_b_smoke_phase
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2

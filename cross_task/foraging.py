@@ -200,6 +200,7 @@ def episode_conditions(
     depletions=(0.05, 0.12),
     outside_options=(0, 2),
     stay_costs=(0, 1),
+    labels=("X", "Y"),
 ):
     cells = (
         ForagingCondition(float(quality), float(depletion), int(outside), int(cost))
@@ -207,7 +208,7 @@ def episode_conditions(
             initial_qualities, depletions, outside_options, stay_costs
         )
     )
-    mappings = counterbalanced_mappings(STAY, LEAVE)
+    mappings = counterbalanced_mappings(STAY, LEAVE, tuple(labels))
     for pair_index, condition in stable_balanced_pairs(cells, n_episodes, base_seed):
         pair_id = f"foraging-pair-{base_seed + pair_index:07d}"
         environment_seed = base_seed + pair_index

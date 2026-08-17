@@ -1,0 +1,371 @@
+Yes. This now matches the scientific construct much better. I would greenlight it, but I would make **five changes before spending significant compute**. Two are important enough that I would fix them first.
+
+The central logic is now right:
+
+[
+\text{Bandit operationalization}
++
+\text{Foraging operationalization}
+]
+
+[
+\Downarrow
+]
+
+[
+\text{learn whatever is common between them}
+]
+
+[
+\Downarrow
+]
+
+[
+\boxed{\text{predict persistence in untouched Solvability task}}
+]
+
+That is much closer to a genuine test of a general persistence representation than asking whether your original (A/B-C) vector transfers.
+
+### 1. Add a **terminality negative control**, not just an arbitrary binary-choice control
+
+This is the biggest remaining issue.
+
+The number-comparison M/N control answers:
+
+> Is this merely a generic binary-decision direction?
+
+Good. But Bandit, Foraging, and Solvability presumably all share another structural feature:
+
+> **one semantic action continues the interaction and the other terminates it.**
+
+The shared probe could therefore learn a generic:
+
+[
+\text{CONTINUE INTERACTION} \leftrightarrow \text{TERMINATE INTERACTION}
+]
+
+representation without representing *goal persistence*.
+
+I would add a control task where the model is instructed by an external rule whether the interaction should continue or terminate, but there is **no decision about whether continued goal pursuit is worthwhile**.
+
+For example:
+
+> If the displayed number is even, choose the action that proceeds to another trial.
+> If it is odd, choose the action that ends the trial.
+
+Counterbalance M/N exactly as elsewhere.
+
+Then ask whether the shared direction predicts:
+
+[
+\text{externally specified CONTINUE vs END}.
+]
+
+Ideally:
+
+* strong on Bandit/Foraging/Solvability persistence;
+* weak on arbitrary binary choice;
+* **weak on rule-determined terminality**.
+
+That substantially strengthens what “persistence-specific” means.
+
+---
+
+### 2. Make the label-counterbalancing comparison use **matched semantic histories**
+
+This line concerns me slightly:
+
+> “Both episodes share the same condition, environment seed, and action-sampling seed.”
+
+That does **not necessarily guarantee identical trajectories**.
+
+Suppose token bias causes slightly different probabilities under the two mappings. Using the same uniform random draw can then produce:
+
+[
+X=\text{STAY mapping} \rightarrow STAY
+]
+
+but
+
+[
+X=\text{LEAVE mapping} \rightarrow LEAVE.
+]
+
+From that moment onward, the histories differ. Then differences attributed to label mapping are partly differences in experience.
+
+For the strongest label-geometry control, I would have a set of **paired replay states** where:
+
+* semantic actions are identical;
+* outcomes are identical;
+* cumulative rewards are identical;
+* decision number is identical;
+* environmental state is identical;
+
+and only:
+
+[
+X \leftrightarrow Y
+]
+
+mapping changes.
+
+You can still use organically sampled trajectories for the primary behavioral dataset. But the label-invariance test itself should ideally operate on exactly matched semantic states.
+
+---
+
+### 3. Require the “shared” probe to actually work in **both source tasks**
+
+Equal loss weighting is good, but imagine validation gives:
+
+[
+R^2_{\text{Bandit}}=.80
+]
+
+and
+
+[
+R^2_{\text{Foraging}}=.03.
+]
+
+The average could still select a direction dominated by Bandit. Calling that a Bandit+Foraging **shared** representation would be misleading.
+
+I would add a source-task gate:
+
+> A candidate shared layer/direction must predict persistence in the expected direction in **both Bandit and Foraging validation data**.
+
+You could select hyperparameters using average task-balanced performance, but require a minimum positive performance in each source task.
+
+Even something simple like:
+
+[
+R^2_B > 0
+\quad\text{and}\quad
+R^2_F > 0
+]
+
+plus both exceeding matched random directions would be better than average performance alone.
+
+I would also report:
+
+[
+R^2_B,\quad R^2_F
+]
+
+separately rather than only pooled shared-probe performance.
+
+---
+
+### 4. Be careful with the “all three leave-one-task-out folds”
+
+The primary experiment is especially clean because:
+
+[
+\text{Bandit + Foraging}
+\rightarrow
+\boxed{\text{untouched Solvability}}
+]
+
+was specified **before seeing Solvability test results**.
+
+Keep that as the confirmatory test.
+
+Once you open Solvability and then run:
+
+[
+\text{Bandit + Solvability}\rightarrow\text{Foraging}
+]
+
+and
+
+[
+\text{Foraging + Solvability}\rightarrow\text{Bandit},
+]
+
+those are useful robustness analyses, but they don't have the same pristine status.
+
+I'd label:
+
+**Primary confirmatory**
+[
+B+F\rightarrow S
+]
+
+**Secondary leave-one-task-out robustness**
+[
+B+S\rightarrow F
+]
+
+[
+F+S\rightarrow B.
+]
+
+If all three work, excellent. But don't let reporting all three blur why the first one is especially strong.
+
+---
+
+### 5. I might increase the number of independent Foraging pairs
+
+384 episodes sounds large, but because they're 192 counterbalanced pairs and you're doing ~70/15/15 splitting, the test set is only around:
+
+[
+192\times .15 \approx 29
+]
+
+independent paired clusters.
+
+You'll have many decision states, but the actual independent experimental units for clustered inference are relatively few.
+
+That's probably enough to detect a large effect, but this is a **gating experiment** where a moderate effect is scientifically important. If model inference is affordable, I'd prefer something like 300–400 underlying pairs rather than 192, especially for the held-out tasks.
+
+The same concern applies even more strongly to causal steering, random-direction comparisons, and label-interaction tests.
+
+I wouldn't delay everything over this, but I'd run a quick power/simulation check using your existing Bandit effect sizes before freezing N.
+
+---
+
+## The Foraging task itself looks good
+
+I particularly like the design because persistence can respond to several conceptually sensible determinants without explicitly telling the model about its latent state:
+
+[
+p_{\text{initial}},
+\quad
+\text{depletion},
+\quad
+\text{search cost},
+\quad
+\text{outside option}.
+]
+
+And because initial quality/depletion must be inferred from observations, it's genuinely different from your explicit STOP × CONTINUE manipulation.
+
+The behavioral gates also make sense:
+
+[
+\text{higher search cost}
+\Rightarrow
+\text{less STAY}
+]
+
+and
+
+[
+\text{better outside option}
+\Rightarrow
+\text{less STAY}.
+]
+
+Those establish that the task elicits something recognizable as adaptive persistence rather than arbitrary X/Y preference.
+
+One thing I'd ensure is that those gates are assessed entirely on **development/train-validation data**, which it sounds like they are.
+
+---
+
+## I especially like the new shared-probe formulation
+
+This is the conceptual improvement:
+
+For Bandit:
+
+[
+D_B=
+\log\left(e^{z_A}+e^{z_B}\right)-z_C
+]
+
+For Foraging:
+
+[
+D_F=z_{\text{STAY}}-z_{\text{LEAVE}}.
+]
+
+Standardize each target within its own training data:
+
+[
+\tilde D_B,\qquad\tilde D_F
+]
+
+and fit one direction:
+
+[
+d_{\text{shared}}^\top h
+\approx
+\tilde D.
+]
+
+Because Bandit and Foraging receive equal task weight, the probe is being asked:
+
+> **What linear feature in activation space covaries with the semantic tendency to continue across both operationalizations?**
+
+Then the real test is:
+
+[
+d_{\text{shared}}^\top
+h_{\text{Solvability}}
+\overset{?}{\longrightarrow}
+D_{\text{Solvability}}
+]
+
+without Solvability helping determine:
+
+* (d),
+* layer,
+* (\alpha),
+* activation normalization,
+* target normalization,
+* or thresholds.
+
+**That's the right experiment.**
+
+And if that subsequently survives causal steering:
+
+[
++d_{\text{shared}}
+\Rightarrow
+\text{more TRY AGAIN}
+]
+
+[
+-d_{\text{shared}}
+\Rightarrow
+\text{more GIVE UP},
+]
+
+while not affecting arbitrary decisions or rule-determined termination, I'd be comfortable saying you have evidence for:
+
+> **a linear representation associated with persistence that generalizes across multiple task operationalizations in Qwen3.5-4B.**
+
+Not necessarily *the* persistence controller, but something much more interesting than the original bandit readout.
+
+### One final connection to Track A
+
+I would also have the shared probe search **all 32 layers** rather than privilege layer 31.
+
+Track A now gives you a very good reason for this: the bandit persistence representation is heavily transformed across depth. It is entirely plausible that the most **task-general** representation occurs around layer 15 or 20, while layers 23–31 increasingly specialize it for the task's particular output decision.
+
+So one of the most interesting possible results from Track B would actually be:
+
+[
+R^2_{\text{within-task}}
+\text{ peaks late}
+]
+
+but
+
+[
+R^2_{\text{cross-task}}
+\text{ peaks in the middle}.
+]
+
+That would suggest a hierarchy like:
+
+[
+\boxed{\text{general persistence representation}}
+\rightarrow
+\boxed{\text{task-specific persistence decision}}
+\rightarrow
+\boxed{\text{output logits}}.
+]
+
+If the implementation already selects layer using Bandit+Foraging validation across all 32 layers, then you're set up to discover exactly that.
+
+So: **yes, this is sensible and substantially closer to your actual scientific goal.** I'd fix the terminality control and exact matched-label replay before the full run; the other three are methodological strengthening rather than conceptual blockers.

@@ -23,11 +23,18 @@ def comparison_prompt(left: int, right: int, mapping: LabelMapping) -> str:
     )
 
 
-def episode_conditions(n_episodes: int, base_seed: int):
+def episode_conditions(
+    n_episodes: int,
+    base_seed: int,
+    *,
+    labels=("M", "N"),
+):
     # The placeholder cells are shuffled by the shared pairing helper; numeric
     # stimuli themselves are generated from each pair seed for exact reversal.
     pairs = stable_balanced_pairs(range(max(1, n_episodes // 2)), n_episodes, base_seed)
-    mappings = counterbalanced_mappings(LEFT_GREATER, RIGHT_GREATER)
+    mappings = counterbalanced_mappings(
+        LEFT_GREATER, RIGHT_GREATER, tuple(labels)
+    )
     for pair_index, _cell in pairs:
         pair_seed = base_seed + pair_index
         rng = random.Random(pair_seed * 2 + 113)

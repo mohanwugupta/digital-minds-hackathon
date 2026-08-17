@@ -22,6 +22,30 @@ This PRD defines:
 - **Track C:** Conditional deeper mechanistic decomposition if cross-task generalization is supported.
 - **Track D:** A later solvability/give-up paradigm as the higher-value test of generalization to persistence on difficult or impossible tasks.
 
+## Protocol amendment — shared construct discovery is now the Track B primary
+
+The original Bandit persistence probe predicts the task-specific A/B-versus-C
+logit contrast. It must therefore be treated as a candidate task-specific,
+output-adjacent representation rather than the presumed abstract construct.
+The following amendment supersedes later passages that make direct transfer of
+that exact Bandit direction the Track B gate:
+
+1. Define semantic continue-versus-disengage targets separately in Bandit,
+   Foraging, and Solvability.
+2. Standardize each target using that task's training episodes only and fit one
+   equal-task-weighted direction on Bandit+Foraging.
+3. Select its layer and ridge penalty using only Bandit+Foraging validation
+   data, freeze it, and test zero-shot prediction on never-used Solvability.
+4. Freeze and report all three leave-one-task-out folds, task-specific probe
+   ceilings and alignment, matched random directions, label reversals, and an
+   arbitrary binary-choice control.
+5. Only after the shared held-out test clears, calibrate the shared direction's
+   steering magnitude on Solvability validation states and run the held-out
+   causal test.
+
+Direct Bandit→Foraging transfer remains a useful diagnostic, but it runs after
+the shared test and cannot authorize Track B causal work or Track C.
+
 ---
 
 # 2. Core scientific question
