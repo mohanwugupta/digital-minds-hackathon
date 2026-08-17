@@ -56,10 +56,30 @@ def write_report(result: dict, path: Path) -> None:
         f"- Semantic TRY-AGAIN rate: **{solvability_behavior['semantic_persistence_choice_rate']:.3f}**.",
         f"- Mean decisions per episode: **{solvability_behavior['mean_episode_decisions']:.3f}**.",
         f"- Persistence-logit SD: **{solvability_behavior['persistence_logit_standard_deviation']:.3f}**.",
+        f"- Initial M/N semantic-persistence probability gap: **{solvability_behavior['initial_mapping_probability_gap']:.3f}** "
+        f"(diagnostic threshold **{solvability_behavior['initial_mapping_gap_diagnostic']['threshold']:.3f}**; "
+        f"passed **{solvability_behavior['initial_mapping_gap_diagnostic']['passed']}**; non-gating).",
+        "- This M/N offset remains scientifically important: the held-out test must pass within each mapping and on exact matched semantic histories.",
         "",
-        "## Preregistered checks",
+        "### Mapping-stratified Solvability behavior",
         "",
     ]
+    for mapping_id, metrics in solvability_behavior["mapping_stratified_behavior"][
+        "metrics_by_mapping"
+    ].items():
+        lines.append(
+            f"- {mapping_id}: {metrics['episodes']} episodes / {metrics['states']} states; "
+            f"TRY-AGAIN rate **{metrics['semantic_persistence_choice_rate']:.3f}**; "
+            f"mean decisions **{metrics['mean_episode_decisions']:.3f}**; "
+            f"progress/cost/fallback logit effects **{metrics['higher_progress_evidence_minus_lower']:.3f} / "
+            f"{metrics['higher_attempt_cost_minus_lower']:.3f} / "
+            f"{metrics['higher_give_up_value_minus_lower']:.3f}**."
+        )
+    lines.extend([
+        "",
+        "## Development gate checks (v3.1 amendment disclosed)",
+        "",
+    ])
     lines.extend(
         f"- {'PASS' if passed else 'FAIL'} — {name.replace('_', ' ')}"
         for name, passed in behavior["criteria"].items()
@@ -212,6 +232,10 @@ def main() -> None:
         "terminality_integrity": terminality_audit,
         "behavioral_validation": behavior,
         "solvability_behavioral_validation": solvability_behavior,
+        "protocol_amendments": [
+            behavior["protocol_amendment"],
+            solvability_behavior["protocol_amendment"],
+        ],
         # Duplicated at top level so downstream gates cannot accidentally accept
         # an all-data descriptive summary in place of this development-only gate.
         "test_episodes_inspected": bool(

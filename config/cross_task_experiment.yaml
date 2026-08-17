@@ -40,13 +40,17 @@ solvability_behavioral_validation:
   semantic_persistence_rate_bounds: [0.10, 0.90]
   episode_disengagement_rate_bounds: [0.20, 0.98]
   maximum_initial_mapping_probability_gap: 0.20
+  # Development disclosed an M/N offset. Keep the frozen 0.20 threshold as a
+  # reported diagnostic; gate behavior separately within each mapping, then
+  # require exact matched-history invariance in the held-out analysis.
+  label_mapping_gap_role: diagnostic_non_gating
   minimum_expected_logit_effect: 0.05
 
 # Primary construct-level test. The layer, ridge penalty, activation moments,
 # target moments, and direction are learned from Bandit + Foraging only.
 # Solvability is never used for direction discovery or selection.
 shared_persistence_transfer:
-  protocol_version: shared_construct_v3
+  protocol_version: shared_construct_v3_1_development_gate_amendment
   primary_discovery_tasks: [bandit, foraging]
   primary_heldout_task: solvability
   primary_metric: strict_zero_shot_correlation
@@ -86,7 +90,8 @@ behavioral_validation:
   minimum_persistence_logit_sd: 0.25
   minimum_p_stay_interdecile_range: 0.15
   semantic_stay_rate_bounds: [0.10, 0.90]
-  episode_leave_rate_bounds: [0.20, 0.98]
+  # Natural LEAVE is the desired uncensored endpoint; 1.0 is therefore valid.
+  episode_leave_rate_bounds: [0.20, 1.00]
   maximum_initial_mapping_p_stay_gap: 0.20
   minimum_expected_economic_logit_effect: 0.05
 

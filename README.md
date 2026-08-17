@@ -184,6 +184,14 @@ Held-out transfer thresholds are frozen in `config/cross_task_experiment.yaml`.
 TRACK_B_RUN_ID=track_b_shared_v3 TRACK_B_SHARDS=4 bash scripts/submit_track_b.sh
 ```
 
+If collection completed but the development gate stopped the dependency chain,
+resume without recollecting the four organic banks:
+
+```bash
+TRACK_B_RUN_ID=track_b_shared_v3 TRACK_B_SHARDS=4 \
+  bash scripts/submit_track_b_resume_after_collection.sh
+```
+
 If and only if that run is classified as strong or partial *shared* transfer,
 submit Solvability-validation-calibrated causal transfer:
 

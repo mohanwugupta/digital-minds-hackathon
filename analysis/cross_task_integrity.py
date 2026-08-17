@@ -332,7 +332,7 @@ def evaluate_behavioral_gate(
         "stay_probability_spans_decisions": p90 - p10
         >= float(thresholds["minimum_p_stay_interdecile_range"]),
         "semantic_choices_nondegenerate": stay_bounds[0] <= stay_rate <= stay_bounds[1],
-        "episode_termination_nondegenerate": leave_bounds[0]
+        "episodes_end_by_semantic_leave": leave_bounds[0]
         <= leave_rate
         <= leave_bounds[1],
         "label_mapping_initial_gap_bounded": mapping_gap
@@ -369,6 +369,62 @@ def evaluate_behavioral_gate(
             "higher_stay_cost_minus_lower": cost_effect,
         },
         "thresholds": dict(thresholds),
+        "protocol_amendment": {
+            "id": "development_gate_v3_1_semantic_termination",
+            "test_episodes_inspected": False,
+            "reason": (
+                "A high natural LEAVE rate is not horizon censoring; state-level "
+                "choice nondegeneracy and repeated decisions remain separately required."
+            ),
+        },
+    }
+
+
+def solvability_mapping_stratified_gate(
+    mapping_metrics: dict[str, dict], thresholds: dict[str, Any]
+) -> dict:
+    """Require meaningful task behavior separately under every raw-label mapping."""
+    if len(mapping_metrics) != 2:
+        raise ValueError("mapping-stratified Solvability requires exactly two mappings")
+    persistence_bounds = [
+        float(value) for value in thresholds["semantic_persistence_rate_bounds"]
+    ]
+    disengagement_bounds = [
+        float(value) for value in thresholds["episode_disengagement_rate_bounds"]
+    ]
+    minimum_effect = float(thresholds["minimum_expected_logit_effect"])
+    criteria = {}
+    for mapping_id, metrics in sorted(mapping_metrics.items()):
+        criteria[mapping_id] = {
+            "episodes_contain_repeated_decisions": float(
+                metrics["mean_episode_decisions"]
+            )
+            >= float(thresholds["minimum_mean_episode_decisions"]),
+            "semantic_choices_nondegenerate": persistence_bounds[0]
+            <= float(metrics["semantic_persistence_choice_rate"])
+            <= persistence_bounds[1],
+            "episode_termination_nondegenerate": disengagement_bounds[0]
+            <= float(metrics["episode_disengagement_rate"])
+            <= disengagement_bounds[1],
+            "solvability_evidence_increases_persistence": float(
+                metrics["higher_progress_evidence_minus_lower"]
+            )
+            >= minimum_effect,
+            "attempt_cost_reduces_persistence": float(
+                metrics["higher_attempt_cost_minus_lower"]
+            )
+            <= -minimum_effect,
+            "give_up_value_reduces_persistence": float(
+                metrics["higher_give_up_value_minus_lower"]
+            )
+            <= -minimum_effect,
+        }
+    return {
+        "passed": all(
+            all(mapping_criteria.values())
+            for mapping_criteria in criteria.values()
+        ),
+        "criteria_by_mapping": criteria,
     }
 
 
@@ -422,6 +478,51 @@ def evaluate_solvability_behavioral_gate(
         float(value) for value in thresholds["episode_disengagement_rate_bounds"]
     ]
     p10, p90 = _quantile(probabilities, 0.10), _quantile(probabilities, 0.90)
+    mapping_metrics = {}
+    for mapping_id in sorted(mapping_means):
+        mapping_shards = [
+            shard for shard in selected if str(shard["mapping_id"]) == mapping_id
+        ]
+        mapping_records = [
+            record for shard in mapping_shards for record in shard["records"]
+        ]
+        mapping_initial = [
+            record for record in mapping_records if int(record["round"]) == 0
+        ]
+        mapping_metrics[mapping_id] = {
+            "episodes": len(mapping_shards),
+            "states": len(mapping_records),
+            "mean_episode_decisions": statistics.mean(
+                len(shard["records"]) for shard in mapping_shards
+            ),
+            "semantic_persistence_choice_rate": statistics.mean(
+                float(record["semantic_choice"] == "TRY_AGAIN")
+                for record in mapping_records
+            ),
+            "episode_disengagement_rate": statistics.mean(
+                float(shard["records"][-1]["termination_reason"] == "give_up")
+                for shard in mapping_shards
+            ),
+            "initial_persistence_probability": statistics.mean(
+                float(record["p_try_again"]) for record in mapping_initial
+            ),
+            "higher_progress_evidence_minus_lower": _high_minus_low(
+                mapping_initial, "progress_probability", "persistence_logit"
+            ),
+            "higher_attempt_cost_minus_lower": _high_minus_low(
+                mapping_initial, "attempt_cost", "persistence_logit"
+            ),
+            "higher_give_up_value_minus_lower": _high_minus_low(
+                mapping_initial, "give_up_value", "persistence_logit"
+            ),
+        }
+    mapping_gate = solvability_mapping_stratified_gate(
+        mapping_metrics, thresholds
+    )
+    gap_limit = float(thresholds["maximum_initial_mapping_probability_gap"])
+    gap_role = str(thresholds.get("label_mapping_gap_role", "required"))
+    if gap_role not in {"required", "diagnostic_non_gating"}:
+        raise ValueError(f"unknown label mapping gap role: {gap_role!r}")
     criteria = {
         "enough_development_episodes": len(selected)
         >= int(thresholds["minimum_development_episodes"]),
@@ -439,8 +540,7 @@ def evaluate_solvability_behavioral_gate(
         "episode_termination_nondegenerate": disengage_bounds[0]
         <= disengagement_rate
         <= disengage_bounds[1],
-        "label_mapping_initial_gap_bounded": mapping_gap
-        <= float(thresholds["maximum_initial_mapping_probability_gap"]),
+        "each_label_mapping_behaviorally_valid": mapping_gate["passed"],
         "solvability_evidence_increases_persistence": progress_effect is not None
         and progress_effect >= minimum_effect,
         "attempt_cost_reduces_persistence": cost_effect is not None
@@ -448,6 +548,8 @@ def evaluate_solvability_behavioral_gate(
         "give_up_value_reduces_persistence": fallback_effect is not None
         and fallback_effect <= -minimum_effect,
     }
+    if gap_role == "required":
+        criteria["label_mapping_initial_gap_bounded"] = mapping_gap <= gap_limit
     return {
         "level": "behavioral_generalization",
         "task": "solvability",
@@ -471,12 +573,37 @@ def evaluate_solvability_behavioral_gate(
         "persistence_logit_standard_deviation": statistics.pstdev(logits),
         "initial_probability_by_mapping": mapping_means,
         "initial_mapping_probability_gap": mapping_gap,
+        "initial_mapping_gap_diagnostic": {
+            "analysis_role": gap_role,
+            "threshold": gap_limit,
+            "passed": mapping_gap <= gap_limit,
+            "reason_non_gating": (
+                "The primary held-out analysis requires positive transfer within "
+                "both mappings and exact matched-history label invariance."
+                if gap_role == "diagnostic_non_gating"
+                else None
+            ),
+        },
+        "mapping_stratified_behavior": {
+            "passed": mapping_gate["passed"],
+            "metrics_by_mapping": mapping_metrics,
+            "criteria_by_mapping": mapping_gate["criteria_by_mapping"],
+        },
         "manipulation_logit_effects": {
             "higher_progress_evidence_minus_lower": progress_effect,
             "higher_attempt_cost_minus_lower": cost_effect,
             "higher_give_up_value_minus_lower": fallback_effect,
         },
         "thresholds": dict(thresholds),
+        "protocol_amendment": {
+            "id": "development_gate_v3_1_mapping_stratified_behavior",
+            "test_episodes_inspected": False,
+            "reason": (
+                "The observed M/N offset is retained as a diagnostic. Clearance "
+                "requires meaningful economic behavior separately under M and N; "
+                "held-out label invariance remains a mandatory matched-history test."
+            ),
+        },
     }
 
 

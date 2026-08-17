@@ -8,6 +8,7 @@ import json
 import yaml
 
 from analysis.cross_task_power import fisher_correlation_power
+from analysis.cross_task_integrity import solvability_mapping_stratified_gate
 from analysis.matched_label_integrity import audit_matched_label_shards
 from analysis.analyze_shared_persistence_causal import control_specificity
 from analysis.shared_persistence_integrity import source_task_gate
@@ -132,6 +133,40 @@ class NewDirectionControlTest(unittest.TestCase):
         collection = config["collection"]
         for task in ("foraging", "solvability", "control", "terminality"):
             self.assertGreaterEqual(collection[f"{task}_episodes"] // 2, 300)
+
+    def test_label_bias_is_diagnostic_only_if_each_mapping_has_valid_behavior(self):
+        thresholds = {
+            "minimum_mean_episode_decisions": 1.25,
+            "semantic_persistence_rate_bounds": [0.10, 0.90],
+            "episode_disengagement_rate_bounds": [0.20, 0.98],
+            "minimum_expected_logit_effect": 0.05,
+        }
+        valid = {
+            name: {
+                "mean_episode_decisions": decisions,
+                "semantic_persistence_choice_rate": persistence,
+                "episode_disengagement_rate": disengagement,
+                "higher_progress_evidence_minus_lower": progress,
+                "higher_attempt_cost_minus_lower": cost,
+                "higher_give_up_value_minus_lower": fallback,
+            }
+            for name, decisions, persistence, disengagement, progress, cost, fallback in (
+                ("try_again_m", 3.05, 0.69, 0.95, 3.90, -0.79, -0.44),
+                ("try_again_n", 2.35, 0.59, 0.97, 2.51, -0.32, -0.28),
+            )
+        }
+        self.assertTrue(solvability_mapping_stratified_gate(valid, thresholds)["passed"])
+        valid["try_again_n"]["higher_attempt_cost_minus_lower"] = 0.20
+        self.assertFalse(solvability_mapping_stratified_gate(valid, thresholds)["passed"])
+
+    def test_resume_helper_starts_after_completed_collection(self):
+        source = Path("scripts/submit_track_b_resume_after_collection.sh").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PHASE=cross_task_behavioral_validate", source)
+        self.assertIn("PHASE=cross_task_matched_label_foraging", source)
+        self.assertIn("PHASE=cross_task_train_shared", source)
+        self.assertNotIn("PHASE=cross_task_collect_foraging", source)
 
 
 if __name__ == "__main__":

@@ -156,6 +156,22 @@ Its behavioral criteria use only train+validation episodes and separately
 require meaningful Foraging and Solvability behavior. A failed gate writes a
 report and exits nonzero; it cannot proceed to held-out transfer testing.
 
+Protocol amendment v3.1 was made using development data only. Natural LEAVE
+termination is allowed to reach 100% because it is the desired uncensored
+endpoint; repeated decisions and state-level choice nondegeneracy remain
+required. The frozen 0.20 Solvability M/N probability-gap threshold remains in
+the report as a non-gating diagnostic. Instead, all behavioral and economic
+criteria must pass separately under both mappings, and the confirmatory test
+still requires positive within-mapping transfer plus exact matched-history
+label invariance. No held-out test episode was inspected for this amendment.
+
+If all four organic banks are already complete, resume without recollecting:
+
+```bash
+TRACK_B_RUN_ID=track_b_shared_v3 TRACK_B_SHARDS=4 \
+  bash scripts/submit_track_b_resume_after_collection.sh
+```
+
 After that gate, the helper runs `cross_task_matched_label_foraging` and
 `cross_task_matched_label_solvability` as sharded jobs. Each reconstructs one
 canonical held-out semantic trajectory per counterbalanced pair and renders
