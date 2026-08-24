@@ -1,0 +1,62 @@
+protocol_version: task_general_persistence_discovery_v1
+analysis_role: exploratory_discovery
+model: Qwen/Qwen3.5-4B
+split_seed: 92026
+analysis_seed: 93026
+
+paths:
+  bandit_factorial: artifacts/value_dissociation/factorial_shard_*.csv
+  bandit_factorial_activations: artifacts/value_dissociation/activations
+  bandit_contrast_split: artifacts/persistence_discovery/splits/bandit_factorial.json
+  foraging_activations: artifacts/cross_task/track_b_shared_v3/foraging_activation_bank
+  foraging_split: artifacts/cross_task/track_b_shared_v3/foraging_episode_split.json
+  solvability_activations: artifacts/cross_task/track_b_shared_v3/solvability_activation_bank
+  solvability_split: artifacts/cross_task/track_b_shared_v3/solvability_episode_split.json
+  foraging_label_replays: artifacts/cross_task/track_b_shared_v3/foraging_matched_label_bank
+  solvability_label_replays: artifacts/cross_task/track_b_shared_v3/solvability_matched_label_bank
+  arbitrary_choice_activations: artifacts/cross_task/track_b_shared_v3/control_activation_bank
+  arbitrary_choice_split: artifacts/cross_task/track_b_shared_v3/control_episode_split.json
+  terminality_activations: artifacts/cross_task/track_b_shared_v3/terminality_activation_bank
+  terminality_split: artifacts/cross_task/track_b_shared_v3/terminality_episode_split.json
+  generic_value_activations: artifacts/persistence_discovery/generic_value_activation_bank
+  generic_value_split: artifacts/persistence_discovery/splits/generic_value.json
+  contrast_bank: artifacts/persistence_discovery/contrast_bank.pt
+  contrast_inventory: artifacts/persistence_discovery/contrast_inventory.csv
+  contrast_audit: artifacts/persistence_discovery/contrast_audit.json
+  search_output: artifacts/persistence_discovery/search
+
+contrast_families:
+  bandit: [continue_incentive, stop_outside_option]
+  foraging: [search_cost, outside_option]
+  solvability: [progress_evidence]
+
+search:
+  layers: all
+  ranks: [1, 2, 4]
+  feature_types: [static, displacement]
+  bootstrap_samples: 2000
+  matched_random_subspaces: 100
+  minimum_transfer: 0.25
+  maximum_nuisance_fraction: 0.50
+  require_behavioral_gate: true
+  require_generic_value_control: true
+  initial_rank_cap: 4
+  task_weighting: equal_aggregate_task_then_family
+  uncertainty_cluster: contrast_pair_cluster
+
+solvability_audit:
+  selected_factor: progress_probability
+  interpretation: displayed progress/solvability evidence
+  higher_promotes_persistence: true
+  unmatched_variables: independent environment and action seeds after exact semantic-history matching
+  counterfactual_replay_required_if_no_pairs: true
+
+nuisance_residualization:
+  enabled_by_default: false
+  analysis_label: exploratory_nuisance_residualization
+
+causal_gate:
+  enabled_by_default: false
+  require_all_specificity_checks: true
+  stop_if_no_candidate: true
+

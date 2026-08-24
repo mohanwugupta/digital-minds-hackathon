@@ -438,6 +438,70 @@ track_b_smoke_phase() {
   echo "Track B real-model smoke passed"
 }
 
+persistence_tests_phase() {
+  echo "Running Track C RED/GREEN, regression, and scientific-gate tests"
+  python -m pytest -q \
+    tests/test_persistence_discovery_baseline.py \
+    tests/test_persistence_contrasts.py \
+    tests/test_cross_manipulation_isolation.py \
+    tests/test_cross_task_isolation.py \
+    tests/test_displacement_features.py \
+    tests/test_subspace_recovery.py \
+    tests/test_persistence_specificity.py \
+    tests/test_generic_value_control.py \
+    tests/test_latent_state_recovery.py \
+    tests/test_latent_model_confusion.py \
+    tests/test_future_behavior_prediction.py
+  python -m analysis.check_persistence_discovery_baseline
+}
+
+persistence_smoke_phase() {
+  local smoke_id="${SLURM_JOB_ID:-manual}"
+  local smoke_root="artifacts/persistence_discovery_smoke_${smoke_id}"
+  echo "Running synthetic Track C search smoke into ${smoke_root}"
+  python -m experiments.smoke_persistence_discovery \
+    --output-dir "${smoke_root}/search"
+  echo "Running real-model generic-value collection smoke"
+  python -m experiments.collect_cross_task_activations \
+    --task generic_value --model "$MODEL_PATH" --episodes 16 \
+    --output-dir "${smoke_root}/generic_value_activation_bank"
+  test -s "${smoke_root}/search/persistence_discovery_summary.json"
+  test -s "${smoke_root}/search/layerwise_transfer_map.csv"
+  test -s "${smoke_root}/search/layerwise_cross_task_transfer.svg"
+  test -s "${smoke_root}/generic_value_activation_bank/episode_00001.pt"
+  echo "Track C smoke passed"
+}
+
+persistence_collect_generic_value_phase() {
+  echo "Collecting one-shot generic-value controls; shard ${CROSS_TASK_SHARD_INDEX}/${CROSS_TASK_NUM_SHARDS}"
+  python -m experiments.collect_cross_task_activations \
+    --task generic_value \
+    --model "$MODEL_PATH" \
+    --output-dir artifacts/persistence_discovery/generic_value_activation_bank \
+    --num-shards "$CROSS_TASK_NUM_SHARDS" \
+    --shard-index "$CROSS_TASK_SHARD_INDEX"
+}
+
+persistence_contrast_phase() {
+  echo "Building and behavior-gating the matched persistence/nuisance contrast bank"
+  python -m analysis.run_persistence_discovery --phase contrast
+}
+
+persistence_search_phase() {
+  echo "Running all-layer static/displacement rank-1/2/4 contrast search"
+  python -m analysis.run_persistence_discovery --phase search
+}
+
+persistence_latent_phase() {
+  echo "Running synthetic recovery and conditional latent commitment search"
+  python -m analysis.run_persistence_discovery --phase latent
+}
+
+persistence_integration_phase() {
+  echo "Integrating contrast and latent-state candidates and applying the causal gate"
+  python -m analysis.run_persistence_discovery --phase integration
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -586,6 +650,27 @@ case "$PHASE" in
     ;;
   track_b_smoke)
     track_b_smoke_phase
+    ;;
+  persistence_tests)
+    persistence_tests_phase
+    ;;
+  persistence_smoke)
+    persistence_smoke_phase
+    ;;
+  persistence_collect_generic_value)
+    persistence_collect_generic_value_phase
+    ;;
+  persistence_contrast)
+    persistence_contrast_phase
+    ;;
+  persistence_search)
+    persistence_search_phase
+    ;;
+  persistence_latent)
+    persistence_latent_phase
+    ;;
+  persistence_integration)
+    persistence_integration_phase
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2

@@ -13,11 +13,13 @@ FORAGING = "foraging"
 CONTROL = "binary_control"
 SOLVABILITY = "solvability"
 TERMINALITY = "terminality_control"
+GENERIC_VALUE = "generic_value_control"
 _SEMANTICS = {
     FORAGING: ("STAY", "LEAVE"),
     SOLVABILITY: ("TRY_AGAIN", "GIVE_UP"),
     CONTROL: ("LEFT_GREATER", "RIGHT_GREATER"),
     TERMINALITY: ("PROCEED", "END"),
+    GENERIC_VALUE: ("LEFT_VOUCHER", "RIGHT_VOUCHER"),
 }
 _ISSUES = (
     "task",
@@ -45,7 +47,11 @@ _ISSUES = (
 def _task_name(value: str) -> str:
     if value in {"control", CONTROL}:
         return CONTROL
-    return TERMINALITY if value in {"terminality", TERMINALITY} else value
+    if value in {"terminality", TERMINALITY}:
+        return TERMINALITY
+    if value in {"generic_value", GENERIC_VALUE}:
+        return GENERIC_VALUE
+    return value
 
 
 def _mapping(record: dict) -> dict[str, str] | None:
@@ -101,7 +107,7 @@ def audit_cross_task_shards(
         if not records:
             issues["empty_episode"] += 1
             continue
-        if expected_task in {CONTROL, TERMINALITY} and len(records) != 1:
+        if expected_task in {CONTROL, TERMINALITY, GENERIC_VALUE} and len(records) != 1:
             issues["control_episode_shape"] += 1
 
         for position, record in enumerate(records):
@@ -196,7 +202,7 @@ def audit_cross_task_shards(
                 ).lower()
                 if any(word in prompt for word in ("stay", "leave", "continue", "quit")):
                     issues["terminal_semantics"] += 1
-            else:
+            elif expected_task == TERMINALITY:
                 if not (
                     terminated
                     and is_last
@@ -207,6 +213,27 @@ def audit_cross_task_shards(
                     "PROCEED" if int(record.get("displayed_integer", 1)) % 2 == 0 else "END"
                 )
                 if record.get("correct_choice") != expected_choice:
+                    issues["terminal_semantics"] += 1
+            else:
+                if not (
+                    terminated
+                    and is_last
+                    and reason == "one_shot_value_choice"
+                ):
+                    issues["terminal_semantics"] += 1
+                expected_choice = (
+                    "LEFT_VOUCHER"
+                    if int(record.get("left_value", 0))
+                    > int(record.get("right_value", 0))
+                    else "RIGHT_VOUCHER"
+                )
+                if record.get("correct_choice") != expected_choice:
+                    issues["terminal_semantics"] += 1
+                prompt = "\n".join(
+                    str(message.get("content", ""))
+                    for message in _conversation(record)
+                ).lower()
+                if any(word in prompt for word in ("stay", "leave", "continue", "stop")):
                     issues["terminal_semantics"] += 1
 
     condition_keys = (
@@ -224,6 +251,8 @@ def audit_cross_task_shards(
         else ("seed", "left_integer", "right_integer")
         if expected_task == CONTROL
         else ("seed", "displayed_integer")
+        if expected_task == TERMINALITY
+        else ("seed", "left_value", "right_value")
     )
     for selected in pairs.values():
         if len(selected) != 2:

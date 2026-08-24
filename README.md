@@ -1,5 +1,11 @@
 # Value representations and persistence in Qwen3.5-4B
 
+The task-general persistence discovery extension (Track C) is documented in
+[`docs/persistence-discovery.md`](docs/persistence-discovery.md). It reuses the
+Track A/B activation banks and adds matched causal contrasts, explicit nuisance
+controls, low-rank static/displacement searches, and a gated latent policy-state
+analysis.
+
 This repository contains the experiments and analyses reported in the Digital
 Minds Research Sprint paper. It studies whether an internal representation of
 expected future return causally governs a model's decision to continue or stop

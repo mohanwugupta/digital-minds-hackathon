@@ -1,5 +1,158 @@
 # Development scratchpad
 
+## Track C task-general persistence discovery — 2026-08-24
+
+### Scientific question
+
+Determine whether matched changes in how warranted continued pursuit is share a
+representation across causes and tasks beyond label, arbitrary-choice,
+terminality, and generic-value geometry; independently test whether sequential
+behavior supports a latent policy-commitment state beyond immediate choice.
+
+### Hypotheses
+
+1. Persistence-promoting causal contrasts share a rank-1, rank-2, or rank-4
+   static or depth-displacement representation.
+2. A one-dimensional commitment state predicts future engagement beyond the
+   current semantic continuation logit.
+
+### RED tests written
+
+- `tests/test_persistence_contrasts.py`
+- `tests/test_cross_manipulation_isolation.py`
+- `tests/test_cross_task_isolation.py`
+- `tests/test_displacement_features.py`
+- `tests/test_subspace_recovery.py`
+- `tests/test_persistence_specificity.py`
+- `tests/test_latent_state_recovery.py`
+- `tests/test_latent_model_confusion.py`
+- `tests/test_future_behavior_prediction.py`
+
+The tests cover mismatched pairs, orientation reversal, label-only nuisance
+classification, equal task/family weighting, task/manipulation leakage, the
+rank cap, correct depth displacement, known two-dimensional recovery,
+nuisance-only and no-signal cases, latent-state recovery, architecture
+confusion, task-specific emission scaling, and future prediction beyond
+immediate choice.
+
+### Expected RED failure
+
+The first import should fail because the Track C contrast module has not yet
+been implemented.
+
+### Observed RED failure
+
+Command:
+
+```text
+python3 -c "from analysis.persistence_contrasts import ContrastDefinition"
+```
+
+Observed:
+
+```text
+ModuleNotFoundError: No module named 'analysis.persistence_contrasts'
+```
+
+The local host also lacks pytest, NumPy, PyTorch, and Transformers. Therefore
+the full RED/GREEN numerical suite remains a cluster gate; this host can still
+run dependency-free smoke tests, imports of dependency-lazy modules,
+`compileall`, YAML/JSON validation, and shell syntax checks.
+
+### Datasets audited
+
+- Existing Bandit STOP x CONTINUE factorial and saved all-layer activation
+  replays.
+- Existing Foraging all-layer activation bank and pair-safe split.
+- Existing Solvability all-layer activation bank and pair-safe split.
+- Existing exact label replays, arbitrary binary control, and terminality
+  control.
+- Existing Track A and Track B frozen summaries and baseline manifest.
+
+### Exploratory decisions frozen before implementation
+
+- Bandit families remain separate: CONTINUE incentive and STOP/outside option.
+- Foraging families remain separate: lower search cost and lower outside option.
+- Solvability uses higher displayed progress/solvability evidence as its
+  primary persistence-relevant contrast; attempt cost and fallback value remain
+  measured nuisance/input variables rather than being silently substituted for
+  solvability.
+- Exact matching includes semantic history, round, all nonmanipulated task
+  factors, and label mapping. Contrasts are built independently within splits.
+- Initial ranks are exactly 1, 2, and 4. Static and layer-displacement features
+  are reported separately.
+- All B/F/S results are exploratory. Any candidate requires a fresh Task 4 for
+  confirmation.
+
+### GREEN implementation
+
+- Added explicit matched-contrast definitions for Bandit CONTINUE, Bandit STOP,
+  Foraging search cost, Foraging outside option, and Solvability progress
+  evidence. Validators enforce the positive persistence orientation, exact
+  matched fields, activation shape, and within-split pairing.
+- Added equal aggregate task/family weights; rank-1 mean directions and
+  balanced rank-2/rank-4 subspaces; static and depth-displacement features;
+  strict LOMO/LOTO isolation; matched-random subspaces; and transparent
+  componentwise specificity decisions.
+- Added exact label, arbitrary-choice, terminality, and a new one-shot
+  generic-value nuisance bank. The generic-value control uses the M/N alphabet
+  to prevent an unseen-token explanation and is exactly counterbalanced.
+- Added a synthetic/real one-dimensional recurrent policy-state pipeline,
+  immediate/history/generic-value architecture comparisons, held-out future
+  prediction beyond the current choice logit, conditional residual all-layer
+  decoding, behavioral-time transition alignment, and contrast/latent
+  integration.
+- Added frozen Track A/B regression protection including exact factorial
+  dimensions, layer-31 effects, the complete Track A trajectory hash, Track B
+  primary/control effects, and the original Bandit split hash.
+- Added resumable configs, machine-readable inventories, candidate/report
+  writers, a synthetic end-to-end smoke, shared-runner phases, and a Slurm
+  dependency graph that never submits causal work or Task 4.
+
+### Verification run
+
+Locally available GREEN checks:
+
+```text
+python3 -m compileall -q analysis cross_task experiments interventions tests
+bash -n run_qwen35_bandit.sh
+bash -n scripts/submit_persistence_discovery.sh
+python3 -m analysis.check_persistence_discovery_baseline
+python3 dependency-free Track C smoke assertions
+```
+
+Results: compilation PASS; both shell scripts PASS; frozen Track A/B regression
+PASS; dependency-free contrast/orientation/balancing/isolation/specificity and
+generic-value assertions PASS; generic-value integrity audit PASS.
+
+The attempted pytest command remains unavailable on this host:
+
+```text
+/usr/bin/python3: No module named pytest
+```
+
+The Slurm `persistence_tests` phase is therefore the mandatory numerical GREEN
+gate for PyTorch subspace recovery, displacement, latent recovery/confusion,
+future prediction, and the complete regression suite.
+
+### Datasets accessed during implementation
+
+- Track A layerwise summary and projection metadata (read-only baseline audit).
+- Track B shared-transfer summary, behavioral banks/split metadata, and matched
+  label/control artifact inventory (read-only schema/path audit).
+- Original Bandit split and baseline manifest (read-only hash audit).
+
+The local download does not contain
+`artifacts/value_dissociation/activations/`, although Track A shard metadata says
+all 1,187 tensors were written on the cluster. Contrast construction will fail
+with an actionable replay instruction if that cluster directory is also absent.
+
+### Escalation decision
+
+No escalation is authorized by implementation alone. Causal work and Task 4
+remain stopped unless the integrated contrast-specificity, latent-future, and
+latent-cross-task gates all pass.
+
 ## Current objective
 
 Deliver the PRD as a modular, resumable Transformers/PyTorch experiment while

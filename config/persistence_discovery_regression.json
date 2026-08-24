@@ -1,0 +1,31 @@
+{
+  "absolute_tolerance": 1e-08,
+  "track_a": {
+    "episodes": 48,
+    "states": 1187,
+    "rows": 14244,
+    "complete_states": 1187,
+    "layer_31_stop_raw_slope": -0.09010452318713759,
+    "layer_31_continue_raw_slope": 0.09628228585611598,
+    "layer_31_relative_incentive_r_squared": 0.7513633778101263,
+    "trajectory_sha256": "21501950e92f0c6602a10d1b51c579f23dd90c5df4ea0a59f9e0f16de48c1a0b",
+    "stop_largest_growth_from": 14,
+    "stop_largest_growth_to": 15,
+    "relative_largest_growth_from": 14,
+    "relative_largest_growth_to": 15
+  },
+  "track_b": {
+    "classification": "no_convincing_shared_transfer",
+    "primary_discovery_tasks": ["bandit", "foraging"],
+    "primary_heldout_task": "solvability",
+    "selected_layer": 31,
+    "strict_zero_shot_correlation": 0.8978268504142761,
+    "arbitrary_choice_correlation": 0.7488686442375183,
+    "terminality_correlation": 0.633444607257843
+  },
+  "bandit_split": {
+    "counts": {"train": 358, "validation": 76, "test": 78},
+    "canonical_sha256": "2e9b9261a62f652075c336a58aa57bede3a9ef878950732e3613b2b175efe01b"
+  }
+}
+

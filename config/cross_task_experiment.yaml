@@ -9,10 +9,14 @@ collection:
   solvability_response_labels: [M, N]
   control_response_labels: [M, N]
   terminality_response_labels: [M, N]
+  # Match the Solvability/control alphabet so low transfer cannot be excused by
+  # an unseen response-token pair; semantics are still exactly counterbalanced.
+  generic_value_response_labels: [M, N]
   foraging_episodes: 768
   solvability_episodes: 768
   control_episodes: 768
   terminality_episodes: 768
+  generic_value_episodes: 768
   max_foraging_decisions: 20
   max_solvability_attempts: 8
   initial_qualities: [0.35, 0.55, 0.75]

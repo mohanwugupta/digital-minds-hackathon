@@ -19,6 +19,12 @@ from cross_task.foraging import (
     ForagingEnvironment,
     episode_conditions as foraging_conditions,
 )
+from cross_task.generic_value import (
+    LEFT_VOUCHER,
+    RIGHT_VOUCHER,
+    episode_conditions as generic_value_conditions,
+    voucher_prompt,
+)
 from cross_task.solvability import (
     GIVE_UP,
     TRY_AGAIN,
@@ -232,6 +238,85 @@ def collect_control_episode(
     }
 
 
+def collect_generic_value_episode(
+    model,
+    pair_id: str,
+    left_value: int,
+    right_value: int,
+    mapping: LabelMapping,
+    *,
+    seed: int,
+) -> dict:
+    """Collect a one-shot value comparison without persistence semantics."""
+    import torch
+
+    episode_id = f"{pair_id}-{mapping.mapping_id}"
+    conversation = [
+        {"role": "user", "content": voucher_prompt(left_value, right_value, mapping)}
+    ]
+    metrics = _binary_decision(
+        model, conversation, mapping, capture_hidden_states=True
+    )
+    hidden = metrics.pop("hidden_states")
+    semantic_choice = (
+        LEFT_VOUCHER
+        if metrics["p_positive"] >= metrics["p_negative"]
+        else RIGHT_VOUCHER
+    )
+    correct_choice = LEFT_VOUCHER if left_value > right_value else RIGHT_VOUCHER
+    record = {
+        "task": "generic_value_control",
+        "episode_id": episode_id,
+        "pair_id": pair_id,
+        "state_id": f"{episode_id}:0",
+        "seed": int(seed),
+        "action_seed": int(seed),
+        "round": 0,
+        "conversation": conversation,
+        "label_mapping": mapping.to_json(),
+        "mapping_id": mapping.mapping_id,
+        "positive_semantic": LEFT_VOUCHER,
+        "negative_semantic": RIGHT_VOUCHER,
+        "positive_label": mapping.positive_label,
+        "negative_label": mapping.negative_label,
+        "raw_label": mapping.label_for(semantic_choice),
+        "semantic_choice": semantic_choice,
+        "correct_choice": correct_choice,
+        "is_correct": semantic_choice == correct_choice,
+        "left_value": int(left_value),
+        "right_value": int(right_value),
+        "relative_value": int(left_value) - int(right_value),
+        "p_left": float(metrics["p_positive"]),
+        "p_right": float(metrics["p_negative"]),
+        "choice_logit": float(metrics["choice_logit"]),
+        "target_logit": float(metrics["choice_logit"]),
+        "terminated": True,
+        "termination_reason": "one_shot_value_choice",
+        **{
+            key: value
+            for key, value in metrics.items()
+            if key
+            not in {
+                "p_positive",
+                "p_negative",
+                "choice_logit",
+                "positive_label",
+                "negative_label",
+            }
+        },
+    }
+    return {
+        "task": "generic_value_control",
+        "episode_id": episode_id,
+        "pair_id": pair_id,
+        "model_id": model.model_id,
+        "mapping_id": mapping.mapping_id,
+        "records": [record],
+        "activations": torch.stack(hidden).unsqueeze(0).to(dtype=torch.float16),
+        "shape": "states x layers x hidden_width",
+    }
+
+
 def collect_terminality_episode(
     model,
     pair_id: str,
@@ -413,7 +498,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--task",
-        choices=("foraging", "solvability", "control", "terminality"),
+        choices=("foraging", "solvability", "control", "terminality", "generic_value"),
         required=True,
     )
     parser.add_argument("--config", default="config/cross_task_experiment.yaml")
@@ -493,6 +578,12 @@ def main() -> None:
             labels=collection["control_response_labels"],
         )
         if args.task == "control"
+        else generic_value_conditions(
+            args.episodes,
+            args.seed,
+            labels=collection["generic_value_response_labels"],
+        )
+        if args.task == "generic_value"
         else terminality_conditions(
             args.episodes,
             args.seed,
@@ -533,6 +624,11 @@ def main() -> None:
         elif args.task == "control":
             pair_id, left, right, mapping, seed = condition
             artifact = collect_control_episode(
+                model, pair_id, left, right, mapping, seed=seed
+            )
+        elif args.task == "generic_value":
+            pair_id, left, right, mapping, seed = condition
+            artifact = collect_generic_value_episode(
                 model, pair_id, left, right, mapping, seed=seed
             )
         else:

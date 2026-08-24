@@ -1,0 +1,32 @@
+protocol_version: latent_policy_commitment_v1
+analysis_role: exploratory_discovery
+analysis_seed: 94026
+
+state_model:
+  dimensions: 1
+  rho_grid: [0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95]
+  task_specific_input_coefficients: true
+  task_specific_emission_scaling: standardize_on_training_episodes
+  orientation: higher_means_more_persistence
+  input_features: [relative_value, cost_pressure, progress_evidence]
+
+synthetic_recovery:
+  architectures: [immediate, choice_inertia, latent_commitment, generic_value]
+  tasks: [bandit, foraging, solvability]
+  episodes_per_task: 64
+  decisions_per_episode: 12
+  minimum_state_correlation: 0.80
+  maximum_rho_error: 0.15
+
+future_behavior:
+  horizons: [2, 5]
+  targets: [remaining_episode_length, future_run_length, stopping_hazard, later_disengagement]
+  minimum_incremental_r_squared: 0.01
+  control_for_current_persistence_logit: true
+
+internal_search:
+  enabled_only_after_behavioral_gate: true
+  layers: all
+  residualize_current_choice: true
+  leave_one_task_out: true
+
