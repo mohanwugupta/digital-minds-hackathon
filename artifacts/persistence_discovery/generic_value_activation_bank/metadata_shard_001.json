@@ -1,0 +1,27 @@
+{
+  "config": {
+    "config": "config/cross_task_experiment.yaml",
+    "counterbalanced_labels": [
+      "M",
+      "N"
+    ],
+    "episodes": 768,
+    "max_attempts": 8,
+    "max_decisions": 20,
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "num_shards": 4,
+    "online": false,
+    "output_dir": "artifacts/persistence_discovery/generic_value_activation_bank",
+    "revision": null,
+    "seed": 72026,
+    "shard_index": 1,
+    "task": "generic_value"
+  },
+  "created_at_utc": "2026-08-26T21:04:35.170940+00:00",
+  "git_commit": "52b79951481ccbc25809ea48055b11103716a996",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}

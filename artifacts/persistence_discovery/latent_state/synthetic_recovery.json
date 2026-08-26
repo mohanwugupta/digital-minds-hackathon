@@ -1,0 +1,144 @@
+{
+  "architectures": {
+    "choice_inertia": {
+      "architecture_identified": true,
+      "comparison": {
+        "latent_commitment_supported": false,
+        "models": {
+          "choice_history_inertia": {
+            "parameters_per_task": 6,
+            "test_mse": 0.0004753683564923447
+          },
+          "generic_latent_value": {
+            "parameters_per_task": 3,
+            "rho": 0.75,
+            "test_mse": 1.1091834232801399,
+            "train_mse": 0.9619499571717082
+          },
+          "immediate_decision": {
+            "parameters_per_task": 4,
+            "test_mse": 1.06120313916742
+          },
+          "latent_commitment": {
+            "parameters_per_task": 5,
+            "rho": 0.45,
+            "test_mse": 1.0723686301934936,
+            "train_mse": 0.9354118446492631
+          }
+        },
+        "selected_model": "choice_history_inertia",
+        "selection": "heldout_episode_prediction_with_fixed_complexity_tie_break",
+        "test_episodes": 33,
+        "train_episodes": 159
+      },
+      "expected": "choice_history_inertia",
+      "selected": "choice_history_inertia"
+    },
+    "generic_value": {
+      "architecture_identified": true,
+      "comparison": {
+        "latent_commitment_supported": false,
+        "models": {
+          "choice_history_inertia": {
+            "parameters_per_task": 6,
+            "test_mse": 0.20501654580044326
+          },
+          "generic_latent_value": {
+            "parameters_per_task": 3,
+            "rho": 0.7,
+            "test_mse": 9.068504984988285e-05,
+            "train_mse": 8.944220854467102e-05
+          },
+          "immediate_decision": {
+            "parameters_per_task": 4,
+            "test_mse": 0.4435102597641796
+          },
+          "latent_commitment": {
+            "parameters_per_task": 5,
+            "rho": 0.7,
+            "test_mse": 9.087649962512539e-05,
+            "train_mse": 8.927518036533061e-05
+          }
+        },
+        "selected_model": "generic_latent_value",
+        "selection": "heldout_episode_prediction_with_fixed_complexity_tie_break",
+        "test_episodes": 48,
+        "train_episodes": 144
+      },
+      "expected": "generic_latent_value",
+      "selected": "generic_latent_value"
+    },
+    "immediate": {
+      "architecture_identified": true,
+      "comparison": {
+        "latent_commitment_supported": false,
+        "models": {
+          "choice_history_inertia": {
+            "parameters_per_task": 6,
+            "test_mse": 0.00021476651164689098
+          },
+          "generic_latent_value": {
+            "parameters_per_task": 3,
+            "rho": 0.0,
+            "test_mse": 0.43404235537619423,
+            "train_mse": 0.45473536150028143
+          },
+          "immediate_decision": {
+            "parameters_per_task": 4,
+            "test_mse": 0.00021283322535146367
+          },
+          "latent_commitment": {
+            "parameters_per_task": 5,
+            "rho": 0.0,
+            "test_mse": 0.00021283322535146367,
+            "train_mse": 0.00019371730524573203
+          }
+        },
+        "selected_model": "immediate_decision",
+        "selection": "heldout_episode_prediction_with_fixed_complexity_tie_break",
+        "test_episodes": 62,
+        "train_episodes": 130
+      },
+      "expected": "immediate_decision",
+      "selected": "immediate_decision"
+    },
+    "latent_commitment": {
+      "architecture_identified": true,
+      "comparison": {
+        "latent_commitment_supported": true,
+        "models": {
+          "choice_history_inertia": {
+            "parameters_per_task": 6,
+            "test_mse": 0.2020586811822601
+          },
+          "generic_latent_value": {
+            "parameters_per_task": 3,
+            "rho": 0.7,
+            "test_mse": 0.4917840016243065,
+            "train_mse": 0.46290666667504593
+          },
+          "immediate_decision": {
+            "parameters_per_task": 4,
+            "test_mse": 0.4397078603622752
+          },
+          "latent_commitment": {
+            "parameters_per_task": 5,
+            "rho": 0.7,
+            "test_mse": 0.00010604061542014802,
+            "train_mse": 9.981384998753239e-05
+          }
+        },
+        "selected_model": "latent_commitment",
+        "selection": "heldout_episode_prediction_with_fixed_complexity_tie_break",
+        "test_episodes": 55,
+        "train_episodes": 137
+      },
+      "expected": "latent_commitment",
+      "rho_error": 0.0,
+      "selected": "latent_commitment",
+      "state_correlation": 0.9970379361545689,
+      "state_recovery_passed": true
+    }
+  },
+  "passed": true
+}

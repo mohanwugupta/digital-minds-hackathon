@@ -1,0 +1,62 @@
+{
+  "analysis_role": "exploratory_integration",
+  "causal_gate_passed": false,
+  "contrast_candidate": {
+    "decision": {
+      "alternative_hypothesis": null,
+      "causal_gate_passed": true,
+      "classification": "persistence_specific_candidate",
+      "criteria": {
+        "arbitrary_choice_specificity": true,
+        "cross_manipulation_transfer": true,
+        "cross_task_transfer": true,
+        "generic_value_specificity": true,
+        "label_specificity": true,
+        "persistence_direction": true,
+        "terminality_specificity": true
+      },
+      "metrics": {
+        "arbitrary_choice": 0.11384148895740509,
+        "cross_manipulation_transfer": 0.36126311421394347,
+        "cross_task_transfer": 0.2817251483599345,
+        "generic_value": 0.16723600029945374,
+        "label": 0.16792672872543335,
+        "persistence_sensitivity": 0.7378753423690796,
+        "positive_projection_fraction": 0.7930055459340414,
+        "terminality": 0.27953216433525085
+      },
+      "nuisance_bound": 0.3689376711845398
+    },
+    "feature_type": "displacement",
+    "key": "displacement-L21-k4",
+    "layer": 21,
+    "rank": 4
+  },
+  "contrast_to_latent_cross_decoding": null,
+  "decision": "stop_causal_pipeline",
+  "gates": {
+    "contrast_specificity": true,
+    "latent_cross_task_representation": false,
+    "latent_future_behavior": false
+  },
+  "latent_candidate_taxonomy": "immediate_decision_or_input_value_representation",
+  "persistence_manipulation_shift_of_latent_state": {
+    "outside_option": {
+      "matched_contrasts": 656,
+      "mean_latent_shift": 0.6841740713701977,
+      "positive_shift_fraction": 1.0
+    },
+    "progress_evidence": {
+      "matched_contrasts": 392,
+      "mean_latent_shift": 0.05964431572881168,
+      "positive_shift_fraction": 1.0
+    },
+    "search_cost": {
+      "matched_contrasts": 294,
+      "mean_latent_shift": 0.13581982097661158,
+      "positive_shift_fraction": 1.0
+    }
+  },
+  "subspace_overlap": [],
+  "task4_status": "do_not_design_task4_yet"
+}

@@ -1,0 +1,126 @@
+{
+  "activation_coverage_passed": true,
+  "activation_shapes": [
+    [
+      32,
+      2560
+    ]
+  ],
+  "all_behavioral_gates_passed": true,
+  "analysis_role": "exploratory_discovery",
+  "behavioral_gates": {
+    "continue_incentive": {
+      "bootstrap_samples": 2000,
+      "clustered_95_ci": [
+        2.2464677967282625,
+        2.3408256717494424
+      ],
+      "clusters": 40,
+      "mean_effect": 2.159042505239172,
+      "orientation": "positive_is_more_persistence_promoting",
+      "pairs": 3696,
+      "passed": true
+    },
+    "outside_option": {
+      "bootstrap_samples": 2000,
+      "clustered_95_ci": [
+        0.5376182033096927,
+        0.668181146572104
+      ],
+      "clusters": 282,
+      "mean_effect": 0.6459412780656304,
+      "orientation": "positive_is_more_persistence_promoting",
+      "pairs": 579,
+      "passed": true
+    },
+    "progress_evidence": {
+      "bootstrap_samples": 2000,
+      "clustered_95_ci": [
+        2.1410175879396984,
+        2.428884003350084
+      ],
+      "clusters": 199,
+      "mean_effect": 2.4183526011560694,
+      "orientation": "positive_is_more_persistence_promoting",
+      "pairs": 346,
+      "passed": true
+    },
+    "search_cost": {
+      "bootstrap_samples": 2000,
+      "clustered_95_ci": [
+        0.6748046875,
+        0.771484375
+      ],
+      "clusters": 128,
+      "mean_effect": 0.72314453125,
+      "orientation": "positive_is_more_persistence_promoting",
+      "pairs": 256,
+      "passed": true
+    },
+    "stop_outside_option": {
+      "bootstrap_samples": 2000,
+      "clustered_95_ci": [
+        3.078315173612116,
+        3.241051163885752
+      ],
+      "clusters": 40,
+      "mean_effect": 2.835559779186129,
+      "orientation": "positive_is_more_persistence_promoting",
+      "pairs": 2772,
+      "passed": true
+    }
+  },
+  "counts_by_task_manipulation_split": {
+    "bandit|continue_incentive|test": 1052,
+    "bandit|continue_incentive|train": 2996,
+    "bandit|continue_incentive|validation": 700,
+    "bandit|stop_outside_option|test": 789,
+    "bandit|stop_outside_option|train": 2247,
+    "bandit|stop_outside_option|validation": 525,
+    "binary_control|arbitrary_choice|test": 54,
+    "binary_control|arbitrary_choice|train": 264,
+    "binary_control|arbitrary_choice|validation": 50,
+    "foraging_label_replay|label_identity|test": 193,
+    "foraging|outside_option|test": 77,
+    "foraging|outside_option|train": 533,
+    "foraging|outside_option|validation": 46,
+    "foraging|search_cost|test": 38,
+    "foraging|search_cost|train": 234,
+    "foraging|search_cost|validation": 22,
+    "generic_value_control|generic_value|test": 48,
+    "generic_value_control|generic_value|train": 264,
+    "generic_value_control|generic_value|validation": 50,
+    "solvability_label_replay|label_identity|test": 168,
+    "solvability|progress_evidence|test": 46,
+    "solvability|progress_evidence|train": 308,
+    "solvability|progress_evidence|validation": 38,
+    "terminality_control|terminality|test": 58,
+    "terminality_control|terminality|train": 266,
+    "terminality_control|terminality|validation": 54
+  },
+  "generic_value_control_available": true,
+  "nuisance_contrasts": 1469,
+  "persistence_contrasts": 9651,
+  "provenance": {
+    "config": {
+      "analysis": "persistence_contrast_bank",
+      "model": "Qwen/Qwen3.5-4B",
+      "protocol_version": "task_general_persistence_discovery_v1"
+    },
+    "created_at_utc": "2026-08-26T21:14:37.912008+00:00",
+    "git_commit": "52b79951481ccbc25809ea48055b11103716a996",
+    "model_identifier": "Qwen/Qwen3.5-4B",
+    "model_revision": null,
+    "python_version": "3.10.20",
+    "torch_version": "2.13.0+cu130",
+    "transformers_version": "5.15.0"
+  },
+  "requires_counterfactual_solvability_replay": false,
+  "solvability_contrast": {
+    "counterfactual_replay_required_if_no_pairs": true,
+    "higher_promotes_persistence": true,
+    "interpretation": "displayed progress/solvability evidence",
+    "selected_factor": "progress_probability",
+    "unmatched_variables": "independent environment and action seeds after exact semantic-history matching"
+  }
+}

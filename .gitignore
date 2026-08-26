@@ -11,3 +11,4 @@ artifacts/mc_value_probes/layer_*.pt
 artifacts/value_dissociation/activations/
 artifacts/causal_steering/positive_control.csv*
 artifacts/causal_steering/publication_positive_control/
+artifacts/persistence_discovery/*.pt
