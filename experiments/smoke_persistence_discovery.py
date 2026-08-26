@@ -76,6 +76,8 @@ def main() -> None:
     )
     args = parser.parse_args()
     config = {
+        "protocol_version": "task_general_persistence_discovery_smoke_v1",
+        "model": "synthetic",
         "analysis_seed": 123,
         "search": {
             "ranks": [1, 2, 4],

@@ -223,6 +223,12 @@ def run_contrast_search(contrasts: list[dict], config: dict) -> tuple[dict, dict
 
     import torch
 
+    required_config = {"analysis_seed", "model", "protocol_version", "search"}
+    missing_config = sorted(required_config.difference(config))
+    if missing_config:
+        raise ValueError(
+            f"contrast search config is missing required keys: {missing_config}"
+        )
     if not contrasts:
         raise ValueError("contrast search requires a nonempty bank")
     shapes = {

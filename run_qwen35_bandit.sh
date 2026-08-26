@@ -449,6 +449,7 @@ persistence_tests_phase() {
     tests/test_subspace_recovery.py \
     tests/test_persistence_specificity.py \
     tests/test_generic_value_control.py \
+    tests/test_persistence_discovery_smoke.py \
     tests/test_latent_state_recovery.py \
     tests/test_latent_model_confusion.py \
     tests/test_future_behavior_prediction.py
