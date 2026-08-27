@@ -1,0 +1,41 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 3.0240807090012822,
+      "section": "records_export",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.6841197079993435,
+      "section": "provenance",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3.1807648750000226,
+      "section": "model_recovery",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.6336565839992545,
+      "section": "neural_linear_sanity",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3.894461040999886,
+      "section": "followup_analysis",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 167.63796699999875,
+      "section": "heldout_model_zoo",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.7077537919976749,
+      "section": "report_generation",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 175.38137891600127,
+  "updated_at_utc": "2026-08-27T02:14:10.767148+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 1.051752374998614,
+      "section": "provenance",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3.6059763340017525,
+      "section": "model_recovery",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 4.6587047499997425,
+  "updated_at_utc": "2026-08-27T01:36:02.687078+00:00"
+}

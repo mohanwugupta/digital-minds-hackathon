@@ -1,0 +1,31 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 2.8638324169987754,
+      "section": "records_export",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.6670515000005253,
+      "section": "provenance",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3.11476387500079,
+      "section": "model_recovery",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 300.9476871670013,
+      "section": "heldout_model_zoo",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.6926504169969121,
+      "section": "report_generation",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 308.42765708300067,
+  "updated_at_utc": "2026-08-27T01:43:56.294771+00:00"
+}

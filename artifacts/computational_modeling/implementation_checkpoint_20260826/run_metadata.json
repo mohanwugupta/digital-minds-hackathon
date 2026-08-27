@@ -1,0 +1,192 @@
+{
+  "config": {
+    "analysis": "computational_model_zoo",
+    "analysis_role": "exploratory_model_discovery",
+    "feature_schema": {
+      "descriptions": {
+        "disengagement_evidence": "Negative observable termination advantage; higher favors disengagement.",
+        "displayed_progress_cue": "Weak=-1, mixed=0, strong=1, matching the text shown in the prompt.",
+        "oracle_depletion": "Private exact Foraging depletion rate.",
+        "oracle_initial_quality": "Private exact initial Foraging patch quality.",
+        "oracle_p_a": "Experimenter-known Bandit arm-A success probability; absent from prompts.",
+        "oracle_p_b": "Experimenter-known Bandit arm-B success probability; absent from prompts.",
+        "oracle_patch_probability": "Private current Foraging food probability.",
+        "oracle_progress_probability": "Private exact Solvability progress probability; prompts expose only a categorical cue.",
+        "relative_value": "Observable estimated generic continuation value relative to the outside option.",
+        "termination_advantage": "Observable estimated continuation value minus displayed outside value."
+      },
+      "policy": {
+        "observable": "Only prompt/history-observable fields and past-derived estimates.",
+        "oracle": "Observable fields plus explicitly prefixed environment-private fields."
+      },
+      "tasks": {
+        "bandit": {
+          "observable": [
+            "task_bandit",
+            "task_foraging",
+            "task_solvability",
+            "round",
+            "log_round",
+            "normalized_time",
+            "previous_outcome",
+            "failure_streak",
+            "success_streak",
+            "previous_choice",
+            "second_previous_choice",
+            "action_lag_1",
+            "action_lag_2",
+            "action_lag_3",
+            "action_lag_5",
+            "outcome_lag_1",
+            "outcome_lag_2",
+            "outcome_lag_3",
+            "outcome_lag_5",
+            "cumulative_progress",
+            "estimated_continue_value",
+            "estimated_outside_value",
+            "cost_pressure",
+            "progress_evidence",
+            "termination_advantage",
+            "relative_value",
+            "disengagement_evidence",
+            "cumulative_score",
+            "rw_a",
+            "rw_b",
+            "rw_best",
+            "rw_gap",
+            "bayes_a",
+            "bayes_b",
+            "bayes_best",
+            "bayes_gap"
+          ],
+          "oracle": [
+            "oracle_p_a",
+            "oracle_p_b",
+            "oracle_continue_value",
+            "oracle_outside_value",
+            "oracle_termination_advantage",
+            "oracle_relative_value"
+          ]
+        },
+        "foraging": {
+          "observable": [
+            "task_bandit",
+            "task_foraging",
+            "task_solvability",
+            "round",
+            "log_round",
+            "normalized_time",
+            "previous_outcome",
+            "failure_streak",
+            "success_streak",
+            "previous_choice",
+            "second_previous_choice",
+            "action_lag_1",
+            "action_lag_2",
+            "action_lag_3",
+            "action_lag_5",
+            "outcome_lag_1",
+            "outcome_lag_2",
+            "outcome_lag_3",
+            "outcome_lag_5",
+            "cumulative_progress",
+            "estimated_continue_value",
+            "estimated_outside_value",
+            "cost_pressure",
+            "progress_evidence",
+            "termination_advantage",
+            "relative_value",
+            "disengagement_evidence",
+            "outside_option",
+            "stay_cost",
+            "search_count",
+            "cumulative_score",
+            "mvt_like_advantage",
+            "bayes_patch_probability"
+          ],
+          "oracle": [
+            "oracle_initial_quality",
+            "oracle_depletion",
+            "oracle_patch_probability",
+            "oracle_continue_value",
+            "oracle_outside_value",
+            "oracle_termination_advantage",
+            "oracle_relative_value"
+          ]
+        },
+        "solvability": {
+          "observable": [
+            "task_bandit",
+            "task_foraging",
+            "task_solvability",
+            "round",
+            "log_round",
+            "normalized_time",
+            "previous_outcome",
+            "failure_streak",
+            "success_streak",
+            "previous_choice",
+            "second_previous_choice",
+            "action_lag_1",
+            "action_lag_2",
+            "action_lag_3",
+            "action_lag_5",
+            "outcome_lag_1",
+            "outcome_lag_2",
+            "outcome_lag_3",
+            "outcome_lag_5",
+            "cumulative_progress",
+            "estimated_continue_value",
+            "estimated_outside_value",
+            "cost_pressure",
+            "progress_evidence",
+            "termination_advantage",
+            "relative_value",
+            "disengagement_evidence",
+            "attempt_cost",
+            "give_up_value",
+            "attempts_used",
+            "max_attempts",
+            "cumulative_cost",
+            "progress_count",
+            "displayed_progress_cue",
+            "bayes_progress_probability"
+          ],
+          "oracle": [
+            "oracle_progress_probability",
+            "oracle_continue_value",
+            "oracle_outside_value",
+            "oracle_termination_advantage",
+            "oracle_relative_value"
+          ]
+        }
+      }
+    },
+    "input_artifact_hashes": {
+      "bandit": "85e6d3e3ecd905ef739a9e26de1c665fce902512564b5dce5129b3a4f8827e9e",
+      "foraging": "4d3bd5b7cae3152c70917dd291b7f15973ec9d795168ad135624e0537f2f7189",
+      "solvability": "65ea0eb78a9a979bb9a2d8defd9acbee677cfc6d25b427535a9a7a240e4e7e0e"
+    },
+    "model": "Qwen/Qwen3.5-4B",
+    "protocol_version": "persistence_computational_model_zoo_v1",
+    "run_id": "implementation_checkpoint_20260826",
+    "seed": 95026,
+    "split_hashes": {
+      "bandit": "63cd5606c72eb2ef0455e04823f0556533e9bba078b0953ca63e42d4d554ede3",
+      "foraging": "2b070c99c275652b1d77566c3b8bf39bb1805eb46a6504ccc394ba465c9342d9",
+      "solvability": "c46854265afbb5eb8ddd7af98b42ee06c78215b241dbb25435c121c1e18803c4"
+    },
+    "tasks": [
+      "bandit",
+      "foraging",
+      "solvability"
+    ]
+  },
+  "created_at_utc": "2026-08-27T01:14:19.648766+00:00",
+  "git_commit": "6b87b18f2b2a528c27abdd1283d6c32beef6b9bf",
+  "model_identifier": "Qwen/Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.11.8",
+  "torch_version": "2.8.0",
+  "transformers_version": "4.56.1"
+}

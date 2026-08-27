@@ -1,0 +1,58 @@
+protocol_version: persistence_computational_neural_geometry_v1
+analysis_role: exploratory_frozen_subspace_interpretation
+seed: 96026
+
+tasks: [bandit, foraging, solvability]
+behavior_records: artifacts/computational_modeling/records
+model_zoo_config: config/computational_model_zoo.yaml
+model_zoo_output: artifacts/computational_modeling/model_zoo_mac_v2
+output_root: artifacts/persistence_computational_neural
+
+activation_banks:
+  bandit: artifacts/activation_bank
+  foraging: artifacts/cross_task/track_b_shared_v3/foraging_activation_bank
+  solvability: artifacts/cross_task/track_b_shared_v3/solvability_activation_bank
+
+frozen_subspace:
+  artifact: artifacts/persistence_discovery/search/persistence_candidate_subspaces.pt
+  key: displacement-L21-k4
+
+layers:
+  l21: 21
+  l22: 22
+
+ridge_alphas: [0.01, 0.1, 1.0, 10.0, 100.0]
+full_hidden_ridge_alphas: [0.1, 1.0, 10.0, 100.0, 1000.0]
+matched_random_subspaces: 100
+task_identity_c: [0.01, 0.1, 1.0, 10.0]
+
+geometry_targets:
+  - history_finite_prediction
+  - time_effort
+  - cost_pressure
+  - progress_solvability
+
+cross_task_targets:
+  - history_finite_prediction
+  - history_summary
+  - time_effort
+  - cost_pressure
+  - progress_solvability
+  - estimated_continue_value
+  - estimated_outside_value
+  - termination_advantage
+
+nuisance_banks:
+  arbitrary_choice:
+    activation_bank: artifacts/cross_task/track_b_shared_v3/control_activation_bank
+    split: artifacts/cross_task/track_b_shared_v3/control_episode_split.json
+  terminality:
+    activation_bank: artifacts/cross_task/track_b_shared_v3/terminality_activation_bank
+    split: artifacts/cross_task/track_b_shared_v3/terminality_episode_split.json
+  generic_value:
+    activation_bank: artifacts/persistence_discovery/generic_value_activation_bank
+    split: artifacts/persistence_discovery/splits/generic_value.json
+
+smoke:
+  max_pairs_per_task_split: 6
+  matched_random_subspaces: 10

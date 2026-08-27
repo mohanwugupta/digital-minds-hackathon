@@ -1,0 +1,3704 @@
+{
+  "bayesian::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.7212708210694947
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.7212708210694947
+  },
+  "bayesian::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.7212708210694947
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.7212708210694947
+  },
+  "bayesian::observable::task_specific": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.7212708210694947
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.7212708210694947
+  },
+  "bayesian::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.7212708210694947
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.7212708210694947
+  },
+  "bayesian::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.7212708210694947
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.7212708210694947
+  },
+  "bayesian::oracle::task_specific": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.7212708210694947
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.7212708210694947
+  },
+  "choice_inertia::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.198880902492458
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_choice",
+      "second_previous_choice",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.198880902492458
+  },
+  "choice_inertia::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.0841762214043715
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_choice",
+      "second_previous_choice",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.0841762214043715
+  },
+  "choice_inertia::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 0.5708778946398437
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.4892511148212753
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 2.1923996547519957
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "previous_choice",
+      "second_previous_choice",
+      "previous_outcome"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.0841762214043715
+  },
+  "choice_inertia::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.198880902492458
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_choice",
+      "second_previous_choice",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.198880902492458
+  },
+  "choice_inertia::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.0841762214043715
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_choice",
+      "second_previous_choice",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.0841762214043715
+  },
+  "choice_inertia::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 0.5708778946398437
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.4892511148212753
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 2.1923996547519957
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "previous_choice",
+      "second_previous_choice",
+      "previous_outcome"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.0841762214043715
+  },
+  "decomposed_meta_control::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.0006341534597665
+      }
+    ],
+    "feature_names": [
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "previous_choice",
+      "failure_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.0006341534597665
+  },
+  "decomposed_meta_control::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.247581559412514
+      }
+    ],
+    "feature_names": [
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "previous_choice",
+      "failure_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.247581559412514
+  },
+  "decomposed_meta_control::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.6841740741097504
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.4504411340364117
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 1.6081294700913795
+        }
+      ]
+    },
+    "feature_names": [
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "previous_choice",
+      "failure_streak"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.247581559412514
+  },
+  "decomposed_meta_control::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.010139141406824
+      }
+    ],
+    "feature_names": [
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "previous_choice",
+      "failure_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.010139141406824
+  },
+  "decomposed_meta_control::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.4006316475641378
+      }
+    ],
+    "feature_names": [
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "previous_choice",
+      "failure_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.4006316475641378
+  },
+  "decomposed_meta_control::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.7348949102711468
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.4323884745245986
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 2.034611557896668
+        }
+      ]
+    },
+    "feature_names": [
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "previous_choice",
+      "failure_streak"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.4006316475641378
+  },
+  "disengagement_accumulator::observable::fully_shared": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 4.120232366733586
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 4.24703033854673
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 4.377059799240114
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 4.439057453600675
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 4.39203918164615
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 4.295527223906119
+      }
+    ],
+    "feature_names": [
+      "latent_persistence_state"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 4.120232366733586
+  },
+  "disengagement_accumulator::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 3.222112513461495
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 3.306244057277379
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 3.389878122338436
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 3.441671199007216
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 3.444601342067975
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 3.3842403702051995
+      }
+    ],
+    "feature_names": [
+      "latent_persistence_state"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 3.222112513461495
+  },
+  "disengagement_accumulator::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 2.161533013867043
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 2.234434376598984
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 2.2826426364950456
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 2.2783147292428434
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 2.1873759067806766
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.957770756918651
+        }
+      ],
+      "foraging": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.4171722518844323
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.4959201345696622
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.543729025016393
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 1.5540399812133376
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 1.546298543291238
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.5353299959435054
+        }
+      ],
+      "solvability": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 6.087632274633011
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 6.188377660663489
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 6.34326270550387
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 6.492658886565467
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 6.600129576132011
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 6.659620357753442
+        }
+      ]
+    },
+    "feature_names": [
+      "latent_persistence_state"
+    ],
+    "selected": {
+      "bandit": {
+        "rho": 0.95
+      },
+      "foraging": {
+        "rho": 0.0
+      },
+      "solvability": {
+        "rho": 0.0
+      }
+    },
+    "validation_macro_mse": 3.154191761145365
+  },
+  "disengagement_accumulator::oracle::fully_shared": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 4.230027994524705
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 4.34370499267681
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 4.471816317667716
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 4.551585520243684
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 4.542713330802655
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 4.454007085257692
+      }
+    ],
+    "feature_names": [
+      "latent_persistence_state"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 4.230027994524705
+  },
+  "disengagement_accumulator::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 3.253547372734404
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 3.322053705796255
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 3.4009312049918226
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 3.4578369312551467
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 3.47365169871593
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 3.429447941375536
+      }
+    ],
+    "feature_names": [
+      "latent_persistence_state"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 3.253547372734404
+  },
+  "disengagement_accumulator::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 2.3061186225051804
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 2.3146078935325414
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 2.319538999309734
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 2.3058633554144614
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 2.237365719978199
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 2.0470204749412284
+        }
+      ],
+      "foraging": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.2711226906813875
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.3814374955536366
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.4773824762526417
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 1.531918725713465
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 1.5561168638392757
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.5638631494080095
+        }
+      ],
+      "solvability": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 6.183400805016644
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 6.270115728302587
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 6.405872139413091
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 6.535728712637514
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 6.627472512330316
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 6.67746019977737
+        }
+      ]
+    },
+    "feature_names": [
+      "latent_persistence_state"
+    ],
+    "selected": {
+      "bandit": {
+        "rho": 0.95
+      },
+      "foraging": {
+        "rho": 0.0
+      },
+      "solvability": {
+        "rho": 0.0
+      }
+    },
+    "validation_macro_mse": 3.1671813235464206
+  },
+  "finite_history::observable::fully_shared": {
+    "candidates": [
+      {
+        "history_lag": 1,
+        "validation_macro_mse": 4.2472559264995375
+      },
+      {
+        "history_lag": 2,
+        "validation_macro_mse": 4.19570368678611
+      },
+      {
+        "history_lag": 3,
+        "validation_macro_mse": 4.189167146934822
+      },
+      {
+        "history_lag": 5,
+        "validation_macro_mse": 4.184883159157653
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "action_lag_1",
+      "outcome_lag_1",
+      "action_lag_2",
+      "outcome_lag_2"
+    ],
+    "selected": {
+      "history_lag": 2
+    },
+    "validation_macro_mse": 4.19570368678611
+  },
+  "finite_history::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "history_lag": 1,
+        "validation_macro_mse": 1.4689088740591918
+      },
+      {
+        "history_lag": 2,
+        "validation_macro_mse": 1.0710479428066582
+      },
+      {
+        "history_lag": 3,
+        "validation_macro_mse": 1.033958319654803
+      },
+      {
+        "history_lag": 5,
+        "validation_macro_mse": 1.031880264957297
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "action_lag_1",
+      "outcome_lag_1",
+      "action_lag_2",
+      "outcome_lag_2",
+      "action_lag_3",
+      "outcome_lag_3"
+    ],
+    "selected": {
+      "history_lag": 3
+    },
+    "validation_macro_mse": 1.033958319654803
+  },
+  "finite_history::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "history_lag": 1,
+          "validation_macro_mse": 1.3981135864581313
+        },
+        {
+          "history_lag": 2,
+          "validation_macro_mse": 0.5301177949970716
+        },
+        {
+          "history_lag": 3,
+          "validation_macro_mse": 0.47493723808736815
+        },
+        {
+          "history_lag": 5,
+          "validation_macro_mse": 0.46982665917086525
+        }
+      ],
+      "foraging": [
+        {
+          "history_lag": 1,
+          "validation_macro_mse": 0.5290609516662705
+        },
+        {
+          "history_lag": 2,
+          "validation_macro_mse": 0.4893929513808141
+        },
+        {
+          "history_lag": 3,
+          "validation_macro_mse": 0.4871180224780851
+        },
+        {
+          "history_lag": 5,
+          "validation_macro_mse": 0.48739342336454466
+        }
+      ],
+      "solvability": [
+        {
+          "history_lag": 1,
+          "validation_macro_mse": 2.4795520840531733
+        },
+        {
+          "history_lag": 2,
+          "validation_macro_mse": 2.193633082042089
+        },
+        {
+          "history_lag": 3,
+          "validation_macro_mse": 2.1398196983989557
+        },
+        {
+          "history_lag": 5,
+          "validation_macro_mse": 2.138420712336481
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "action_lag_1",
+      "outcome_lag_1",
+      "action_lag_2",
+      "outcome_lag_2",
+      "action_lag_3",
+      "outcome_lag_3",
+      "action_lag_5",
+      "outcome_lag_5"
+    ],
+    "selected": {
+      "bandit": {
+        "history_lag": 5
+      },
+      "foraging": {
+        "history_lag": 2
+      },
+      "solvability": {
+        "history_lag": 3
+      }
+    },
+    "validation_macro_mse": 1.033013102983545
+  },
+  "finite_history::oracle::fully_shared": {
+    "candidates": [
+      {
+        "history_lag": 1,
+        "validation_macro_mse": 4.2472559264995375
+      },
+      {
+        "history_lag": 2,
+        "validation_macro_mse": 4.19570368678611
+      },
+      {
+        "history_lag": 3,
+        "validation_macro_mse": 4.189167146934822
+      },
+      {
+        "history_lag": 5,
+        "validation_macro_mse": 4.184883159157653
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "action_lag_1",
+      "outcome_lag_1",
+      "action_lag_2",
+      "outcome_lag_2"
+    ],
+    "selected": {
+      "history_lag": 2
+    },
+    "validation_macro_mse": 4.19570368678611
+  },
+  "finite_history::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "history_lag": 1,
+        "validation_macro_mse": 1.4689088740591918
+      },
+      {
+        "history_lag": 2,
+        "validation_macro_mse": 1.0710479428066582
+      },
+      {
+        "history_lag": 3,
+        "validation_macro_mse": 1.033958319654803
+      },
+      {
+        "history_lag": 5,
+        "validation_macro_mse": 1.031880264957297
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "action_lag_1",
+      "outcome_lag_1",
+      "action_lag_2",
+      "outcome_lag_2",
+      "action_lag_3",
+      "outcome_lag_3"
+    ],
+    "selected": {
+      "history_lag": 3
+    },
+    "validation_macro_mse": 1.033958319654803
+  },
+  "finite_history::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "history_lag": 1,
+          "validation_macro_mse": 1.3981135864581313
+        },
+        {
+          "history_lag": 2,
+          "validation_macro_mse": 0.5301177949970716
+        },
+        {
+          "history_lag": 3,
+          "validation_macro_mse": 0.47493723808736815
+        },
+        {
+          "history_lag": 5,
+          "validation_macro_mse": 0.46982665917086525
+        }
+      ],
+      "foraging": [
+        {
+          "history_lag": 1,
+          "validation_macro_mse": 0.5290609516662705
+        },
+        {
+          "history_lag": 2,
+          "validation_macro_mse": 0.4893929513808141
+        },
+        {
+          "history_lag": 3,
+          "validation_macro_mse": 0.4871180224780851
+        },
+        {
+          "history_lag": 5,
+          "validation_macro_mse": 0.48739342336454466
+        }
+      ],
+      "solvability": [
+        {
+          "history_lag": 1,
+          "validation_macro_mse": 2.4795520840531733
+        },
+        {
+          "history_lag": 2,
+          "validation_macro_mse": 2.193633082042089
+        },
+        {
+          "history_lag": 3,
+          "validation_macro_mse": 2.1398196983989557
+        },
+        {
+          "history_lag": 5,
+          "validation_macro_mse": 2.138420712336481
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "action_lag_1",
+      "outcome_lag_1",
+      "action_lag_2",
+      "outcome_lag_2",
+      "action_lag_3",
+      "outcome_lag_3",
+      "action_lag_5",
+      "outcome_lag_5"
+    ],
+    "selected": {
+      "bandit": {
+        "history_lag": 5
+      },
+      "foraging": {
+        "history_lag": 2
+      },
+      "solvability": {
+        "history_lag": 3
+      }
+    },
+    "validation_macro_mse": 1.033013102983545
+  },
+  "flexible_linear::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 2.0558274125478606
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 2.0558274125478606
+  },
+  "flexible_linear::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.5247585466928205
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.5247585466928205
+  },
+  "flexible_linear::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 0.39696967309969583
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.20298979058732441
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 0.9743161763914412
+        }
+      ]
+    },
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 0.5247585466928205
+  },
+  "flexible_linear::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 2.188325175153937
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "oracle_termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 2.188325175153937
+  },
+  "flexible_linear::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.5808081761334488
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "oracle_termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.5808081761334488
+  },
+  "flexible_linear::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 0.4016387395363725
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.286942051215362
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 1.053843737648612
+        }
+      ]
+    },
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "oracle_termination_advantage"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 0.5808081761334488
+  },
+  "generic_latent_value::observable::fully_shared": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 4.120232366733586
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 4.24703033854673
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 4.377059799240114
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 4.439057453600675
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 4.39203918164615
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 4.295527223906119
+      }
+    ],
+    "feature_names": [
+      "generic_latent_value"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 4.120232366733586
+  },
+  "generic_latent_value::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 3.222112513461495
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 3.306244057277379
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 3.389878122338436
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 3.441671199007216
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 3.444601342067975
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 3.3842403702051995
+      }
+    ],
+    "feature_names": [
+      "generic_latent_value"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 3.222112513461495
+  },
+  "generic_latent_value::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 2.161533013867043
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 2.234434376598984
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 2.2826426364950456
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 2.2783147292428434
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 2.1873759067806766
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.957770756918651
+        }
+      ],
+      "foraging": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.4171722518844323
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.4959201345696622
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.543729025016393
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 1.5540399812133376
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 1.546298543291238
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.5353299959435054
+        }
+      ],
+      "solvability": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 6.087632274633011
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 6.188377660663489
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 6.34326270550387
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 6.492658886565467
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 6.600129576132011
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 6.659620357753442
+        }
+      ]
+    },
+    "feature_names": [
+      "generic_latent_value"
+    ],
+    "selected": {
+      "bandit": {
+        "rho": 0.95
+      },
+      "foraging": {
+        "rho": 0.0
+      },
+      "solvability": {
+        "rho": 0.0
+      }
+    },
+    "validation_macro_mse": 3.154191761145365
+  },
+  "generic_latent_value::oracle::fully_shared": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 4.230027994524705
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 4.34370499267681
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 4.471816317667716
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 4.551585520243684
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 4.542713330802655
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 4.454007085257692
+      }
+    ],
+    "feature_names": [
+      "generic_latent_value"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 4.230027994524705
+  },
+  "generic_latent_value::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 3.253547372734404
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 3.322053705796255
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 3.4009312049918226
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 3.4578369312551467
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 3.47365169871593
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 3.429447941375536
+      }
+    ],
+    "feature_names": [
+      "generic_latent_value"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 3.253547372734404
+  },
+  "generic_latent_value::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 2.3061186225051804
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 2.3146078935325414
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 2.319538999309734
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 2.3058633554144614
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 2.237365719978199
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 2.0470204749412284
+        }
+      ],
+      "foraging": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.2711226906813875
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.3814374955536366
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.4773824762526417
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 1.531918725713465
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 1.5561168638392757
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.5638631494080095
+        }
+      ],
+      "solvability": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 6.183400805016644
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 6.270115728302587
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 6.405872139413091
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 6.535728712637514
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 6.627472512330316
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 6.67746019977737
+        }
+      ]
+    },
+    "feature_names": [
+      "generic_latent_value"
+    ],
+    "selected": {
+      "bandit": {
+        "rho": 0.95
+      },
+      "foraging": {
+        "rho": 0.0
+      },
+      "solvability": {
+        "rho": 0.0
+      }
+    },
+    "validation_macro_mse": 3.1671813235464206
+  },
+  "gru::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "dropout": 0.0,
+        "hidden_size": 32,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.705565333366394
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 32,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.708931803703308
+      },
+      {
+        "dropout": 0.0,
+        "hidden_size": 32,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 4.873457908630371
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 32,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 4.877166748046875
+      },
+      {
+        "dropout": 0.0,
+        "hidden_size": 64,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.1863082647323608
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 64,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.1898874044418335
+      },
+      {
+        "dropout": 0.0,
+        "hidden_size": 64,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 3.5950160026550293
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 64,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 3.5977354049682617
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage"
+    ],
+    "selected": {
+      "dropout": 0.0,
+      "epochs": 100,
+      "hidden_size": 64,
+      "learning_rate": 0.001
+    },
+    "validation_macro_mse": 1.1863082647323608
+  },
+  "gru::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "dropout": 0.0,
+        "hidden_size": 32,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.8217955827713013
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 32,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.8277208805084229
+      },
+      {
+        "dropout": 0.0,
+        "hidden_size": 32,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 4.577314376831055
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 32,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 4.585102081298828
+      },
+      {
+        "dropout": 0.0,
+        "hidden_size": 64,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.169335961341858
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 64,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.1729854345321655
+      },
+      {
+        "dropout": 0.0,
+        "hidden_size": 64,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 3.278517246246338
+      },
+      {
+        "dropout": 0.1,
+        "hidden_size": 64,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 3.2799391746520996
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "oracle_termination_advantage",
+      "oracle_relative_value"
+    ],
+    "selected": {
+      "dropout": 0.0,
+      "epochs": 100,
+      "hidden_size": 64,
+      "learning_rate": 0.001
+    },
+    "validation_macro_mse": 1.169335961341858
+  },
+  "intercept::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 5.149794381545408
+      }
+    ],
+    "feature_names": [],
+    "selected": {},
+    "validation_macro_mse": 5.149794381545408
+  },
+  "intercept::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 3.548347336587342
+      }
+    ],
+    "feature_names": [],
+    "selected": {},
+    "validation_macro_mse": 3.548347336587342
+  },
+  "intercept::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 2.34639104753479
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 1.5439392878952547
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 6.754711674331981
+        }
+      ]
+    },
+    "feature_names": [],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 3.548347336587342
+  },
+  "intercept::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 5.149794381545408
+      }
+    ],
+    "feature_names": [],
+    "selected": {},
+    "validation_macro_mse": 5.149794381545408
+  },
+  "intercept::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 3.548347336587342
+      }
+    ],
+    "feature_names": [],
+    "selected": {},
+    "validation_macro_mse": 3.548347336587342
+  },
+  "intercept::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 2.34639104753479
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 1.5439392878952547
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 6.754711674331981
+        }
+      ]
+    },
+    "feature_names": [],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 3.548347336587342
+  },
+  "latent_commitment::observable::fully_shared": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 4.038264176064343
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 4.135130739700615
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 4.2436062416249065
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 4.30432228490769
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 4.267411754710154
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 4.1634046784801235
+      }
+    ],
+    "feature_names": [
+      "relative_value",
+      "cost_pressure",
+      "progress_evidence"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 4.038264176064343
+  },
+  "latent_commitment::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 2.9237696502361232
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 2.975074542243666
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 3.030557900184892
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 3.0958680047783176
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 3.1448887138880095
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 3.1161639639881904
+      }
+    ],
+    "feature_names": [
+      "relative_value",
+      "cost_pressure",
+      "progress_evidence"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 2.9237696502361232
+  },
+  "latent_commitment::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.9918658907779914
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.981321520583055
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.9836527769520915
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 2.034361967823998
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 2.0560353802867732
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.878621256813706
+        }
+      ],
+      "foraging": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.3308099650335259
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.359803040931684
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.3299680207623976
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 1.2861974749768699
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 1.2615122523218734
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.2551855438890795
+        }
+      ],
+      "solvability": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 5.448633094896853
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 5.584099065216259
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 5.778052902840186
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 5.9670445715340845
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 6.1171185090553815
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 6.214685091261786
+        }
+      ]
+    },
+    "feature_names": [
+      "relative_value",
+      "cost_pressure",
+      "progress_evidence"
+    ],
+    "selected": {
+      "bandit": {
+        "rho": 0.95
+      },
+      "foraging": {
+        "rho": 0.85
+      },
+      "solvability": {
+        "rho": 0.0
+      }
+    },
+    "validation_macro_mse": 2.862922201344144
+  },
+  "latent_commitment::oracle::fully_shared": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 4.103312951317772
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 4.196600426124914
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 4.312733372803066
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 4.395249409687857
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 4.395386958239236
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 4.302664365580292
+      }
+    ],
+    "feature_names": [
+      "oracle_relative_value",
+      "cost_pressure",
+      "progress_evidence"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 4.103312951317772
+  },
+  "latent_commitment::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "rho": 0.0,
+        "validation_macro_mse": 2.91384899664868
+      },
+      {
+        "rho": 0.25,
+        "validation_macro_mse": 2.9653051209074146
+      },
+      {
+        "rho": 0.5,
+        "validation_macro_mse": 3.0282450266344405
+      },
+      {
+        "rho": 0.7,
+        "validation_macro_mse": 3.092052529131793
+      },
+      {
+        "rho": 0.85,
+        "validation_macro_mse": 3.1412193854369512
+      },
+      {
+        "rho": 0.95,
+        "validation_macro_mse": 3.1361551684107503
+      }
+    ],
+    "feature_names": [
+      "oracle_relative_value",
+      "cost_pressure",
+      "progress_evidence"
+    ],
+    "selected": {
+      "rho": 0.0
+    },
+    "validation_macro_mse": 2.91384899664868
+  },
+  "latent_commitment::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 2.016724648623197
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.9809173487325067
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.980348670079477
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 2.015988232610993
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 2.0371622363094115
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.9323034472414735
+        }
+      ],
+      "foraging": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 1.2271798567563095
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 1.2941133730456977
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 1.3040005181865166
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 1.282991260819243
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 1.2673589320573138
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 1.2635748571801648
+        }
+      ],
+      "solvability": [
+        {
+          "rho": 0.0,
+          "validation_macro_mse": 5.497642484566533
+        },
+        {
+          "rho": 0.25,
+          "validation_macro_mse": 5.620884640944039
+        },
+        {
+          "rho": 0.5,
+          "validation_macro_mse": 5.800385891637329
+        },
+        {
+          "rho": 0.7,
+          "validation_macro_mse": 5.977178093965143
+        },
+        {
+          "rho": 0.85,
+          "validation_macro_mse": 6.119136987944129
+        },
+        {
+          "rho": 0.95,
+          "validation_macro_mse": 6.212587200810611
+        }
+      ]
+    },
+    "feature_names": [
+      "oracle_relative_value",
+      "cost_pressure",
+      "progress_evidence"
+    ],
+    "selected": {
+      "bandit": {
+        "rho": 0.95
+      },
+      "foraging": {
+        "rho": 0.0
+      },
+      "solvability": {
+        "rho": 0.0
+      }
+    },
+    "validation_macro_mse": 2.885708596188105
+  },
+  "mlp::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "dropout": 0.0,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.507409691810608
+      },
+      {
+        "dropout": 0.1,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.553498387336731
+      },
+      {
+        "dropout": 0.0,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 4.668219089508057
+      },
+      {
+        "dropout": 0.1,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 4.66969108581543
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage"
+    ],
+    "selected": {
+      "dropout": 0.0,
+      "epochs": 100,
+      "learning_rate": 0.001
+    },
+    "validation_macro_mse": 1.507409691810608
+  },
+  "mlp::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "dropout": 0.0,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.2754437923431396
+      },
+      {
+        "dropout": 0.1,
+        "learning_rate": 0.001,
+        "validation_macro_mse": 1.333806037902832
+      },
+      {
+        "dropout": 0.0,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 5.034103870391846
+      },
+      {
+        "dropout": 0.1,
+        "learning_rate": 0.0003,
+        "validation_macro_mse": 5.047243118286133
+      }
+    ],
+    "feature_names": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "oracle_termination_advantage",
+      "oracle_relative_value"
+    ],
+    "selected": {
+      "dropout": 0.0,
+      "epochs": 100,
+      "learning_rate": 0.001
+    },
+    "validation_macro_mse": 1.2754437923431396
+  },
+  "mvt_like_foraging_threshold::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.3329196682692653
+      }
+    ],
+    "feature_names": [
+      "mvt_like_advantage",
+      "failure_streak",
+      "log_round"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.3329196682692653
+  },
+  "mvt_like_foraging_threshold::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.3329196682692653
+      }
+    ],
+    "feature_names": [
+      "mvt_like_advantage",
+      "failure_streak",
+      "log_round"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.3329196682692653
+  },
+  "mvt_like_foraging_threshold::observable::task_specific": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.3329196682692653
+      }
+    ],
+    "feature_names": [
+      "mvt_like_advantage",
+      "failure_streak",
+      "log_round"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.3329196682692653
+  },
+  "mvt_like_foraging_threshold::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.3329196682692653
+      }
+    ],
+    "feature_names": [
+      "mvt_like_advantage",
+      "failure_streak",
+      "log_round"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.3329196682692653
+  },
+  "mvt_like_foraging_threshold::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.3329196682692653
+      }
+    ],
+    "feature_names": [
+      "mvt_like_advantage",
+      "failure_streak",
+      "log_round"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.3329196682692653
+  },
+  "mvt_like_foraging_threshold::oracle::task_specific": {
+    "candidates": [
+      {
+        "validation_macro_mse": 0.3329196682692653
+      }
+    ],
+    "feature_names": [
+      "mvt_like_advantage",
+      "failure_streak",
+      "log_round"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.3329196682692653
+  },
+  "oracle_policy::observable::fully_shared": {
+    "candidates": [],
+    "feature_names": [
+      "recorded_llm_policy"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.0
+  },
+  "oracle_policy::observable::shared_architecture_task_observation": {
+    "candidates": [],
+    "feature_names": [
+      "recorded_llm_policy"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.0
+  },
+  "oracle_policy::observable::task_specific": {
+    "candidates": [],
+    "feature_names": [
+      "recorded_llm_policy"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.0
+  },
+  "oracle_policy::oracle::fully_shared": {
+    "candidates": [],
+    "feature_names": [
+      "recorded_llm_policy"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.0
+  },
+  "oracle_policy::oracle::shared_architecture_task_observation": {
+    "candidates": [],
+    "feature_names": [
+      "recorded_llm_policy"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.0
+  },
+  "oracle_policy::oracle::task_specific": {
+    "candidates": [],
+    "feature_names": [
+      "recorded_llm_policy"
+    ],
+    "selected": {},
+    "validation_macro_mse": 0.0
+  },
+  "previous_outcome::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.406196463395016
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.406196463395016
+  },
+  "previous_outcome::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.8956964776552752
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.8956964776552752
+  },
+  "previous_outcome::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.9309011564922849
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.5825999746586261
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 3.1735883018149145
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "previous_outcome"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.8956964776552752
+  },
+  "previous_outcome::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.406196463395016
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.406196463395016
+  },
+  "previous_outcome::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.8956964776552752
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.8956964776552752
+  },
+  "previous_outcome::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.9309011564922849
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.5825999746586261
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 3.1735883018149145
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "previous_outcome"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.8956964776552752
+  },
+  "rescorla_wagner::observable::fully_shared": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 2.051838397489795
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 2.04322584499285
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.9326271479821608
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.8266731928619595
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.7951802263795855
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.8150076037082319
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.863757771874767
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "rw_best",
+      "rw_gap"
+    ],
+    "selected": {
+      "alpha": 0.5
+    },
+    "validation_macro_mse": 1.7951802263795855
+  },
+  "rescorla_wagner::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 2.051838397489795
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 2.04322584499285
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.9326271479821608
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.8266731928619595
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.7951802263795855
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.8150076037082319
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.863757771874767
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "rw_best",
+      "rw_gap"
+    ],
+    "selected": {
+      "alpha": 0.5
+    },
+    "validation_macro_mse": 1.7951802263795855
+  },
+  "rescorla_wagner::observable::task_specific": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 2.051838397489795
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 2.04322584499285
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.9326271479821608
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.8266731928619595
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.7951802263795855
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.8150076037082319
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.863757771874767
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "rw_best",
+      "rw_gap"
+    ],
+    "selected": {
+      "alpha": 0.5
+    },
+    "validation_macro_mse": 1.7951802263795855
+  },
+  "rescorla_wagner::oracle::fully_shared": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 2.051838397489795
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 2.04322584499285
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.9326271479821608
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.8266731928619595
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.7951802263795855
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.8150076037082319
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.863757771874767
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "rw_best",
+      "rw_gap"
+    ],
+    "selected": {
+      "alpha": 0.5
+    },
+    "validation_macro_mse": 1.7951802263795855
+  },
+  "rescorla_wagner::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 2.051838397489795
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 2.04322584499285
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.9326271479821608
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.8266731928619595
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.7951802263795855
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.8150076037082319
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.863757771874767
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "rw_best",
+      "rw_gap"
+    ],
+    "selected": {
+      "alpha": 0.5
+    },
+    "validation_macro_mse": 1.7951802263795855
+  },
+  "rescorla_wagner::oracle::task_specific": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 2.051838397489795
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 2.04322584499285
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.9326271479821608
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.8266731928619595
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.7951802263795855
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.8150076037082319
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.863757771874767
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "rw_best",
+      "rw_gap"
+    ],
+    "selected": {
+      "alpha": 0.5
+    },
+    "validation_macro_mse": 1.7951802263795855
+  },
+  "sticky_termination::observable::fully_shared": {
+    "candidates": [
+      {
+        "decay": 0.0,
+        "validation_macro_mse": 4.123585122837825
+      },
+      {
+        "decay": 0.25,
+        "validation_macro_mse": 4.122903167572382
+      },
+      {
+        "decay": 0.5,
+        "validation_macro_mse": 4.107143249856375
+      },
+      {
+        "decay": 0.7,
+        "validation_macro_mse": 4.04920764182322
+      },
+      {
+        "decay": 0.85,
+        "validation_macro_mse": 3.9066782676128473
+      },
+      {
+        "decay": 0.95,
+        "validation_macro_mse": 3.6943388789408225
+      }
+    ],
+    "feature_names": [
+      "termination_advantage",
+      "choice_kernel"
+    ],
+    "selected": {
+      "decay": 0.95
+    },
+    "validation_macro_mse": 3.6943388789408225
+  },
+  "sticky_termination::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "decay": 0.0,
+        "validation_macro_mse": 2.7062324593898253
+      },
+      {
+        "decay": 0.25,
+        "validation_macro_mse": 2.595430739387114
+      },
+      {
+        "decay": 0.5,
+        "validation_macro_mse": 2.581966013981961
+      },
+      {
+        "decay": 0.7,
+        "validation_macro_mse": 2.669985127569815
+      },
+      {
+        "decay": 0.85,
+        "validation_macro_mse": 2.744558459576835
+      },
+      {
+        "decay": 0.95,
+        "validation_macro_mse": 2.704263032521561
+      }
+    ],
+    "feature_names": [
+      "termination_advantage",
+      "choice_kernel"
+    ],
+    "selected": {
+      "decay": 0.25
+    },
+    "validation_macro_mse": 2.595430739387114
+  },
+  "sticky_termination::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "decay": 0.0,
+          "validation_macro_mse": 1.8563167288908369
+        },
+        {
+          "decay": 0.25,
+          "validation_macro_mse": 1.7726807393284012
+        },
+        {
+          "decay": 0.5,
+          "validation_macro_mse": 1.8491033859104336
+        },
+        {
+          "decay": 0.7,
+          "validation_macro_mse": 2.063743132052035
+        },
+        {
+          "decay": 0.85,
+          "validation_macro_mse": 2.165935755601835
+        },
+        {
+          "decay": 0.95,
+          "validation_macro_mse": 1.9341451204506301
+        }
+      ],
+      "foraging": [
+        {
+          "decay": 0.0,
+          "validation_macro_mse": 0.4591751525308499
+        },
+        {
+          "decay": 0.25,
+          "validation_macro_mse": 0.3431304330838538
+        },
+        {
+          "decay": 0.5,
+          "validation_macro_mse": 0.30796628203185356
+        },
+        {
+          "decay": 0.7,
+          "validation_macro_mse": 0.3451985344285494
+        },
+        {
+          "decay": 0.85,
+          "validation_macro_mse": 0.4085354017375647
+        },
+        {
+          "decay": 0.95,
+          "validation_macro_mse": 0.46472282443059676
+        }
+      ],
+      "solvability": [
+        {
+          "decay": 0.0,
+          "validation_macro_mse": 5.803205496747789
+        },
+        {
+          "decay": 0.25,
+          "validation_macro_mse": 5.670481045749087
+        },
+        {
+          "decay": 0.5,
+          "validation_macro_mse": 5.588828374003596
+        },
+        {
+          "decay": 0.7,
+          "validation_macro_mse": 5.601013716228862
+        },
+        {
+          "decay": 0.85,
+          "validation_macro_mse": 5.659204221391105
+        },
+        {
+          "decay": 0.95,
+          "validation_macro_mse": 5.713921152683456
+        }
+      ]
+    },
+    "feature_names": [
+      "termination_advantage",
+      "choice_kernel"
+    ],
+    "selected": {
+      "bandit": {
+        "decay": 0.25
+      },
+      "foraging": {
+        "decay": 0.5
+      },
+      "solvability": {
+        "decay": 0.5
+      }
+    },
+    "validation_macro_mse": 2.556491798454617
+  },
+  "sticky_termination::oracle::fully_shared": {
+    "candidates": [
+      {
+        "decay": 0.0,
+        "validation_macro_mse": 4.222640946602515
+      },
+      {
+        "decay": 0.25,
+        "validation_macro_mse": 4.202819547104056
+      },
+      {
+        "decay": 0.5,
+        "validation_macro_mse": 4.155954034970898
+      },
+      {
+        "decay": 0.7,
+        "validation_macro_mse": 4.062315665272376
+      },
+      {
+        "decay": 0.85,
+        "validation_macro_mse": 3.8920895969332094
+      },
+      {
+        "decay": 0.95,
+        "validation_macro_mse": 3.689243312305443
+      }
+    ],
+    "feature_names": [
+      "oracle_termination_advantage",
+      "choice_kernel"
+    ],
+    "selected": {
+      "decay": 0.95
+    },
+    "validation_macro_mse": 3.689243312305443
+  },
+  "sticky_termination::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "decay": 0.0,
+        "validation_macro_mse": 2.834774676572843
+      },
+      {
+        "decay": 0.25,
+        "validation_macro_mse": 2.748801868482849
+      },
+      {
+        "decay": 0.5,
+        "validation_macro_mse": 2.741868223226259
+      },
+      {
+        "decay": 0.7,
+        "validation_macro_mse": 2.807233554352178
+      },
+      {
+        "decay": 0.85,
+        "validation_macro_mse": 2.8457684376214303
+      },
+      {
+        "decay": 0.95,
+        "validation_macro_mse": 2.7832478686093403
+      }
+    ],
+    "feature_names": [
+      "oracle_termination_advantage",
+      "choice_kernel"
+    ],
+    "selected": {
+      "decay": 0.25
+    },
+    "validation_macro_mse": 2.748801868482849
+  },
+  "sticky_termination::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "decay": 0.0,
+          "validation_macro_mse": 2.115042656614302
+        },
+        {
+          "decay": 0.25,
+          "validation_macro_mse": 2.064466901041154
+        },
+        {
+          "decay": 0.5,
+          "validation_macro_mse": 2.1339414364337292
+        },
+        {
+          "decay": 0.7,
+          "validation_macro_mse": 2.2741462116758115
+        },
+        {
+          "decay": 0.85,
+          "validation_macro_mse": 2.2724995447739293
+        },
+        {
+          "decay": 0.95,
+          "validation_macro_mse": 1.9810726724013878
+        }
+      ],
+      "foraging": [
+        {
+          "decay": 0.0,
+          "validation_macro_mse": 0.5017029222218229
+        },
+        {
+          "decay": 0.25,
+          "validation_macro_mse": 0.43331088047899236
+        },
+        {
+          "decay": 0.5,
+          "validation_macro_mse": 0.4308556957384295
+        },
+        {
+          "decay": 0.7,
+          "validation_macro_mse": 0.47780267899077833
+        },
+        {
+          "decay": 0.85,
+          "validation_macro_mse": 0.5373948831231022
+        },
+        {
+          "decay": 0.95,
+          "validation_macro_mse": 0.5858475469524809
+        }
+      ],
+      "solvability": [
+        {
+          "decay": 0.0,
+          "validation_macro_mse": 5.887578450882404
+        },
+        {
+          "decay": 0.25,
+          "validation_macro_mse": 5.748627823928401
+        },
+        {
+          "decay": 0.5,
+          "validation_macro_mse": 5.660807537506617
+        },
+        {
+          "decay": 0.7,
+          "validation_macro_mse": 5.669751772389944
+        },
+        {
+          "decay": 0.85,
+          "validation_macro_mse": 5.72741088496726
+        },
+        {
+          "decay": 0.95,
+          "validation_macro_mse": 5.782823386474153
+        }
+      ]
+    },
+    "feature_names": [
+      "oracle_termination_advantage",
+      "choice_kernel"
+    ],
+    "selected": {
+      "bandit": {
+        "decay": 0.95
+      },
+      "foraging": {
+        "decay": 0.25
+      },
+      "solvability": {
+        "decay": 0.5
+      }
+    },
+    "validation_macro_mse": 2.6917303634623324
+  },
+  "streak::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.288095705792672
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "failure_streak",
+      "success_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.288095705792672
+  },
+  "streak::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.9806688275409687
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "failure_streak",
+      "success_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.9806688275409687
+  },
+  "streak::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.3883733364088457
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.6038582126027089
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 3.949774933611351
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "failure_streak",
+      "success_streak"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.9806688275409687
+  },
+  "streak::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.288095705792672
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "failure_streak",
+      "success_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.288095705792672
+  },
+  "streak::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 1.9806688275409687
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "failure_streak",
+      "success_streak"
+    ],
+    "selected": {},
+    "validation_macro_mse": 1.9806688275409687
+  },
+  "streak::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.3883733364088457
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.6038582126027089
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 3.949774933611351
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "failure_streak",
+      "success_streak"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 1.9806688275409687
+  },
+  "termination_advantage::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.120232366733586
+      }
+    ],
+    "feature_names": [
+      "termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.120232366733586
+  },
+  "termination_advantage::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 3.222112513461495
+      }
+    ],
+    "feature_names": [
+      "termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 3.222112513461495
+  },
+  "termination_advantage::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 2.161533013867043
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 1.4171722518844323
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 6.087632274633011
+        }
+      ]
+    },
+    "feature_names": [
+      "termination_advantage"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 3.222112513461495
+  },
+  "termination_advantage::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.230027994524705
+      }
+    ],
+    "feature_names": [
+      "oracle_termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.230027994524705
+  },
+  "termination_advantage::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 3.253547372734404
+      }
+    ],
+    "feature_names": [
+      "oracle_termination_advantage"
+    ],
+    "selected": {},
+    "validation_macro_mse": 3.253547372734404
+  },
+  "termination_advantage::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 2.3061186225051804
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 1.2711226906813875
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 6.183400805016644
+        }
+      ]
+    },
+    "feature_names": [
+      "oracle_termination_advantage"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 3.253547372734404
+  },
+  "time::observable::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.395529843974772
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "normalized_time"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.395529843974772
+  },
+  "time::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 2.6292901629137173
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "normalized_time"
+    ],
+    "selected": {},
+    "validation_macro_mse": 2.6292901629137173
+  },
+  "time::observable::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.1566721538133518
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.6064501521833969
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 6.124748182744403
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "normalized_time"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 2.6292901629137173
+  },
+  "time::oracle::fully_shared": {
+    "candidates": [
+      {
+        "validation_macro_mse": 4.395529843974772
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "normalized_time"
+    ],
+    "selected": {},
+    "validation_macro_mse": 4.395529843974772
+  },
+  "time::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "validation_macro_mse": 2.6292901629137173
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "normalized_time"
+    ],
+    "selected": {},
+    "validation_macro_mse": 2.6292901629137173
+  },
+  "time::oracle::task_specific": {
+    "candidates": {
+      "bandit": [
+        {
+          "validation_macro_mse": 1.1566721538133518
+        }
+      ],
+      "foraging": [
+        {
+          "validation_macro_mse": 0.6064501521833969
+        }
+      ],
+      "solvability": [
+        {
+          "validation_macro_mse": 6.124748182744403
+        }
+      ]
+    },
+    "feature_names": [
+      "log_round",
+      "normalized_time"
+    ],
+    "selected": {
+      "bandit": {},
+      "foraging": {},
+      "solvability": {}
+    },
+    "validation_macro_mse": 2.6292901629137173
+  },
+  "value_history_hybrid::observable::fully_shared": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 1.0443162249966997
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 1.0725950633028245
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.1035039343245647
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.1351579921750243
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.1483027121245268
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.1430664906043646
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.1290372322166604
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome",
+      "failure_streak",
+      "previous_choice",
+      "rw_best",
+      "rw_gap",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {
+      "alpha": 0.05
+    },
+    "validation_macro_mse": 1.0443162249966997
+  },
+  "value_history_hybrid::observable::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 1.0443162249966997
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 1.0725950633028245
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.1035039343245647
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.1351579921750243
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.1483027121245268
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.1430664906043646
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.1290372322166604
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome",
+      "failure_streak",
+      "previous_choice",
+      "rw_best",
+      "rw_gap",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {
+      "alpha": 0.05
+    },
+    "validation_macro_mse": 1.0443162249966997
+  },
+  "value_history_hybrid::observable::task_specific": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 1.0443162249966997
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 1.0725950633028245
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.1035039343245647
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.1351579921750243
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.1483027121245268
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.1430664906043646
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.1290372322166604
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome",
+      "failure_streak",
+      "previous_choice",
+      "rw_best",
+      "rw_gap",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {
+      "alpha": 0.05
+    },
+    "validation_macro_mse": 1.0443162249966997
+  },
+  "value_history_hybrid::oracle::fully_shared": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 1.0443162249966997
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 1.0725950633028245
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.1035039343245647
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.1351579921750243
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.1483027121245268
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.1430664906043646
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.1290372322166604
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome",
+      "failure_streak",
+      "previous_choice",
+      "rw_best",
+      "rw_gap",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {
+      "alpha": 0.05
+    },
+    "validation_macro_mse": 1.0443162249966997
+  },
+  "value_history_hybrid::oracle::shared_architecture_task_observation": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 1.0443162249966997
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 1.0725950633028245
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.1035039343245647
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.1351579921750243
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.1483027121245268
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.1430664906043646
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.1290372322166604
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome",
+      "failure_streak",
+      "previous_choice",
+      "rw_best",
+      "rw_gap",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {
+      "alpha": 0.05
+    },
+    "validation_macro_mse": 1.0443162249966997
+  },
+  "value_history_hybrid::oracle::task_specific": {
+    "candidates": [
+      {
+        "alpha": 0.05,
+        "validation_macro_mse": 1.0443162249966997
+      },
+      {
+        "alpha": 0.1,
+        "validation_macro_mse": 1.0725950633028245
+      },
+      {
+        "alpha": 0.2,
+        "validation_macro_mse": 1.1035039343245647
+      },
+      {
+        "alpha": 0.35,
+        "validation_macro_mse": 1.1351579921750243
+      },
+      {
+        "alpha": 0.5,
+        "validation_macro_mse": 1.1483027121245268
+      },
+      {
+        "alpha": 0.7,
+        "validation_macro_mse": 1.1430664906043646
+      },
+      {
+        "alpha": 0.9,
+        "validation_macro_mse": 1.1290372322166604
+      }
+    ],
+    "feature_names": [
+      "log_round",
+      "previous_outcome",
+      "failure_streak",
+      "previous_choice",
+      "rw_best",
+      "rw_gap",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "selected": {
+      "alpha": 0.05
+    },
+    "validation_macro_mse": 1.0443162249966997
+  }
+}

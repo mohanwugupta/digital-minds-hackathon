@@ -1,0 +1,5 @@
+flexible_rank,model,information_set,sharing,r_squared,mse,pearson_r,sampled_choice_log_loss,states,episodes,parameter_count,validation_macro_mse,best_flexible_model,delta_r_squared_oracle_minus_observable,delta_mse_observable_minus_oracle,delta_log_loss_observable_minus_oracle
+1.0,gru,observable,shared_architecture_task_observation,0.8968868916604764,0.3763847537451624,0.9475720438409644,0.5117185529634823,2477,314,26650,0.35936230421066284,True,,,
+2.0,mlp,observable,shared_architecture_task_observation,0.8522223470777682,0.5803089861160502,0.923934313894298,0.5193778858851746,2477,314,3738,0.5298049449920654,False,,,
+3.0,flexible_linear,observable,shared_architecture_task_observation,0.8400155287606274,0.5326914306714537,0.9169641091833691,0.5199487609748105,2477,314,75,0.5247585466928298,False,,,
+,flexible_linear_oracle,oracle,shared_architecture_task_observation,0.8163794586380274,0.5752755843798649,0.9041562939810944,0.5180002162315197,2477,314,75,0.5808081761334558,False,-0.02363607012259994,-0.04258415370841118,0.0019485447432907588

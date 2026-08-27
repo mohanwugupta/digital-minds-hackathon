@@ -12,3 +12,4 @@ artifacts/value_dissociation/activations/
 artifacts/causal_steering/positive_control.csv*
 artifacts/causal_steering/publication_positive_control/
 artifacts/persistence_discovery/*.pt
+artifacts/persistence_computational_neural/*/cache/

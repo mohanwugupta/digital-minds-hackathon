@@ -1,0 +1,56 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 0.9039250410023669,
+      "section": "projection",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 1.161112083998887,
+      "section": "computational_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 1.5408667499978037,
+      "section": "cross_task_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 10.106244375001552,
+      "section": "random_subspace_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 4.486506624998583,
+      "section": "full_hidden_comparison",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.015492874998017214,
+      "section": "dimension_geometry",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.344950874998176,
+      "section": "behavior_neural_incremental",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 1.8087137500006065,
+      "section": "specificity_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 19.31192958399697,
+      "section": "gru_state_alignment",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.614836209002533,
+      "section": "report_generation",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 40.884950209001545,
+  "updated_at_utc": "2026-08-27T02:48:42.442610+00:00"
+}

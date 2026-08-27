@@ -1,0 +1,2025 @@
+{
+  "architectures": [
+    "immediate",
+    "choice_inertia",
+    "finite_history",
+    "rw_value",
+    "generic_latent_value",
+    "latent_commitment",
+    "sticky_termination",
+    "disengagement_accumulator"
+  ],
+  "details": [
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 0,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008921266068147734,
+      "validation_mse": 0.0010166484827086794
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 1,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007559059864736058,
+      "validation_mse": 0.0008760289278115151
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 2,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0006756124755694212,
+      "validation_mse": 0.0008488667022187757
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 3,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008676336839179455,
+      "validation_mse": 0.0010166027890787964
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 4,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009250060768790547,
+      "validation_mse": 0.0007523671003014754
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 5,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007614889257307125,
+      "validation_mse": 0.000765389002173339
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 6,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008696388500806726,
+      "validation_mse": 0.0009092474278666382
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 7,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009195207746531141,
+      "validation_mse": 0.000771067550303655
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 8,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007566099943874451,
+      "validation_mse": 0.0009784617256902064
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 9,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007729891077044082,
+      "validation_mse": 0.0008963710877122069
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 10,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009329040323698845,
+      "validation_mse": 0.0010395305399517824
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 11,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008972503123137633,
+      "validation_mse": 0.000820341111355188
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 12,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009368879150603933,
+      "validation_mse": 0.0008679235879103707
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 13,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009098256093561009,
+      "validation_mse": 0.001031571455638975
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 14,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007526278712790324,
+      "validation_mse": 0.0012811605695415645
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 15,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009616249361033453,
+      "validation_mse": 0.0008692313839341843
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 16,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0011741624952570473,
+      "validation_mse": 0.0008458867865821442
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 17,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008878078676730636,
+      "validation_mse": 0.0008347069623743954
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 18,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0012668679890091691,
+      "validation_mse": 0.0007740361155056971
+    },
+    {
+      "acceptable_families": [
+        "immediate"
+      ],
+      "generating": "immediate",
+      "repetition": 19,
+      "selected_family": "immediate",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.001071527104586846,
+      "validation_mse": 0.0009635563562741398
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 0,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011190700654993946,
+      "validation_mse": 0.0110530362964924
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 1,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.009254299990834124,
+      "validation_mse": 0.010277338935988145
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 2,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.012519843150282171,
+      "validation_mse": 0.008357088478700082
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 3,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01267100652342455,
+      "validation_mse": 0.013610049673548515
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 4,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011150456415300188,
+      "validation_mse": 0.011912451965049324
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 5,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011848017844667824,
+      "validation_mse": 0.013407371627448766
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 6,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.013147780137023318,
+      "validation_mse": 0.010210825891205888
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 7,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0072193616764127735,
+      "validation_mse": 0.012779771348640525
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 8,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.008696100352029643,
+      "validation_mse": 0.011463482871148572
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 9,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010051134722362636,
+      "validation_mse": 0.009509499310925982
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 10,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010654009150653797,
+      "validation_mse": 0.013152214644104704
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 11,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.009574317373972232,
+      "validation_mse": 0.01024869395930989
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 12,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.013917821637916527,
+      "validation_mse": 0.008681752916949245
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 13,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011530057353115315,
+      "validation_mse": 0.013096564155152505
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 14,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010603671785398372,
+      "validation_mse": 0.012641126085672931
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 15,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01234336361140497,
+      "validation_mse": 0.011264736712886959
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 16,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0120025547537347,
+      "validation_mse": 0.008982242976844568
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 17,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010169425244425484,
+      "validation_mse": 0.012190477971723483
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 18,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01191273251236892,
+      "validation_mse": 0.009654871649809382
+    },
+    {
+      "acceptable_families": [
+        "choice_inertia"
+      ],
+      "generating": "choice_inertia",
+      "repetition": 19,
+      "selected_family": "choice_inertia",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.009209003129036731,
+      "validation_mse": 0.011405018214303427
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 0,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011080743109887412,
+      "validation_mse": 0.011041857876310384
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 1,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.009357830151161846,
+      "validation_mse": 0.010255957331509906
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 2,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.012396318201608964,
+      "validation_mse": 0.008615765383363288
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 3,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01267480500959631,
+      "validation_mse": 0.013824052431221683
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 4,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011084030778039553,
+      "validation_mse": 0.011141826238061689
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 5,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0115055103598658,
+      "validation_mse": 0.014145450871823955
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 6,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.013086939374094641,
+      "validation_mse": 0.009936260091667667
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 7,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0073451047934451185,
+      "validation_mse": 0.012471722265354417
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 8,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.008781694384359098,
+      "validation_mse": 0.011531729260444276
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 9,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01001248130728263,
+      "validation_mse": 0.009210364257596856
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 10,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010698761935229076,
+      "validation_mse": 0.01308029007017831
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 11,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.009187115153509616,
+      "validation_mse": 0.010586810847718146
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 12,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.013890080640929812,
+      "validation_mse": 0.008640829948064168
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 13,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.011572951006389155,
+      "validation_mse": 0.012981765890156056
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 14,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010407144461679056,
+      "validation_mse": 0.01298533297806968
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 15,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01263835999798899,
+      "validation_mse": 0.011313686035948164
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 16,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.012263459138414869,
+      "validation_mse": 0.009103082404939587
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 17,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.010366639468474206,
+      "validation_mse": 0.012324452295573768
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 18,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.01263831449862695,
+      "validation_mse": 0.009399943711256721
+    },
+    {
+      "acceptable_families": [
+        "finite_history"
+      ],
+      "generating": "finite_history",
+      "repetition": 19,
+      "selected_family": "finite_history",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.009445760237666169,
+      "validation_mse": 0.011238307041372735
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 0,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008664734779002265,
+      "validation_mse": 0.0010220742368572356
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 1,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007456026039903803,
+      "validation_mse": 0.0008658039613553973
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 2,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0006663661172289435,
+      "validation_mse": 0.0008391928485876952
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 3,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008697225627246724,
+      "validation_mse": 0.0010181303936330924
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 4,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009567861986847343,
+      "validation_mse": 0.0007591851296698504
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 5,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007553347857172871,
+      "validation_mse": 0.0007859432549431691
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 6,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009211168935688295,
+      "validation_mse": 0.0008922951031160973
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 7,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008728886004397831,
+      "validation_mse": 0.0007848922100385974
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 8,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007513430491111333,
+      "validation_mse": 0.0009742156487015316
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 9,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007799151751034189,
+      "validation_mse": 0.0009152798698740122
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 10,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009594766711441758,
+      "validation_mse": 0.0010626887333297578
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 11,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008863169881644927,
+      "validation_mse": 0.0008207570764053902
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 12,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009441497078418795,
+      "validation_mse": 0.0008741438707749241
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 13,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.000943581730651608,
+      "validation_mse": 0.001009311519282486
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 14,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0007566059874165556,
+      "validation_mse": 0.0012561359153042745
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 15,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0009301489307299546,
+      "validation_mse": 0.0008844722683052868
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 16,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0011759606526736408,
+      "validation_mse": 0.0008465413196859644
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 17,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0008882712590949325,
+      "validation_mse": 0.000834882602633082
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 18,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.0012632043197331507,
+      "validation_mse": 0.0007805236738397904
+    },
+    {
+      "acceptable_families": [
+        "rw_value"
+      ],
+      "generating": "rw_value",
+      "repetition": 19,
+      "selected_family": "rw_value",
+      "selected_hyperparameter": null,
+      "selection_split": "validation",
+      "test_mse": 0.001063844373837124,
+      "validation_mse": 0.0009896755126701819
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 0,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008938206162217417,
+      "validation_mse": 0.0010104408950965607
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 1,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007460116556344954,
+      "validation_mse": 0.0009068358803766974
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 2,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007053107326798389,
+      "validation_mse": 0.0008108869380635876
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 3,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008471727417516978,
+      "validation_mse": 0.0009988894022932634
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 4,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.000949501443614786,
+      "validation_mse": 0.0007641527180378604
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 5,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007614213254900401,
+      "validation_mse": 0.0007102248931823904
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 6,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008639034550777269,
+      "validation_mse": 0.0009017916801358024
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 7,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008726050232807634,
+      "validation_mse": 0.0007895511598699497
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 8,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007586454316817668,
+      "validation_mse": 0.000980260837414166
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 9,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007694535521330265,
+      "validation_mse": 0.0009036519372925722
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 10,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009491851198982338,
+      "validation_mse": 0.0010466164193310944
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 11,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009247559463600295,
+      "validation_mse": 0.0008242550780325504
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 12,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009317569816271008,
+      "validation_mse": 0.0008982630357124023
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 13,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009412759418261175,
+      "validation_mse": 0.001042880868528658
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 14,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007612980951782498,
+      "validation_mse": 0.0012742520068629135
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 15,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.000911925089834954,
+      "validation_mse": 0.0008703066659432055
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 16,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0011763526160301493,
+      "validation_mse": 0.0008466562675002155
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 17,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008902127320761024,
+      "validation_mse": 0.0008354061354946574
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 18,
+      "selected_family": "generic_latent_value",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0012746853280969591,
+      "validation_mse": 0.0007688463125435584
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "generic_latent_value",
+      "repetition": 19,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0010583739543453513,
+      "validation_mse": 0.0009297523035353426
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 0,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008952853734893166,
+      "validation_mse": 0.0010504310868891078
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 1,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007457309574504463,
+      "validation_mse": 0.000913303128735791
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 2,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007053313171136548,
+      "validation_mse": 0.0008109044493458278
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 3,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008471782207132037,
+      "validation_mse": 0.0009988754979412518
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 4,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.000935660129630447,
+      "validation_mse": 0.0007694610632890358
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 5,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007614453792979124,
+      "validation_mse": 0.0007102093067586214
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 6,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008859700283022012,
+      "validation_mse": 0.0009092294338762963
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 7,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008706335695179415,
+      "validation_mse": 0.000793513548148733
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 8,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007677820126563939,
+      "validation_mse": 0.000983214783443352
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 9,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007695457478054085,
+      "validation_mse": 0.0009129987480079166
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 10,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.00095579461038259,
+      "validation_mse": 0.0010668206925597942
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 11,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009246791743368254,
+      "validation_mse": 0.0008242685648081144
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 12,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009319242075728726,
+      "validation_mse": 0.0009285484741957548
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 13,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009505653884029955,
+      "validation_mse": 0.001108751112595914
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 14,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.000773199551778399,
+      "validation_mse": 0.0012986187188462391
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 15,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009055215673388735,
+      "validation_mse": 0.0008763353161287935
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 16,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0012081372777589814,
+      "validation_mse": 0.0008554346970324439
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 17,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.000883652332507882,
+      "validation_mse": 0.0008330530441638009
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 18,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0012606451072057262,
+      "validation_mse": 0.0007656243515872147
+    },
+    {
+      "acceptable_families": [
+        "generic_latent_value",
+        "latent_commitment"
+      ],
+      "generating": "latent_commitment",
+      "repetition": 19,
+      "selected_family": "latent_commitment",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0010583788660324363,
+      "validation_mse": 0.0009297202527141022
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 0,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0008984849500192803,
+      "validation_mse": 0.0010826802651626596
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 1,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0007474721259579941,
+      "validation_mse": 0.0008640169732709411
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 2,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0006878412592543131,
+      "validation_mse": 0.0008394805334414534
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 3,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0008681863080070553,
+      "validation_mse": 0.001016926300531014
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 4,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0009663157418601715,
+      "validation_mse": 0.000831280237961253
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 5,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0007480770516574979,
+      "validation_mse": 0.0007731286407187618
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 6,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0008652527974403308,
+      "validation_mse": 0.0009037826074851453
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 7,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0008750277113533851,
+      "validation_mse": 0.0007919381456559815
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 8,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0007634773712984383,
+      "validation_mse": 0.000974616359106351
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 9,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.000786032443516517,
+      "validation_mse": 0.0008894874485237335
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 10,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0009484252064459664,
+      "validation_mse": 0.001060797780208869
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 11,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0009071583862679469,
+      "validation_mse": 0.0008209338126731082
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 12,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0009413020055062046,
+      "validation_mse": 0.0008757330943783617
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 13,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0009395182796079551,
+      "validation_mse": 0.0010296790620612883
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 14,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0007653376192002172,
+      "validation_mse": 0.0013069337316144155
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 15,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0009126779932793054,
+      "validation_mse": 0.0008755557460339124
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 16,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0011725563224787134,
+      "validation_mse": 0.0008517315600055884
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 17,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0008754582078078954,
+      "validation_mse": 0.0008533725202224986
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 18,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0012725348402969371,
+      "validation_mse": 0.0008189819736761985
+    },
+    {
+      "acceptable_families": [
+        "latent_commitment",
+        "sticky_termination"
+      ],
+      "generating": "sticky_termination",
+      "repetition": 19,
+      "selected_family": "sticky_termination",
+      "selected_hyperparameter": 0.8,
+      "selection_split": "validation",
+      "test_mse": 0.0010696946953272168,
+      "validation_mse": 0.0009677216849566056
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 0,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008783870221164196,
+      "validation_mse": 0.0010448810036824971
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 1,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007493419081605172,
+      "validation_mse": 0.0008638046124204394
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 2,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0006919922602629035,
+      "validation_mse": 0.0008407801174739163
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 3,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008676020830080397,
+      "validation_mse": 0.0010158300949747222
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 4,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009705538582659626,
+      "validation_mse": 0.0007560672444638408
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 5,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007445350131777605,
+      "validation_mse": 0.0007767872932849091
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 6,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008613528056883052,
+      "validation_mse": 0.0009050062074862819
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 7,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008682543736029469,
+      "validation_mse": 0.0007971764278054245
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 8,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007590549552785151,
+      "validation_mse": 0.0009772836687416055
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 9,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007683789301323438,
+      "validation_mse": 0.0009125549423732296
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 10,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009468077950709208,
+      "validation_mse": 0.001039796933080208
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 11,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.000883278495667543,
+      "validation_mse": 0.0008223468349146472
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 12,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009374121032092292,
+      "validation_mse": 0.0008687446090392923
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 13,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009322936478009044,
+      "validation_mse": 0.0010124670997452788
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 14,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0007628082994731197,
+      "validation_mse": 0.0012637501497542042
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 15,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0009029186162847535,
+      "validation_mse": 0.0008746142742025113
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 16,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0011870206074531247,
+      "validation_mse": 0.0008692094042197739
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 17,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0008890003156678157,
+      "validation_mse": 0.0008353056476875119
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 18,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0012471414190562745,
+      "validation_mse": 0.0007505161082664804
+    },
+    {
+      "acceptable_families": [
+        "disengagement_accumulator",
+        "generic_latent_value"
+      ],
+      "generating": "disengagement_accumulator",
+      "repetition": 19,
+      "selected_family": "disengagement_accumulator",
+      "selected_hyperparameter": 0.7,
+      "selection_split": "validation",
+      "test_mse": 0.0010750048254008792,
+      "validation_mse": 0.0009564990009745534
+    }
+  ],
+  "diagonal_recovery": {
+    "choice_inertia": 1.0,
+    "disengagement_accumulator": 1.0,
+    "finite_history": 1.0,
+    "generic_latent_value": 0.75,
+    "immediate": 1.0,
+    "latent_commitment": 1.0,
+    "rw_value": 1.0,
+    "sticky_termination": 1.0
+  },
+  "repetitions": 20
+}

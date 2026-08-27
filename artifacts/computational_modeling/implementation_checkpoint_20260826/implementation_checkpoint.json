@@ -1,0 +1,321 @@
+{
+  "behavioral_counts": {
+    "bandit": {
+      "bank_dir": "artifacts/activation_bank",
+      "behavioral_payload_sha256": "85e6d3e3ecd905ef739a9e26de1c665fce902512564b5dce5129b3a4f8827e9e",
+      "episodes": 512,
+      "split_counts": {
+        "test": 78,
+        "train": 358,
+        "validation": 76
+      },
+      "split_path": "artifacts/value_probes/episode_split.json",
+      "split_sha256": "63cd5606c72eb2ef0455e04823f0556533e9bba078b0953ca63e42d4d554ede3",
+      "states": 12461,
+      "task": "bandit"
+    },
+    "foraging": {
+      "bank_dir": "artifacts/cross_task/track_b_shared_v3/foraging_activation_bank",
+      "behavioral_payload_sha256": "4d3bd5b7cae3152c70917dd291b7f15973ec9d795168ad135624e0537f2f7189",
+      "episodes": 768,
+      "split_counts": {
+        "test": 118,
+        "train": 536,
+        "validation": 114
+      },
+      "split_path": "artifacts/cross_task/track_b_shared_v3/foraging_episode_split.json",
+      "split_sha256": "2b070c99c275652b1d77566c3b8bf39bb1805eb46a6504ccc394ba465c9342d9",
+      "states": 2195,
+      "task": "foraging"
+    },
+    "solvability": {
+      "bank_dir": "artifacts/cross_task/track_b_shared_v3/solvability_activation_bank",
+      "behavioral_payload_sha256": "65ea0eb78a9a979bb9a2d8defd9acbee677cfc6d25b427535a9a7a240e4e7e0e",
+      "episodes": 768,
+      "split_counts": {
+        "test": 118,
+        "train": 536,
+        "validation": 114
+      },
+      "split_path": "artifacts/cross_task/track_b_shared_v3/solvability_episode_split.json",
+      "split_sha256": "c46854265afbb5eb8ddd7af98b42ee06c78215b241dbb25435c121c1e18803c4",
+      "states": 2069,
+      "task": "solvability"
+    }
+  },
+  "existing_model_results_reproduced": {
+    "episodes": 200,
+    "maximum_absolute_metric_error": {
+      "auc": 3.86021302073436e-05,
+      "brier": 1.4988010832439613e-15,
+      "log_loss": 1.1657341758564144e-14
+    },
+    "passed": true,
+    "selected_alphas": [
+      0.05,
+      0.25,
+      0.5499999999999999,
+      0.49999999999999994,
+      0.95
+    ],
+    "states": 3706,
+    "tolerance": {
+      "auc": 0.0001,
+      "brier": 1e-10,
+      "log_loss": 1e-10
+    }
+  },
+  "files_changed": {
+    "analysis": [
+      "computational_modeling/analysis/model_fitting.py",
+      "computational_modeling/analysis/evaluate_models.py",
+      "computational_modeling/analysis/model_recovery.py",
+      "computational_modeling/analysis/run_model_zoo.py",
+      "computational_modeling/analysis/summarize_model_zoo.py"
+    ],
+    "data": [
+      "computational_modeling/data/build_cross_task_behavioral_dataset.py",
+      "computational_modeling/data/feature_schema.py"
+    ],
+    "integration": [
+      "config/computational_model_zoo.yaml",
+      "scripts/submit_model_zoo_checkpoint.sh",
+      "run_qwen35_bandit.sh",
+      "pyproject.toml",
+      "environment.yml",
+      "computational_modeling/README.md",
+      "computational_modeling/data/README.md"
+    ],
+    "models": [
+      "computational_modeling/models/base.py",
+      "computational_modeling/models/baselines.py",
+      "computational_modeling/models/history.py",
+      "computational_modeling/models/rw.py",
+      "computational_modeling/models/termination.py",
+      "computational_modeling/models/accumulator.py",
+      "computational_modeling/models/latent_commitment.py",
+      "computational_modeling/models/mlp.py",
+      "computational_modeling/models/gru.py"
+    ]
+  },
+  "full_run_command": "python -m computational_modeling.analysis.run_model_zoo --config config/computational_model_zoo.yaml --phase all --run-id model_zoo_v1",
+  "gru_input_dimensions": {
+    "by_split": {
+      "test": {
+        "episodes": 314,
+        "feature_count": 24,
+        "maximum_sequence_length": 100,
+        "padded_shape": [
+          314,
+          100,
+          24
+        ],
+        "states": 2477
+      },
+      "train": {
+        "episodes": 1430,
+        "feature_count": 24,
+        "maximum_sequence_length": 100,
+        "padded_shape": [
+          1430,
+          100,
+          24
+        ],
+        "states": 11795
+      },
+      "validation": {
+        "episodes": 304,
+        "feature_count": 24,
+        "maximum_sequence_length": 100,
+        "padded_shape": [
+          304,
+          100,
+          24
+        ],
+        "states": 2453
+      }
+    },
+    "features": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage"
+    ],
+    "states_by_features": [
+      16725,
+      24
+    ]
+  },
+  "missing_data_issues": [],
+  "observable_features": {
+    "bandit": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "round",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage",
+      "relative_value",
+      "disengagement_evidence",
+      "cumulative_score",
+      "rw_a",
+      "rw_b",
+      "rw_best",
+      "rw_gap",
+      "bayes_a",
+      "bayes_b",
+      "bayes_best",
+      "bayes_gap"
+    ],
+    "foraging": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "round",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage",
+      "relative_value",
+      "disengagement_evidence",
+      "outside_option",
+      "stay_cost",
+      "search_count",
+      "cumulative_score",
+      "mvt_like_advantage",
+      "bayes_patch_probability"
+    ],
+    "solvability": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability",
+      "round",
+      "log_round",
+      "normalized_time",
+      "previous_outcome",
+      "failure_streak",
+      "success_streak",
+      "previous_choice",
+      "second_previous_choice",
+      "action_lag_1",
+      "action_lag_2",
+      "action_lag_3",
+      "action_lag_5",
+      "outcome_lag_1",
+      "outcome_lag_2",
+      "outcome_lag_3",
+      "outcome_lag_5",
+      "cumulative_progress",
+      "estimated_continue_value",
+      "estimated_outside_value",
+      "cost_pressure",
+      "progress_evidence",
+      "termination_advantage",
+      "relative_value",
+      "disengagement_evidence",
+      "attempt_cost",
+      "give_up_value",
+      "attempts_used",
+      "max_attempts",
+      "cumulative_cost",
+      "progress_count",
+      "displayed_progress_cue",
+      "bayes_progress_probability"
+    ]
+  },
+  "oracle_only_features": {
+    "bandit": [
+      "oracle_p_a",
+      "oracle_p_b",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "oracle_termination_advantage",
+      "oracle_relative_value"
+    ],
+    "foraging": [
+      "oracle_initial_quality",
+      "oracle_depletion",
+      "oracle_patch_probability",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "oracle_termination_advantage",
+      "oracle_relative_value"
+    ],
+    "solvability": [
+      "oracle_progress_probability",
+      "oracle_continue_value",
+      "oracle_outside_value",
+      "oracle_termination_advantage",
+      "oracle_relative_value"
+    ]
+  },
+  "tests_added": [
+    "computational_modeling/tests/test_dataset_integrity.py",
+    "computational_modeling/tests/test_episode_splits.py",
+    "computational_modeling/tests/test_gru_sequences.py",
+    "computational_modeling/tests/test_information_sets.py",
+    "computational_modeling/tests/test_latent_states.py",
+    "computational_modeling/tests/test_model_recovery.py",
+    "computational_modeling/tests/test_model_zoo_fitting.py",
+    "computational_modeling/tests/test_oracle_ceiling.py",
+    "computational_modeling/tests/test_rw.py",
+    "computational_modeling/tests/test_termination_models.py",
+    "computational_modeling/tests/test_weighting.py"
+  ]
+}

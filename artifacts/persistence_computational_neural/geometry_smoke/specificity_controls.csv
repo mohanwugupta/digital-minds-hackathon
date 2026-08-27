@@ -1,0 +1,13 @@
+control,stage,target,metric_type,selected_hyperparameter,r_squared,mse,pearson_r,tasks,states,episodes,selected_c,accuracy,log_loss,chance_accuracy
+arbitrary_choice,l21,choice_logit,continuous_decoding,0.01,0.9377096091216661,0.990664563043874,0.9684278789362454,1.0,118,118,,,,
+arbitrary_choice,displacement,choice_logit,continuous_decoding,0.01,0.8882223682233378,1.7777082015489833,0.942464379107755,1.0,118,118,,,,
+arbitrary_choice,l22,choice_logit,continuous_decoding,0.01,0.6730244188988828,5.200210122460853,0.8218762260570296,1.0,118,118,,,,
+terminality,l21,terminality_logit,continuous_decoding,0.01,0.8528542841374647,3.663881034178618,0.9238779205505244,1.0,118,118,,,,
+terminality,displacement,terminality_logit,continuous_decoding,10.0,0.8902873290125034,2.7318102473040726,0.944048634339715,1.0,118,118,,,,
+terminality,l22,terminality_logit,continuous_decoding,1.0,0.8784349442686396,3.0269308182175974,0.9375753935531228,1.0,118,118,,,,
+generic_value,l21,relative_value,continuous_decoding,10.0,0.751340918435135,20.42433263981307,0.8695859479838717,1.0,118,118,,,,
+generic_value,displacement,relative_value,continuous_decoding,100.0,0.7346543047536113,21.79493590239527,0.8615745021774466,1.0,118,118,,,,
+generic_value,l22,relative_value,continuous_decoding,100.0,0.6973301661422483,24.860661946646378,0.8429487157785123,1.0,118,118,,,,
+task_identity,l21,task,multiclass_decoding,10.0,,,,,222,30,10.0,0.9819819819819819,0.12597132527800012,0.3333333333333333
+task_identity,displacement,task,multiclass_decoding,10.0,,,,,222,30,10.0,0.7657657657657657,0.7220032988195026,0.3333333333333333
+task_identity,l22,task,multiclass_decoding,0.01,,,,,222,30,0.01,0.918918918918919,0.8592655406809264,0.3333333333333333

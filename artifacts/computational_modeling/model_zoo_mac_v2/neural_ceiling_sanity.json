@@ -1,0 +1,78 @@
+{
+  "checks": {
+    "gru_not_below_linear_tolerance": true,
+    "mlp_approximately_linear": true
+  },
+  "dataset": {
+    "beta": [
+      0.1974465712917079,
+      0.2820665304167256,
+      0.36668648954174327,
+      0.4513064486667609,
+      0.5359264077917786,
+      0.6205463669167962,
+      0.7051663260418138,
+      0.7897862851668316
+    ],
+    "episodes_by_split": {
+      "test": 48,
+      "train": 144,
+      "validation": 48
+    },
+    "features": [
+      "synthetic_x_0",
+      "synthetic_x_1",
+      "synthetic_x_2",
+      "synthetic_x_3",
+      "synthetic_x_4",
+      "synthetic_x_5",
+      "synthetic_x_6",
+      "synthetic_x_7"
+    ],
+    "generating_equation": "y = X beta + episode_offset + epsilon",
+    "noise_sd": 0.03,
+    "states_by_split": {
+      "test": 384,
+      "train": 1152,
+      "validation": 384
+    }
+  },
+  "linear_skip_initialized": {
+    "gru": true,
+    "mlp": true
+  },
+  "metrics": {
+    "gru": {
+      "mse": 0.003399814534723347,
+      "pearson_r": 0.9993058789929257,
+      "r_squared": 0.9985418240516964
+    },
+    "linear": {
+      "mse": 0.0033963921775838368,
+      "pearson_r": 0.9993056677490832,
+      "r_squared": 0.9985432918961381
+    },
+    "mlp": {
+      "mse": 0.003434924819566476,
+      "pearson_r": 0.9992983644015901,
+      "r_squared": 0.9985267652970575
+    }
+  },
+  "passed": true,
+  "pipeline_diagnostics": {
+    "feature_scaling": "train-split standardization applied to all estimators",
+    "selection": "early stopping uses validation only; test is application only",
+    "sequence_masking": "zero-weight padding; one independent hidden state per episode",
+    "target_scaling": "raw persistence logit; linear skip initialized by weighted ridge",
+    "weighting": "equal episode mass and equal task mass"
+  },
+  "r_squared_gap_vs_linear": {
+    "gru": -1.4678444416604819e-06,
+    "mlp": -1.652659908057963e-05
+  },
+  "selected_epochs": {
+    "gru": 3,
+    "mlp": 37
+  },
+  "tolerance_r2": 0.02
+}

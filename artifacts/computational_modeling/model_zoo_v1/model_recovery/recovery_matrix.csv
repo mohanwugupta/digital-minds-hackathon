@@ -1,0 +1,9 @@
+,immediate,choice_inertia,finite_history,rw_value,generic_latent_value,latent_commitment,sticky_termination,disengagement_accumulator
+immediate,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+choice_inertia,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0
+finite_history,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+rw_value,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+generic_latent_value,0.0,0.0,0.0,0.0,0.75,0.25,0.0,0.0
+latent_commitment,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+sticky_termination,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0
+disengagement_accumulator,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0

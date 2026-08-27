@@ -1,0 +1,41 @@
+protocol_version: persistence_change_geometry_v1
+analysis_role: exploratory_matched_change_falsification
+model: Qwen/Qwen3.5-4B
+seed: 97026
+
+output_root: artifacts/persistence_change_geometry
+
+frozen_subspace:
+  artifact: artifacts/persistence_discovery/search/persistence_candidate_subspaces.pt
+  key: displacement-L21-k4
+
+layers:
+  l21: 21
+  l22: 22
+
+ridge_alphas: [0.01, 0.1, 1.0, 10.0, 100.0]
+bootstrap_samples: 2000
+matched_random_subspaces: 100
+
+paths:
+  contrast_inventory: artifacts/persistence_discovery/contrast_inventory.csv
+  bandit_factorial: artifacts/value_dissociation/factorial_shard_*.csv
+  bandit_factorial_activations: artifacts/value_dissociation/activations
+  bandit_split: artifacts/persistence_discovery/splits/bandit_factorial.json
+  behavior_records: artifacts/computational_modeling/records
+  model_zoo_config: config/computational_model_zoo.yaml
+  model_zoo_output: artifacts/computational_modeling/model_zoo_mac_v2
+  activation_banks:
+    foraging: artifacts/cross_task/track_b_shared_v3/foraging_activation_bank
+    solvability: artifacts/cross_task/track_b_shared_v3/solvability_activation_bank
+    foraging_label_replay: artifacts/cross_task/track_b_shared_v3/foraging_matched_label_bank
+    solvability_label_replay: artifacts/cross_task/track_b_shared_v3/solvability_matched_label_bank
+    arbitrary_choice: artifacts/cross_task/track_b_shared_v3/control_activation_bank
+    terminality: artifacts/cross_task/track_b_shared_v3/terminality_activation_bank
+    generic_value: artifacts/persistence_discovery/generic_value_activation_bank
+
+smoke:
+  max_pairs_per_group: 8
+  bootstrap_samples: 100
+  matched_random_subspaces: 10
+

@@ -503,6 +503,58 @@ persistence_integration_phase() {
   python -m analysis.run_persistence_discovery --phase integration
 }
 
+model_zoo_tests_phase() {
+  echo "Running computational model-zoo leakage, dynamics, recovery, and sequence tests"
+  python -m pytest -q computational_modeling/tests
+}
+
+model_zoo_checkpoint_phase() {
+  local run_id="${MODEL_ZOO_RUN_ID:-model_zoo_checkpoint_${SLURM_JOB_ID:-manual}}"
+  echo "Exporting and validating records-only model-zoo checkpoint ${run_id}"
+  python -m computational_modeling.analysis.run_model_zoo \
+    --config config/computational_model_zoo.yaml \
+    --phase checkpoint \
+    --run-id "$run_id"
+}
+
+model_zoo_full_phase() {
+  local run_id="${MODEL_ZOO_RUN_ID:-model_zoo_mac_v2}"
+  echo "Running frozen computational model zoo ${run_id}"
+  python -m computational_modeling.analysis.run_model_zoo \
+    --config config/computational_model_zoo.yaml \
+    --phase all \
+    --run-id "$run_id" \
+    ${MODEL_ZOO_FINAL_BOOTSTRAP:+--final-bootstrap}
+}
+
+persistence_geometry_phase() {
+  local run_id="${PERSISTENCE_GEOMETRY_RUN_ID:-model_zoo_mac_v2}"
+  echo "Running frozen L21/L22 computational geometry ${run_id}"
+  python -m analysis.run_persistence_geometry \
+    --config config/persistence_geometry.yaml \
+    --phase all \
+    --run-id "$run_id" \
+    ${PERSISTENCE_GEOMETRY_SMOKE:+--smoke}
+}
+
+persistence_change_tests_phase() {
+  echo "Running matched persistence-change geometry RED/GREEN and integration tests"
+  python -m pytest -q \
+    tests/test_persistence_change_geometry.py \
+    tests/test_persistence_change_runner.py
+}
+
+persistence_change_geometry_phase() {
+  local run_id="${PERSISTENCE_CHANGE_RUN_ID:-model_zoo_mac_v2}"
+  echo "Running cross-task matched persistence-change geometry ${run_id}"
+  python -u -m analysis.run_persistence_change_geometry \
+    --config config/persistence_change_geometry.yaml \
+    --phase all \
+    --run-id "$run_id" \
+    ${PERSISTENCE_CHANGE_RESUME:+--resume} \
+    ${PERSISTENCE_CHANGE_SMOKE:+--smoke}
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -672,6 +724,24 @@ case "$PHASE" in
     ;;
   persistence_integration)
     persistence_integration_phase
+    ;;
+  model_zoo_tests)
+    model_zoo_tests_phase
+    ;;
+  model_zoo_checkpoint)
+    model_zoo_checkpoint_phase
+    ;;
+  model_zoo_full)
+    model_zoo_full_phase
+    ;;
+  persistence_geometry)
+    persistence_geometry_phase
+    ;;
+  persistence_change_tests)
+    persistence_change_tests_phase
+    ;;
+  persistence_change_geometry)
+    persistence_change_geometry_phase
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2

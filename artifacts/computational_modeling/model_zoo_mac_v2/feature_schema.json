@@ -1,0 +1,217 @@
+{
+  "descriptions": {
+    "disengagement_evidence": "Negative observable termination advantage; higher favors disengagement.",
+    "displayed_progress_cue": "Weak=-1, mixed=0, strong=1, matching the text shown in the prompt.",
+    "oracle_depletion": "Private exact Foraging depletion rate.",
+    "oracle_initial_quality": "Private exact initial Foraging patch quality.",
+    "oracle_p_a": "Experimenter-known Bandit arm-A success probability; absent from prompts.",
+    "oracle_p_b": "Experimenter-known Bandit arm-B success probability; absent from prompts.",
+    "oracle_patch_probability": "Private current Foraging food probability.",
+    "oracle_progress_probability": "Private exact Solvability progress probability; prompts expose only a categorical cue.",
+    "relative_value": "Observable estimated generic continuation value relative to the outside option.",
+    "termination_advantage": "Observable estimated continuation value minus displayed outside value."
+  },
+  "flexible_model": {
+    "excluded_aliases": {
+      "disengagement_evidence": "Negative of termination_advantage; excluded to avoid duplicate predictors.",
+      "relative_value": "Exact alias of termination_advantage in the exported records."
+    },
+    "feature_group_descriptions": {
+      "continuation_value": "Past-derived estimate of the value of continuing.",
+      "cost": "Harmonized task-specific displayed action cost.",
+      "derived_termination": "Observable termination advantage (continuation minus outside option).",
+      "history": "Past choices, past outcomes, action/outcome lags, and success/failure streaks.",
+      "outside_option": "Displayed or otherwise observable outside option.",
+      "progress_solvability": "Cumulative progress and task-appropriate progress evidence.",
+      "time_effort": "Round and normalized elapsed effort."
+    },
+    "feature_groups": {
+      "continuation_value": [
+        "estimated_continue_value"
+      ],
+      "cost": [
+        "cost_pressure"
+      ],
+      "derived_termination": [
+        "termination_advantage"
+      ],
+      "history": [
+        "previous_outcome",
+        "failure_streak",
+        "success_streak",
+        "previous_choice",
+        "second_previous_choice",
+        "action_lag_1",
+        "action_lag_2",
+        "action_lag_3",
+        "action_lag_5",
+        "outcome_lag_1",
+        "outcome_lag_2",
+        "outcome_lag_3",
+        "outcome_lag_5"
+      ],
+      "outside_option": [
+        "estimated_outside_value"
+      ],
+      "progress_solvability": [
+        "cumulative_progress",
+        "progress_evidence"
+      ],
+      "time_effort": [
+        "log_round",
+        "normalized_time"
+      ]
+    },
+    "nuisance_features": [
+      "task_bandit",
+      "task_foraging",
+      "task_solvability"
+    ]
+  },
+  "policy": {
+    "observable": "Only prompt/history-observable fields and past-derived estimates.",
+    "oracle": "Observable fields plus explicitly prefixed environment-private fields."
+  },
+  "tasks": {
+    "bandit": {
+      "observable": [
+        "task_bandit",
+        "task_foraging",
+        "task_solvability",
+        "round",
+        "log_round",
+        "normalized_time",
+        "previous_outcome",
+        "failure_streak",
+        "success_streak",
+        "previous_choice",
+        "second_previous_choice",
+        "action_lag_1",
+        "action_lag_2",
+        "action_lag_3",
+        "action_lag_5",
+        "outcome_lag_1",
+        "outcome_lag_2",
+        "outcome_lag_3",
+        "outcome_lag_5",
+        "cumulative_progress",
+        "estimated_continue_value",
+        "estimated_outside_value",
+        "cost_pressure",
+        "progress_evidence",
+        "termination_advantage",
+        "relative_value",
+        "disengagement_evidence",
+        "cumulative_score",
+        "rw_a",
+        "rw_b",
+        "rw_best",
+        "rw_gap",
+        "bayes_a",
+        "bayes_b",
+        "bayes_best",
+        "bayes_gap"
+      ],
+      "oracle": [
+        "oracle_p_a",
+        "oracle_p_b",
+        "oracle_continue_value",
+        "oracle_outside_value",
+        "oracle_termination_advantage",
+        "oracle_relative_value"
+      ]
+    },
+    "foraging": {
+      "observable": [
+        "task_bandit",
+        "task_foraging",
+        "task_solvability",
+        "round",
+        "log_round",
+        "normalized_time",
+        "previous_outcome",
+        "failure_streak",
+        "success_streak",
+        "previous_choice",
+        "second_previous_choice",
+        "action_lag_1",
+        "action_lag_2",
+        "action_lag_3",
+        "action_lag_5",
+        "outcome_lag_1",
+        "outcome_lag_2",
+        "outcome_lag_3",
+        "outcome_lag_5",
+        "cumulative_progress",
+        "estimated_continue_value",
+        "estimated_outside_value",
+        "cost_pressure",
+        "progress_evidence",
+        "termination_advantage",
+        "relative_value",
+        "disengagement_evidence",
+        "outside_option",
+        "stay_cost",
+        "search_count",
+        "cumulative_score",
+        "mvt_like_advantage",
+        "bayes_patch_probability"
+      ],
+      "oracle": [
+        "oracle_initial_quality",
+        "oracle_depletion",
+        "oracle_patch_probability",
+        "oracle_continue_value",
+        "oracle_outside_value",
+        "oracle_termination_advantage",
+        "oracle_relative_value"
+      ]
+    },
+    "solvability": {
+      "observable": [
+        "task_bandit",
+        "task_foraging",
+        "task_solvability",
+        "round",
+        "log_round",
+        "normalized_time",
+        "previous_outcome",
+        "failure_streak",
+        "success_streak",
+        "previous_choice",
+        "second_previous_choice",
+        "action_lag_1",
+        "action_lag_2",
+        "action_lag_3",
+        "action_lag_5",
+        "outcome_lag_1",
+        "outcome_lag_2",
+        "outcome_lag_3",
+        "outcome_lag_5",
+        "cumulative_progress",
+        "estimated_continue_value",
+        "estimated_outside_value",
+        "cost_pressure",
+        "progress_evidence",
+        "termination_advantage",
+        "relative_value",
+        "disengagement_evidence",
+        "attempt_cost",
+        "give_up_value",
+        "attempts_used",
+        "max_attempts",
+        "cumulative_cost",
+        "progress_count",
+        "displayed_progress_cue",
+        "bayes_progress_probability"
+      ],
+      "oracle": [
+        "oracle_progress_probability",
+        "oracle_continue_value",
+        "oracle_outside_value",
+        "oracle_termination_advantage",
+        "oracle_relative_value"
+      ]
+    }
+  }
+}

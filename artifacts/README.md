@@ -46,6 +46,9 @@ is deliberately separate from source code.
 - `cross_task/transfer/`: strict zero-shot and calibration-only summaries.
 - `cross_task/causal/`: validation-only calibration, held-out replays, and
   causal-transfer summaries.
+- `persistence_change_geometry/<run_id>/`: compact L21/L22 matched endpoint
+  cache, change/transfer/control tables, clustered intervals, figures, and the
+  absolute-versus-difference scientific decision report.
 
 ## Regeneration policy
 

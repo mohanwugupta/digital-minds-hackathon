@@ -67,6 +67,57 @@ The reported run used Python 3.10.20, Transformers 5.15.0, PyTorch
 preserve the observed software and checkpoint information for each collection
 phase.
 
+### Laptop persistence-geometry analysis
+
+The computational/neural geometry follow-up reuses the retained activation
+banks, frozen `displacement-L21-k4` basis, behavioral splits, and completed
+model-zoo run. It does not load Qwen, recollect activations, or require a GPU.
+From the repository root on a MacBook, run:
+
+```bash
+python -u -m analysis.run_persistence_geometry \
+  --config config/persistence_geometry.yaml \
+  --phase all \
+  --run-id model_zoo_mac_v2 \
+  --resume
+```
+
+Progress is printed section by section and retained in `progress.jsonl`; elapsed
+times are retained in `timings.json`. `--resume` reuses the aligned hidden-state
+cache and checkpoints the 100 matched-random-subspace controls every ten fits.
+For a quick development check, append `--smoke` and use a separate run ID.
+
+### Matched cross-task change-space analysis
+
+The final representational falsification test analyzes `P+ - P-` changes for
+the five Bandit/Foraging/Solvability persistence manipulations rather than
+absolute neural states. It streams only L21 and L22, keeps the selected rank-4
+basis frozen, uses strict source-only normalization for task/manipulation
+holdouts, and checkpoints the 100 matched-random controls.
+
+The lightweight local artifact bundle does not contain
+`artifacts/value_dissociation/activations/`. Sync that directory from the
+cluster before running locally; no Qwen loading is needed once the tensors are
+present. Then run:
+
+```bash
+python -u -m analysis.run_persistence_change_geometry \
+  --config config/persistence_change_geometry.yaml \
+  --phase all \
+  --run-id model_zoo_mac_v2
+```
+
+On the cluster, the equivalent phase is:
+
+```bash
+sbatch --export=ALL,PHASE=persistence_change_geometry \
+  run_qwen35_bandit.sh
+```
+
+Use `--resume` locally, or set `PERSISTENCE_CHANGE_RESUME=1` on the cluster, to
+reuse the compact endpoint cache and random-control checkpoint. See
+[`docs/persistence-change-geometry.md`](docs/persistence-change-geometry.md).
+
 Download Qwen from an internet-connected login node before starting an offline
 GPU job:
 

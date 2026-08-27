@@ -1,0 +1,81 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 1.76732925000033,
+      "section": "projection",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 4.560382583000319,
+      "section": "computational_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 6.386112165997474,
+      "section": "cross_task_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.005773916000009649,
+      "section": "projection",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 5.028270458000009,
+      "section": "computational_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 6.738469457999997,
+      "section": "cross_task_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 442.912938209,
+      "section": "random_subspace_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 9.71662779099995,
+      "section": "full_hidden_comparison",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.5522470409999869,
+      "section": "dimension_geometry",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 2.3105409170000257,
+      "section": "behavior_neural_incremental",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 2.3772365830000126,
+      "section": "specificity_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 92.52310366699999,
+      "section": "gru_state_alignment",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 11.82012070799999,
+      "section": "report_generation",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.004329249999955209,
+      "section": "projection",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.5283723750000036,
+      "section": "report_generation",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 1.8500842090001015,
+  "updated_at_utc": "2026-08-27T12:14:24.404147+00:00"
+}

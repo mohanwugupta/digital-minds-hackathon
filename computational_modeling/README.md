@@ -1,5 +1,70 @@
 # Computational modeling of persistence
 
+## Cross-task computational model zoo
+
+The model-zoo extension exports records-only Bandit, Foraging, and Solvability
+datasets, enforces explicit observable/oracle information sets, compares M0--M18
+on persisted episode/pair-safe splits, runs synthetic architecture recovery,
+and saves interpretable latent states for later neural alignment. It does not
+load activation tensors after export and does not perform the future L21/L22
+analysis.
+
+Run the required pre-compute checkpoint first:
+
+```bash
+python -m computational_modeling.analysis.run_model_zoo \
+  --config config/computational_model_zoo.yaml \
+  --phase checkpoint \
+  --run-id implementation_checkpoint_v1
+```
+
+After reviewing `implementation_checkpoint.json`, launch the full exploratory
+analysis with a fresh run ID:
+
+```bash
+python -m computational_modeling.analysis.run_model_zoo \
+  --config config/computational_model_zoo.yaml \
+  --phase all \
+  --run-id model_zoo_mac_v2
+```
+
+Add `--final-bootstrap` only for the final 10,000-sample interval run. The
+default uses 2,000 development bootstrap samples. Existing run directories are
+never overwritten unless `--resume` is passed explicitly.
+
+The primary ranking is observable-only and enforces exact three-task coverage;
+one-task candidates are ranked only within their supported task. The full
+flexible linear model is repeated with oracle state, which can access only
+fields carrying the `oracle_` prefix in the feature schema. MLP and GRU models
+are intentionally small flexible candidates, with all architecture and
+early-stopping choices made on validation episodes. Neither is assumed to be a
+ceiling: both must first pass the saved synthetic `y = X beta + epsilon`
+linear-recovery gate, and `best_flexible_model` is selected from flexible
+linear, MLP, and GRU by held-out macro R².
+
+Before any L21/L22 work, the runner also refits the strongest validation-chosen
+observable flexible-linear architecture after removing each preregistered
+feature family and with each family alone. Task indicators remain nuisance
+controls. Feature families come from `data/feature_schema.py`; the exact
+`relative_value`/`termination_advantage` alias is deliberately not duplicated.
+All ablation differences receive pair/episode-clustered bootstrap intervals.
+
+Outputs are written beneath `artifacts/computational_modeling/<run_id>/` and
+include the full required tables, clustered intervals, recovery matrix,
+figures, report, provenance, and state-level latent-variable exports.
+The follow-up's fixed deliverables are
+`cross_task_model_ranking.csv`, `task_specific_model_ranking.csv`,
+`flexible_model_comparison.csv`, `neural_ceiling_sanity.json`,
+`feature_group_ablation.csv`, `feature_group_only.csv`,
+`feature_group_bootstrap.csv`, the three corresponding figures, and
+`report.md`.
+Every phase emits flushed `[model-zoo +elapsed] [section]` progress lines. The
+same events are appended to `progress.jsonl`, while completed/failed section
+durations are summarized in `timings.json`, making long Slurm jobs inspectable
+without waiting for completion.
+
+## Original Bandit comparison
+
 This folder is an additive, self-contained supplement. It does not modify the
 existing experimental or analysis pipeline. Run it from the repository root:
 

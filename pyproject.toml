@@ -9,9 +9,9 @@ description = "Causal value-steering and task-persistence experiment"
 requires-python = ">=3.10"
 
 [tool.setuptools.packages.find]
-include = ["analysis*", "bandit*", "cross_task*", "experiments*", "interventions*", "models*", "scripts*"]
+include = ["analysis*", "bandit*", "computational_modeling*", "cross_task*", "experiments*", "interventions*", "models*", "scripts*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "computational_modeling/tests"]
 pythonpath = ["."]
 addopts = "--strict-markers"

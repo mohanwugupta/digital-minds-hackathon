@@ -1,0 +1,9 @@
+{
+  "best_cross_task_interpretable_model": "finite_history",
+  "best_cross_task_model": "gru",
+  "best_cross_task_model_sharing": "shared_architecture_task_observation",
+  "best_flexible_model": "gru",
+  "feature_fits": 14,
+  "oracle_delta_r_squared": -0.02363607012259994,
+  "selected_flexible_linear_sharing": "shared_architecture_task_observation"
+}

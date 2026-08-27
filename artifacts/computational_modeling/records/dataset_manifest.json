@@ -1,0 +1,413 @@
+{
+  "format": "records-only CSV; activation tensors and conversations excluded",
+  "oracle_field_policy": "all environment-private fields use the oracle_ prefix",
+  "targets": [
+    "persistence_logit",
+    "continue",
+    "p_continue",
+    "p_disengage"
+  ],
+  "tasks": {
+    "bandit": {
+      "bank_dir": "artifacts/activation_bank",
+      "behavioral_payload_sha256": "85e6d3e3ecd905ef739a9e26de1c665fce902512564b5dce5129b3a4f8827e9e",
+      "episodes": 512,
+      "split_counts": {
+        "test": 78,
+        "train": 358,
+        "validation": 76
+      },
+      "split_path": "artifacts/value_probes/episode_split.json",
+      "split_sha256": "63cd5606c72eb2ef0455e04823f0556533e9bba078b0953ca63e42d4d554ede3",
+      "states": 12461,
+      "task": "bandit"
+    },
+    "foraging": {
+      "bank_dir": "artifacts/cross_task/track_b_shared_v3/foraging_activation_bank",
+      "behavioral_payload_sha256": "4d3bd5b7cae3152c70917dd291b7f15973ec9d795168ad135624e0537f2f7189",
+      "episodes": 768,
+      "split_counts": {
+        "test": 118,
+        "train": 536,
+        "validation": 114
+      },
+      "split_path": "artifacts/cross_task/track_b_shared_v3/foraging_episode_split.json",
+      "split_sha256": "2b070c99c275652b1d77566c3b8bf39bb1805eb46a6504ccc394ba465c9342d9",
+      "states": 2195,
+      "task": "foraging"
+    },
+    "solvability": {
+      "bank_dir": "artifacts/cross_task/track_b_shared_v3/solvability_activation_bank",
+      "behavioral_payload_sha256": "65ea0eb78a9a979bb9a2d8defd9acbee677cfc6d25b427535a9a7a240e4e7e0e",
+      "episodes": 768,
+      "split_counts": {
+        "test": 118,
+        "train": 536,
+        "validation": 114
+      },
+      "split_path": "artifacts/cross_task/track_b_shared_v3/solvability_episode_split.json",
+      "split_sha256": "c46854265afbb5eb8ddd7af98b42ee06c78215b241dbb25435c121c1e18803c4",
+      "states": 2069,
+      "task": "solvability"
+    }
+  },
+  "total_episodes": 2048,
+  "total_states": 16725,
+  "variables": {
+    "action_lag_1": {
+      "description": "action lag 1",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "action_lag_2": {
+      "description": "action lag 2",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "action_lag_3": {
+      "description": "action lag 3",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "action_lag_5": {
+      "description": "action lag 5",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "attempt_cost": {
+      "description": "attempt cost",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "attempts_used": {
+      "description": "attempts used",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "bayes_a": {
+      "description": "bayes a",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "bayes_b": {
+      "description": "bayes b",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "bayes_best": {
+      "description": "bayes best",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "bayes_gap": {
+      "description": "bayes gap",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "bayes_patch_probability": {
+      "description": "bayes patch probability",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "bayes_progress_probability": {
+      "description": "bayes progress probability",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "continue": {
+      "description": "continue",
+      "information_set": "recorded_policy_or_behavior",
+      "role": "target"
+    },
+    "cost_pressure": {
+      "description": "cost pressure",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "cumulative_cost": {
+      "description": "cumulative cost",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "cumulative_progress": {
+      "description": "cumulative progress",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "cumulative_score": {
+      "description": "cumulative score",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "disengagement_evidence": {
+      "description": "Negative observable termination advantage; higher favors disengagement.",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "displayed_progress_cue": {
+      "description": "Weak=-1, mixed=0, strong=1, matching the text shown in the prompt.",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "episode_id": {
+      "description": "episode id",
+      "information_set": "not_a_model_feature",
+      "role": "identifier"
+    },
+    "estimated_continue_value": {
+      "description": "estimated continue value",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "estimated_outside_value": {
+      "description": "estimated outside value",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "failure_streak": {
+      "description": "failure streak",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "give_up_value": {
+      "description": "give up value",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "log_round": {
+      "description": "log round",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "mapping_id": {
+      "description": "mapping id",
+      "information_set": "not_a_model_feature",
+      "role": "identifier"
+    },
+    "max_attempts": {
+      "description": "max attempts",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "mvt_like_advantage": {
+      "description": "mvt like advantage",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "normalized_time": {
+      "description": "normalized time",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "oracle_continue_value": {
+      "description": "oracle continue value",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_depletion": {
+      "description": "Private exact Foraging depletion rate.",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_initial_quality": {
+      "description": "Private exact initial Foraging patch quality.",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_outside_value": {
+      "description": "oracle outside value",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_p_a": {
+      "description": "Experimenter-known Bandit arm-A success probability; absent from prompts.",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_p_b": {
+      "description": "Experimenter-known Bandit arm-B success probability; absent from prompts.",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_patch_probability": {
+      "description": "Private current Foraging food probability.",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_progress_probability": {
+      "description": "Private exact Solvability progress probability; prompts expose only a categorical cue.",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_relative_value": {
+      "description": "oracle relative value",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "oracle_termination_advantage": {
+      "description": "oracle termination advantage",
+      "information_set": "oracle-state",
+      "role": "model_feature"
+    },
+    "outcome_after_choice": {
+      "description": "outcome after choice",
+      "information_set": "available_only_to_later_states",
+      "role": "transition_event"
+    },
+    "outcome_lag_1": {
+      "description": "outcome lag 1",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "outcome_lag_2": {
+      "description": "outcome lag 2",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "outcome_lag_3": {
+      "description": "outcome lag 3",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "outcome_lag_5": {
+      "description": "outcome lag 5",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "outside_option": {
+      "description": "outside option",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "p_continue": {
+      "description": "p continue",
+      "information_set": "recorded_policy_or_behavior",
+      "role": "target"
+    },
+    "p_disengage": {
+      "description": "p disengage",
+      "information_set": "recorded_policy_or_behavior",
+      "role": "target"
+    },
+    "pair_id": {
+      "description": "pair id",
+      "information_set": "not_a_model_feature",
+      "role": "identifier"
+    },
+    "persistence_logit": {
+      "description": "persistence logit",
+      "information_set": "recorded_policy_or_behavior",
+      "role": "target"
+    },
+    "previous_choice": {
+      "description": "previous choice",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "previous_outcome": {
+      "description": "previous outcome",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "progress_count": {
+      "description": "progress count",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "progress_evidence": {
+      "description": "progress evidence",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "relative_value": {
+      "description": "Observable estimated generic continuation value relative to the outside option.",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "round": {
+      "description": "round",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "rw_a": {
+      "description": "rw a",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "rw_b": {
+      "description": "rw b",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "rw_best": {
+      "description": "rw best",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "rw_gap": {
+      "description": "rw gap",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "search_count": {
+      "description": "search count",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "second_previous_choice": {
+      "description": "second previous choice",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "semantic_choice": {
+      "description": "semantic choice",
+      "information_set": "not_selected_without_schema_entry",
+      "role": "audit_field"
+    },
+    "split": {
+      "description": "split",
+      "information_set": "not_a_model_feature",
+      "role": "identifier"
+    },
+    "state_id": {
+      "description": "state id",
+      "information_set": "not_a_model_feature",
+      "role": "identifier"
+    },
+    "stay_cost": {
+      "description": "stay cost",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "success_streak": {
+      "description": "success streak",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "task": {
+      "description": "task",
+      "information_set": "not_a_model_feature",
+      "role": "identifier"
+    },
+    "task_bandit": {
+      "description": "task bandit",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "task_foraging": {
+      "description": "task foraging",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "task_solvability": {
+      "description": "task solvability",
+      "information_set": "observable",
+      "role": "model_feature"
+    },
+    "termination_advantage": {
+      "description": "Observable estimated continuation value minus displayed outside value.",
+      "information_set": "observable",
+      "role": "model_feature"
+    }
+  }
+}

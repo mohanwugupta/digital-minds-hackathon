@@ -1,0 +1,87 @@
+{"created_at_utc": "2026-08-27T02:48:01.556884+00:00", "elapsed_seconds": 1.1500000255182385e-05, "event": "progress", "message": "run=geometry_smoke; phase=all; smoke=True", "section": "pipeline"}
+{"created_at_utc": "2026-08-27T02:48:02.144468+00:00", "elapsed_seconds": 0.5875874170014868, "event": "progress", "message": "aligned behavioral design has 611 states, 90 episodes; frozen basis sha=ecf1424046d2", "section": "setup"}
+{"created_at_utc": "2026-08-27T02:48:02.144642+00:00", "elapsed_seconds": 0.5877625419998367, "event": "progress", "message": "started", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.157963+00:00", "elapsed_seconds": 0.6010833340005775, "event": "progress", "message": "bandit: scanning 512 existing activation shards", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.284479+00:00", "elapsed_seconds": 0.7275942920023226, "event": "progress", "message": "bandit: 100/512 shards; 452/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.404294+00:00", "elapsed_seconds": 0.8474072919998434, "event": "progress", "message": "bandit: 200/512 shards; 452/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.498050+00:00", "elapsed_seconds": 0.9411609590024455, "event": "progress", "message": "bandit: 300/512 shards; 452/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.587567+00:00", "elapsed_seconds": 1.0306770000024699, "event": "progress", "message": "bandit: 400/512 shards; 452/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.697042+00:00", "elapsed_seconds": 1.140149917002418, "event": "progress", "message": "bandit: 500/512 shards; 452/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.706125+00:00", "elapsed_seconds": 1.149232874999143, "event": "progress", "message": "bandit: 512/512 shards; 452/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.706293+00:00", "elapsed_seconds": 1.1494022500010033, "event": "progress", "message": "bandit: completed in 0.5s", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.708662+00:00", "elapsed_seconds": 1.1517712499990012, "event": "progress", "message": "foraging: scanning 768 existing activation shards", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.737627+00:00", "elapsed_seconds": 1.1807347089998075, "event": "progress", "message": "foraging: 100/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.758662+00:00", "elapsed_seconds": 1.2017687500010652, "event": "progress", "message": "foraging: 200/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.784056+00:00", "elapsed_seconds": 1.2271624170025461, "event": "progress", "message": "foraging: 300/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.808803+00:00", "elapsed_seconds": 1.2519092500006082, "event": "progress", "message": "foraging: 400/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.834962+00:00", "elapsed_seconds": 1.2780680420000863, "event": "progress", "message": "foraging: 500/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.860990+00:00", "elapsed_seconds": 1.304095875002531, "event": "progress", "message": "foraging: 600/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.885921+00:00", "elapsed_seconds": 1.3290257090011437, "event": "progress", "message": "foraging: 700/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.902411+00:00", "elapsed_seconds": 1.3455155000010564, "event": "progress", "message": "foraging: 768/768 shards; 542/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.902517+00:00", "elapsed_seconds": 1.345622333999927, "event": "progress", "message": "foraging: completed in 0.2s", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.904712+00:00", "elapsed_seconds": 1.3478176669996174, "event": "progress", "message": "solvability: scanning 768 existing activation shards", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.922304+00:00", "elapsed_seconds": 1.36540800000148, "event": "progress", "message": "solvability: 100/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.936750+00:00", "elapsed_seconds": 1.3798540419993515, "event": "progress", "message": "solvability: 200/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.950676+00:00", "elapsed_seconds": 1.3937800000021525, "event": "progress", "message": "solvability: 300/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.964873+00:00", "elapsed_seconds": 1.4079768750016228, "event": "progress", "message": "solvability: 400/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.979466+00:00", "elapsed_seconds": 1.4225687500002095, "event": "progress", "message": "solvability: 500/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:02.994288+00:00", "elapsed_seconds": 1.437390916998993, "event": "progress", "message": "solvability: 600/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:03.009226+00:00", "elapsed_seconds": 1.4523287920019357, "event": "progress", "message": "solvability: 700/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:03.019761+00:00", "elapsed_seconds": 1.462864167002408, "event": "progress", "message": "solvability: 768/768 shards; 611/611 aligned states", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:03.019903+00:00", "elapsed_seconds": 1.4630070420025731, "event": "progress", "message": "solvability: completed in 0.1s", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:03.048692+00:00", "elapsed_seconds": 1.4917945840024913, "event": "progress", "message": "completed in 0.9s", "section": "projection"}
+{"created_at_utc": "2026-08-27T02:48:03.049242+00:00", "elapsed_seconds": 1.4923455839998496, "event": "progress", "message": "started", "section": "computational_decoding"}
+{"created_at_utc": "2026-08-27T02:48:03.419351+00:00", "elapsed_seconds": 1.8624455839999428, "event": "progress", "message": "l21: decoded 10 targets in 0.4s", "section": "computational_decoding"}
+{"created_at_utc": "2026-08-27T02:48:03.837649+00:00", "elapsed_seconds": 2.2807352090021595, "event": "progress", "message": "displacement: decoded 10 targets in 0.4s", "section": "computational_decoding"}
+{"created_at_utc": "2026-08-27T02:48:04.209071+00:00", "elapsed_seconds": 2.65215100000205, "event": "progress", "message": "l22: decoded 10 targets in 0.4s", "section": "computational_decoding"}
+{"created_at_utc": "2026-08-27T02:48:04.210485+00:00", "elapsed_seconds": 2.653565417000209, "event": "progress", "message": "completed in 1.2s", "section": "computational_decoding"}
+{"created_at_utc": "2026-08-27T02:48:04.210556+00:00", "elapsed_seconds": 2.6536368340021, "event": "progress", "message": "started", "section": "cross_task_decoding"}
+{"created_at_utc": "2026-08-27T02:48:04.708336+00:00", "elapsed_seconds": 3.151404750002257, "event": "progress", "message": "l21: leave-one-task-out decoding complete", "section": "cross_task"}
+{"created_at_utc": "2026-08-27T02:48:05.210013+00:00", "elapsed_seconds": 3.653072459001123, "event": "progress", "message": "displacement: leave-one-task-out decoding complete", "section": "cross_task"}
+{"created_at_utc": "2026-08-27T02:48:05.734558+00:00", "elapsed_seconds": 4.177607292000175, "event": "progress", "message": "l22: leave-one-task-out decoding complete", "section": "cross_task"}
+{"created_at_utc": "2026-08-27T02:48:05.751580+00:00", "elapsed_seconds": 4.1946302090000245, "event": "progress", "message": "completed in 1.5s", "section": "cross_task_decoding"}
+{"created_at_utc": "2026-08-27T02:48:05.751671+00:00", "elapsed_seconds": 4.194721959000162, "event": "progress", "message": "started", "section": "random_subspace_controls"}
+{"created_at_utc": "2026-08-27T02:48:05.770191+00:00", "elapsed_seconds": 4.2132409590012685, "event": "progress", "message": "projected 611/611 states into 10 matched rank-4 controls", "section": "random_subspaces"}
+{"created_at_utc": "2026-08-27T02:48:09.161309+00:00", "elapsed_seconds": 7.6042921250009385, "event": "progress", "message": "l21: decoded 10/10 random subspaces", "section": "random_subspaces"}
+{"created_at_utc": "2026-08-27T02:48:12.498347+00:00", "elapsed_seconds": 10.941265792000195, "event": "progress", "message": "displacement: decoded 10/10 random subspaces", "section": "random_subspaces"}
+{"created_at_utc": "2026-08-27T02:48:15.827156+00:00", "elapsed_seconds": 14.27000904200031, "event": "progress", "message": "l22: decoded 10/10 random subspaces", "section": "random_subspaces"}
+{"created_at_utc": "2026-08-27T02:48:15.858258+00:00", "elapsed_seconds": 14.30111216700243, "event": "progress", "message": "completed in 10.1s", "section": "random_subspace_controls"}
+{"created_at_utc": "2026-08-27T02:48:15.858353+00:00", "elapsed_seconds": 14.301206584001193, "event": "progress", "message": "started", "section": "full_hidden_comparison"}
+{"created_at_utc": "2026-08-27T02:48:17.379215+00:00", "elapsed_seconds": 15.822037249999994, "event": "progress", "message": "l21: capacity-controlled full-hidden path completed in 1.5s", "section": "full_hidden"}
+{"created_at_utc": "2026-08-27T02:48:18.819831+00:00", "elapsed_seconds": 17.26262520900127, "event": "progress", "message": "displacement: capacity-controlled full-hidden path completed in 1.4s", "section": "full_hidden"}
+{"created_at_utc": "2026-08-27T02:48:20.343744+00:00", "elapsed_seconds": 18.786508417000732, "event": "progress", "message": "l22: capacity-controlled full-hidden path completed in 1.5s", "section": "full_hidden"}
+{"created_at_utc": "2026-08-27T02:48:20.345094+00:00", "elapsed_seconds": 18.78786104200117, "event": "progress", "message": "completed in 4.5s", "section": "full_hidden_comparison"}
+{"created_at_utc": "2026-08-27T02:48:20.345182+00:00", "elapsed_seconds": 18.78794858400215, "event": "progress", "message": "started", "section": "dimension_geometry"}
+{"created_at_utc": "2026-08-27T02:48:20.351235+00:00", "elapsed_seconds": 18.794001292000758, "event": "progress", "message": "l21: rank, CCA, and target-axis angles complete", "section": "dimension_geometry"}
+{"created_at_utc": "2026-08-27T02:48:20.355693+00:00", "elapsed_seconds": 18.798459334000654, "event": "progress", "message": "displacement: rank, CCA, and target-axis angles complete", "section": "dimension_geometry"}
+{"created_at_utc": "2026-08-27T02:48:20.360055+00:00", "elapsed_seconds": 18.80282116700255, "event": "progress", "message": "l22: rank, CCA, and target-axis angles complete", "section": "dimension_geometry"}
+{"created_at_utc": "2026-08-27T02:48:20.360794+00:00", "elapsed_seconds": 18.80356029199902, "event": "progress", "message": "completed in 0.0s", "section": "dimension_geometry"}
+{"created_at_utc": "2026-08-27T02:48:20.360862+00:00", "elapsed_seconds": 18.803628834000847, "event": "progress", "message": "started", "section": "behavior_neural_incremental"}
+{"created_at_utc": "2026-08-27T02:48:20.476091+00:00", "elapsed_seconds": 18.91885475000163, "event": "progress", "message": "l21: behavioral, neural, and combined decision models complete", "section": "incremental"}
+{"created_at_utc": "2026-08-27T02:48:20.590551+00:00", "elapsed_seconds": 19.033312292001938, "event": "progress", "message": "displacement: behavioral, neural, and combined decision models complete", "section": "incremental"}
+{"created_at_utc": "2026-08-27T02:48:20.704906+00:00", "elapsed_seconds": 19.14766504200088, "event": "progress", "message": "l22: behavioral, neural, and combined decision models complete", "section": "incremental"}
+{"created_at_utc": "2026-08-27T02:48:20.705949+00:00", "elapsed_seconds": 19.14870883399999, "event": "progress", "message": "completed in 0.3s", "section": "behavior_neural_incremental"}
+{"created_at_utc": "2026-08-27T02:48:20.706024+00:00", "elapsed_seconds": 19.148783459000697, "event": "progress", "message": "started", "section": "specificity_controls"}
+{"created_at_utc": "2026-08-27T02:48:20.815747+00:00", "elapsed_seconds": 19.258502749999025, "event": "progress", "message": "arbitrary_choice: projected 200/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:20.912039+00:00", "elapsed_seconds": 19.35479270900032, "event": "progress", "message": "arbitrary_choice: projected 400/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:20.994473+00:00", "elapsed_seconds": 19.43722266700206, "event": "progress", "message": "arbitrary_choice: projected 600/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.061456+00:00", "elapsed_seconds": 19.504207417001453, "event": "progress", "message": "arbitrary_choice: projected 768/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.182449+00:00", "elapsed_seconds": 19.625197959001525, "event": "progress", "message": "terminality: projected 200/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.259034+00:00", "elapsed_seconds": 19.70178091699927, "event": "progress", "message": "terminality: projected 400/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.336728+00:00", "elapsed_seconds": 19.77947320900057, "event": "progress", "message": "terminality: projected 600/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.401481+00:00", "elapsed_seconds": 19.84422587500012, "event": "progress", "message": "terminality: projected 768/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.561510+00:00", "elapsed_seconds": 20.004250666999724, "event": "progress", "message": "generic_value: projected 200/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.671985+00:00", "elapsed_seconds": 20.11472516700087, "event": "progress", "message": "generic_value: projected 400/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.772541+00:00", "elapsed_seconds": 20.215278250001575, "event": "progress", "message": "generic_value: projected 600/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:21.820613+00:00", "elapsed_seconds": 20.26334995900106, "event": "progress", "message": "generic_value: projected 768/768 nuisance shards", "section": "specificity"}
+{"created_at_utc": "2026-08-27T02:48:22.515065+00:00", "elapsed_seconds": 20.957789000000048, "event": "progress", "message": "completed in 1.8s", "section": "specificity_controls"}
+{"created_at_utc": "2026-08-27T02:48:22.515217+00:00", "elapsed_seconds": 20.957941291999305, "event": "progress", "message": "started", "section": "gru_state_alignment"}
+{"created_at_utc": "2026-08-27T02:48:22.521940+00:00", "elapsed_seconds": 20.964660042001924, "event": "progress", "message": "refitting validated GRU (64 hidden units) to export recurrent states", "section": "gru_alignment"}
+{"created_at_utc": "2026-08-27T02:48:29.251922+00:00", "elapsed_seconds": 27.69451379200109, "event": "progress", "message": "l21: CCA, low-rank regression, and cross-task transfer complete", "section": "gru_alignment"}
+{"created_at_utc": "2026-08-27T02:48:35.540160+00:00", "elapsed_seconds": 33.98263020900049, "event": "progress", "message": "displacement: CCA, low-rank regression, and cross-task transfer complete", "section": "gru_alignment"}
+{"created_at_utc": "2026-08-27T02:48:41.826533+00:00", "elapsed_seconds": 40.268880499999796, "event": "progress", "message": "l22: CCA, low-rank regression, and cross-task transfer complete", "section": "gru_alignment"}
+{"created_at_utc": "2026-08-27T02:48:41.827665+00:00", "elapsed_seconds": 40.27001412500249, "event": "progress", "message": "completed in 19.3s", "section": "gru_state_alignment"}
+{"created_at_utc": "2026-08-27T02:48:41.827761+00:00", "elapsed_seconds": 40.27011062500242, "event": "progress", "message": "started", "section": "report_generation"}
+{"created_at_utc": "2026-08-27T02:48:42.442524+00:00", "elapsed_seconds": 40.884860000001936, "event": "progress", "message": "report available at artifacts/persistence_computational_neural/geometry_smoke/report.md", "section": "report_generation"}
+{"created_at_utc": "2026-08-27T02:48:42.442741+00:00", "elapsed_seconds": 40.885077834002004, "event": "progress", "message": "completed in 0.6s", "section": "report_generation"}
+{"created_at_utc": "2026-08-27T02:48:42.442807+00:00", "elapsed_seconds": 40.885143999999855, "event": "progress", "message": "persistence computational-neural geometry complete", "section": "pipeline"}

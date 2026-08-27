@@ -1,0 +1,20 @@
+{
+  "analysis_role": "exploratory_frozen_subspace_interpretation",
+  "episodes": 90,
+  "frozen_subspace": {
+    "artifact": "artifacts/persistence_discovery/search/persistence_candidate_subspaces.pt",
+    "key": "displacement-L21-k4",
+    "rank": 4,
+    "sha256": "ecf1424046d29d182de65f796e538d2a1ff87d3302a9eb44ef5f22dd64829054"
+  },
+  "protocol_version": "persistence_computational_neural_geometry_v1",
+  "smoke": true,
+  "states": 611,
+  "subspace_refit_parameters": 0,
+  "tasks": [
+    "bandit",
+    "foraging",
+    "solvability"
+  ],
+  "test_targets_never_fit": true
+}
