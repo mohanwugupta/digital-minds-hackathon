@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
+from analysis.persistence_change_data import _assign_behavioral_model_targets
 from analysis.persistence_change_geometry import (
     audit_exact_pair,
     construct_pair_change,
@@ -172,3 +173,68 @@ def test_shared_change_recovery_succeeds_after_task_offsets_cancel():
     assert absolute_fit["test_metrics"]["r_squared"] < 0.0
     assert change_fit["test_metrics"]["r_squared"] > 0.95
 
+
+def test_behavioral_target_join_skips_synthetic_nuisance_state_ids():
+    dataset = {
+        "metadata": pd.DataFrame(
+            [
+                {
+                    "contrast_kind": "persistence",
+                    "positive_state_id": "organic-positive",
+                    "negative_state_id": "organic-negative",
+                },
+                {
+                    "contrast_kind": "nuisance",
+                    "positive_state_id": "foraging-matched-hash-stay_x:0",
+                    "negative_state_id": "foraging-matched-hash-stay_y:0",
+                },
+            ]
+        ),
+        "targets": pd.DataFrame(
+            [
+                {
+                    "persistence_policy_change": 1.0,
+                    "gru_prediction_change": np.nan,
+                    "history_prediction_change": np.nan,
+                },
+                {
+                    "persistence_policy_change": np.nan,
+                    "gru_prediction_change": np.nan,
+                    "history_prediction_change": np.nan,
+                },
+            ]
+        ),
+        "absolute_metadata": pd.DataFrame(
+            [
+                {
+                    "contrast_kind": "persistence",
+                    "state_id": "organic-positive",
+                    "gru_prediction": np.nan,
+                    "history_prediction": np.nan,
+                },
+                {
+                    "contrast_kind": "persistence",
+                    "state_id": "organic-negative",
+                    "gru_prediction": np.nan,
+                    "history_prediction": np.nan,
+                },
+                {
+                    "contrast_kind": "nuisance",
+                    "state_id": "foraging-matched-hash-stay_x:0",
+                    "gru_prediction": np.nan,
+                    "history_prediction": np.nan,
+                },
+            ]
+        ),
+    }
+
+    result = _assign_behavioral_model_targets(
+        dataset,
+        {"organic-positive": 0.8, "organic-negative": 0.2},
+        {"organic-positive": 0.7, "organic-negative": 0.3},
+    )
+
+    assert result["targets"].loc[0, "gru_prediction_change"] == pytest.approx(0.6)
+    assert result["targets"].loc[0, "history_prediction_change"] == pytest.approx(0.4)
+    assert pd.isna(result["targets"].loc[1, "gru_prediction_change"])
+    assert pd.isna(result["absolute_metadata"].loc[2, "gru_prediction"])

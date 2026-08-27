@@ -503,6 +503,51 @@ def _bandit_factorial_model_record(source, split):
     return row
 
 
+def _assign_behavioral_model_targets(dataset, gru_lookup, history_lookup):
+    """Attach model deltas only where behavioral predictions are defined."""
+
+    metadata, targets = dataset["metadata"], dataset["targets"]
+    persistence = metadata.contrast_kind.astype(str) == "persistence"
+    persistence_endpoints = set(
+        metadata.loc[persistence, "positive_state_id"].astype(str)
+    ) | set(metadata.loc[persistence, "negative_state_id"].astype(str))
+    missing = {
+        "GRU": sorted(persistence_endpoints - set(gru_lookup)),
+        "finite-history": sorted(persistence_endpoints - set(history_lookup)),
+    }
+    missing = {name: state_ids for name, state_ids in missing.items() if state_ids}
+    if missing:
+        details = "; ".join(
+            f"{name}: {state_ids[:5]}" for name, state_ids in missing.items()
+        )
+        raise ValueError(
+            "behavioral model predictions are missing persistence endpoints: "
+            + details
+        )
+
+    for index, row in metadata.loc[persistence].iterrows():
+        positive, negative = str(row.positive_state_id), str(row.negative_state_id)
+        targets.loc[index, "gru_prediction_change"] = (
+            gru_lookup[positive] - gru_lookup[negative]
+        )
+        targets.loc[index, "history_prediction_change"] = (
+            history_lookup[positive] - history_lookup[negative]
+        )
+
+    absolute = dataset["absolute_metadata"]
+    absolute_persistence = absolute.contrast_kind.astype(str) == "persistence"
+    for index, row in absolute.loc[absolute_persistence].iterrows():
+        state_id = str(row.state_id)
+        absolute.loc[index, "gru_prediction"] = gru_lookup[state_id]
+        absolute.loc[index, "history_prediction"] = history_lookup[state_id]
+
+    if targets.loc[persistence, list(PERSISTENCE_TARGETS)].isna().any().any():
+        raise ValueError("behavioral model predictions are missing persistence endpoints")
+    dataset["targets"] = targets
+    dataset["absolute_metadata"] = absolute
+    return dataset
+
+
 def add_behavioral_model_targets(dataset, config, *, logger=None):
     """Apply the validation-selected GRU and finite-history models to endpoints."""
 
@@ -569,21 +614,4 @@ def add_behavioral_model_targets(dataset, config, *, logger=None):
         history_lookup.update(
             {str(row["state_id"]): float(value) for row, value in zip(task_application, prediction)}
         )
-    metadata, targets = dataset["metadata"], dataset["targets"]
-    for index, row in metadata.iterrows():
-        positive, negative = str(row.positive_state_id), str(row.negative_state_id)
-        targets.loc[index, "gru_prediction_change"] = gru_lookup[positive] - gru_lookup[negative]
-        targets.loc[index, "history_prediction_change"] = history_lookup[positive] - history_lookup[negative]
-    absolute = dataset["absolute_metadata"]
-    for index, row in absolute.iterrows():
-        state_id = str(row.state_id)
-        if state_id in gru_lookup:
-            absolute.loc[index, "gru_prediction"] = gru_lookup[state_id]
-            absolute.loc[index, "history_prediction"] = history_lookup[state_id]
-    persistence = metadata.contrast_kind.astype(str) == "persistence"
-    if targets.loc[persistence, list(PERSISTENCE_TARGETS)].isna().any().any():
-        raise ValueError("behavioral model predictions are missing persistence endpoints")
-    dataset["targets"] = targets
-    dataset["absolute_metadata"] = absolute
-    return dataset
-
+    return _assign_behavioral_model_targets(dataset, gru_lookup, history_lookup)
