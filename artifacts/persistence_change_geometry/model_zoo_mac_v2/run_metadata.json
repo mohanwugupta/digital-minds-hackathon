@@ -1,0 +1,27 @@
+{
+  "analysis_role": "exploratory_matched_change_falsification",
+  "bandit_behavioral_model_application": "validation-selected organic-task models applied without refitting to displayed factorial continuation/STOP values; counterfactual application is extrapolative",
+  "frozen_subspace": {
+    "artifact": "artifacts/persistence_discovery/search/persistence_candidate_subspaces.pt",
+    "key": "displacement-L21-k4",
+    "rank": 4,
+    "sha256": "ecf1424046d29d182de65f796e538d2a1ff87d3302a9eb44ef5f22dd64829054"
+  },
+  "manipulations": [
+    "continue_incentive",
+    "outside_option",
+    "progress_evidence",
+    "search_cost",
+    "stop_outside_option"
+  ],
+  "pairs": 11120,
+  "protocol_version": "persistence_change_geometry_v1",
+  "smoke": false,
+  "subspace_refit_parameters": 0,
+  "tasks": [
+    "bandit",
+    "foraging",
+    "solvability"
+  ],
+  "test_targets_never_fit": true
+}

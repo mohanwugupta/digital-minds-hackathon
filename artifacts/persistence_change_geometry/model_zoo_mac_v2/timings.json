@@ -1,0 +1,58 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 37.121535627986304,
+      "error": "KeyError: 'foraging-matched-001e9c45bb1577a9c487-stay_x:0'",
+      "section": "prepare_pairs",
+      "status": "failed"
+    },
+    {
+      "duration_seconds": 35.00958108494524,
+      "section": "prepare_pairs",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 980.7829109010054,
+      "section": "change_decoding",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 704.0872448009904,
+      "section": "cross_task_change_transfer",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 774.7115783080226,
+      "section": "cross_manipulation_transfer",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 1425.6910034370376,
+      "section": "absolute_vs_change",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 476.78295322100166,
+      "section": "random_subspace_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 272.91596255800687,
+      "section": "nuisance_change_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.18307484104298055,
+      "section": "direction_alignment",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.000537975924089551,
+      "error": "ModuleNotFoundError: No module named 'matplotlib'",
+      "section": "report_generation",
+      "status": "failed"
+    }
+  ],
+  "total_elapsed_seconds": 4673.996206123033,
+  "updated_at_utc": "2026-08-27T20:23:49.241024+00:00"
+}
