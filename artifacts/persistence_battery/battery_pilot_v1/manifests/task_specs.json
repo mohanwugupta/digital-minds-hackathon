@@ -1,0 +1,178 @@
+{
+  "independent_effort_control": {
+    "adaptation_notes": "Every round is explicitly independent and has a new offer.",
+    "construct": "generic repeated effort choice",
+    "departures_from_original": [
+      "symbolic effort costs",
+      "counterbalanced labels"
+    ],
+    "factorial_condition_count": 8,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "high_reward_bonus",
+      "high_effort_cost",
+      "high_success_probability"
+    ],
+    "negative_action": "LOW_EFFORT",
+    "persistence_task": false,
+    "pilot_adjustments": [],
+    "positive_action": "HIGH_EFFORT",
+    "recorded_episode_target": 32,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": false,
+    "source_citation": "Treadway et al. (2009), PMCID: PMC2720457; Westbrook et al. (2013), PMCID: PMC4445645",
+    "source_paradigm": "EEfRT / COGED",
+    "task": "independent_effort_control"
+  },
+  "information_sampling": {
+    "adaptation_notes": "Evidence sampling and the substantive A/B answer are separate stages.",
+    "construct": "epistemic persistence / information sampling",
+    "departures_from_original": [
+      "binary noisy signals",
+      "Bayesian evidence state"
+    ],
+    "factorial_condition_count": 32,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "evidence_accuracy",
+      "sample_cost",
+      "error_penalty",
+      "prior_a",
+      "true_state"
+    ],
+    "negative_action": "DECIDE",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "SAMPLE",
+    "recorded_episode_target": 128,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Clark et al. paradigm; adaptation overview PMCID: PMC6795545",
+    "source_paradigm": "Information Sampling Task",
+    "task": "information_sampling"
+  },
+  "partial_reinforcement": {
+    "adaptation_notes": "A visible acquisition sequence precedes an unannounced extinction phase.",
+    "construct": "partial-reinforcement extinction persistence",
+    "departures_from_original": [
+      "symbolic point outcomes",
+      "finite extinction horizon"
+    ],
+    "factorial_condition_count": 16,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "reinforcement_schedule",
+      "acquisition_trials",
+      "partial_probability",
+      "extinction_try_cost"
+    ],
+    "negative_action": "STOP",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "TRY_AGAIN",
+    "recorded_episode_target": 64,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Capaldi sequential theory; review PMCID: PMC10842266",
+    "source_paradigm": "partial reinforcement extinction effect (PREE)",
+    "task": "partial_reinforcement"
+  },
+  "progressive_ratio": {
+    "adaptation_notes": "One textual WORK choice performs one scheduled work unit.",
+    "construct": "breakpoint / effort motivation",
+    "departures_from_original": [
+      "symbolic work units",
+      "point outcomes"
+    ],
+    "factorial_condition_count": 16,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "ratio_schedule",
+      "reward_magnitude",
+      "effort_cost",
+      "outside_option"
+    ],
+    "negative_action": "QUIT",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "WORK",
+    "recorded_episode_target": 64,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Markou et al., Schizophrenia Bulletin (2013), PMCID: PMC3849135",
+    "source_paradigm": "progressive-ratio reinforcement schedule",
+    "task": "progressive_ratio"
+  },
+  "sunk_cost": {
+    "adaptation_notes": "Prior investment is crossed with identical prospective states.",
+    "construct": "sunk-cost persistence",
+    "departures_from_original": [
+      "point projects",
+      "discrete work steps"
+    ],
+    "factorial_condition_count": 16,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "prior_investment",
+      "remaining_steps",
+      "reward_magnitude",
+      "outside_option",
+      "step_cost"
+    ],
+    "negative_action": "ABANDON",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "CONTINUE_WAITING",
+    "recorded_episode_target": 64,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Sweis et al., Science (2018), PMCID: PMC6377599",
+    "source_paradigm": "Restaurant Row / Web-Surf change-of-mind waiting",
+    "task": "sunk_cost"
+  },
+  "voluntary_waiting": {
+    "adaptation_notes": "Each simulated step replaces physical wall-clock waiting.",
+    "construct": "dynamic persistence / voluntary waiting",
+    "departures_from_original": [
+      "text-based point rewards",
+      "discrete time",
+      "counterbalanced single-token responses"
+    ],
+    "factorial_condition_count": 16,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "timing_environment",
+      "reward_magnitude",
+      "opportunity_cost",
+      "quit_payoff"
+    ],
+    "negative_action": "QUIT",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "WAIT",
+    "recorded_episode_target": 64,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "McGuire & Kable, Nature Neuroscience (2015), doi:10.1038/nn.3994",
+    "source_paradigm": "uncertain delayed-reward voluntary persistence",
+    "task": "voluntary_waiting"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "config": {
+    "behavior_only": true,
+    "capture_hidden_states": false,
+    "config": "config/persistence_battery.yaml",
+    "dataset": "pilot",
+    "full_activation_banks_collected": false,
+    "model": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+    "model_free": false,
+    "num_shards": 1,
+    "online": false,
+    "phase": "pilot",
+    "protocol_version": "persistence_battery_v1",
+    "resume": true,
+    "revision": null,
+    "run_id": "battery_pilot_v1",
+    "shard_index": 0,
+    "smoke": false,
+    "tasks": [
+      "voluntary_waiting",
+      "progressive_ratio",
+      "sunk_cost",
+      "information_sampling",
+      "partial_reinforcement",
+      "independent_effort_control"
+    ]
+  },
+  "created_at_utc": "2026-08-28T02:02:28.510987+00:00",
+  "git_commit": "a9fe2eec009baa446430999d5a9dd184a650daec",
+  "model_identifier": "/scratch/gpfs/JORDANAT/mg9965/models/Qwen--Qwen3.5-4B",
+  "model_revision": null,
+  "python_version": "3.10.20",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "5.15.0"
+}

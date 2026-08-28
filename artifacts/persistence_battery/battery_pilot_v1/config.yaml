@@ -1,0 +1,88 @@
+protocol_version: persistence_battery_v1
+analysis_role: behavioral_benchmark_expansion
+model: Qwen/Qwen3.5-4B
+output_root: artifacts/persistence_battery
+base_seed: 111026
+split_seed: 112026
+response_labels: [X, Y]
+
+# Full collection is never launched by the default pilot command.
+collection:
+  recorded_episodes_per_task: 512
+  pilot_semantic_pairs_per_cell: 2
+  require_pilot_approval_for_full: true
+
+tasks:
+  voluntary_waiting:
+    timing_environments: [short_wait_optimal, long_wait_optimal]
+    reward_magnitudes: [6, 10]
+    opportunity_costs: [0, 2]
+    quit_payoffs: [0, 2]
+    max_steps: 8
+
+  progressive_ratio:
+    ratio_schedules: [shallow, steep]
+    reward_magnitudes: [6, 10]
+    effort_costs: [0, 2]
+    outside_options: [0, 2]
+
+  sunk_cost:
+    prior_investments: [1, 8]
+    remaining_steps: [2, 4]
+    reward_magnitudes: [8, 14]
+    outside_options: [0, 3]
+    step_costs: [1]
+    success_probabilities: [0.75]
+
+  information_sampling:
+    evidence_accuracies: [0.65, 0.80]
+    sample_costs: [0, 2]
+    error_penalties: [4, 10]
+    priors_a: [0.5, 0.7]
+    true_states: [A, B]
+    max_samples: 8
+
+  partial_reinforcement:
+    reinforcement_schedules: [continuous, partial]
+    acquisition_trials: [8, 12]
+    partial_probabilities: [0.5]
+    extinction_try_costs: [0, 2]
+    expected_rewards_per_trial: [2, 4]
+    max_extinction_attempts: 12
+
+  independent_effort_control:
+    rounds: 8
+    high_reward_bonuses: [3, 7]
+    high_effort_costs: [2, 5]
+    high_success_probabilities: [0.5, 0.8]
+
+  controllability:
+    exposure_types: [controllable, uncontrollable]
+    exposure_trials: 10
+    transfer_success_probabilities: [0.35, 0.7]
+    transfer_costs: [0, 2]
+    max_transfer_attempts: 8
+
+stretch:
+  controllability_enabled: false
+
+pilot_adjustments:
+  voluntary_waiting: []
+  progressive_ratio: []
+  sunk_cost: []
+  information_sampling: []
+  partial_reinforcement: []
+  independent_effort_control: []
+  controllability: []
+
+validation:
+  persistence_probability_bounds: [0.05, 0.95]
+  minimum_persistence_logit_sd: 0.15
+  minimum_expected_probability_effect: 0.03
+  minimum_median_episode_length: 2
+  minimum_mapping_balance_correlation: 0.8
+  maximum_mean_absolute_mapping_gap: 0.25
+  minimum_top_token_action_rate: 0.90
+
+smoke:
+  semantic_pairs_per_task: 3
