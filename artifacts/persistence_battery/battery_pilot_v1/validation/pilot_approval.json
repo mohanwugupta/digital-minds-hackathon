@@ -1,0 +1,12 @@
+{
+  "all_tasks_approved": false,
+  "model_free": false,
+  "tasks": {
+    "independent_effort_control": true,
+    "information_sampling": true,
+    "partial_reinforcement": true,
+    "progressive_ratio": false,
+    "sunk_cost": false,
+    "voluntary_waiting": false
+  }
+}

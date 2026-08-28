@@ -1,0 +1,14 @@
+task,check,effect,expected_direction,passed,gate_role
+voluntary_waiting,lower opportunity cost increases waiting,0.08561482883633509,positive,True,validity_gate
+voluntary_waiting,timing environments have different normative initial policies,1.0,positive,True,design_gate
+progressive_ratio,lower effort cost increases work,0.06750439402464292,positive,True,validity_gate
+progressive_ratio,higher reward increases work,0.05183349998762554,positive,True,validity_gate
+progressive_ratio,shallower effort growth increases breakpoint,1.1875,positive,True,validity_gate
+sunk_cost,lower remaining cost increases continuation,0.04747328295762998,positive,True,validity_gate
+sunk_cost,greater sunk investment increases persistence,0.008831275209099876,positive,False,scientific_hypothesis
+information_sampling,lower sampling cost increases sampling,0.05811833226342278,positive,True,validity_gate
+information_sampling,decisive evidence reduces sampling,-0.3458350179923913,positive,False,validity_gate
+information_sampling,higher error penalty increases sampling,0.02715773094842261,positive,False,validity_gate
+partial_reinforcement,lower extinction cost increases trying,0.08528933829806229,positive,True,validity_gate
+partial_reinforcement,partial training increases extinction persistence,-0.16314247060908205,positive,False,scientific_hypothesis
+independent_effort_control,high-effort choice tracks offer utility,0.26768137549520377,positive,True,validity_gate

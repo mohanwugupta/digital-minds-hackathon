@@ -1,0 +1,38 @@
+{
+  "independent_effort_control": {
+    "episodes": 32,
+    "format": "csv.gz",
+    "path": "pilot/records/independent_effort_control.csv.gz",
+    "states": 256
+  },
+  "information_sampling": {
+    "episodes": 128,
+    "format": "csv.gz",
+    "path": "pilot/records/information_sampling.csv.gz",
+    "states": 364
+  },
+  "partial_reinforcement": {
+    "episodes": 64,
+    "format": "csv.gz",
+    "path": "pilot/records/partial_reinforcement.csv.gz",
+    "states": 120
+  },
+  "progressive_ratio": {
+    "episodes": 64,
+    "format": "csv.gz",
+    "path": "pilot/records/progressive_ratio.csv.gz",
+    "states": 2642
+  },
+  "sunk_cost": {
+    "episodes": 64,
+    "format": "csv.gz",
+    "path": "pilot/records/sunk_cost.csv.gz",
+    "states": 154
+  },
+  "voluntary_waiting": {
+    "episodes": 64,
+    "format": "csv.gz",
+    "path": "pilot/records/voluntary_waiting.csv.gz",
+    "states": 138
+  }
+}
