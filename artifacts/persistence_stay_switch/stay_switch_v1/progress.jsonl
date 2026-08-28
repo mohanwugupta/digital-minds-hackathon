@@ -1,0 +1,132 @@
+{"created_at_utc": "2026-08-27T22:45:53.809283+00:00", "elapsed_seconds": 9.750001481734216e-06, "event": "progress", "message": "run=stay_switch_v1; phase=all; smoke=False", "section": "pipeline"}
+{"created_at_utc": "2026-08-27T22:45:54.005437+00:00", "elapsed_seconds": 0.19616341700020712, "event": "progress", "message": "loaded 16725 existing at-risk states; no model inference or trajectory collection", "section": "data_reuse"}
+{"created_at_utc": "2026-08-27T22:45:54.005541+00:00", "elapsed_seconds": 0.1962686670012772, "event": "progress", "message": "started", "section": "behavior_hazards"}
+{"created_at_utc": "2026-08-27T22:46:03.975027+00:00", "elapsed_seconds": 10.165722542002186, "event": "progress", "message": "held-out log loss: baseline=0.596, task_specific=0.480, shared_history=0.492, shared_stay_switch=0.478, fully_shared=0.591", "section": "behavior_hazards"}
+{"created_at_utc": "2026-08-27T22:46:03.975336+00:00", "elapsed_seconds": 10.166033083001821, "event": "progress", "message": "completed in 10.0s", "section": "behavior_hazards"}
+{"created_at_utc": "2026-08-27T22:46:03.975414+00:00", "elapsed_seconds": 10.166111083002761, "event": "progress", "message": "started", "section": "history_kernels"}
+{"created_at_utc": "2026-08-27T22:46:06.148659+00:00", "elapsed_seconds": 12.339346875000047, "event": "progress", "message": "validation selected finite kernel=5.0; test log loss=0.492", "section": "history_kernels"}
+{"created_at_utc": "2026-08-27T22:46:06.148931+00:00", "elapsed_seconds": 12.339620124999783, "event": "progress", "message": "completed in 2.2s", "section": "history_kernels"}
+{"created_at_utc": "2026-08-27T22:46:06.151767+00:00", "elapsed_seconds": 12.342457000002469, "event": "progress", "message": "started", "section": "gru_memory_ablations"}
+{"created_at_utc": "2026-08-27T22:46:06.156003+00:00", "elapsed_seconds": 12.346691875001852, "event": "progress", "message": "fitting full_recurrence (24 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:48:10.631705+00:00", "elapsed_seconds": 136.82200362500225, "event": "progress", "message": "fitting limited_history_1 (24 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:48:11.927196+00:00", "elapsed_seconds": 138.117490042001, "event": "progress", "message": "fitting limited_history_2 (24 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:48:14.120051+00:00", "elapsed_seconds": 140.31033908300014, "event": "progress", "message": "fitting limited_history_3 (24 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:48:17.133709+00:00", "elapsed_seconds": 143.32398770800137, "event": "progress", "message": "fitting limited_history_5 (24 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:48:22.103889+00:00", "elapsed_seconds": 148.294151625003, "event": "progress", "message": "fitting choice_history_removed (18 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:50:26.176739+00:00", "elapsed_seconds": 272.36661379200086, "event": "progress", "message": "fitting outcome_history_removed (17 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:52:29.365107+00:00", "elapsed_seconds": 395.5492355830029, "event": "progress", "message": "fitting time_removed (22 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:54:39.479150+00:00", "elapsed_seconds": 525.6623383330007, "event": "progress", "message": "fitting task_specific_evidence_removed (18 features)", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:57:56.796711+00:00", "elapsed_seconds": 722.9789638330003, "event": "progress", "message": "fitting non-recurrent MLP control", "section": "gru_memory"}
+{"created_at_utc": "2026-08-27T22:57:57.253213+00:00", "elapsed_seconds": 723.4354667080006, "event": "progress", "message": "full recurrence R2=0.936", "section": "gru_memory_ablations"}
+{"created_at_utc": "2026-08-27T22:57:57.253561+00:00", "elapsed_seconds": 723.4358150000007, "event": "progress", "message": "completed in 11m 51s", "section": "gru_memory_ablations"}
+{"created_at_utc": "2026-08-27T22:57:57.253676+00:00", "elapsed_seconds": 723.4359299170028, "event": "progress", "message": "started", "section": "gru_bottlenecks"}
+{"created_at_utc": "2026-08-27T22:57:57.257127+00:00", "elapsed_seconds": 723.4393807080014, "event": "progress", "message": "fitting hidden_size=1", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T22:57:59.761018+00:00", "elapsed_seconds": 725.9432579580025, "event": "progress", "message": "fitting hidden_size=2", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T22:58:02.780145+00:00", "elapsed_seconds": 728.9623712080029, "event": "progress", "message": "fitting hidden_size=4", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T22:58:20.981468+00:00", "elapsed_seconds": 747.1636068750013, "event": "progress", "message": "fitting hidden_size=8", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T22:58:51.065668+00:00", "elapsed_seconds": 777.2476599580004, "event": "progress", "message": "fitting hidden_size=16", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T22:59:43.493134+00:00", "elapsed_seconds": 829.6748826670009, "event": "progress", "message": "fitting hidden_size=32", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T23:01:16.312470+00:00", "elapsed_seconds": 922.4937779580032, "event": "progress", "message": "fitting hidden_size=64", "section": "gru_bottleneck"}
+{"created_at_utc": "2026-08-27T23:04:12.600073+00:00", "elapsed_seconds": 1098.7805453330002, "event": "progress", "message": "best tested hidden size=64; R2=0.929", "section": "gru_bottlenecks"}
+{"created_at_utc": "2026-08-27T23:04:12.600521+00:00", "elapsed_seconds": 1098.780995833, "event": "progress", "message": "completed in 6m 15s", "section": "gru_bottlenecks"}
+{"created_at_utc": "2026-08-27T23:04:12.600639+00:00", "elapsed_seconds": 1098.781114333, "event": "progress", "message": "started", "section": "gru_distillation"}
+{"created_at_utc": "2026-08-27T23:07:30.965454+00:00", "elapsed_seconds": 1297.144988875003, "event": "progress", "message": "completed in 3m 18s", "section": "gru_distillation"}
+{"created_at_utc": "2026-08-27T23:07:30.966076+00:00", "elapsed_seconds": 1297.1456111670013, "event": "progress", "message": "started", "section": "activation_caches"}
+{"created_at_utc": "2026-08-27T23:07:32.192344+00:00", "elapsed_seconds": 1298.3718696249998, "event": "progress", "message": "bandit: 100/512 shards; 2878/12461 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:33.338304+00:00", "elapsed_seconds": 1299.5178248330012, "event": "progress", "message": "bandit: 200/512 shards; 5699/12461 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:34.284347+00:00", "elapsed_seconds": 1300.463862792003, "event": "progress", "message": "bandit: 300/512 shards; 7838/12461 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:35.092853+00:00", "elapsed_seconds": 1301.2723621670011, "event": "progress", "message": "bandit: 400/512 shards; 9732/12461 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:36.347470+00:00", "elapsed_seconds": 1302.5269756670023, "event": "progress", "message": "bandit: 500/512 shards; 12301/12461 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:36.436716+00:00", "elapsed_seconds": 1302.6162218750032, "event": "progress", "message": "bandit: 512/512 shards; 12461/12461 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:38.928861+00:00", "elapsed_seconds": 1305.1083546670015, "event": "progress", "message": "foraging: 100/768 shards; 272/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:39.085316+00:00", "elapsed_seconds": 1305.2648076670012, "event": "progress", "message": "foraging: 200/768 shards; 542/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:39.252358+00:00", "elapsed_seconds": 1305.4318497500026, "event": "progress", "message": "foraging: 300/768 shards; 863/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:39.412692+00:00", "elapsed_seconds": 1305.592183875, "event": "progress", "message": "foraging: 400/768 shards; 1157/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:39.575928+00:00", "elapsed_seconds": 1305.7554184580003, "event": "progress", "message": "foraging: 500/768 shards; 1438/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:39.740931+00:00", "elapsed_seconds": 1305.9204215000027, "event": "progress", "message": "foraging: 600/768 shards; 1706/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:39.904485+00:00", "elapsed_seconds": 1306.083974250003, "event": "progress", "message": "foraging: 700/768 shards; 2003/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:40.013534+00:00", "elapsed_seconds": 1306.1930231670012, "event": "progress", "message": "foraging: 768/768 shards; 2195/2195 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:40.476470+00:00", "elapsed_seconds": 1306.6559559580019, "event": "progress", "message": "solvability: 100/768 shards; 217/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:40.635313+00:00", "elapsed_seconds": 1306.8147989999998, "event": "progress", "message": "solvability: 200/768 shards; 509/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:40.786295+00:00", "elapsed_seconds": 1306.9657794580016, "event": "progress", "message": "solvability: 300/768 shards; 780/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:40.945583+00:00", "elapsed_seconds": 1307.1250680000012, "event": "progress", "message": "solvability: 400/768 shards; 1071/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:41.090437+00:00", "elapsed_seconds": 1307.2699217080008, "event": "progress", "message": "solvability: 500/768 shards; 1346/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:41.238840+00:00", "elapsed_seconds": 1307.4183236250028, "event": "progress", "message": "solvability: 600/768 shards; 1621/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:41.379562+00:00", "elapsed_seconds": 1307.5590451670032, "event": "progress", "message": "solvability: 700/768 shards; 1887/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:41.475113+00:00", "elapsed_seconds": 1307.6545968330029, "event": "progress", "message": "solvability: 768/768 shards; 2069/2069 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:07:41.739409+00:00", "elapsed_seconds": 1307.918892667003, "event": "progress", "message": "completed in 10.8s", "section": "activation_caches"}
+{"created_at_utc": "2026-08-27T23:07:41.739561+00:00", "elapsed_seconds": 1307.919045458002, "event": "progress", "message": "started", "section": "task_specific_readouts"}
+{"created_at_utc": "2026-08-27T23:07:42.870581+00:00", "elapsed_seconds": 1309.0500566250012, "event": "progress", "message": "completed layer 1/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:43.855642+00:00", "elapsed_seconds": 1310.035112417001, "event": "progress", "message": "completed layer 2/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:44.875678+00:00", "elapsed_seconds": 1311.0551417500028, "event": "progress", "message": "completed layer 3/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:45.874734+00:00", "elapsed_seconds": 1312.0541932080014, "event": "progress", "message": "completed layer 4/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:46.869285+00:00", "elapsed_seconds": 1313.0487411250033, "event": "progress", "message": "completed layer 5/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:47.890053+00:00", "elapsed_seconds": 1314.0695047920017, "event": "progress", "message": "completed layer 6/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:48.930278+00:00", "elapsed_seconds": 1315.1097242080032, "event": "progress", "message": "completed layer 7/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:49.925228+00:00", "elapsed_seconds": 1316.1046688330025, "event": "progress", "message": "completed layer 8/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:50.939198+00:00", "elapsed_seconds": 1317.1186348330011, "event": "progress", "message": "completed layer 9/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:51.998327+00:00", "elapsed_seconds": 1318.1777594170017, "event": "progress", "message": "completed layer 10/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:53.237584+00:00", "elapsed_seconds": 1319.417010958001, "event": "progress", "message": "completed layer 11/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:54.320961+00:00", "elapsed_seconds": 1320.5003833750015, "event": "progress", "message": "completed layer 12/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:55.361637+00:00", "elapsed_seconds": 1321.541052208002, "event": "progress", "message": "completed layer 13/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:56.397388+00:00", "elapsed_seconds": 1322.5767986669998, "event": "progress", "message": "completed layer 14/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:57.485298+00:00", "elapsed_seconds": 1323.6647052080007, "event": "progress", "message": "completed layer 15/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:58.496457+00:00", "elapsed_seconds": 1324.6758576250031, "event": "progress", "message": "completed layer 16/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:07:59.526902+00:00", "elapsed_seconds": 1325.7062993750005, "event": "progress", "message": "completed layer 17/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:00.547228+00:00", "elapsed_seconds": 1326.7266198750003, "event": "progress", "message": "completed layer 18/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:01.565939+00:00", "elapsed_seconds": 1327.7453233330016, "event": "progress", "message": "completed layer 19/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:02.771790+00:00", "elapsed_seconds": 1328.9511710000006, "event": "progress", "message": "completed layer 20/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:03.933490+00:00", "elapsed_seconds": 1330.1128667500016, "event": "progress", "message": "completed layer 21/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:05.048359+00:00", "elapsed_seconds": 1331.2277290830025, "event": "progress", "message": "completed layer 22/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:06.173199+00:00", "elapsed_seconds": 1332.3525641670021, "event": "progress", "message": "completed layer 23/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:07.269526+00:00", "elapsed_seconds": 1333.4488856670032, "event": "progress", "message": "completed layer 24/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:08.282762+00:00", "elapsed_seconds": 1334.462117125, "event": "progress", "message": "completed layer 25/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:09.346471+00:00", "elapsed_seconds": 1335.5258201670003, "event": "progress", "message": "completed layer 26/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:10.379592+00:00", "elapsed_seconds": 1336.55893775, "event": "progress", "message": "completed layer 27/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:11.374048+00:00", "elapsed_seconds": 1337.553387625001, "event": "progress", "message": "completed layer 28/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:12.404740+00:00", "elapsed_seconds": 1338.5840759580024, "event": "progress", "message": "completed layer 29/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:13.421202+00:00", "elapsed_seconds": 1339.600532458, "event": "progress", "message": "completed layer 30/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:14.468389+00:00", "elapsed_seconds": 1340.6477142920012, "event": "progress", "message": "completed layer 31/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:15.463845+00:00", "elapsed_seconds": 1341.6431660000017, "event": "progress", "message": "completed layer 32/32", "section": "neural_readouts"}
+{"created_at_utc": "2026-08-27T23:08:15.478187+00:00", "elapsed_seconds": 1341.6575075, "event": "progress", "message": "final-layer test R2: bandit=0.990, foraging=0.998, solvability=0.998", "section": "task_specific_readouts"}
+{"created_at_utc": "2026-08-27T23:08:15.478823+00:00", "elapsed_seconds": 1341.6581472920006, "event": "progress", "message": "completed in 33.7s", "section": "task_specific_readouts"}
+{"created_at_utc": "2026-08-27T23:08:15.478960+00:00", "elapsed_seconds": 1341.6582837500027, "event": "progress", "message": "started", "section": "intervention_profiles"}
+{"created_at_utc": "2026-08-27T23:08:16.553696+00:00", "elapsed_seconds": 1342.7330130420014, "event": "progress", "message": "foraging: projected 950 matched pairs", "section": "interventions"}
+{"created_at_utc": "2026-08-27T23:08:17.507716+00:00", "elapsed_seconds": 1343.6870274170033, "event": "progress", "message": "solvability: projected 392 matched pairs", "section": "interventions"}
+{"created_at_utc": "2026-08-27T23:08:17.509895+00:00", "elapsed_seconds": 1343.6892074580028, "event": "progress", "message": "bandit: factorial all-layer tensors are absent locally; skipping Bandit profiles", "section": "interventions"}
+{"created_at_utc": "2026-08-27T23:08:17.518607+00:00", "elapsed_seconds": 1343.6979192079998, "event": "progress", "message": "mean profile correlation=0.031", "section": "intervention_profiles"}
+{"created_at_utc": "2026-08-27T23:08:17.519019+00:00", "elapsed_seconds": 1343.6983333750031, "event": "progress", "message": "completed in 2.0s", "section": "intervention_profiles"}
+{"created_at_utc": "2026-08-27T23:08:17.520165+00:00", "elapsed_seconds": 1343.699479083003, "event": "progress", "message": "started", "section": "generic_decision_controls"}
+{"created_at_utc": "2026-08-27T23:08:18.004184+00:00", "elapsed_seconds": 1344.1834904170028, "event": "progress", "message": "arbitrary_choice: 100/768 shards; 88/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.054568+00:00", "elapsed_seconds": 1344.2338763330008, "event": "progress", "message": "arbitrary_choice: 200/768 shards; 186/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.105246+00:00", "elapsed_seconds": 1344.2845555420026, "event": "progress", "message": "arbitrary_choice: 300/768 shards; 282/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.155199+00:00", "elapsed_seconds": 1344.334506500003, "event": "progress", "message": "arbitrary_choice: 400/768 shards; 376/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.205179+00:00", "elapsed_seconds": 1344.384487667001, "event": "progress", "message": "arbitrary_choice: 500/768 shards; 470/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.258637+00:00", "elapsed_seconds": 1344.437944250003, "event": "progress", "message": "arbitrary_choice: 600/768 shards; 570/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.312571+00:00", "elapsed_seconds": 1344.4918787500028, "event": "progress", "message": "arbitrary_choice: 700/768 shards; 668/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.349090+00:00", "elapsed_seconds": 1344.5283972920006, "event": "progress", "message": "arbitrary_choice: 768/768 shards; 736/736 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.935369+00:00", "elapsed_seconds": 1345.1146729580032, "event": "progress", "message": "generic_value: 100/768 shards; 100/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:18.988265+00:00", "elapsed_seconds": 1345.167569250003, "event": "progress", "message": "generic_value: 200/768 shards; 200/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.040147+00:00", "elapsed_seconds": 1345.2194512080023, "event": "progress", "message": "generic_value: 300/768 shards; 300/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.090948+00:00", "elapsed_seconds": 1345.2702525830027, "event": "progress", "message": "generic_value: 400/768 shards; 396/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.142778+00:00", "elapsed_seconds": 1345.3220813330008, "event": "progress", "message": "generic_value: 500/768 shards; 488/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.193742+00:00", "elapsed_seconds": 1345.3730457920028, "event": "progress", "message": "generic_value: 600/768 shards; 578/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.242971+00:00", "elapsed_seconds": 1345.422274542001, "event": "progress", "message": "generic_value: 700/768 shards; 670/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.274074+00:00", "elapsed_seconds": 1345.4533760420018, "event": "progress", "message": "generic_value: 768/768 shards; 724/724 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.730299+00:00", "elapsed_seconds": 1345.9095998750017, "event": "progress", "message": "terminality: 100/768 shards; 100/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.780533+00:00", "elapsed_seconds": 1345.9598338329997, "event": "progress", "message": "terminality: 200/768 shards; 198/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.831519+00:00", "elapsed_seconds": 1346.0108190830033, "event": "progress", "message": "terminality: 300/768 shards; 294/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.883126+00:00", "elapsed_seconds": 1346.0624263330028, "event": "progress", "message": "terminality: 400/768 shards; 394/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.934519+00:00", "elapsed_seconds": 1346.113818167003, "event": "progress", "message": "terminality: 500/768 shards; 494/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:19.986085+00:00", "elapsed_seconds": 1346.1653832500015, "event": "progress", "message": "terminality: 600/768 shards; 592/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:20.036657+00:00", "elapsed_seconds": 1346.2159553750025, "event": "progress", "message": "terminality: 700/768 shards; 688/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:20.072292+00:00", "elapsed_seconds": 1346.2515913330026, "event": "progress", "message": "terminality: 768/768 shards; 756/756 states", "section": "activation_cache"}
+{"created_at_utc": "2026-08-27T23:08:20.501250+00:00", "elapsed_seconds": 1346.6805481250012, "event": "progress", "message": "arbitrary_choice: fit 32 layers on 736 one-shot states", "section": "controls"}
+{"created_at_utc": "2026-08-27T23:08:20.850397+00:00", "elapsed_seconds": 1347.029692375003, "event": "progress", "message": "generic_value: fit 32 layers on 724 one-shot states", "section": "controls"}
+{"created_at_utc": "2026-08-27T23:08:21.214695+00:00", "elapsed_seconds": 1347.3939887920023, "event": "progress", "message": "terminality: fit 32 layers on 756 one-shot states", "section": "controls"}
+{"created_at_utc": "2026-08-27T23:08:21.223841+00:00", "elapsed_seconds": 1347.4031347500022, "event": "progress", "message": "mean persistence-minus-control R2: arbitrary_choice=+0.159, generic_value=+0.144, terminality=+0.079", "section": "generic_decision_controls"}
+{"created_at_utc": "2026-08-27T23:08:21.224470+00:00", "elapsed_seconds": 1347.403766917003, "event": "progress", "message": "completed in 3.7s", "section": "generic_decision_controls"}
+{"created_at_utc": "2026-08-27T23:08:21.225603+00:00", "elapsed_seconds": 1347.4049000420018, "event": "progress", "message": "started", "section": "report_generation"}
+{"created_at_utc": "2026-08-27T23:08:22.223544+00:00", "elapsed_seconds": 1348.4028327920023, "event": "progress", "message": "report available at artifacts/persistence_stay_switch/stay_switch_v1/report.md", "section": "report_generation"}
+{"created_at_utc": "2026-08-27T23:08:22.223944+00:00", "elapsed_seconds": 1348.4032362079997, "event": "progress", "message": "completed in 1.0s", "section": "report_generation"}
+{"created_at_utc": "2026-08-27T23:08:22.224051+00:00", "elapsed_seconds": 1348.4033435420024, "event": "progress", "message": "persistence stay/switch analysis complete", "section": "pipeline"}

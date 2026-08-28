@@ -555,6 +555,73 @@ persistence_change_geometry_phase() {
     ${PERSISTENCE_CHANGE_SMOKE:+--smoke}
 }
 
+persistence_stay_switch_tests_phase() {
+  echo "Running persistence stay/switch RED/GREEN and regression tests"
+  python -m pytest -q \
+    tests/test_hazard_risk_sets.py \
+    tests/test_hazard_recovery.py \
+    tests/test_history_kernels.py \
+    tests/test_gru_memory.py \
+    tests/test_task_specific_readouts.py \
+    tests/test_stay_switch_activation_cache.py \
+    tests/test_layerwise_convergence.py \
+    tests/test_intervention_profiles.py \
+    tests/test_control_comparisons.py
+}
+
+persistence_stay_switch_phase() {
+  local run_id="${PERSISTENCE_STAY_SWITCH_RUN_ID:-stay_switch_v1}"
+  echo "Running reused-data persistence stay/switch analysis ${run_id}"
+  python -u -m analysis.run_persistence_stay_switch \
+    --config config/persistence_stay_switch.yaml \
+    --phase all \
+    --run-id "$run_id" \
+    ${PERSISTENCE_STAY_SWITCH_RESUME:+--resume} \
+    ${PERSISTENCE_STAY_SWITCH_SMOKE:+--smoke}
+}
+
+persistence_battery_tests_phase() {
+  echo "Running persistence battery environment, replay, schema, and gate tests"
+  python -m pytest -q tests/persistence_battery
+}
+
+persistence_battery_pilot_phase() {
+  local run_id="${PERSISTENCE_BATTERY_RUN_ID:-battery_pilot_v1}"
+  echo "Running behavior-only persistence battery pilot ${run_id}"
+  python -u -m analysis.run_persistence_battery \
+    --config config/persistence_battery.yaml \
+    --phase pilot \
+    --run-id "$run_id" \
+    --model "$MODEL_PATH" \
+    --num-shards "${PERSISTENCE_BATTERY_NUM_SHARDS:-1}" \
+    --shard-index "${PERSISTENCE_BATTERY_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}" \
+    ${PERSISTENCE_BATTERY_RESUME:+--resume} \
+    ${PERSISTENCE_BATTERY_SMOKE:+--smoke}
+}
+
+persistence_battery_full_phase() {
+  local run_id="${PERSISTENCE_BATTERY_RUN_ID:-battery_pilot_v1}"
+  echo "Running pilot-gated full behavior-only persistence battery ${run_id}"
+  python -u -m analysis.run_persistence_battery \
+    --config config/persistence_battery.yaml \
+    --phase full \
+    --run-id "$run_id" \
+    --model "$MODEL_PATH" \
+    --resume \
+    --num-shards "${PERSISTENCE_BATTERY_NUM_SHARDS:-1}" \
+    --shard-index "${PERSISTENCE_BATTERY_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+}
+
+persistence_battery_finalize_phase() {
+  local run_id="${PERSISTENCE_BATTERY_RUN_ID:-battery_pilot_v1}"
+  python -u -m analysis.run_persistence_battery \
+    --config config/persistence_battery.yaml \
+    --phase finalize \
+    --dataset "${PERSISTENCE_BATTERY_DATASET:-full}" \
+    --run-id "$run_id" \
+    --resume
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -742,6 +809,24 @@ case "$PHASE" in
     ;;
   persistence_change_geometry)
     persistence_change_geometry_phase
+    ;;
+  persistence_stay_switch_tests)
+    persistence_stay_switch_tests_phase
+    ;;
+  persistence_stay_switch)
+    persistence_stay_switch_phase
+    ;;
+  persistence_battery_tests)
+    persistence_battery_tests_phase
+    ;;
+  persistence_battery_pilot)
+    persistence_battery_pilot_phase
+    ;;
+  persistence_battery_full)
+    persistence_battery_full_phase
+    ;;
+  persistence_battery_finalize)
+    persistence_battery_finalize_phase
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2

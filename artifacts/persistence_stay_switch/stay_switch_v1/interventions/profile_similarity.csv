@@ -1,0 +1,17 @@
+kind,profile_a,profile_b,value
+profile_correlation,foraging::outside_option,foraging::search_cost,0.02849960268608272
+profile_correlation,foraging::outside_option,solvability::progress_evidence,-0.030695310282395024
+profile_correlation,foraging::search_cost,solvability::progress_evidence,0.09401044376678042
+onset_layer,foraging::outside_option,,0.0
+peak_layer,foraging::outside_option,,14.0
+area_under_absolute_curve,foraging::outside_option,,20.60065437611529
+normalized_late_early_effect,foraging::outside_option,,1.0050030160259829
+onset_layer,foraging::search_cost,,0.0
+peak_layer,foraging::search_cost,,17.0
+area_under_absolute_curve,foraging::search_cost,,20.88487617918323
+normalized_late_early_effect,foraging::search_cost,,1.0021718297225117
+onset_layer,solvability::progress_evidence,,0.0
+peak_layer,solvability::progress_evidence,,5.0
+area_under_absolute_curve,solvability::progress_evidence,,78.24999294910624
+normalized_late_early_effect,solvability::progress_evidence,,1.0125576252723978
+mean_profile_correlation,all,all,0.03060491205682074

@@ -14,3 +14,7 @@ artifacts/causal_steering/publication_positive_control/
 artifacts/persistence_discovery/*.pt
 artifacts/persistence_computational_neural/*/cache/
 artifacts/persistence_change_geometry/*/cache/
+artifacts/persistence_stay_switch/*/cache/
+artifacts/persistence_stay_switch/*smoke*/
+artifacts/persistence_battery/*/cache/
+artifacts/persistence_battery/*smoke*/

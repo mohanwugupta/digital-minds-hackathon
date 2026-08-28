@@ -1,0 +1,56 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 9.969555708998087,
+      "section": "behavior_hazards",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 2.173366625000199,
+      "section": "history_kernels",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 711.0931709999968,
+      "section": "gru_memory_ablations",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 375.34485120799945,
+      "section": "gru_bottlenecks",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 198.36353408300056,
+      "section": "gru_distillation",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 10.772919209000975,
+      "section": "activation_caches",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 33.738788541999384,
+      "section": "task_specific_readouts",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 2.0398293339967495,
+      "section": "intervention_profiles",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3.7040171250009735,
+      "section": "generic_decision_controls",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.9981202500021027,
+      "section": "report_generation",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 1348.4030247920018,
+  "updated_at_utc": "2026-08-27T23:08:22.223729+00:00"
+}

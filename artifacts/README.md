@@ -49,6 +49,10 @@ is deliberately separate from source code.
 - `persistence_change_geometry/<run_id>/`: compact L21/L22 matched endpoint
   cache, change/transfer/control tables, clustered intervals, figures, and the
   absolute-versus-difference scientific decision report.
+- `persistence_battery/<run_id>/`: behavior-only pilot/full Parquet records for
+  the literature-grounded task battery, factorial/split manifests, manipulation
+  and label-bias gates, figures, and the automated pilot report. Run-local raw
+  pair caches are regenerable and ignored by Git.
 
 ## Regeneration policy
 

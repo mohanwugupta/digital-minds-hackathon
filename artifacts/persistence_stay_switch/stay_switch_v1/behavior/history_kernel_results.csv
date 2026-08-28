@@ -1,0 +1,11 @@
+kernel,parameter,history_features,validation_log_loss,test_log_loss,test_brier,test_auc,selected_penalty,validation_selected
+finite,1.0,previous_choice;previous_outcome;failure_streak;success_streak,0.4915296637847974,0.49992192211436376,0.16299901905677255,0.8829725203623354,0.01,False
+finite,2.0,previous_choice;previous_outcome;failure_streak;success_streak;action_lag_2;outcome_lag_2,0.4882451762672947,0.4930180161780589,0.16020728702817946,0.8908023140747507,0.01,False
+finite,3.0,previous_choice;previous_outcome;failure_streak;success_streak;action_lag_2;outcome_lag_2;action_lag_3;outcome_lag_3,0.488422990187527,0.4914449507268531,0.15974148176204653,0.8905366522036995,0.01,False
+finite,5.0,previous_choice;previous_outcome;failure_streak;success_streak;action_lag_2;outcome_lag_2;action_lag_3;outcome_lag_3;action_lag_5;outcome_lag_5,0.48820293123725667,0.4923781483464822,0.15987298543509476,0.8878670929435944,0.01,True
+exponential,0.0,choice_kernel;outcome_kernel,0.4919903219065318,0.5010797671048701,0.16334951354855776,0.8786762578975413,0.01,False
+exponential,0.25,choice_kernel;outcome_kernel,0.49076117992257756,0.4996146900468508,0.1626994697451663,0.8799969551648017,0.01,False
+exponential,0.5,choice_kernel;outcome_kernel,0.4917904872905737,0.5021558456889867,0.1636980314572597,0.878441044378473,0.01,False
+exponential,0.7,choice_kernel;outcome_kernel,0.4958009303067345,0.5065105752002633,0.16560092392574757,0.8756809012712187,0.01,False
+exponential,0.85,choice_kernel;outcome_kernel,0.4990409720836872,0.5088071588276144,0.1669407575137651,0.875746365227982,0.01,False
+exponential,0.95,choice_kernel;outcome_kernel,0.5001116313114994,0.5100927227922065,0.16774918487731863,0.8773616503006775,0.01,False

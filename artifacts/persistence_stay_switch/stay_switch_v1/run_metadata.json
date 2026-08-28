@@ -1,0 +1,43 @@
+{
+  "analysis_role": "exploratory_shared_computation_pivot",
+  "cache_policy": "local float16 memmaps; excluded by .gitignore",
+  "data_reuse": {
+    "activation_banks": {
+      "bandit": "artifacts/activation_bank",
+      "foraging": "artifacts/cross_task/track_b_shared_v3/foraging_activation_bank",
+      "solvability": "artifacts/cross_task/track_b_shared_v3/solvability_activation_bank"
+    },
+    "bandit_factorial_activations": "artifacts/value_dissociation/activations",
+    "bandit_factorial_rows": "artifacts/value_dissociation/factorial_shard_*.csv",
+    "behavior_records": "artifacts/computational_modeling/records",
+    "contrast_inventory": "artifacts/persistence_discovery/contrast_inventory.csv",
+    "control_banks": {
+      "arbitrary_choice": "artifacts/cross_task/track_b_shared_v3/control_activation_bank",
+      "generic_value": "artifacts/persistence_discovery/generic_value_activation_bank",
+      "terminality": "artifacts/cross_task/track_b_shared_v3/terminality_activation_bank"
+    },
+    "new_qwen_trajectories_generated": false
+  },
+  "episodes": 2048,
+  "leakage_guards": {
+    "absorbing_risk_sets": true,
+    "episode_and_pair_splits_preserved": true,
+    "one_shot_control_history_fabricated": false,
+    "test_target_fitting": false,
+    "train_only_normalization": true,
+    "validation_only_hyperparameter_selection": true
+  },
+  "model": "Qwen/Qwen3.5-4B",
+  "protocol_version": "persistence_stay_switch_v1",
+  "selected_gru_hyperparameters": "artifacts/computational_modeling/model_zoo_mac_v2/selected_hyperparameters.json",
+  "selected_gru_hyperparameters_sha256": "690c959c2c5bded6a715014e792122070c9caf3d6a88c7a3ee1699bfbe768c99",
+  "smoke": false,
+  "source_config": "config/persistence_stay_switch.yaml",
+  "source_config_sha256": "714a3d569415a814e780a66c8fa72d744d4367d37bfd8fd3126d6ffa28bef289",
+  "states": 16725,
+  "tasks": [
+    "bandit",
+    "foraging",
+    "solvability"
+  ]
+}

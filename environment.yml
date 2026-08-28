@@ -13,6 +13,7 @@ dependencies:
       - pytest
       - pytest-cov
       - pandas
+      - pyarrow
       - numpy
       - scipy
       - scikit-learn

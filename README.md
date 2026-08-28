@@ -118,6 +118,76 @@ Use `--resume` locally, or set `PERSISTENCE_CHANGE_RESUME=1` on the cluster, to
 reuse the compact endpoint cache and random-control checkpoint. See
 [`docs/persistence-change-geometry.md`](docs/persistence-change-geometry.md).
 
+### Shared history-dependent stay/switch analysis
+
+The current pivot asks whether task-specific evidence is integrated by a shared
+history-dependent stay/switch computation. It reuses the completed behavioral
+records, all 32 activation layers, model-zoo GRU settings, matched persistence
+contrasts, and arbitrary-choice, terminality, and generic-value controls. It
+does not load Qwen or collect new trajectories.
+
+Run the laptop-sized validation first:
+
+```bash
+python -u -m analysis.run_persistence_stay_switch \
+  --config config/persistence_stay_switch.yaml \
+  --phase all \
+  --run-id stay_switch_smoke_v1 \
+  --smoke
+```
+
+Then run the full analysis with a new run ID:
+
+```bash
+python -u -m analysis.run_persistence_stay_switch \
+  --config config/persistence_stay_switch.yaml \
+  --phase all \
+  --run-id stay_switch_v1
+```
+
+The ignored `cache/` directory contains only regenerable local float16
+memmaps. The lightweight laptop checkout lacks Bandit's all-layer factorial
+tensors, so the runner records and skips that intervention profile locally;
+Foraging and Solvability still run. When
+`artifacts/value_dissociation/activations/` exists on the cluster, Bandit is
+included automatically. See
+[`docs/persistence-stay-switch.md`](docs/persistence-stay-switch.md).
+
+### Literature-grounded behavioral task battery
+
+The expanded behavior-only battery adds voluntary waiting, progressive-ratio
+effort, sunk-cost waiting, information sampling, partial-reinforcement
+extinction, and a sequential independent-effort control. Controllability
+transfer is implemented as an optional stretch task. Collection uses exact
+semantic replays under reversed X/Y mappings and never requests or saves hidden
+states.
+
+First validate the complete pipeline without loading a model:
+
+```bash
+python -u -m analysis.run_persistence_battery \
+  --config config/persistence_battery.yaml \
+  --phase pilot \
+  --run-id battery_smoke_v1 \
+  --smoke \
+  --model-free
+```
+
+Then run the real Qwen pilot. This collects 2 semantic pairs per factorial cell
+under both label mappings and writes an approval decision for every task:
+
+```bash
+python -u -m analysis.run_persistence_battery \
+  --config config/persistence_battery.yaml \
+  --phase pilot \
+  --run-id battery_pilot_v1 \
+  --model /path/to/Qwen--Qwen3.5-4B
+```
+
+Only after every requested task passes the pilot gates should the same run be
+continued with `--phase full --resume`. See
+[`docs/persistence-battery.md`](docs/persistence-battery.md).
+
 Download Qwen from an internet-connected login node before starting an offline
 GPU job:
 
