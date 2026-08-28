@@ -1,0 +1,32 @@
+{
+  "controllability": {
+    "episodes": 512,
+    "format": "csv.gz",
+    "path": "records/controllability.csv.gz",
+    "states": 958
+  },
+  "debugging_persistence": {
+    "episodes": 512,
+    "format": "csv.gz",
+    "path": "records/debugging_persistence.csv.gz",
+    "states": 820
+  },
+  "progressive_ratio": {
+    "episodes": 512,
+    "format": "csv.gz",
+    "path": "records/progressive_ratio.csv.gz",
+    "states": 14090
+  },
+  "sunk_cost": {
+    "episodes": 512,
+    "format": "csv.gz",
+    "path": "records/sunk_cost.csv.gz",
+    "states": 1070
+  },
+  "voluntary_waiting": {
+    "episodes": 512,
+    "format": "csv.gz",
+    "path": "records/voluntary_waiting.csv.gz",
+    "states": 1236
+  }
+}

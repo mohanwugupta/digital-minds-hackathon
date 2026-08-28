@@ -41,8 +41,20 @@
       "pairs": 16,
       "section": "collect_independent_effort_control",
       "status": "completed"
+    },
+    {
+      "duration_seconds": 0.20600181503687054,
+      "mode": "pilot",
+      "section": "behavioral_validation",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.009607844986021519,
+      "mode": "pilot",
+      "section": "behavioral_report",
+      "status": "completed"
     }
   ],
-  "total_elapsed_seconds": 993.6426166809397,
-  "updated_at_utc": "2026-08-28T02:19:02.152610+00:00"
+  "total_elapsed_seconds": 7.231202837079763,
+  "updated_at_utc": "2026-08-28T12:20:11.004835+00:00"
 }

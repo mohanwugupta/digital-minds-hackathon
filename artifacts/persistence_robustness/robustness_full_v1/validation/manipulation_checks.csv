@@ -1,0 +1,18 @@
+task,check,effect,expected_direction,passed,gate_role
+voluntary_waiting,lower opportunity cost increases waiting,0.05479106653883803,positive,True,validity_gate
+voluntary_waiting,higher reward increases waiting,0.0020024266541813773,positive,False,validity_gate
+voluntary_waiting,lower quit payoff increases waiting,0.08646363021619896,positive,True,validity_gate
+voluntary_waiting,timing environment changes waiting,0.18030394520456405,nonzero,True,validity_gate
+voluntary_waiting,elapsed time changes waiting,0.2272914530140529,nonzero,True,validity_gate
+voluntary_waiting,timing environments have different normative initial policies,1.0,positive,True,design_gate
+progressive_ratio,lower effort cost increases work,0.05388669699116566,positive,True,validity_gate
+progressive_ratio,higher reward increases work,0.033082279068623266,positive,True,diagnostic
+progressive_ratio,more gradual effort growth increases breakpoint,0.3203125,positive,True,diagnostic
+sunk_cost,lower remaining cost increases continuation,0.023075314313301676,positive,True,validity_gate
+sunk_cost,past investment varies within exactly matched prospective states,0.0,positive,False,design_gate
+sunk_cost,greater sunk investment increases persistence,0.0176377025639044,positive,False,scientific_hypothesis
+controllability,lower transfer cost increases trying,0.003476443741525337,positive,False,validity_gate
+controllability,uncontrollable exposure reduces transfer persistence,-0.011594530777354284,positive,False,scientific_hypothesis
+debugging_persistence,lower attempt cost increases debugging,-0.0018284481635588712,positive,False,validity_gate
+debugging_persistence,higher solution reward increases debugging,-0.015200419094288153,positive,False,validity_gate
+debugging_persistence,lower restart value increases debugging,0.057590331066135314,positive,True,validity_gate

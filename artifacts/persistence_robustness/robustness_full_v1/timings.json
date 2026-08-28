@@ -1,0 +1,53 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 187.18349621410016,
+      "mode": "full",
+      "pairs": 256,
+      "section": "collect_voluntary_waiting",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3690.5228019910865,
+      "mode": "full",
+      "pairs": 256,
+      "section": "collect_progressive_ratio",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 156.16630754701328,
+      "mode": "full",
+      "pairs": 256,
+      "section": "collect_sunk_cost",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 138.8445636429824,
+      "mode": "full",
+      "pairs": 256,
+      "section": "collect_controllability",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 119.28840820700862,
+      "mode": "full",
+      "pairs": 256,
+      "section": "collect_debugging_persistence",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.6605449320049956,
+      "mode": "full",
+      "section": "behavioral_validation",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 0.008273190003819764,
+      "mode": "full",
+      "section": "behavioral_report",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 4320.155221370049,
+  "updated_at_utc": "2026-08-28T19:02:44.246230+00:00"
+}

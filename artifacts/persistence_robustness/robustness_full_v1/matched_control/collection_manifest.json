@@ -1,0 +1,14 @@
+{
+  "behavioral_target": "p_engage_at_matched_state",
+  "future_fields_are_model_invisible": true,
+  "goal_framings": 2,
+  "history_source": "exogenous_yoked_replay",
+  "label_mappings": 2,
+  "mode": "full",
+  "semantic_pairs": 256,
+  "smoke": false,
+  "versions": [
+    "absorbing_primary",
+    "advancing_secondary"
+  ]
+}

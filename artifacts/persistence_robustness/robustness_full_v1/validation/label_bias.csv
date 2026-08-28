@@ -1,0 +1,6 @@
+task,paired_states,mapping_probability_correlation,mean_absolute_mapping_gap,minimum_correlation,maximum_gap,passed
+voluntary_waiting,618,0.9758872115874687,0.05800498350383932,0.8,0.25,True
+progressive_ratio,7045,0.9675809579863652,0.012029935185854747,0.8,0.25,True
+sunk_cost,535,0.8087294943159526,0.10645255057825813,0.8,0.25,True
+controllability,479,0.9266735069359499,0.05395452878900757,0.8,0.25,True
+debugging_persistence,410,0.951671323816579,0.07257296830372892,0.8,0.25,True

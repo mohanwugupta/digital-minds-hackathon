@@ -1,0 +1,11 @@
+{
+  "all_tasks_approved": false,
+  "model_free": false,
+  "tasks": {
+    "controllability": false,
+    "debugging_persistence": false,
+    "progressive_ratio": false,
+    "sunk_cost": false,
+    "voluntary_waiting": false
+  }
+}

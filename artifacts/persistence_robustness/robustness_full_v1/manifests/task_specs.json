@@ -1,0 +1,158 @@
+{
+  "controllability": {
+    "adaptation_notes": "Yoked symbolic exposure precedes an identical solvable transfer task.",
+    "construct": "controllability transfer / learned helplessness",
+    "departures_from_original": [
+      "described causal contingency",
+      "point-based transfer"
+    ],
+    "factorial_condition_count": 8,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "exposure_type",
+      "transfer_success_probability",
+      "transfer_cost"
+    ],
+    "negative_action": "QUIT",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "TRY",
+    "recorded_episode_target": 512,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Maier & Seligman tradition; review PMCID: PMC10205144",
+    "source_paradigm": "yoked controllable versus uncontrollable exposure",
+    "task": "controllability"
+  },
+  "debugging_persistence": {
+    "adaptation_notes": "Failures reveal clues about the same unresolved bug.",
+    "construct": "debugging / repair persistence",
+    "departures_from_original": [
+      "symbolic code repair",
+      "point-valued restart option"
+    ],
+    "factorial_condition_count": 32,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "base_success_probability",
+      "clue_increment",
+      "attempt_cost",
+      "solution_reward",
+      "restart_value"
+    ],
+    "negative_action": "ABANDON",
+    "persistence_task": true,
+    "pilot_adjustments": [],
+    "positive_action": "DEBUG",
+    "recorded_episode_target": 512,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "PRD 2.5 replacement-task design",
+    "source_paradigm": "repeated troubleshooting with accumulating diagnostic evidence",
+    "task": "debugging_persistence"
+  },
+  "progressive_ratio": {
+    "adaptation_notes": "One textual WORK choice performs one scheduled work unit.",
+    "construct": "breakpoint / effort motivation",
+    "departures_from_original": [
+      "symbolic work units",
+      "point outcomes"
+    ],
+    "factorial_condition_count": 16,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "ratio_schedule",
+      "reward_magnitude",
+      "effort_cost",
+      "outside_option"
+    ],
+    "negative_action": "QUIT",
+    "persistence_task": true,
+    "pilot_adjustments": [
+      "removed zero-cost cells and crossed materially costly work with outside options",
+      "shortened schedules while retaining moderate versus sharp effort growth"
+    ],
+    "positive_action": "WORK",
+    "recorded_episode_target": 512,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Markou et al., Schizophrenia Bulletin (2013), PMCID: PMC3849135",
+    "source_paradigm": "progressive-ratio reinforcement schedule",
+    "task": "progressive_ratio"
+  },
+  "sunk_cost": {
+    "adaptation_notes": "Prior investment is crossed with identical prospective states.",
+    "construct": "sunk-cost persistence",
+    "departures_from_original": [
+      "point projects",
+      "discrete work steps"
+    ],
+    "factorial_condition_count": 96,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "prior_investment",
+      "remaining_steps",
+      "reward_magnitude",
+      "outside_option",
+      "step_cost"
+    ],
+    "negative_action": "ABANDON",
+    "persistence_task": true,
+    "pilot_adjustments": [
+      "expanded exact prospective matches across three prior-investment levels",
+      "clarified that past investment is irrecoverable and prospectively irrelevant"
+    ],
+    "positive_action": "CONTINUE_WAITING",
+    "recorded_episode_target": 512,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "Sweis et al., Science (2018), PMCID: PMC6377599",
+    "source_paradigm": "Restaurant Row / Web-Surf change-of-mind waiting",
+    "task": "sunk_cost"
+  },
+  "voluntary_waiting": {
+    "adaptation_notes": "Each simulated step replaces physical wall-clock waiting.",
+    "construct": "dynamic persistence / voluntary waiting",
+    "departures_from_original": [
+      "text-based point rewards",
+      "discrete time",
+      "counterbalanced single-token responses"
+    ],
+    "factorial_condition_count": 16,
+    "full_activation_collection": false,
+    "manipulated_variables": [
+      "timing_environment",
+      "reward_magnitude",
+      "opportunity_cost",
+      "quit_payoff"
+    ],
+    "negative_action": "QUIT",
+    "persistence_task": true,
+    "pilot_adjustments": [
+      "added moderate early/late hazard profiles with fewer first-step arrivals",
+      "crossed reward, wait cost, and quit payoff over a ten-step horizon"
+    ],
+    "positive_action": "WAIT",
+    "recorded_episode_target": 512,
+    "response_labels": [
+      "X",
+      "Y"
+    ],
+    "same_goal_across_steps": true,
+    "source_citation": "McGuire & Kable, Nature Neuroscience (2015), doi:10.1038/nn.3994",
+    "source_paradigm": "uncertain delayed-reward voluntary persistence",
+    "task": "voluntary_waiting"
+  }
+}

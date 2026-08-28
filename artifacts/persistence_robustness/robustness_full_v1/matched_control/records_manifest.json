@@ -1,0 +1,9 @@
+{
+  "all_histories_equivalent": true,
+  "comparison_states": 6942,
+  "format": "csv.gz",
+  "framing_rows_balanced": true,
+  "path": "matched_control/paired_records.csv.gz",
+  "semantic_pairs": 256,
+  "states": 13884
+}
