@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 
 from .registry import TASKS
+from .storage import read_records_frame
 from .voluntary_waiting import WaitingCondition, optimal_policy
 
 
@@ -249,7 +250,7 @@ def validate_records(record_directory, output, config, tasks, *, model_free=Fals
     record_directory, output = Path(record_directory), Path(output)
     output.mkdir(parents=True, exist_ok=True)
     frames = {
-        task: pd.read_parquet(record_directory / f"{task}.parquet")
+        task: read_records_frame(record_directory, task)
         for task in tasks
     }
     manipulations = manipulation_checks(frames, config)

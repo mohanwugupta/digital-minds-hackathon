@@ -188,6 +188,10 @@ Only after every requested task passes the pilot gates should the same run be
 continued with `--phase full --resume`. See
 [`docs/persistence-battery.md`](docs/persistence-battery.md).
 
+Finalization prefers Parquet but falls back to compressed CSV when the cluster
+environment lacks a Parquet engine. A resumed run with complete validated raw
+pair caches skips Qwen loading and inference.
+
 Download Qwen from an internet-connected login node before starting an offline
 GPU job:
 

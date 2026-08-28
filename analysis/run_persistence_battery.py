@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+from dataclasses import asdict
 import json
 from pathlib import Path
 import shutil
@@ -21,6 +22,7 @@ from experiments.persistence_battery.collection import (
 from experiments.persistence_battery.manifests import write_manifests
 from experiments.persistence_battery.registry import TASKS, enabled_tasks
 from experiments.persistence_battery.report import generate_figures, generate_report
+from experiments.persistence_battery.storage import read_records_frame, write_records_frame
 from experiments.persistence_battery.validation import validate_records
 from experiments.runtime import save_run_metadata
 
@@ -62,6 +64,35 @@ def _spec_groups(specs):
     return dict(groups)
 
 
+def _cached_collection_complete(
+    output, tasks, specs_by_task, *, mode, expected_model_id
+):
+    """Validate a complete raw cache without constructing/loading the model."""
+
+    paths = _locations(Path(output), mode)
+    for task in tasks:
+        groups = _spec_groups(specs_by_task[task])
+        for pair_id, pair_specs in groups.items():
+            path = paths["pairs"] / task / f"{pair_id}.json"
+            if not path.exists():
+                return False
+            existing = read_pair(path)
+            expected_condition = json.dumps(
+                asdict(pair_specs[0].condition),
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            if (
+                not existing
+                or existing[0].get("condition") != expected_condition
+                or existing[0].get("model_id") != expected_model_id
+            ):
+                raise RuntimeError(
+                    f"resume cache does not match the current condition/model: {path}; use a new run ID"
+                )
+    return True
+
+
 def _collect(
     model,
     config,
@@ -90,7 +121,7 @@ def _collect(
                 if resume and path.exists():
                     existing = read_pair(path)
                     expected_condition = json.dumps(
-                        groups[pair_id][0].condition.__dict__,
+                        asdict(groups[pair_id][0].condition),
                         sort_keys=True,
                         separators=(",", ":"),
                     )
@@ -127,6 +158,7 @@ def _finalize(config, output, tasks, *, mode, smoke, logger):
     paths = _locations(output, mode)
     paths["records"].mkdir(parents=True, exist_ok=True)
     complete = True
+    record_manifest = {}
     for task in tasks:
         groups = _spec_groups(specs_by_task[task])
         expected = [paths["pairs"] / task / f"{pair_id}.json" for pair_id in groups]
@@ -142,11 +174,27 @@ def _finalize(config, output, tasks, *, mode, smoke, logger):
         frame = pd.DataFrame(records).sort_values(
             ["pair_id", "mapping_id", "step"]
         )
-        path = paths["records"] / f"{task}.parquet"
-        frame.to_parquet(path, index=False)
+        write_result = write_records_frame(frame, paths["records"], task)
+        path = write_result.path
+        record_manifest[task] = {
+            "path": str(path.relative_to(output)),
+            "format": write_result.format,
+            "states": len(frame),
+            "episodes": int(frame.episode_id.nunique()),
+        }
+        if write_result.parquet_error:
+            logger.note(
+                "finalize",
+                f"{task}: Parquet engine unavailable; wrote portable compressed CSV instead",
+            )
         logger.note(
             "finalize",
             f"{task}: wrote {len(frame)} states from {frame.episode_id.nunique()} episodes to {path}",
+        )
+    if record_manifest:
+        (paths["records"] / "records_manifest.json").write_text(
+            json.dumps(record_manifest, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
         )
     return complete, specs_by_task, paths["records"]
 
@@ -181,7 +229,15 @@ def _validate_and_report(
             f"approved {sum(approval['tasks'].values())}/{len(tasks)} tasks for full collection",
         )
     with logger.section("behavioral_report", mode=mode):
-        generate_figures(frames, manipulations, output / "figures")
+        try:
+            generate_figures(frames, manipulations, output / "figures")
+        except ModuleNotFoundError as error:
+            if error.name != "matplotlib":
+                raise
+            logger.note(
+                "behavioral_report",
+                "matplotlib is unavailable; records, validation, and report will be kept and figures can be regenerated locally",
+            )
         generate_report(
             _load_specs(output),
             frames,
@@ -282,28 +338,49 @@ def main():
             "require_pilot_approval_for_full", True
         ):
             _require_pilot_approval(output, tasks)
-        if args.model_free:
-            model = DeterministicSmokeModel()
-        else:
-            from models.hooked_qwen import HookedQwen
-
-            model = HookedQwen.from_pretrained(
-                args.model or config["model"],
-                revision=args.revision,
-                local_files_only=not args.online,
-            )
-        _collect(
-            model,
-            config,
-            output,
-            tasks,
-            mode=mode,
-            smoke=args.smoke,
-            num_shards=args.num_shards,
-            shard_index=args.shard_index,
-            resume=args.resume,
-            logger=logger,
+        expected_model_id = (
+            DeterministicSmokeModel.model_id
+            if args.model_free
+            else args.model or config["model"]
         )
+        cache_complete = bool(
+            args.resume
+            and _cached_collection_complete(
+                output,
+                tasks,
+                specs_by_task,
+                mode=mode,
+                expected_model_id=expected_model_id,
+            )
+        )
+        if cache_complete:
+            logger.note(
+                "collection_cache",
+                "all semantic-pair files are complete and validated; skipping model load/inference",
+            )
+        else:
+            if args.model_free:
+                model = DeterministicSmokeModel()
+            else:
+                from models.hooked_qwen import HookedQwen
+
+                model = HookedQwen.from_pretrained(
+                    args.model or config["model"],
+                    revision=args.revision,
+                    local_files_only=not args.online,
+                )
+            _collect(
+                model,
+                config,
+                output,
+                tasks,
+                mode=mode,
+                smoke=args.smoke,
+                num_shards=args.num_shards,
+                shard_index=args.shard_index,
+                resume=args.resume,
+                logger=logger,
+            )
         complete, _specs, record_directory = _finalize(
             config, output, tasks, mode=mode, smoke=args.smoke, logger=logger
         )
@@ -356,14 +433,22 @@ def main():
         return
     if args.phase == "report":
         frames = {
-            task: pd.read_parquet(locations["records"] / f"{task}.parquet")
+            task: read_records_frame(locations["records"], task)
             for task in tasks
         }
         validation = output / "validation"
         manipulations = pd.read_csv(validation / "manipulation_checks.csv")
         label_bias = pd.read_csv(validation / "label_bias.csv")
         nondegeneracy = pd.read_csv(validation / "behavioral_non_degeneracy.csv")
-        generate_figures(frames, manipulations, output / "figures")
+        try:
+            generate_figures(frames, manipulations, output / "figures")
+        except ModuleNotFoundError as error:
+            if error.name != "matplotlib":
+                raise
+            logger.note(
+                "behavioral_report",
+                "matplotlib is unavailable; regenerating the text report only",
+            )
         generate_report(
             _load_specs(output),
             frames,

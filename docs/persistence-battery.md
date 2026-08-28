@@ -94,14 +94,23 @@ sbatch --export=ALL,PHASE=persistence_battery_finalize,PERSISTENCE_BATTERY_RUN_I
   run_qwen35_bandit.sh
 ```
 
+The same finalize command also recovers a single-job run that completed model
+inference but stopped while writing Parquet. Raw semantic-pair caches are
+validated before reuse, and a fully cached resumed pilot skips model loading
+and inference entirely.
+
 Use `PHASE=persistence_battery_full` only after approval. Full collection can
 be sharded with the same environment variables and finalized with
 `PERSISTENCE_BATTERY_DATASET=full`.
 
 ## Outputs
 
-Pilot Parquet files live under `pilot/records/`; approved full records live
-under `records/`. Root-level manifests document task specifications, factorial
+Pilot records live under `pilot/records/`; approved full records live under
+`records/`. Parquet is preferred. If neither `pyarrow` nor `fastparquet` is
+installed, finalization writes lossless compressed CSV files instead and
+records the selected format in `records_manifest.json`. Validation and the
+downstream comparative-modeling pipeline transparently read either format.
+Root-level manifests document task specifications, factorial
 conditions, and pair-safe splits. Validation files cover manipulation checks,
 label bias, response parsing, nondegeneracy, and episode length. The three
 figures, ten-question task report, progress log, timing log, and run metadata
