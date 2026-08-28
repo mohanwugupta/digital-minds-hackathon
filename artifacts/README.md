@@ -53,6 +53,15 @@ is deliberately separate from source code.
   the literature-grounded task battery, factorial/split manifests, manipulation
   and label-bias gates, figures, and the automated pilot report. Run-local raw
   pair caches are regenerable and ignored by Git.
+- `comparative_persistence/<run_id>/`: harmonized hazard data, within-task and
+  held-out-task model comparisons, history/control diagnostics, feature
+  ablations, signature checks, synthetic recovery, paper figures, uncertainty
+  intervals, and the direct-answer PRD 2 report. Smoke runs are ignored.
+- `persistence_robustness/<run_id>/`: PRD 2.5 repaired-task and yoked
+  goal-continuity behavior, the expanded task-macro model comparison, large-GRU
+  capacity/stability tables, history decompositions, non-gating signatures,
+  synthetic recovery, figures, and the 15-question report. Run-local raw pair
+  caches are regenerable and ignored by Git.
 
 ## Regeneration policy
 

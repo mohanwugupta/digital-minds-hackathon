@@ -36,7 +36,14 @@ def manipulation_checks(frames, config):
     )
 
     def add(task, check, effect, *, role="validity_gate", expected="positive"):
-        passed = bool(np.isfinite(effect) and effect >= minimum_effect)
+        passed = bool(
+            np.isfinite(effect)
+            and (
+                abs(effect) >= minimum_effect
+                if expected == "nonzero"
+                else effect >= minimum_effect
+            )
+        )
         rows.append(
             {
                 "task": task,
@@ -52,34 +59,113 @@ def manipulation_checks(frames, config):
         initial = frame[frame.step == 0]
         if task == "voluntary_waiting":
             add(task, "lower opportunity cost increases waiting", _difference(initial, "opportunity_cost"))
-            short = WaitingCondition("short_wait_optimal", 8, 2, 0)
-            long = WaitingCondition("long_wait_optimal", 8, 2, 0)
+            add(task, "higher reward increases waiting", _difference(initial, "reward_magnitude", high_minus_low=True))
+            add(task, "lower quit payoff increases waiting", _difference(initial, "quit_payoff"))
+            timing_means = initial.groupby("timing_environment").p_positive_semantic.mean()
+            add(
+                task,
+                "timing environment changes waiting",
+                float(timing_means.max() - timing_means.min()),
+                expected="nonzero",
+            )
+            add(
+                task,
+                "elapsed time changes waiting",
+                _correlation(frame, "step"),
+                expected="nonzero",
+            )
+            policy_rows = []
+            maximum_steps = int(config["tasks"][task]["max_steps"])
+            condition_columns = [
+                "timing_environment",
+                "reward_magnitude",
+                "opportunity_cost",
+                "quit_payoff",
+            ]
+            for source in initial[condition_columns].drop_duplicates().itertuples(
+                index=False
+            ):
+                condition = WaitingCondition(
+                    source.timing_environment,
+                    int(source.reward_magnitude),
+                    int(source.opportunity_cost),
+                    int(source.quit_payoff),
+                )
+                policy_rows.append(
+                    {
+                        **source._asdict(),
+                        "initial_policy": optimal_policy(
+                            condition, max_steps=maximum_steps
+                        )[0],
+                    }
+                )
+            policy_frame = pd.DataFrame(policy_rows)
+            policy_varies = (
+                policy_frame.groupby(
+                    ["reward_magnitude", "opportunity_cost", "quit_payoff"]
+                ).initial_policy.nunique().ge(2).any()
+            )
             add(
                 task,
                 "timing environments have different normative initial policies",
-                float(optimal_policy(short)[0] != optimal_policy(long)[0]),
+                float(policy_varies),
                 role="design_gate",
             )
         elif task == "progressive_ratio":
             add(task, "lower effort cost increases work", _difference(initial, "effort_cost"))
-            add(task, "higher reward increases work", _difference(initial, "reward_magnitude", high_minus_low=True))
+            add(
+                task,
+                "higher reward increases work",
+                _difference(initial, "reward_magnitude", high_minus_low=True),
+                role="diagnostic",
+            )
             breakpoints = (
                 frame.groupby(["episode_id", "ratio_schedule"], as_index=False)
                 .breakpoint.max()
             )
-            shallow = breakpoints[
-                breakpoints.ratio_schedule == "shallow"
+            available_schedules = set(breakpoints.ratio_schedule)
+            schedule_pair = next(
+                (
+                    pair
+                    for pair in (
+                        ("shallow", "steep"),
+                        ("moderate_repair", "sharp_repair"),
+                    )
+                    if set(pair) <= available_schedules
+                ),
+                None,
+            )
+            gradual, sharp = schedule_pair or (None, None)
+            gradual_breakpoint = breakpoints[
+                breakpoints.ratio_schedule == gradual
             ].breakpoint.mean()
-            steep = breakpoints[
-                breakpoints.ratio_schedule == "steep"
+            sharp_breakpoint = breakpoints[
+                breakpoints.ratio_schedule == sharp
             ].breakpoint.mean()
             add(
                 task,
-                "shallower effort growth increases breakpoint",
-                float(shallow - steep),
+                "more gradual effort growth increases breakpoint",
+                float(gradual_breakpoint - sharp_breakpoint),
+                role="diagnostic",
             )
         elif task == "sunk_cost":
             add(task, "lower remaining cost increases continuation", _difference(initial, "remaining_steps"))
+            prospective = [
+                "remaining_steps",
+                "reward_magnitude",
+                "outside_option",
+                "step_cost",
+                "success_probability",
+            ]
+            matched = (
+                initial.groupby(prospective).prior_investment.nunique().ge(2).all()
+            )
+            add(
+                task,
+                "past investment varies within exactly matched prospective states",
+                float(matched),
+                role="design_gate",
+            )
             add(
                 task,
                 "greater sunk investment increases persistence",
@@ -117,6 +203,10 @@ def manipulation_checks(frames, config):
                 float(controllable - uncontrollable),
                 role="scientific_hypothesis",
             )
+        elif task == "debugging_persistence":
+            add(task, "lower attempt cost increases debugging", _difference(initial, "attempt_cost"))
+            add(task, "higher solution reward increases debugging", _difference(initial, "solution_reward", high_minus_low=True))
+            add(task, "lower restart value increases debugging", _difference(initial, "restart_value"))
     return pd.DataFrame(rows)
 
 
@@ -190,8 +280,16 @@ def nondegeneracy_checks(frames, manipulations, label_bias, config, *, model_fre
         # The PRD requires at least one basic incentive effect.  Static design
         # checks (currently the waiting-policy contrast) must all pass, while
         # rows marked scientific_hypothesis are deliberately ignored here.
+        require_all = bool(
+            config["validation"].get("require_all_validity_checks", False)
+        )
+        validity_passed = (
+            validity_checks.passed.all()
+            if require_all
+            else validity_checks.passed.any()
+        )
         manipulation_passed = bool(
-            validity_checks.passed.any()
+            validity_passed
             and (design_checks.empty or design_checks.passed.all())
         )
         label_passed = bool(label_bias[label_bias.task == task].passed.iloc[0])

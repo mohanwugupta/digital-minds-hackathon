@@ -282,12 +282,19 @@ def main():
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--model-free", action="store_true")
+    parser.add_argument(
+        "--skip-pilot-approval",
+        action="store_true",
+        help="allow a full exploratory collection before the functional pilot gate",
+    )
     parser.add_argument("--num-shards", type=int, default=1)
     parser.add_argument("--shard-index", type=int, default=0)
     args = parser.parse_args()
 
     if args.model_free and not args.smoke:
         raise ValueError("--model-free is restricted to --smoke plumbing validation")
+    if args.skip_pilot_approval and args.phase != "full":
+        raise ValueError("--skip-pilot-approval is valid only with --phase full")
     if args.num_shards < 1 or not 0 <= args.shard_index < args.num_shards:
         raise ValueError("shard index must lie in [0, num-shards)")
     config_path = Path(args.config)
@@ -336,8 +343,13 @@ def main():
         mode = args.phase
         if mode == "full" and config["collection"].get(
             "require_pilot_approval_for_full", True
-        ):
+        ) and not args.skip_pilot_approval:
             _require_pilot_approval(output, tasks)
+        if mode == "full" and args.skip_pilot_approval:
+            logger.note(
+                "pilot_gate",
+                "pilot approval explicitly bypassed for exploratory full collection",
+            )
         expected_model_id = (
             DeterministicSmokeModel.model_id
             if args.model_free

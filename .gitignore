@@ -18,3 +18,6 @@ artifacts/persistence_stay_switch/*/cache/
 artifacts/persistence_stay_switch/*smoke*/
 artifacts/persistence_battery/*/cache/
 artifacts/persistence_battery/*smoke*/
+artifacts/comparative_persistence/*smoke*/
+artifacts/persistence_robustness/*/cache/
+artifacts/persistence_robustness/*smoke*/

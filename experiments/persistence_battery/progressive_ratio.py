@@ -13,6 +13,8 @@ QUIT = "QUIT"
 RATIO_SCHEDULES = {
     "shallow": (1, 2, 3, 4, 5, 6, 7, 8),
     "steep": (1, 2, 4, 6, 9, 12, 15, 20),
+    "moderate_repair": (1, 2, 3, 5, 7, 10),
+    "sharp_repair": (1, 3, 6, 10, 15, 21),
 }
 
 LITERATURE = {

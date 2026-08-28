@@ -1,0 +1,9 @@
+task,signature,available,effect,expected_direction,direction_reproduced,validity_gate,note
+voluntary_waiting,voluntary waiting,False,,,,False,task excluded by frozen PRD-1 gate or construct unavailable
+progressive_ratio,progressive ratio,False,,,,False,task excluded by frozen PRD-1 gate or construct unavailable
+sunk_cost,sunk cost,False,,,,False,task excluded by frozen PRD-1 gate or construct unavailable
+partial_reinforcement,partial reinforcement extinction effect,True,-0.16314247060908205,positive,False,False,
+information_sampling,sampling-cost sensitivity,True,0.0427018561698721,positive,True,False,
+information_sampling,error-penalty sensitivity,True,0.02715773094842261,positive,True,False,
+information_sampling,decisive evidence reduces sampling,True,-0.345835017992391,positive,False,False,
+controllability,controllability transfer,False,,,,False,task excluded by frozen PRD-1 gate or construct unavailable

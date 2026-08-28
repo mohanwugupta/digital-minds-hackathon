@@ -1,0 +1,65 @@
+{
+  "control_tasks": [
+    "independent_effort_control"
+  ],
+  "dataset_sha256": "63fd15c12ae47e2d80b5578d20f4f39b3239f4f779320d3358c0b816d69d481b",
+  "episodes": 2272,
+  "forbidden_future_fields": [
+    "episode_duration",
+    "outcome_after_choice",
+    "realized_future_reward",
+    "subsequent_effort",
+    "subsequent_outcome",
+    "subsequent_reward",
+    "subsequent_success",
+    "termination_reason"
+  ],
+  "normalization": "frozen environment specifications",
+  "observable_features": [
+    "time_norm",
+    "effort_norm",
+    "invested_norm",
+    "cost_norm",
+    "outside_norm",
+    "progress_norm",
+    "success_evidence",
+    "remaining_effort_norm",
+    "remaining_time_norm",
+    "continue_payoff_norm",
+    "futility_norm",
+    "continue_streak",
+    "failure_streak",
+    "success_streak",
+    "action_lag_1",
+    "action_lag_2",
+    "action_lag_3",
+    "action_lag_5",
+    "action_lag_8",
+    "outcome_lag_1",
+    "outcome_lag_2",
+    "outcome_lag_3",
+    "outcome_lag_5",
+    "outcome_lag_8",
+    "reward_kernel",
+    "choice_kernel",
+    "reevaluation_advantage",
+    "option_advantage"
+  ],
+  "persistence_tasks": [
+    "bandit",
+    "foraging",
+    "information_sampling",
+    "partial_reinforcement",
+    "solvability"
+  ],
+  "states": 17465,
+  "target": "hazard_event",
+  "tasks": {
+    "bandit": 12461,
+    "foraging": 2195,
+    "independent_effort_control": 256,
+    "information_sampling": 364,
+    "partial_reinforcement": 120,
+    "solvability": 2069
+  }
+}

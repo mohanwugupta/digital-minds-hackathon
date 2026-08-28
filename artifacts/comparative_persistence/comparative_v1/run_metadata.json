@@ -1,0 +1,38 @@
+{
+  "config": {
+    "config": "config/comparative_persistence.yaml",
+    "models": [
+      "intercept",
+      "time_only",
+      "immediate_state",
+      "finite_history",
+      "exponential_reward",
+      "perseveration",
+      "dual_history",
+      "dynamic_reevaluation",
+      "dynamic_reevaluation_oracle",
+      "option_termination",
+      "competitive_time_reward",
+      "latent_commitment",
+      "sunk_extension",
+      "flexible_linear",
+      "mlp",
+      "gru"
+    ],
+    "phase": "all",
+    "protocol_version": "comparative_persistence_v1",
+    "resume": false,
+    "run_id": "comparative_v1",
+    "skip_neural": false,
+    "smoke": false,
+    "target": "termination_hazard",
+    "target_task_normalization": false
+  },
+  "created_at_utc": "2026-08-28T14:23:39.861126+00:00",
+  "git_commit": "13acb5d149ae29e71ffb9719522cf8097bf04dbb",
+  "model_identifier": "unknown",
+  "model_revision": null,
+  "python_version": "3.11.8",
+  "torch_version": "2.8.0",
+  "transformers_version": "4.56.1"
+}

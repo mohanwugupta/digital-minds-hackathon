@@ -192,6 +192,39 @@ Finalization prefers Parquet but falls back to compressed CSV when the cluster
 environment lacks a Parquet engine. A resumed run with complete validated raw
 pair caches skips Qwen loading and inference.
 
+### Comparative persistence model zoo
+
+The PRD 2 analysis reuses the retained Bandit, Foraging, Solvability, and
+approved persistence-battery behavior. It harmonizes them into a causal
+termination-hazard risk set, compares interpretable and flexible MLP/GRU
+models, and runs task-specific, shared, hierarchical, LOTO, LOFO, few-shot,
+feature-ablation, control, signature, and synthetic-recovery analyses. It does
+not load Qwen or perform model inference.
+
+Run a laptop-sized plumbing check from the repository root:
+
+```bash
+python -u -m analysis.run_comparative_persistence \
+  --config config/comparative_persistence.yaml \
+  --phase all \
+  --run-id comparative_smoke_v1 \
+  --smoke \
+  --skip-neural
+```
+
+Run the complete registered model zoo with:
+
+```bash
+python -u -m analysis.run_comparative_persistence \
+  --config config/comparative_persistence.yaml \
+  --phase all \
+  --run-id comparative_v1
+```
+
+The full neural comparison benefits from a GPU but remains analysis-only. See
+[`docs/comparative-persistence.md`](docs/comparative-persistence.md) for resume,
+phase, model-selection, and Slurm commands.
+
 Download Qwen from an internet-connected login node before starting an offline
 GPU job:
 
@@ -343,6 +376,19 @@ The smoke job runs CPU tests, validates the checkpoint and chat template, and
 executes tiny behavioral, activation, counterfactual-rollout, factorial, and
 causal checks. Its outputs are temporary diagnostics and should not be
 committed.
+
+## PRD 2.5 behavioral robustness
+
+The robustness extension repairs three failed persistence tasks, adds two
+candidate breadth tasks, builds an exact matched same-goal/independent-goal
+control, and reruns a reduced model zoo with a properly scaled GRU ceiling.
+Collection is behavior-only but requires Qwen; cached pair files are resumable
+and local-only. The analysis reports task-macro, LOTO, few-shot, sharing,
+history-decomposition, signature, matched-control, and synthetic-recovery
+results without making a mechanistic claim.
+
+See [`docs/persistence-robustness.md`](docs/persistence-robustness.md) for the
+local smoke, sharded Slurm collection, finalization, and analysis commands.
 
 ## Artifact policy
 

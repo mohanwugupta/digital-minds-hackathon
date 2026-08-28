@@ -12,6 +12,15 @@ from .base_environment import BasePersistenceEnvironment, choice_block
 WAIT = "WAIT"
 QUIT = "QUIT"
 
+ARRIVAL_HAZARDS = {
+    "short_wait_optimal": (0.65, 0.55, 0.45, 0.35, 0.30, 0.25),
+    "long_wait_optimal": (0.02, 0.03, 0.05, 0.08, 0.75, 0.70),
+    # PRD 2.5 repair profiles avoid terminating most WAIT trajectories at the
+    # very first state while retaining different temporal policies.
+    "moderate_early": (0.10, 0.45, 0.60, 0.50, 0.35, 0.25, 0.20, 0.15),
+    "moderate_late": (0.01, 0.03, 0.08, 0.20, 0.55, 0.70, 0.55, 0.35),
+}
+
 
 LITERATURE = {
     "construct": "dynamic persistence / voluntary waiting",
@@ -34,19 +43,15 @@ class WaitingCondition:
     quit_payoff: int
 
     def __post_init__(self):
-        if self.timing_environment not in {
-            "short_wait_optimal",
-            "long_wait_optimal",
-        }:
+        if self.timing_environment not in ARRIVAL_HAZARDS:
             raise ValueError("unknown waiting timing environment")
         if self.reward_magnitude <= 0 or self.opportunity_cost < 0:
             raise ValueError("invalid waiting reward or cost")
 
     def arrival_hazard(self, elapsed):
         elapsed = int(elapsed)
-        if self.timing_environment == "short_wait_optimal":
-            return (0.65, 0.55, 0.45, 0.35, 0.30, 0.25)[min(elapsed, 5)]
-        return (0.02, 0.03, 0.05, 0.08, 0.75, 0.70)[min(elapsed, 5)]
+        profile = ARRIVAL_HAZARDS[self.timing_environment]
+        return profile[min(elapsed, len(profile) - 1)]
 
 
 def optimal_policy(condition, *, max_steps=8):
@@ -136,7 +141,7 @@ class VoluntaryWaitingEnvironment(BasePersistenceEnvironment):
     def initial_prompt(self, mapping):
         context = (
             "Rewards in this setting usually arrive quickly."
-            if self.condition.timing_environment == "short_wait_optimal"
+            if self.condition.timing_environment in {"short_wait_optimal", "moderate_early"}
             else "Rewards in this setting are uncommon at first but become much more likely after several waits."
         )
         return (

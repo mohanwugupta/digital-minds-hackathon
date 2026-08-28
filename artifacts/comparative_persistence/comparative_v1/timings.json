@@ -1,0 +1,41 @@
+{
+  "sections": [
+    {
+      "duration_seconds": 6.70473870800015,
+      "section": "prepare_dataset",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 1057.0751388340004,
+      "section": "model_comparison",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 3929.3262939999995,
+      "section": "generalization",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 370.65716516700013,
+      "section": "history",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 9.195024708000346,
+      "section": "features",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 4.569956499999535,
+      "section": "synthetic_recovery",
+      "status": "completed"
+    },
+    {
+      "duration_seconds": 1.7792584159997205,
+      "section": "report",
+      "status": "completed"
+    }
+  ],
+  "total_elapsed_seconds": 5381.746263499999,
+  "updated_at_utc": "2026-08-28T15:53:21.597790+00:00"
+}

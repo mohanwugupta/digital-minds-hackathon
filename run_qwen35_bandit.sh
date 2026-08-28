@@ -42,6 +42,11 @@ LAYERWISE_SHARD_INDEX="${LAYERWISE_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
 TRACK_A_RUN_ID="${TRACK_A_RUN_ID:-track_a_v1}"
 TRACK_B_RUN_ID="${TRACK_B_RUN_ID:-track_b_shared_v3}"
 TRACK_B_ROOT="artifacts/cross_task/${TRACK_B_RUN_ID}"
+PERSISTENCE_ROBUSTNESS_RUN_ID="${PERSISTENCE_ROBUSTNESS_RUN_ID:-robustness_v1}"
+PERSISTENCE_ROBUSTNESS_TASKS="${PERSISTENCE_ROBUSTNESS_TASKS:-voluntary_waiting,progressive_ratio,sunk_cost,controllability,debugging_persistence}"
+PERSISTENCE_ROBUSTNESS_NUM_SHARDS="${PERSISTENCE_ROBUSTNESS_NUM_SHARDS:-1}"
+PERSISTENCE_ROBUSTNESS_SHARD_INDEX="${PERSISTENCE_ROBUSTNESS_SHARD_INDEX:-${SLURM_ARRAY_TASK_ID:-0}}"
+PERSISTENCE_ROBUSTNESS_DATASET="${PERSISTENCE_ROBUSTNESS_DATASET:-pilot}"
 
 if [[ ! "$TRACK_A_RUN_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
     echo "TRACK_A_RUN_ID may contain only letters, digits, underscores, and hyphens" >&2
@@ -73,10 +78,16 @@ export OMP_NUM_THREADS=8
 export TOKENIZERS_PARALLELISM=true
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
-if [ ! -d "$MODEL_PATH" ]; then
-    echo "Model directory not found: $MODEL_PATH" >&2
-    exit 1
-fi
+case "$PHASE" in
+  comparative_persistence|comparative_persistence_tests|persistence_robustness_tests|persistence_robustness_analysis|persistence_robustness_battery_finalize|persistence_robustness_matched_finalize)
+    ;;
+  *)
+    if [ ! -d "$MODEL_PATH" ]; then
+        echo "Model directory not found: $MODEL_PATH" >&2
+        exit 1
+    fi
+    ;;
+esac
 
 collect_probe_phase() {
   echo "Starting probe activation collection (${PROBE_EPISODES} episodes)"
@@ -622,6 +633,123 @@ persistence_battery_finalize_phase() {
     --resume
 }
 
+comparative_persistence_tests_phase() {
+  echo "Running comparative-persistence integrity, recovery, and neural smoke tests"
+  python -m pytest -q tests/comparative_persistence
+}
+
+comparative_persistence_phase() {
+  local run_id="${COMPARATIVE_PERSISTENCE_RUN_ID:-comparative_v1}"
+  local analysis_phase="${COMPARATIVE_PERSISTENCE_PHASE:-all}"
+  local extra_args=()
+  if [[ -n "${COMPARATIVE_PERSISTENCE_RESUME:-}" ]]; then
+    extra_args+=(--resume)
+  fi
+  if [[ -n "${COMPARATIVE_PERSISTENCE_SMOKE:-}" ]]; then
+    extra_args+=(--smoke)
+  fi
+  if [[ -n "${COMPARATIVE_PERSISTENCE_SKIP_NEURAL:-}" ]]; then
+    extra_args+=(--skip-neural)
+  fi
+  if [[ -n "${COMPARATIVE_PERSISTENCE_MODELS:-}" ]]; then
+    extra_args+=(--models "$COMPARATIVE_PERSISTENCE_MODELS")
+  fi
+  echo "Running comparative persistence model zoo ${run_id}; phase=${analysis_phase}"
+  python -u -m analysis.run_comparative_persistence \
+    --config "${COMPARATIVE_PERSISTENCE_CONFIG:-config/comparative_persistence.yaml}" \
+    --phase "$analysis_phase" \
+    --run-id "$run_id" \
+    "${extra_args[@]}"
+}
+
+persistence_robustness_tests_phase() {
+  echo "Running PRD 2.5 repaired-task, matched-control, GRU, and recovery tests"
+  python -m pytest -q tests/persistence_battery tests/persistence_robustness
+}
+
+persistence_robustness_pilot_phase() {
+  echo "Collecting PRD 2.5 functional pilot ${PERSISTENCE_ROBUSTNESS_RUN_ID}; shard ${PERSISTENCE_ROBUSTNESS_SHARD_INDEX}/${PERSISTENCE_ROBUSTNESS_NUM_SHARDS}"
+  python -u -m analysis.run_persistence_battery \
+    --config config/persistence_robustness_v1.yaml \
+    --phase pilot \
+    --run-id "$PERSISTENCE_ROBUSTNESS_RUN_ID" \
+    --tasks "$PERSISTENCE_ROBUSTNESS_TASKS" \
+    --model "$MODEL_PATH" \
+    --num-shards "$PERSISTENCE_ROBUSTNESS_NUM_SHARDS" \
+    --shard-index "$PERSISTENCE_ROBUSTNESS_SHARD_INDEX" \
+    --resume
+}
+
+persistence_robustness_full_phase() {
+  local extra_args=()
+  if [[ -n "${PERSISTENCE_ROBUSTNESS_SKIP_PILOT_APPROVAL:-}" ]]; then
+    extra_args+=(--skip-pilot-approval)
+  fi
+  echo "Collecting PRD 2.5 full battery ${PERSISTENCE_ROBUSTNESS_RUN_ID}; shard ${PERSISTENCE_ROBUSTNESS_SHARD_INDEX}/${PERSISTENCE_ROBUSTNESS_NUM_SHARDS}"
+  python -u -m analysis.run_persistence_battery \
+    --config config/persistence_robustness_v1.yaml \
+    --phase full \
+    --run-id "$PERSISTENCE_ROBUSTNESS_RUN_ID" \
+    --tasks "$PERSISTENCE_ROBUSTNESS_TASKS" \
+    --model "$MODEL_PATH" \
+    --num-shards "$PERSISTENCE_ROBUSTNESS_NUM_SHARDS" \
+    --shard-index "$PERSISTENCE_ROBUSTNESS_SHARD_INDEX" \
+    --resume \
+    "${extra_args[@]}"
+}
+
+persistence_robustness_battery_finalize_phase() {
+  echo "Finalizing PRD 2.5 ${PERSISTENCE_ROBUSTNESS_DATASET} battery records"
+  python -u -m analysis.run_persistence_battery \
+    --config config/persistence_robustness_v1.yaml \
+    --phase finalize \
+    --dataset "$PERSISTENCE_ROBUSTNESS_DATASET" \
+    --run-id "$PERSISTENCE_ROBUSTNESS_RUN_ID" \
+    --tasks "$PERSISTENCE_ROBUSTNESS_TASKS" \
+    --resume
+}
+
+persistence_robustness_matched_phase() {
+  echo "Collecting yoked goal-continuity control ${PERSISTENCE_ROBUSTNESS_RUN_ID}; dataset=${PERSISTENCE_ROBUSTNESS_DATASET}; shard ${PERSISTENCE_ROBUSTNESS_SHARD_INDEX}/${PERSISTENCE_ROBUSTNESS_NUM_SHARDS}"
+  python -u -m experiments.collect_matched_goal_control \
+    --config config/persistence_robustness_v1.yaml \
+    --phase collect \
+    --dataset "$PERSISTENCE_ROBUSTNESS_DATASET" \
+    --run-id "$PERSISTENCE_ROBUSTNESS_RUN_ID" \
+    --model "$MODEL_PATH" \
+    --num-shards "$PERSISTENCE_ROBUSTNESS_NUM_SHARDS" \
+    --shard-index "$PERSISTENCE_ROBUSTNESS_SHARD_INDEX" \
+    --resume
+}
+
+persistence_robustness_matched_finalize_phase() {
+  echo "Finalizing yoked goal-continuity control ${PERSISTENCE_ROBUSTNESS_RUN_ID}"
+  python -u -m experiments.collect_matched_goal_control \
+    --config config/persistence_robustness_v1.yaml \
+    --phase finalize \
+    --dataset "$PERSISTENCE_ROBUSTNESS_DATASET" \
+    --run-id "$PERSISTENCE_ROBUSTNESS_RUN_ID" \
+    --model "$MODEL_PATH" \
+    --resume
+}
+
+persistence_robustness_analysis_phase() {
+  local analysis_phase="${PERSISTENCE_ROBUSTNESS_PHASE:-all}"
+  local extra_args=(--resume)
+  if [[ -n "${PERSISTENCE_ROBUSTNESS_SMOKE:-}" ]]; then
+    extra_args+=(--smoke)
+  fi
+  if [[ -n "${PERSISTENCE_ROBUSTNESS_MODELS:-}" ]]; then
+    extra_args+=(--models "$PERSISTENCE_ROBUSTNESS_MODELS")
+  fi
+  echo "Running PRD 2.5 robustness analysis ${PERSISTENCE_ROBUSTNESS_RUN_ID}; phase=${analysis_phase}"
+  python -u -m analysis.run_persistence_robustness \
+    --config config/persistence_robustness_v1.yaml \
+    --phase "$analysis_phase" \
+    --run-id "$PERSISTENCE_ROBUSTNESS_RUN_ID" \
+    "${extra_args[@]}"
+}
+
 case "$PHASE" in
   compatibility)
     python -m experiments.check_qwen_compatibility \
@@ -827,6 +955,33 @@ case "$PHASE" in
     ;;
   persistence_battery_finalize)
     persistence_battery_finalize_phase
+    ;;
+  comparative_persistence_tests)
+    comparative_persistence_tests_phase
+    ;;
+  comparative_persistence)
+    comparative_persistence_phase
+    ;;
+  persistence_robustness_tests)
+    persistence_robustness_tests_phase
+    ;;
+  persistence_robustness_pilot)
+    persistence_robustness_pilot_phase
+    ;;
+  persistence_robustness_full)
+    persistence_robustness_full_phase
+    ;;
+  persistence_robustness_battery_finalize)
+    persistence_robustness_battery_finalize_phase
+    ;;
+  persistence_robustness_matched)
+    persistence_robustness_matched_phase
+    ;;
+  persistence_robustness_matched_finalize)
+    persistence_robustness_matched_finalize_phase
+    ;;
+  persistence_robustness_analysis)
+    persistence_robustness_analysis_phase
     ;;
   *)
     echo "Unknown PHASE: $PHASE" >&2

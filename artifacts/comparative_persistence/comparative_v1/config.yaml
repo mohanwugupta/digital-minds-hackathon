@@ -1,0 +1,92 @@
+protocol_version: comparative_persistence_v1
+output_root: artifacts/comparative_persistence
+seed: 20260828
+
+targets:
+  primary: termination_hazard
+metrics:
+  primary: task_macro_log_loss
+  secondary: [brier, calibration, auc, deviance_explained, episode_weighted_log_loss]
+
+inputs:
+  original_records: artifacts/computational_modeling/records
+  battery_run: artifacts/persistence_battery/battery_pilot_v1
+  battery_smoke_run: artifacts/persistence_battery/battery_smoke_v2
+
+original_tasks: [bandit, foraging, solvability]
+battery_tasks:
+  - voluntary_waiting
+  - progressive_ratio
+  - sunk_cost
+  - information_sampling
+  - partial_reinforcement
+  - independent_effort_control
+control_task: independent_effort_control
+
+# Frozen before comparative outcome inspection. All scaling derives from task
+# specifications, never behavioral distributions in a held-out task.
+task_specs:
+  bandit: {family: reward_pursuit, payoff_scale: 5.0, effort_scale: 5.0, horizon: 100, progress_scale: 1.0}
+  foraging: {family: reward_pursuit, payoff_scale: 4.0, effort_scale: 9.0, horizon: 9, progress_scale: 1.0}
+  solvability: {family: problem_solving, payoff_scale: 2.0, effort_scale: 8.0, horizon: 8, progress_scale: 1.0}
+  voluntary_waiting: {family: waiting, payoff_scale: 10.0, effort_scale: 16.0, horizon: 8, progress_scale: 1.0}
+  progressive_ratio: {family: effort_expenditure, payoff_scale: 10.0, effort_scale: 138.0, horizon: 69, progress_scale: 1.0}
+  sunk_cost: {family: waiting, payoff_scale: 14.0, effort_scale: 12.0, horizon: 4, progress_scale: 1.0}
+  information_sampling: {family: evidence_gathering, payoff_scale: 10.0, effort_scale: 16.0, horizon: 8, progress_scale: 1.0}
+  partial_reinforcement: {family: learning_history, payoff_scale: 8.0, effort_scale: 24.0, horizon: 12, progress_scale: 1.0}
+  independent_effort_control: {family: sequential_control, payoff_scale: 14.0, effort_scale: 48.0, horizon: 8, progress_scale: 1.0}
+
+sharing: [task_specific, fully_shared, hierarchical]
+history_lags: [1, 2, 3, 5, 8]
+history_decay: [0.0, 0.25, 0.5, 0.7, 0.85, 0.95]
+latent_rho: [0.0, 0.25, 0.5, 0.7, 0.85, 0.95]
+ridge_penalties: [0.01, 0.1, 1.0, 10.0]
+hierarchical_deviation_penalty: 2.0
+
+evaluation:
+  within_task: true
+  leave_one_task_out: true
+  leave_one_family_out: true
+  few_shot_counts: [0, 1, 4, 8, 16, 32]
+  calibration_bins: 10
+  few_shot_models: [finite_history, dual_history, latent_commitment, flexible_linear]
+
+mlp:
+  hidden_sizes: [32, 16]
+  learning_rates: [0.001]
+  dropout: [0.0]
+  max_epochs: 120
+  patience: 12
+
+gru:
+  hidden_sizes: [1, 2, 4, 8, 16, 32, 64]
+  learning_rate: 0.001
+  dropout: 0.0
+  max_epochs: 100
+  patience: 10
+
+bootstrap:
+  samples: 2000
+  within_task_unit: episode
+  cross_task_unit: task_identity
+
+synthetic_recovery:
+  repetitions: 100
+  episodes_per_task: 120
+
+smoke:
+  maximum_episodes_per_task: 40
+  models:
+    - intercept
+    - time_only
+    - immediate_state
+    - finite_history
+    - dual_history
+    - dynamic_reevaluation
+    - latent_commitment
+    - flexible_linear
+  few_shot_models: [finite_history, flexible_linear]
+  few_shot_counts: [0, 4]
+  ridge_penalties: [0.1, 1.0]
+  synthetic_repetitions: 4
+  bootstrap_samples: 50

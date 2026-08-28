@@ -132,10 +132,10 @@ class SunkCostEnvironment(BasePersistenceEnvironment):
 
     def initial_prompt(self, mapping):
         return (
-            "You previously accepted a project with a delayed point reward. You may continue it or abandon it.\n\n"
-            f"You have already invested {self.condition.prior_investment} step(s). Exactly {self.remaining} step(s) remain. "
+            "You previously accepted a project with a delayed point reward. Past work cannot be recovered and does not change the remaining odds or costs.\n\n"
+            f"You have already invested {self.condition.prior_investment} step(s). Exactly {self.remaining} future step(s) remain. "
             f"Each remaining step costs {self.condition.step_cost} points. Completion has a {self.condition.success_probability:.0%} chance of paying {self.condition.reward_magnitude} points. "
-            f"Abandoning gives {self.condition.outside_option} points.\n\n"
+            f"Abandoning now gives {self.condition.outside_option} points. Decide using the stated future consequences.\n\n"
             + self._choice(mapping)
         )
 

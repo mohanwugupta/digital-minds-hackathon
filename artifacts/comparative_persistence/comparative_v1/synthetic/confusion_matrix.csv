@@ -1,0 +1,5 @@
+generating_model,finite_history,latent_commitment,shared_rule,task_specific
+H1_latent_commitment,0,100,0,0
+H2_shared_rule,0,0,99,1
+H3_task_specific_evaluation,0,0,0,100
+H4_generic_sequential_choice,100,0,0,0

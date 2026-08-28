@@ -1,0 +1,16 @@
+task_a,task_b,correlation,cosine_similarity
+bandit,foraging,0.7046722528888403,0.7720031894026795
+bandit,independent_effort_control,-0.4766355914853918,-0.5282158308152938
+bandit,information_sampling,0.5745815523303262,0.366970661481616
+bandit,partial_reinforcement,0.7046722528888401,0.7720031894026795
+bandit,solvability,0.729722798868431,0.7951125046538623
+foraging,independent_effort_control,-0.9487817040174175,-0.9359416877563108
+foraging,information_sampling,0.2453708424477537,0.12671735949276977
+foraging,partial_reinforcement,0.9999999999999998,1.0
+foraging,solvability,0.9991062790373191,0.9990672427542827
+independent_effort_control,information_sampling,0.028820770176949298,0.0788887201435297
+independent_effort_control,partial_reinforcement,-0.9487817040174172,-0.9359416877563108
+independent_effort_control,solvability,-0.934579705596415,-0.9198620891826668
+information_sampling,partial_reinforcement,0.24537084244775367,0.12671735949276977
+information_sampling,solvability,0.28015433127079364,0.15081539452203688
+partial_reinforcement,solvability,0.9991062790373193,0.9990672427542828

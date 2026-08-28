@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from . import controllability
+from . import debugging_persistence
 from . import independent_effort_control
 from . import information_sampling
 from . import partial_reinforcement
@@ -113,14 +114,37 @@ TASKS = {
         "controllability transfer",
         ("exposure_type", "transfer_success_probability", "transfer_cost"),
     ),
+    "debugging_persistence": TaskDefinition(
+        "debugging_persistence",
+        debugging_persistence,
+        debugging_persistence.DebuggingPersistenceEnvironment,
+        debugging_persistence.DEBUG,
+        debugging_persistence.ABANDON,
+        True,
+        "debugging persistence with accumulating diagnostic evidence",
+        (
+            "base_success_probability",
+            "clue_increment",
+            "attempt_cost",
+            "solution_reward",
+            "restart_value",
+        ),
+    ),
 }
 
 
-CORE_TASKS = tuple(name for name in TASKS if name != "controllability")
+CORE_TASKS = tuple(
+    name for name in TASKS if name not in {"controllability", "debugging_persistence"}
+)
 
 
 def enabled_tasks(config):
     names = list(CORE_TASKS)
     if config.get("stretch", {}).get("controllability_enabled", False):
         names.append("controllability")
+    for name in config.get("additional_tasks", []):
+        if name not in TASKS:
+            raise ValueError(f"unknown additional persistence task: {name}")
+        if name not in names:
+            names.append(name)
     return tuple(names)

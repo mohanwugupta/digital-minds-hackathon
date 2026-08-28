@@ -1,0 +1,10 @@
+task,included,reason
+bandit,True,frozen original task
+foraging,True,frozen original task
+solvability,True,frozen original task
+voluntary_waiting,False,failed PRD-1 basic gate
+progressive_ratio,False,failed PRD-1 basic gate
+sunk_cost,False,failed PRD-1 basic gate
+information_sampling,True,approved PRD-1 task
+partial_reinforcement,True,approved PRD-1 task
+independent_effort_control,True,approved PRD-1 task
